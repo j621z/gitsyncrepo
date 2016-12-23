@@ -75,7 +75,7 @@ Write-Verbose "Version: $NewVersion"
 # Apply the version to the assembly property files and to our shared version assembly file
 $files = gci $Env:BUILD_SOURCESDIRECTORY -recurse -include "Shared","*Properties*" | 
     ?{ $_.PSIsContainer } | 
-    foreach { gci -Path $_.FullName -Recurse -include SharedAssemblyVersionInfo.*,AssemblyInfo.*,AssemblyVersionInto.* }
+    foreach { gci -Path $_.FullName -Recurse -include SharedAssemblyVersionInfo.*,AssemblyInfo.*,AssemblyVersionInfo.* }
 if($files)
 {
     Write-Verbose "Will apply $NewVersion to $($files.count) files."
