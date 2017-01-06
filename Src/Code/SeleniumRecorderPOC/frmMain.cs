@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Microsoft.Xrm.UITests.Api;
+using Microsoft.Dynamics365.UITests.Api;
+using Microsoft.Dynamics365.UITests.Browser;
 
 
-namespace SeleniumRecorderPOC
+namespace BrowserRecorder
 {
     public partial class frmMain : Form
     {

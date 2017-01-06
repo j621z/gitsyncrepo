@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace Microsoft.Xrm.UITests.Api
+namespace Microsoft.Dynamics365.UITests.Browser
 {
     public class XrmCommandBarItem
     {

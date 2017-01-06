@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Microsoft.Xrm.UITests.Api
+namespace Microsoft.Dynamics365.UITests.Browser
 {
     public class Office365XrmInstancePickerPage
         : BrowserPage

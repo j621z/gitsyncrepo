@@ -1,9 +1,9 @@
 ﻿using OpenQA.Selenium;
 using System;
-using Microsoft.Xrm.UITests.Api.Pages;
+using Microsoft.Dynamics365.UITests.Browser.Pages;
 using OpenQA.Selenium.Support.Events;
 
-namespace Microsoft.Xrm.UITests.Api
+namespace Microsoft.Dynamics365.UITests.Browser
 {
     public class XrmBrowser
         : InteractiveBrowser

@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace Microsoft.Xrm.UITests.Api
+namespace Microsoft.Dynamics365.UITests.Browser
 {
     public class Office365Browser
         : InteractiveBrowser

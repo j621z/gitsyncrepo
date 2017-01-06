@@ -1,9 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Xrm.UITests.Api;
+using Microsoft.Dynamics365.UITests.Api;
+using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Security;
 
-namespace Microsoft.Xrm.UITests.Tests
+namespace Microsoft.Dynamics365.UITests.UnitTests
 {
     [TestClass]
     public class Office365Tests

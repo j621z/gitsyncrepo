@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web.Script.Serialization;
-using Microsoft.Xrm.UITests.Api;
+using Microsoft.Dynamics365.UITests.Browser;
 using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium.Support;
 
 
-namespace Microsoft.Xrm.UITests.Api.Pages
+namespace Microsoft.Dynamics365.UITests.Browser.Pages
 {
     public class XrmRecorderPage : BrowserPage
     {

@@ -5,7 +5,7 @@ using System.Security;
 using System.Threading;
 using OpenQA.Selenium.Support.UI;
 
-namespace Microsoft.Xrm.UITests.Api
+namespace Microsoft.Dynamics365.UITests.Browser
 {
     public enum LoginResult
     {

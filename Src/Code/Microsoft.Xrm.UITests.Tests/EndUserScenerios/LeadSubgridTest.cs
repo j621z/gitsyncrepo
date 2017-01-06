@@ -1,12 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Xrm.UITests.Api;
+using Microsoft.Dynamics365.UITests.Api;
+using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Security;
 using System.Threading;
 using OpenQA.Selenium.Support.Events;
 using System.Drawing.Imaging;
 
-namespace Microsoft.Xrm.UITests.Tests
+namespace Microsoft.Dynamics365.UITests.UnitTests
 {
     [TestClass]
     public class LeadSubgridTest

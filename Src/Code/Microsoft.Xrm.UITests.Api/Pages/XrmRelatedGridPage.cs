@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Collections.ObjectModel;
 
-namespace Microsoft.Xrm.UITests.Api
+namespace Microsoft.Dynamics365.UITests.Browser
 {
     public class XrmRelatedGridPage
         : BrowserPage

@@ -1,4 +1,4 @@
-﻿namespace SeleniumRecorderPOC
+﻿namespace BrowserRecorder
 {
     partial class EventViewer
     {
