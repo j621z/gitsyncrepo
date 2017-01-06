@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading;
 using ThreadState = System.Threading.ThreadState;
 
-namespace Microsoft.Xrm.UITests.Api
+namespace Microsoft.Dynamics365.UITests.Browser
 {
     public class InteractiveBrowser
         : IDisposable

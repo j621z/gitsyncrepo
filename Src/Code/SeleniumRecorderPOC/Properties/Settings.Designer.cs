@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeleniumRecorderPOC.Properties
+namespace BrowserRecorder.Properties
 {
 
 

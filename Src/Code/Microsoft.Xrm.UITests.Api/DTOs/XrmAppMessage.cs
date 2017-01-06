@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Microsoft.Xrm.UITests.Api
+namespace Microsoft.Dynamics365.UITests.Browser
 {
     public class XrmAppMessage
     {

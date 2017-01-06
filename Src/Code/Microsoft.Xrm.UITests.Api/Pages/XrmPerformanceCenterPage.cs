@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web.Script.Serialization;
 using System.Xml;
 
-namespace Microsoft.Xrm.UITests.Api
+namespace Microsoft.Dynamics365.UITests.Browser
 {
     public class XrmPerformanceCenterPage
         : BrowserPage

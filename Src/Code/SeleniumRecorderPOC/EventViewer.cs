@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Xrm.UITests.Api;
+using Microsoft.Dynamics365.UITests.Browser;
 
-namespace SeleniumRecorderPOC
+namespace BrowserRecorder
 {
     public partial class EventViewer : Form
     {
