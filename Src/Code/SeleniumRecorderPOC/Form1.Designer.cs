@@ -73,7 +73,9 @@
             this.Controls.Add(this.btnViewEvents);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnRecord);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Selenium Recorder";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
