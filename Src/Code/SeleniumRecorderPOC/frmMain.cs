@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Microsoft.Dynamics365.UITests.Api;
 using Microsoft.Dynamics365.UITests.Browser;
-
+using System.Drawing;
 
 namespace BrowserRecorder
 {
@@ -18,6 +18,14 @@ namespace BrowserRecorder
         public frmMain()
         {
             InitializeComponent();
+
+            //this Form will always be on top.
+            this.TopMost = true;
+
+            //Set the Start position to top middle
+            this.Location = new Point(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y);
+            this.Top = Screen.PrimaryScreen.WorkingArea.Bottom - this.Height;
+            this.StartPosition = FormStartPosition.Manual;
         }
 
         private void btnRecord_Click(object sender, EventArgs e)
