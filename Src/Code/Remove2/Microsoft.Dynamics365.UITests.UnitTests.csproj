@@ -6,8 +6,8 @@
     <ProjectGuid>{1ECE10ED-8A55-4CFC-BA0D-19C7C269D1F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Xrm.UITests.Tests</RootNamespace>
-    <AssemblyName>Microsoft.Xrm.UITests.Tests</AssemblyName>
+    <RootNamespace>Microsoft.Dynamics365.UITests.UnitTests</RootNamespace>
+    <AssemblyName>Microsoft.Dynamics365.UITests.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

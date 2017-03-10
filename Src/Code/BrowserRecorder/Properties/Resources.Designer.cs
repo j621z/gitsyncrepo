@@ -61,20 +61,18 @@ namespace BrowserRecorder.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to var ELEMENT_NODE = 1;
-        ///    var eventCollection = new Array();
+        ///   Looks up a localized string similar to     if (typeof (Recorder) === &quot;undefined&quot;) { Recorder = { __namespace: true } }
         ///
-        ///    function attachDocumentEvents() {
-        ///        if (document.body != null) {
-        ///            if (document.body.addEventListener) {
-        ///                document.body.addEventListener(&apos;click&apos;, clickHandler, false);
-        ///            }
-        ///            else if (document.body.attachEvent) {
-        ///                document.body.attachEvent(&apos;click&apos;, function (e) { return clickHandler(e || window.event); });
+        ///    Recorder.ELEMENT_NODE = 1;
+        ///    
         ///
+        ///    Recorder.attachDocumentEvents = function () {
+        ///        if (document != null) {
+        ///            if (document.addEventListener) {
+        ///                document.addEventListener(&apos;mouseup&apos;, Recorder.clickHandler, false);
         ///            }
-        ///            else {
-        ///                document.b [rest of string was truncated]&quot;;.
+        ///            else if (document.attachEvent) {
+        ///                document.attachEvent(&apos;mouseup&apos;, function (e) { return Recorder.clickHandler(e || window.event); } [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string EventHandler {
             get {
