@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace Microsoft.Dynamics365.UITests.Browser
 {
@@ -19,12 +20,13 @@ namespace Microsoft.Dynamics365.UITests.Browser
 
         protected BrowserCommand(BrowserCommandOptions options)
         {
-            this.Options = options;
+            this.Options = options;            
 
             Trace = new TraceSource(this.Options.TraceSource);
         }
 
         protected TraceSource Trace { get; }
+        //protected List<BrowserCommandResult<object>> CommandResults { get; }
 
         [DebuggerNonUserCode()]
         public BrowserCommandResult<TReturn> Execute(IWebDriver driver)
@@ -183,6 +185,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
 
             System.Diagnostics.Trace.CorrelationManager.StopLogicalOperation();
 
+            //CommandResults.Add(result);
             return result;
         }
 

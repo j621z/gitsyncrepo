@@ -4,6 +4,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.PhantomJS;
 using OpenQA.Selenium.Support.Events;
+using OpenQA.Selenium.Edge;
 using System;
 
 namespace Microsoft.Dynamics365.UITests.Browser
@@ -17,19 +18,29 @@ namespace Microsoft.Dynamics365.UITests.Browser
             switch (options.BrowserType)
             {
                 case BrowserType.Chrome:
-                    driver = new ChromeDriver(options.DriversPath, options.ToChrome());
-
+                    var chromeService = ChromeDriverService.CreateDefaultService();
+                    chromeService.HideCommandPromptWindow = options.HideDiagnosticWindow;
+                    driver = new ChromeDriver(chromeService, options.ToChrome());
                     break;
                 case BrowserType.IE:
-                    driver = new InternetExplorerDriver(options.DriversPath, options.ToInternetExplorer(), TimeSpan.FromMinutes(20));
-
+                    var ieService = InternetExplorerDriverService.CreateDefaultService();
+                    ieService.SuppressInitialDiagnosticInformation = options.HideDiagnosticWindow;
+                    driver = new InternetExplorerDriver(ieService, options.ToInternetExplorer(), TimeSpan.FromMinutes(20));
                     break;
                 case BrowserType.Firefox:
-                    driver = new FirefoxDriver();
+                    var ffService = FirefoxDriverService.CreateDefaultService();
+                    ffService.HideCommandPromptWindow = options.HideDiagnosticWindow;
+                    driver = new FirefoxDriver(ffService);
 
                     break;
                 case BrowserType.PhantomJs:
                     driver = new PhantomJSDriver(options.DriversPath);
+
+                    break;
+                case BrowserType.Edge:
+                    var edgeService = EdgeDriverService.CreateDefaultService();
+                    edgeService.HideCommandPromptWindow = options.HideDiagnosticWindow;
+                    driver = new EdgeDriver(edgeService,options.ToEdge(), TimeSpan.FromMinutes(20));
 
                     break;
                 default:

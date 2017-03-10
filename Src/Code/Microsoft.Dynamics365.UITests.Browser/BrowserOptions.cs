@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Edge;
 using System;
 using System.IO;
 
@@ -19,6 +20,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
             this.EnableRecording = false;
             this.RecordingScanInterval = TimeSpan.FromMilliseconds(Constants.Browser.Recording.DefaultScanInterval);
             this.Credentials = BrowserCredentials.Default;
+            this.HideDiagnosticWindow = true;
         }
 
         public BrowserType BrowserType { get; set; }
@@ -32,6 +34,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         public bool EnableRecording { get; set; }
         public TimeSpan RecordingScanInterval { get; set; }
         public string TraceSource { get; set; }
+        public bool HideDiagnosticWindow { get; set; }
 
         public ChromeOptions ToChrome()
         {
@@ -74,8 +77,18 @@ namespace Microsoft.Dynamics365.UITests.Browser
                 IgnoreZoomLevel = true,
                 EnablePersistentHover = true,
                 BrowserCommandLineArguments = this.PrivateMode ? "-private" : ""
+               
             };
             
+            return options;
+        }
+        public EdgeOptions ToEdge()
+        {
+            var options = new EdgeOptions()
+            {
+                PageLoadStrategy = EdgePageLoadStrategy.Default
+            };
+
             return options;
         }
     }

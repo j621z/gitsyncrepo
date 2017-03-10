@@ -61,18 +61,19 @@ namespace Microsoft.Dynamics365.UITests.Browser.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     if (typeof (Recorder) === &quot;undefined&quot;) { Recorder = { __namespace: true } }
+        ///   Looks up a localized string similar to if (typeof (Recorder) === &quot;undefined&quot;) { Recorder = { __namespace: true } }
         ///
-        ///    Recorder.ELEMENT_NODE = 1;
-        ///    
+        ///Recorder.ELEMENT_NODE = 1;
         ///
-        ///    Recorder.attachDocumentEvents = function () {
-        ///        if (document != null) {
-        ///            if (document.addEventListener) {
-        ///                document.addEventListener(&apos;mouseup&apos;, Recorder.clickHandler, false);
-        ///            }
-        ///            else if (document.attachEvent) {
-        ///                document.attachEvent(&apos;mouseup&apos;, function (e) { return Recorder.clickHandler(e || window.event); } [rest of string was truncated]&quot;;.
+        ///Recorder.attachDocumentEvents = function () {
+        ///    debugger;
+        ///    if (document != null) {
+        ///        if (document.addEventListener) {
+        ///            document.addEventListener(&apos;mouseup&apos;, Recorder.clickHandler, false);
+        ///            document.addEventListener(&apos;keypress&apos;, Recorder.keyHandler, false);
+        ///            document.addEventListener(&apos;change&apos;, Recorder.changeHandler, false);
+        ///        }
+        ///        else if ( [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Recorder {
             get {

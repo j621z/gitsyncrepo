@@ -121,6 +121,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         public bool IsRecording => this.recorder != null;
 
         protected TraceSource Trace { get; }
+        public List<BrowserCommandResult<object>> CommandResults { get; }
 
         #endregion Properties
 
@@ -202,30 +203,14 @@ namespace Microsoft.Dynamics365.UITests.Browser
 
                     this.CheckRecordingScripts();
 
-                    List<BrowserRecordingEvent> events;
-
-                    // If this script errors out, we'll get an InvalidOperationException.  This may happen if the script is reloading
-                    // or not yet available.  That's no big deal, as this timer will run again shortly and pick up any missed events.
-                    try
-                    {
-                        events = this.Driver.GetJsonObject<List<BrowserRecordingEvent>>(Constants.Browser.Recording.GetRecordedEventsCommand);
-                    }
-                    catch (InvalidOperationException)
-                    {
-                        return;
-                    }
-
-                    if (events?.Count > 0)
-                    {
-                        this.Logger.LogEvents(events);
-
-                        this.Driver.SwitchTo().DefaultContent();
-                        this.Driver.ExecuteScript(Constants.Browser.Recording.RemoveEventsScript.Replace("{0}",
-                            events.Count.ToString()));
-                    }
+                    this.GetRecordedEvents();
 
                     Thread.Sleep(this.ScanInterval);
                 }
+
+                //The Recording has stopped and we get any remaining events in the queue.
+                this.GetRecordedEvents();
+
             }
 
             private void CheckRecordingScripts()
@@ -238,10 +223,33 @@ namespace Microsoft.Dynamics365.UITests.Browser
                     InjectRecordingScript();
                 }
 
-
-
                 CheckFrames(this.Driver);
                 this.Driver.SwitchTo().DefaultContent();
+            }
+
+            private void GetRecordedEvents()
+            {
+                List<BrowserRecordingEvent> events;
+
+                // If this script errors out, we'll get an InvalidOperationException.  This may happen if the script is reloading
+                // or not yet available.  That's no big deal, as this timer will run again shortly and pick up any missed events.
+                try
+                {
+                    events = this.Driver.GetJsonObject<List<BrowserRecordingEvent>>(Constants.Browser.Recording.GetRecordedEventsCommand);
+                }
+                catch (InvalidOperationException)
+                {
+                    return;
+                }
+
+                if (events?.Count > 0)
+                {
+                    this.Logger.LogEvents(events);
+
+                    this.Driver.SwitchTo().DefaultContent();
+                    this.Driver.ExecuteScript(Constants.Browser.Recording.RemoveEventsScript.Replace("{0}",
+                        events.Count.ToString()));
+                }
             }
 
             private void SwitchToContentFrame(IWebDriver driver)
@@ -261,7 +269,6 @@ namespace Microsoft.Dynamics365.UITests.Browser
                     var currentContentFrame = driver.FindElement(By.Id("crmContentPanel")).GetAttribute("currentcontentid");
 
                     driver.SwitchTo().Frame(currentContentFrame);
-
 
                     return true;
                 });

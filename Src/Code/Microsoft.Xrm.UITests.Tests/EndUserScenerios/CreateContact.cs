@@ -53,7 +53,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Entity.SetValue(new OptionSet {Name = "preferredcontactmethodcode", Value = "Email"});
 
                 xrmBrowser.CommandBar.ClickCommand("Save");
-                Thread.Sleep(2000);
+                
             }
         }
     }

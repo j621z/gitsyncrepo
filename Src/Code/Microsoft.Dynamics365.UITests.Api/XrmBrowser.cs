@@ -6,6 +6,10 @@ using Microsoft.Dynamics365.UITests.Browser;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
+    /// <summary>
+    /// Provides API methods to simulate user interaction with the Dynamics 365 application. 
+    /// </summary>
+    /// <seealso cref="Microsoft.Dynamics365.UITests.Browser.InteractiveBrowser" />
     public class XrmBrowser
         : InteractiveBrowser
     {
@@ -152,19 +156,19 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         #endregion Guided Help
 
-        #region Recorder
+        #region Document
 
-        public XrmRecorderPage Recorder
+        public XrmDocumentPage Document
         {
             get
             {
-                return this.GetPage<XrmRecorderPage>();
+                return this.GetPage<XrmDocumentPage>();
             }
         }
 
-        #endregion Recorder
+        #endregion Document
 
     }
-   
+
 
 }

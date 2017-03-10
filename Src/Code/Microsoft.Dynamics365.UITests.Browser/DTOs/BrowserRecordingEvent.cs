@@ -17,5 +17,6 @@ namespace Microsoft.Dynamics365.UITests.Browser
         public string XPathValue { get; set; }
         public string Text { get; set; }
         public string Value { get; set; }
+        public string IFRAME { get; set; }
     }
 }

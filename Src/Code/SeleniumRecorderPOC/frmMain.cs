@@ -23,9 +23,9 @@ namespace BrowserRecorder
             this.TopMost = true;
 
             //Set the Start position to top middle
-            this.Location = new Point(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y);
-            this.Top = Screen.PrimaryScreen.WorkingArea.Bottom - this.Height;
-            this.StartPosition = FormStartPosition.Manual;
+            //this.Location = new Point(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y);
+            //this.Top = Screen.PrimaryScreen.WorkingArea.Bottom - this.Height;
+            //this.StartPosition = FormStartPosition.Manual;
         }
 
         private void btnRecord_Click(object sender, EventArgs e)
@@ -41,8 +41,8 @@ namespace BrowserRecorder
         }
         private void btnStop_Click(object sender, EventArgs e)
         {
-            events = logger.Events.ToList();
             browser.StopRecording();
+            events = logger.Events.ToList();
             logger = new InMemoryBrowserActionLogger();
 
             btnRecord.Enabled = true;
@@ -63,7 +63,7 @@ namespace BrowserRecorder
                 EnableRecording = true
             });
 
-            browser.Navigate("https://easyrepro.crm.dynamics.com/");
+            browser.Navigate("https://naosrtw.crm.dynamics.com/");
         }
 
         private void btnViewEvents_Click(object sender, EventArgs e)

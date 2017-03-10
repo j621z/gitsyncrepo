@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Dynamics365.UITests.Api</RootNamespace>
     <AssemblyName>Microsoft.Dynamics365.UITests.Api</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -75,7 +76,7 @@
     <Compile Include="Pages\XrmNavigationPage.cs" />
     <Compile Include="Pages\XrmPerformanceCenterPage.cs" />
     <Compile Include="Pages\XrmQuickCreatePage.cs" />
-    <Compile Include="Pages\XrmRecorderPage.cs" />
+    <Compile Include="Pages\XrmDocumentPage.cs" />
     <Compile Include="Pages\XrmRelatedGridPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XrmBrowser.cs" />
@@ -88,6 +89,12 @@
       <Project>{c9748803-f3cb-4531-b313-bc24d4d0bf0c}</Project>
       <Name>Microsoft.Dynamics365.UITests.Browser</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\packages\Selenium.WebDriver.MicrosoftWebDriver.10.0.14393.0\driver\MicrosoftWebDriver.exe">
+      <Link>MicrosoftWebDriver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

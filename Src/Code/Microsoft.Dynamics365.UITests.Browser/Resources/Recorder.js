@@ -82,6 +82,7 @@ Recorder.eventHandler = function (event, eventType) {
         "XPathValue": Recorder.getPathTo(target),
         "KeyCode": Recorder.getKeyCode(),
         "DateTime": Recorder.getDate(),
+        "IFRAME": Recorder.getFrame(),
         "Text": text,
         "Value": value
     };
@@ -107,6 +108,14 @@ Recorder.removeEvents = function (number) {
 Recorder.getDate = function () {
     var date = new Date().toJSON();
     return date.toString();
+}
+
+Recorder.getFrame = function () {
+    var frame = window.frameElement;
+    if (frame != null)
+        return frame.id.toString();
+    else
+        return "";
 }
 
 Recorder.getKeyCode = function (event) {
