@@ -142,7 +142,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             this.Driver.Navigate().GoToUrl(uri);
         }
-
+        
         public void Navigate(NavigationOperation operation)
         {
             switch (operation)
@@ -319,6 +319,11 @@ namespace Microsoft.Dynamics365.UITests.Browser
                 if (!bool.Parse(this.Driver.ExecuteScript(Constants.Browser.Recording.CheckIfScriptExistsScript).ToString()))
                     this.Driver.ExecuteScript(Properties.Resources.Recorder);
             }
+        }
+
+        public void ThinkTime(int miliseconds)
+        {
+            Thread.Sleep(miliseconds);
         }
 
         public void Record(IBrowserActionLogger logger)

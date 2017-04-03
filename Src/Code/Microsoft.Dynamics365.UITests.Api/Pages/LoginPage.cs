@@ -78,16 +78,13 @@ namespace Microsoft.Dynamics365.UITests.Api
                     $"The Office 365 sign in page did not return the expected result and the user '{username}' could not be signed in.");
 
                 driver.FindElement(By.Id("cred_userid_inputtext")).SendKeys(username.ToUnsecureString());
-                driver.FindElement(By.Id("cred_userid_inputtext")).SendKeys(Keys.Tab);
+                driver.FindElement(By.Id("cred_userid_inputtext")).SendKeys(Keys.Enter);
 
-                driver.WaitUntilVisible(By.Id("redirect_cta_text"),
-                    new TimeSpan(0, 0, 1),
-                    d =>
-                    {
-                        redirectAction?.Invoke(new LoginRedirectEventArgs(username, password, d));
+                //If expecting redirect then wait for redirect to trigger
+                if(redirectAction!= null) Thread.Sleep(3000);
 
-                        redirect = true;
-                    },
+                driver.WaitUntilVisible(By.Id("cred_password_inputtext"),
+                    new TimeSpan(0, 0, 2),
                     d =>
                     {
                         d.FindElement(By.Id("cred_password_inputtext")).SendKeys(password.ToUnsecureString());
@@ -95,9 +92,13 @@ namespace Microsoft.Dynamics365.UITests.Api
                         // Pause for validation (just in case)
                         Thread.Sleep(500);
 
-                        d.ClickWhenAvailable(By.Id("cred_sign_in_button"), new TimeSpan(0, 0, 2));
+                        d.ClickWhenAvailable(By.Id("cred_sign_in_button"), new TimeSpan(0, 0, 2));                        
+                    },
+                    d =>
+                    {
+                        redirectAction?.Invoke(new LoginRedirectEventArgs(username, password, d));
 
-                        d.WaitForPageToLoad();
+                        redirect = true;
                     });
             }
 

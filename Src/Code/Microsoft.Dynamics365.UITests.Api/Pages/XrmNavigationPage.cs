@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Dynamics365.UITests.Browser;
+using System.Threading;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
@@ -25,6 +26,13 @@ namespace Microsoft.Dynamics365.UITests.Api
                 null,
                 false,
                 typeof(NoSuchElementException), typeof(StaleElementReferenceException));
+        }
+
+
+        public BrowserCommandResult<bool> OpenHomePage()
+        {
+            //TODO: Implement HomePage logic
+            throw new NotImplementedException();
         }
 
         public BrowserCommandResult<Dictionary<string, Uri>> OpenHamburgerMenu()
@@ -102,6 +110,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         public BrowserCommandResult<bool> OpenRelated(string relatedArea)
         {
+            Thread.Sleep(3000);
             return this.Execute(GetOptions("Open Related Menu"), driver =>
             {
                 driver.SwitchTo().DefaultContent();

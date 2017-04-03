@@ -156,6 +156,18 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         #endregion Guided Help
 
+        #region Notifications
+
+        public XrmNotficationPage Notifications
+        {
+            get
+            {
+                return this.GetPage<XrmNotficationPage>();
+            }
+        }
+
+        #endregion Notifications
+
         #region Document
 
         public XrmDocumentPage Document

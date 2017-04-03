@@ -57,7 +57,10 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                             if (Guid.TryParse(viewItem.GetAttribute("id"), out guid))
                             {
-                                dictionary.Add(title, guid);
+                                //Handle Duplicate View Names
+                                //Temp Fix
+                                if(!dictionary.ContainsKey(title))
+                                    dictionary.Add(title, guid);
                             }
                         }
                     }
@@ -67,8 +70,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> SwitchView(string viewName)
+        public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime = 1000)
         {
+            this.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Switch View"), driver =>
             {
                 this.GetPage<XrmNavigationPage>().SwitchToContentFrame();

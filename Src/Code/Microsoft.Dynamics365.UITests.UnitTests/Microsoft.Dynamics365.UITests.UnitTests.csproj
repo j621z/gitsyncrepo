@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="Browser\CommandTests.cs" />
     <Compile Include="CommandBar\CommandButton.cs" />
+    <Compile Include="CustomerScenarios\AA_CreateLead.cs" />
     <Compile Include="EndUserScenerios\RelatedTest.cs" />
     <Compile Include="EndUserScenerios\LeadSubgridTest.cs" />
     <Compile Include="EndUserScenerios\QuickCreateAccountTest.cs" />
@@ -108,7 +109,9 @@
     <Compile Include="Translations\TranslationTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
