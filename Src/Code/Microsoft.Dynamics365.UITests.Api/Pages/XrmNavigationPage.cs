@@ -43,6 +43,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.HomeTab]));
 
+                Thread.Sleep(1000);
+
                 var element = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.ActionGroup]));
                 var subItems = element.FindElements(By.ClassName(Elements.CssClass[Reference.Navigation.ActionGroupContainerClass]));
 
@@ -61,7 +63,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 var dictionary = new Dictionary<string, IWebElement>();
 
+                driver.WaitUntilVisible(By.Id(area.GetAttribute("Id")));
+
                 area.Click();
+
+                Thread.Sleep(1000);
 
                 driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Navigation.SubActionGroupContainer]));
 
