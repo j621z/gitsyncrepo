@@ -27,6 +27,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Frame_DialogFrame"       , "id(\"InlineDialog\")"},
             { "Frame_QuickFindFrame"       , "id(\"globalquickcreate_container_NavBarGloablQuickCreate\")"},
 
+            //Navigation
+            { "Nav_HomeTab"       , "id(\"HomeTabLink\")"},
+            { "Nav_ActionGroup"       , "id(\"actionGroupControl\")"},
+            { "Nav_SubActionGroup"       , "id(\"actionGroupControl\")"},
+            { "Nav_SubActionGroupContainer"       , "id(\"detailActionGroupControl\")"},
         };
 
         public static Dictionary<string, string> ElementId = new Dictionary<string, string>()
@@ -40,6 +45,14 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Dialog_ActualRevenue"       , "actualrevenue_id"},
             { "Dialog_CloseDate"       , "closedate_id"},
             { "Dialog_Description"       , "description_id"},
+        };
+
+        public static Dictionary<string, string> CssClass = new Dictionary<string, string>()
+        {
+            //Navigation
+            { "Nav_ActionGroupContainerClass"       , "navActionButtonContainer"},
+            { "Nav_SubActionElementClass"       , "nav-rowBody"},
+            
         };
     }
 
@@ -76,6 +89,16 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string QuickFindFrame = "Frame_QuickFindFrame";
             public static string QuickFindFrameId = "Frame_QuickFindFrameId";
 
+        }
+
+        public static class Navigation
+        {
+            public static string HomeTab = "Nav_HomeTab";
+            public static string ActionGroup = "Nav_ActionGroup";
+            public static string ActionGroupContainerClass = "Nav_ActionGroupContainerClass";
+            public static string SubActionGroup = "Nav_SubActionGroup";
+            public static string SubActionGroupContainer = "Nav_SubActionGroupContainer";
+            public static string SubActionElementClass = "Nav_SubActionElementClass";
         }
     }
 }

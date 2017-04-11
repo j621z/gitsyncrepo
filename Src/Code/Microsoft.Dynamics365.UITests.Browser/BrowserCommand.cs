@@ -26,7 +26,6 @@ namespace Microsoft.Dynamics365.UITests.Browser
         }
 
         protected TraceSource Trace { get; }
-        //protected List<BrowserCommandResult<object>> CommandResults { get; }
 
         [DebuggerNonUserCode()]
         public BrowserCommandResult<TReturn> Execute(IWebDriver driver)

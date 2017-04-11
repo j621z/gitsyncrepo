@@ -35,46 +35,43 @@ namespace Microsoft.Dynamics365.UITests.Api
             throw new NotImplementedException();
         }
 
-        public BrowserCommandResult<Dictionary<string, Uri>> OpenHamburgerMenu()
+        public BrowserCommandResult<Dictionary<string, IWebElement>> OpenHamburgerMenu()
         {
-            return this.Execute(GetOptions("Open Hamburger Menu"), driver => 
+            return this.Execute(GetOptions("Open Home Tab Menu"), driver => 
             {
-                var dictionary = new Dictionary<string, Uri>();
+                var dictionary = new Dictionary<string, IWebElement>();
 
-                driver.ClickWhenAvailable(By.Id("HomeTabLink"));
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.HomeTab]));
 
-                var element = driver.FindElement(By.Id("actionGroupControl"));
-                var subItems = element.FindElements(By.ClassName("navActionButtonContainer"));
+                var element = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.ActionGroup]));
+                var subItems = element.FindElements(By.ClassName(Elements.CssClass[Reference.Navigation.ActionGroupContainerClass]));
 
                 foreach (var subItem in subItems)
                 {
-                    dictionary.Add(subItem.Text, new Uri(subItem.GetAttribute("href")));
+                    dictionary.Add(subItem.Text, subItem);
                 }
 
                 return dictionary;
             });
         }
 
-        public BrowserCommandResult<Dictionary<string, Uri>> OpenSubMenu(string area)
+        internal BrowserCommandResult<Dictionary<string, IWebElement>> OpenSubMenu(IWebElement area)
         {
             return this.Execute(GetOptions($"Open Sub Menu: {area}"), driver=> 
             {
-                var dictionary = new Dictionary<string, Uri>();
+                var dictionary = new Dictionary<string, IWebElement>();
 
-                var element = driver.FindElement(By.Id("actionGroupControl"));
-                var menuItem = element.FindElement(By.LinkText(area));
-                menuItem.Click();
+                area.Click();
 
-                driver.WaitUntilVisible(By.Id("detailActionGroupControl"));
+                driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Navigation.SubActionGroupContainer]));
 
-                var subNavElement = driver.FindElement(By.Id("detailActionGroupControl"));
-                //element.Click();
+                var subNavElement = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SubActionGroupContainer]));
 
-                var subItems = subNavElement.FindElements(By.ClassName("nav-rowBody"));
+                var subItems = subNavElement.FindElements(By.ClassName(Elements.CssClass[Reference.Navigation.SubActionElementClass]));
 
                 foreach (var subItem in subItems)
                 {
-                    dictionary.Add(subItem.Text, new Uri(subItem.GetAttribute("href")));
+                    dictionary.Add(subItem.Text, subItem);
                 }
 
                 return dictionary;
@@ -92,16 +89,15 @@ namespace Microsoft.Dynamics365.UITests.Api
                     throw new InvalidOperationException($"No area with the name '{area}' exists.");
                 }
 
-                var subAreas = OpenSubMenu(area).Value;
+                var subAreas = OpenSubMenu(areas[area]).Value;
 
                 if (!subAreas.ContainsKey(subArea))
                 {
                     throw new InvalidOperationException($"No subarea with the name '{subArea}' exists inside of '{area}'.");
                 }
+                
+                subAreas[subArea].Click();
 
-                var url = subAreas[subArea];
-
-                driver.Navigate().GoToUrl(url);
                 driver.WaitForPageToLoad();
 
                 return true;
