@@ -52,7 +52,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
 
                 if (driver.HasElement(By.Id(field)))
                 {
@@ -86,7 +86,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
 
                 if (driver.HasElement(By.Id(field)))
                 {
@@ -121,7 +121,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
 
                 if (driver.HasElement(By.Id(field)))
                 {
@@ -183,7 +183,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
 
                 if (driver.HasElement(By.Id("int_" + field)))
                 {
@@ -204,7 +204,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
 
-                this.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
 
                 if (driver.HasElement(By.Id(field)))
                 {
@@ -232,7 +232,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
 
                 if (driver.HasElement(By.Id(field)))
                 {
@@ -262,7 +262,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions(""), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
 
                 if (driver.HasElement(By.Id(field.Id)))
                 {
@@ -292,7 +292,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Value: {option.Name}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
 
                 if (driver.HasElement(By.Id(option.Name)))
                 {
@@ -319,7 +319,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Conposite Control Value: {control.Id}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
 
                 if (!driver.HasElement(By.Id(control.Id)))
                     return false;

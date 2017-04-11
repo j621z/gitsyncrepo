@@ -21,7 +21,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 bool isGuidedHelpEnabled = false;
                 bool.TryParse(
-                    Driver.ExecuteScript("return Xrm.Internal.isFeatureEnabled('FCB.GuidedHelp') && Xrm.Internal.isGuidedHelpEnabledForUser();").ToString(),
+                    this.Browser.Driver.ExecuteScript("return Xrm.Internal.isFeatureEnabled('FCB.GuidedHelp') && Xrm.Internal.isGuidedHelpEnabledForUser();").ToString(),
                     out isGuidedHelpEnabled);
 
                 return isGuidedHelpEnabled;

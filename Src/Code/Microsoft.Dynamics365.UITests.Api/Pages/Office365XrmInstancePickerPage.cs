@@ -55,7 +55,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         public XrmBrowser OpenXrmInstance(XrmInstanceInfo instance)
         {
-            var browser = new XrmBrowser(Driver);
+            var browser = new XrmBrowser(Browser.Driver);
 
             instance.OpenWith(browser);
 

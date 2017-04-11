@@ -168,6 +168,30 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         #endregion Notifications
 
+        #region Business Process Flow
+
+        public XrmBusinessProcessFlow BusinessProcessFlow
+        {
+            get
+            {
+                return this.GetPage<XrmBusinessProcessFlow>();
+            }
+        }
+
+        #endregion Business Process Flow
+
+        #region Dialog
+
+        public XrmDialogPage Dialogs
+        {
+            get
+            {
+                return this.GetPage<XrmDialogPage>();
+            }
+        }
+
+        #endregion Dialog
+
         #region Document
 
         public XrmDocumentPage Document

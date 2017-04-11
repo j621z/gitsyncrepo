@@ -38,6 +38,8 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 Thread.Sleep(1000);
                 xrmBrowser.Grid.OpenGridRow(0);
+
+              
             }
         }
     }

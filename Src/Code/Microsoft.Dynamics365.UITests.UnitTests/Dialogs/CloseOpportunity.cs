@@ -5,11 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.Security;
 using System.Threading;
+using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
 {
     [TestClass]
-    public class CreateLead
+    public class CloseOpportunity
     {
 
         private readonly SecureString _username = System.Configuration.ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();
@@ -17,7 +18,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void CreateNewLead()
+        public void CloseOpportunityTest()
         {
             using (var xrmBrowser = new XrmBrowser(new BrowserOptions
             {
@@ -28,24 +29,19 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
-                
-                xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
-                
-                xrmBrowser.Grid.SwitchView("All Leads");
-                
-                xrmBrowser.CommandBar.ClickCommand("New");
-                
-                List<Field> fields = new List<Field>
-                {
-                    new Field() {Id = "firstname", Value = "Test"},
-                    new Field() {Id = "lastname", Value = "Lead"}
-                };
-                xrmBrowser.Entity.SetValue("subject", "Test API Lead");
-                xrmBrowser.Entity.SetValue(new CompositeControl() { Id = "fullname", Fields = fields });
-                xrmBrowser.Entity.SetValue("mobilephone", "555-555-5555");
-                xrmBrowser.Entity.SetValue("description", "Test lead creation with API commands");
 
-                xrmBrowser.CommandBar.ClickCommand("Save");
+                Thread.Sleep(500);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Opportunities");
+
+                Thread.Sleep(2000);
+                xrmBrowser.Grid.SwitchView("Open Opportunities");
+
+                Thread.Sleep(1000);
+                xrmBrowser.Grid.OpenGridRow(0);
+
+                xrmBrowser.CommandBar.ClickCommand("Close as Won");
+
+                xrmBrowser.Dialogs.CloseOpportunity(10000, DateTime.Now, "Testing the Close Opportunity API");
             }
         }
     }

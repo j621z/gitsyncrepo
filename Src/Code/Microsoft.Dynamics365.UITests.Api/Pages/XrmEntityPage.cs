@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,7 +9,7 @@ using Microsoft.Dynamics365.UITests.Browser;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class XrmEntityPage
-        : BrowserPage
+        : BrowserPage 
     {        
         public XrmEntityPage(InteractiveBrowser browser)
             : base(browser)
@@ -35,7 +34,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Open: {entityName} {id}"), driver =>
             {
-                var uri = new Uri(this.Driver.Url);
+                var uri = new Uri(this.Browser.Driver.Url);
                 var link = $"{uri.Scheme}://{uri.Authority}/main.aspx?etn={entityName}&pagetype=entityrecord&id=%7B{id:D}%7D";
                 return OpenEntity(new Uri(link)).Value;
             });
@@ -93,7 +92,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"SelectForm: {name}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 driver.FindElement(By.Id("formselectorcontainer"))?.FindElement(By.TagName("a"))?.Click();
                 var items = driver.FindElements(By.ClassName("ms-crm-FS-MenuItem-Title"));
@@ -106,7 +105,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"SelectTab: {name}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 var sections = driver.FindElements(By.ClassName("ms-crm-InlineTabHeaderText"));
                 sections.Where(x => x.FindElement(By.TagName("h2")).Text == name).FirstOrDefault()?.Click();
@@ -118,7 +117,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver => 
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 if (driver.HasElement(By.Id(field)))
                 {
@@ -152,7 +151,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver=> 
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 if (driver.HasElement(By.Id(field)))
                 {
@@ -187,7 +186,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver=> 
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 if (driver.HasElement(By.Id(field)))
                 {
@@ -242,7 +241,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Popout"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 driver.FindElement(By.ClassName("ms-crm-ImageStrip-popout"))?.Click();
 
@@ -254,7 +253,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Click add button of {subgridName}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 driver.FindElement(By.Id($"{subgridName}_addImageButton"))?.Click();
 
@@ -266,7 +265,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Click GridView button of {subgridName}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 driver.FindElement(By.Id($"{subgridName}_openAssociatedGridViewImageButtonImage"))?.Click();
 
@@ -278,7 +277,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value for Subgrid {subgridName}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
@@ -308,7 +307,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value for Subgrid {subgridName}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
@@ -337,7 +336,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value for Subgrid {subgridName}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
@@ -365,7 +364,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             //return this.Execute($"Set Value: {field}", SetValue, field, check);
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 if (driver.HasElement(By.Id("int_" + field)))
                 {
@@ -387,7 +386,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
 
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 if (driver.HasElement(By.Id(field)))
                 {
@@ -416,7 +415,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             //return this.Execute($"Set Value: {field}", SetValue, field, value);
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 if (driver.HasElement(By.Id(field)))
                 {
@@ -447,7 +446,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             //return this.Execute($"Set Value: {field.Value}", SetValue, field.Id, field.Value);
             return this.Execute(GetOptions(""), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 if (driver.HasElement(By.Id(field.Id)))
                 {
@@ -478,7 +477,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             //return this.Execute($"Set Value: {option.Name}", SetValue, option);
             return this.Execute(GetOptions($"Set Value: {option.Name}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 if (driver.HasElement(By.Id(option.Name)))
                 {
@@ -506,7 +505,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             //return this.Execute($"Set Conposite Control Value: {control.Id}", SetValue, control);
             return this.Execute(GetOptions($"Set Conposite Control Value: {control.Id}"), driver =>
             {
-                this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 if (!driver.HasElement(By.Id(control.Id)))
                     return false;

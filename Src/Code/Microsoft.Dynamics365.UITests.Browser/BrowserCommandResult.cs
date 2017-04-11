@@ -19,6 +19,11 @@ namespace Microsoft.Dynamics365.UITests.Browser
         public int ExecutionAttempts { get; internal set; }
 
         /// <summary>
+        /// Gets the name of the command that was executed.
+        /// </summary>
+        public string CommandName { get; internal set; }
+
+        /// <summary>
         /// Gets the last exception thrown by the command.
         /// </summary>
         public Exception Exception { get; internal set; }

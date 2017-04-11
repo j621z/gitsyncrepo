@@ -49,10 +49,10 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         public BrowserCommandResult<LoginResult> Login(Uri uri)
         {
-            if (this.Options.Credentials.IsDefault)
+            if (this.Browser.Options.Credentials.IsDefault)
                 throw new InvalidOperationException("The default login method cannot be invoked without first setting credentials on the Browser object.");
 
-            return this.Execute("Login", this.Login, uri, this.Options.Credentials.Username, this.Options.Credentials.Password, default(Action<LoginRedirectEventArgs>));
+            return this.Execute("Login", this.Login, uri, this.Browser.Options.Credentials.Username, this.Browser.Options.Credentials.Password, default(Action<LoginRedirectEventArgs>));
         }
 
         public BrowserCommandResult<LoginResult> Login(Uri uri, SecureString username, SecureString password)

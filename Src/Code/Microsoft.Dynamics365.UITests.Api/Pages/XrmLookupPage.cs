@@ -12,7 +12,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public XrmLookupPage(InteractiveBrowser browser)
             : base(browser)
         {
-            this.GetPage<XrmNavigationPage>().SwitchToDialogFrame();
+            this.Browser.GetPage<XrmNavigationPage>().SwitchToDialogFrame();
         }
 
         internal BrowserCommandOptions GetOptions(string commandName)

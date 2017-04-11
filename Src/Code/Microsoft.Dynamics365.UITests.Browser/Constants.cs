@@ -18,7 +18,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         /// <summary>
         /// The default number of retry attempts for a command execution if it fails.
         /// </summary>
-        public const int DefaultRetryAttempts = 5;
+        public const int DefaultRetryAttempts = 2;
 
         /// <summary>
         /// The default page to direct a user to if none other is specified.
@@ -29,6 +29,11 @@ namespace Microsoft.Dynamics365.UITests.Browser
         /// The default tracing source for browser automation.
         /// </summary>
         public const string DefaultTraceSource = "BrowserAutomation";
+
+        /// <summary>
+        /// The default tracing source for browser automation.
+        /// </summary>
+        public const int DefaultThinkTime = 2000;
 
         /// <summary>
         /// Constants and defaults related to the InteractiveBrowser.

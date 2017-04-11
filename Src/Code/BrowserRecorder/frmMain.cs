@@ -63,7 +63,7 @@ namespace BrowserRecorder
                 EnableRecording = true
             });
 
-            browser.Navigate("https://naosrtw.crm.dynamics.com/");
+            browser.Navigate("https://darent81.crm.dynamics.com/");
         }
 
         private void btnViewEvents_Click(object sender, EventArgs e)

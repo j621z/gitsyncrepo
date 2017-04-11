@@ -25,7 +25,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             get
             {
-                object value = this.Driver.ExecuteScript("return Mscrm.Performance.PerformanceMarkerManager.get_instance().get_isEnabled();");
+                object value = this.Browser.Driver.ExecuteScript("return Mscrm.Performance.PerformanceMarkerManager.get_instance().get_isEnabled();");
 
                 return (bool)value;
             }
@@ -33,11 +33,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 if (value)
                 {
-                    this.Driver.ExecuteScript("Mscrm.Performance.PerformanceMarkerManager.get_instance().set_isEnabled(true);");
+                    this.Browser.Driver.ExecuteScript("Mscrm.Performance.PerformanceMarkerManager.get_instance().set_isEnabled(true);");
                 }
                 else
                 {
-                    this.Driver.ExecuteScript("Mscrm.Performance.PerformanceMarkerManager.get_instance().set_isEnabled(false);");
+                    this.Browser.Driver.ExecuteScript("Mscrm.Performance.PerformanceMarkerManager.get_instance().set_isEnabled(false);");
                 }
             }
         }
@@ -61,7 +61,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                     }
                     else
                     {
-                        this.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                        this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                         _performanceMarkersVisible = false;
                     }
@@ -133,7 +133,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             get
             {
-                var requestId = this.Driver.ExecuteScript("return REQ_ID;").ToString();
+                var requestId = this.Browser.Driver.ExecuteScript("return REQ_ID;").ToString();
 
                 return requestId;
             }

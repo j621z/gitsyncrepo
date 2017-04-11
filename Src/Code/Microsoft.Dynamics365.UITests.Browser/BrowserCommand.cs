@@ -87,6 +87,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             int retries = this.Options.RetryAttempts;
             var result = new BrowserCommandResult<TReturn>();
+            result.CommandName = this.Options.CommandName;
 
             System.Diagnostics.Trace.CorrelationManager.StartLogicalOperation();
 

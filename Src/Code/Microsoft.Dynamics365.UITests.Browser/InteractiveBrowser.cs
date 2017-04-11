@@ -121,12 +121,23 @@ namespace Microsoft.Dynamics365.UITests.Browser
         public bool IsRecording => this.recorder != null;
 
         protected TraceSource Trace { get; }
+
+        public List<object> CommandExecutions = new List<object>();
+
+        public int TotalThinkTime = 0;
+
         public List<BrowserCommandResult<object>> CommandResults { get; }
 
         #endregion Properties
 
         #region Methods
 
+        public void ThinkTime(int milliseconds)
+        {
+            TotalThinkTime += milliseconds;
+
+            Thread.Sleep(milliseconds);
+        }
         public T GetPage<T>()
             where T : BrowserPage
         {
@@ -320,11 +331,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
                     this.Driver.ExecuteScript(Properties.Resources.Recorder);
             }
         }
-
-        public void ThinkTime(int miliseconds)
-        {
-            Thread.Sleep(miliseconds);
-        }
+        
 
         public void Record(IBrowserActionLogger logger)
         {

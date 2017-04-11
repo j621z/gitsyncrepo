@@ -86,8 +86,10 @@
       <Link>Properties\AssemblyVersionInfo.cs</Link>
     </Compile>
     <Compile Include="Browser\CommandTests.cs" />
+    <Compile Include="BusinessProcessFlow\BusinessProcessFlow.cs" />
     <Compile Include="CommandBar\CommandButton.cs" />
     <Compile Include="CustomerScenarios\AA_CreateLead.cs" />
+    <Compile Include="Dialogs\CloseOpportunity.cs" />
     <Compile Include="EndUserScenerios\RelatedTest.cs" />
     <Compile Include="EndUserScenerios\LeadSubgridTest.cs" />
     <Compile Include="EndUserScenerios\QuickCreateAccountTest.cs" />
