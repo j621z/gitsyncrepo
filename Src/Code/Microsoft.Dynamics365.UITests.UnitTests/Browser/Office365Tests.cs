@@ -58,7 +58,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
 				// 9 orgs in this subscription and the form should load in under 5 seconds.
 				Assert.AreEqual(9, orgs.Value.Count);
-				Assert.IsTrue(orgs.ExecutionTime < TimeSpan.FromMilliseconds(5000));
+				Assert.IsTrue(orgs.Result.ExecutionTime < TimeSpan.FromMilliseconds(5000));
 			}
 		}
 

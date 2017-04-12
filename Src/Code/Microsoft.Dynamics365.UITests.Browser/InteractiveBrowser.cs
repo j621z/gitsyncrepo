@@ -122,7 +122,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
 
         protected TraceSource Trace { get; }
 
-        public List<object> CommandExecutions = new List<object>();
+        public List<ExecutionResult> CommandExecutions = new List<ExecutionResult>();
 
         public int TotalThinkTime = 0;
 

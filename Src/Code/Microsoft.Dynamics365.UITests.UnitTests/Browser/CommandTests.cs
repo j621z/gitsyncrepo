@@ -32,10 +32,10 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 var result = command.Execute(xrmBrowser.Driver);
 
-                Assert.IsNotNull(result.Success);
-                Assert.IsFalse(result.Success.Value);
-				Assert.AreEqual(Constants.DefaultRetryAttempts, result.ExecutionAttempts);
-				Assert.IsTrue(result.ExecutionTime > TimeSpan.FromMilliseconds(Constants.DefaultRetryDelay * Constants.DefaultRetryAttempts));
+                Assert.IsNotNull(result.Result.Success);
+                Assert.IsFalse(result.Result.Success.Value);
+				Assert.AreEqual(Constants.DefaultRetryAttempts, result.Result.ExecutionAttempts);
+				Assert.IsTrue(result.Result.ExecutionTime > TimeSpan.FromMilliseconds(Constants.DefaultRetryDelay * Constants.DefaultRetryAttempts));
 				Assert.AreEqual(String.Empty, result.Value);
             }
         }
