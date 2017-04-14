@@ -20,6 +20,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             //Dialogs
             { "Dialog_Header"       , "id(\"dialogHeaderTitle\")"},
             { "Dialog_CloseOpportunityOk"       , "id(\"ok_id\")"},
+            { "Dialog_AssignOk"       , "id(\"ok_id\")"},
 
             //Frames
             { "Frame_ContentPanel"       , "id(\"crmContentPanel\")"},
@@ -45,6 +46,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Dialog_ActualRevenue"       , "actualrevenue_id"},
             { "Dialog_CloseDate"       , "closedate_id"},
             { "Dialog_Description"       , "description_id"},
+            { "Dialog_UserOrTeamLookupId"       , "systemuserview_id"},
+
         };
 
         public static Dictionary<string, string> CssClass = new Dictionary<string, string>()
@@ -77,6 +80,11 @@ namespace Microsoft.Dynamics365.UITests.Api
                 public static string CloseDateId = "Dialog_CloseDate";
                 public static string DescriptionId = "Dialog_Description";
                 public static string Ok = "Dialog_CloseOpportunityOk";
+            }
+            public static class Assign
+            {
+                public static string Ok = "Dialog_AssignOk";
+                public static string UserOrTeamLookupId = "Dialog_UserOrTeamLookupId";
             }
         }
 

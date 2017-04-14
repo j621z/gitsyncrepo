@@ -199,7 +199,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Sets the value of a Composite control.
         /// </summary>
-        /// <param name="control">The control values you want to set.</param>
+        /// <param name="control">The Composite control values you want to set.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(CompositeControl control)
         {
@@ -231,6 +231,119 @@ namespace Microsoft.Dynamics365.UITests.Api
                 }
                 else
                     throw new InvalidOperationException($"Composite Control: {control.Id} Does not exist");
+
+                return true;
+            });
+        }
+
+        /// <summary>
+        /// Sets the lookup.
+        /// </summary>
+        /// <param name="field">The field.</param>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> SetLookup(string field, [Range(0, 9)]int index)
+        {
+            return this.Execute($"Set Lookup Value: {field}", driver =>
+            {
+                if (driver.HasElement(By.Id(field)))
+                {
+                    var input = driver.FindElement(By.Id(field));
+                    input.Click();
+
+                    if (input.FindElement(By.ClassName("Lookup_RenderButton_td")) == null)
+                        throw new InvalidOperationException($"Field: {field} is not lookup");
+
+                    input.FindElement(By.ClassName("Lookup_RenderButton_td")).Click();
+
+                    var dialogName = $"Dialog_{field}_IMenu";
+                    var dialog = driver.FindElement(By.Id(dialogName));
+
+                    var dialogItems = OpenDialog(dialog).Value;
+
+                    if (dialogItems.Count < index)
+                        throw new InvalidOperationException($"List does not have {index + 1} items.");
+
+                    var dialogItem = dialogItems.Values.ToList()[index];
+                    dialogItem.Click();
+                }
+                else
+                    throw new InvalidOperationException($"Field: {field} Does not exist");
+
+                return true;
+            });
+        }
+
+        /// <summary>
+        /// Sets the lookup.
+        /// </summary>
+        /// <param name="field">The field.</param>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> SetLookup(string field, string value)
+        {
+            return this.Execute($"Set Lookup Value: {field}", driver =>
+            {
+                if (driver.HasElement(By.Id(field)))
+                {
+                    var input = driver.FindElement(By.Id(field));
+                    input.Click();
+
+                    if (input.FindElement(By.ClassName("Lookup_RenderButton_td")) == null)
+                        throw new InvalidOperationException($"Field: {field} is not lookup");
+
+                    var lookupIcon = input.FindElement(By.ClassName("Lookup_RenderButton_td"));
+                    lookupIcon.Click();
+
+                    var dialogName = $"Dialog_{field}_IMenu";
+                    var dialog = driver.FindElement(By.Id(dialogName));
+
+                    var dialogItems = OpenDialog(dialog).Value;
+
+                    if (!dialogItems.Keys.Contains(value))
+                        throw new InvalidOperationException($"List does not have {value}.");
+
+                    var dialogItem = dialogItems[value];
+                    dialogItem.Click();
+                }
+                else
+                    throw new InvalidOperationException($"Field: {field} Does not exist");
+
+                return true;
+            });
+        }
+
+        /// <summary>
+        /// Sets the lookup.
+        /// </summary>
+        /// <param name="field">The field.</param>
+        /// <param name="openLookupPage">if set to <c>true</c> [open lookup page].</param>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> SetLookup(string field, bool openLookupPage = true)
+        {
+            return this.Execute($"Set Lookup Value: {field}", driver =>
+            {
+                if (driver.HasElement(By.Id(field)))
+                {
+                    var input = driver.FindElement(By.Id(field));
+                    input.Click();
+
+                    if (input.FindElement(By.ClassName("Lookup_RenderButton_td")) == null)
+                        throw new InvalidOperationException($"Field: {field} is not lookup");
+
+                    input.FindElement(By.ClassName("Lookup_RenderButton_td")).Click();
+
+                    var dialogName = $"Dialog_{field}_IMenu";
+                    var dialog = driver.FindElement(By.Id(dialogName));
+
+                    var dialogItems = OpenDialog(dialog).Value;
+
+                    var dialogItem = dialogItems.Values.Last();
+
+                    dialogItem?.Click();
+                }
+                else
+                    throw new InvalidOperationException($"Field: {field} Does not exist");
 
                 return true;
             });
@@ -312,6 +425,30 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 return true;
             });
+        }
+
+
+        private BrowserCommandResult<Dictionary<string, IWebElement>> OpenDialog(IWebElement dialog)
+        {
+            var dictionary = new Dictionary<string, IWebElement>();
+            var dialogItems = dialog.FindElements(By.TagName("li"));
+
+            foreach (var dialogItem in dialogItems)
+            {
+                if (dialogItem.GetAttribute("role") != null && dialogItem.GetAttribute("role") == "menuitem")
+                {
+                    var links = dialogItem.FindElements(By.TagName("a"));
+
+                    if (links != null && links.Count > 1)
+                    {
+                        var title = links[1].GetAttribute("title");
+
+                        dictionary.Add(title, links[1]);
+                    }
+                }
+            }
+
+            return dictionary;
         }
 
     }

@@ -184,8 +184,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
                 result.ExecutionTime);
 
             System.Diagnostics.Trace.CorrelationManager.StopLogicalOperation();
-
-            //CommandResults.Add(result);
+            
             return result;
         }
 
