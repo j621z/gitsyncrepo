@@ -23,11 +23,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             Team
         }
         /// <summary>
-        /// Closes the opportunity.
+        /// Closes the opportunity you are currently working on.
         /// </summary>
-        /// <param name="revenue">The revenue.</param>
-        /// <param name="closeDate">The close date.</param>
-        /// <param name="description">The description.</param>
+        /// <param name="revenue">The revenue you want to assign to the opportunity.</param>
+        /// <param name="closeDate">The close date for the opportunity.</param>
+        /// <param name="description">The description of the closing.</param>
         /// <param name="thinkTime"></param>
         /// <returns></returns>
         public BrowserCommandResult<bool> CloseOpportunity(double revenue, DateTime closeDate, string description, int thinkTime = Constants.DefaultThinkTime)
@@ -50,6 +50,13 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Assigns the record to a User or Team
+        /// </summary>
+        /// <param name="to">The User or Team you want to assign the record to</param>
+        /// <param name="value">The value of the User or Team you want to find and select</param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Assign(AssignTo to, string value, int thinkTime = Constants.DefaultThinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
@@ -80,6 +87,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Deletes the selected record.
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Delete(int thinkTime = Constants.DefaultThinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
@@ -97,6 +109,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Selects the Business Process Flow from the Dialog.
+        /// </summary>
+        /// <param name="name">The name of the business process flow you want to select.</param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SelectBusinessProcessFlow(string name, int thinkTime = Constants.DefaultThinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
