@@ -79,5 +79,22 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
+        public BrowserCommandResult<bool> Delete(int thinkTime = Constants.DefaultThinkTime)
+        {
+            this.Browser.ThinkTime(thinkTime);
+
+            return this.Execute("Delete", driver =>
+            {
+                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.Header]),
+                                          new TimeSpan(0, 0, 10),
+                                          "The Delete dialog is not available.");
+
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Dialogs.Delete.Ok]))
+                      .Click();
+
+                return true;
+            });
+        }
     }
 }

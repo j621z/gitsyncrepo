@@ -21,6 +21,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Dialog_Header"       , "id(\"dialogHeaderTitle\")"},
             { "Dialog_CloseOpportunityOk"       , "id(\"ok_id\")"},
             { "Dialog_AssignOk"       , "id(\"ok_id\")"},
+            { "Dialog_DeleteOk"       , "id(\"butBegin\")"},
 
             //Frames
             { "Frame_ContentPanel"       , "id(\"crmContentPanel\")"},
@@ -85,6 +86,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 public static string Ok = "Dialog_AssignOk";
                 public static string UserOrTeamLookupId = "Dialog_UserOrTeamLookupId";
+            }
+            public static class Delete
+            {
+                public static string Ok = "Dialog_DeleteOk";
             }
         }
 
