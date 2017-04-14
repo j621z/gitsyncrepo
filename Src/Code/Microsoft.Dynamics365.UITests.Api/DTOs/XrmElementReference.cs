@@ -59,6 +59,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             
             //Dialogs
             { "Dialog_SwitchProcessTitleClass"       , "ms-crm-ProcessSwitcher-ProcessTitle"},
+
+            //SetValue
+            { "SetValue_LookupRenderClass"       , "Lookup_RenderButton_td"},
+            
         };
     }
 
@@ -97,6 +101,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 public static string Ok = "Dialog_SwitchProcessTitleClass";
             }
+            
+        }
+        public static class SetValue
+        {
+            public static string LookupRenderClass = "SetValue_LookupRenderClass";
         }
 
         public static class Frames

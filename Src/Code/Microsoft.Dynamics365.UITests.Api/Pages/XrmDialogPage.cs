@@ -75,11 +75,11 @@ namespace Microsoft.Dynamics365.UITests.Api
                         break;
 
                     case AssignTo.User:
-                        this.SetLookup(Elements.ElementId[Reference.Dialogs.Assign.UserOrTeamLookupId], value);
+                        this.SetValue(new Lookup() { Name = Elements.ElementId[Reference.Dialogs.Assign.UserOrTeamLookupId], Value = value });
                         break;
 
                     case AssignTo.Team:
-                        this.SetLookup(Elements.ElementId[Reference.Dialogs.Assign.UserOrTeamLookupId], true);
+                        this.SetValue(new Lookup() { Name = Elements.ElementId[Reference.Dialogs.Assign.UserOrTeamLookupId]});
                         break;
                 }
 

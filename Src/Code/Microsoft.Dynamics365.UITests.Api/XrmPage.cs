@@ -237,113 +237,48 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// Sets the lookup.
+        /// Sets the value of a Lookup.
         /// </summary>
-        /// <param name="field">The field.</param>
-        /// <param name="index">The index.</param>
+        /// <param name="control">The lookup field name, value or index of the lookup.</param>
         /// <returns></returns>
-        public BrowserCommandResult<bool> SetLookup(string field, [Range(0, 9)]int index)
+        public BrowserCommandResult<bool> SetValue(Lookup control)
         {
-            return this.Execute($"Set Lookup Value: {field}", driver =>
+            return this.Execute($"Set Lookup Value: {control.Name}", driver =>
             {
-                if (driver.HasElement(By.Id(field)))
+                if (driver.HasElement(By.Id(control.Name)))
                 {
-                    var input = driver.FindElement(By.Id(field));
+                    var input = driver.FindElement(By.Id(control.Name));
                     input.Click();
 
-                    if (input.FindElement(By.ClassName("Lookup_RenderButton_td")) == null)
-                        throw new InvalidOperationException($"Field: {field} is not lookup");
+                    if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
+                        throw new InvalidOperationException($"Field: {control.Name} is not lookup");
 
-                    input.FindElement(By.ClassName("Lookup_RenderButton_td")).Click();
+                    input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])).Click();
 
-                    var dialogName = $"Dialog_{field}_IMenu";
+                    var dialogName = $"Dialog_{control.Name}_IMenu";
                     var dialog = driver.FindElement(By.Id(dialogName));
 
                     var dialogItems = OpenDialog(dialog).Value;
 
-                    if (dialogItems.Count < index)
-                        throw new InvalidOperationException($"List does not have {index + 1} items.");
+                    if(control.Value != null)
+                    {
+                        if (!dialogItems.Keys.Contains(control.Value))
+                            throw new InvalidOperationException($"List does not have {control.Value}.");
 
-                    var dialogItem = dialogItems.Values.ToList()[index];
-                    dialogItem.Click();
+                        var dialogItem = dialogItems[control.Value];
+                        dialogItem.Click();
+                    }
+                    else
+                    { 
+                        if (dialogItems.Count < control.Index)
+                            throw new InvalidOperationException($"List does not have {control.Index + 1} items.");
+
+                        var dialogItem = dialogItems.Values.ToList()[control.Index];
+                        dialogItem.Click();
+                    }
                 }
                 else
-                    throw new InvalidOperationException($"Field: {field} Does not exist");
-
-                return true;
-            });
-        }
-
-        /// <summary>
-        /// Sets the lookup.
-        /// </summary>
-        /// <param name="field">The field.</param>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
-        public BrowserCommandResult<bool> SetLookup(string field, string value)
-        {
-            return this.Execute($"Set Lookup Value: {field}", driver =>
-            {
-                if (driver.HasElement(By.Id(field)))
-                {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
-
-                    if (input.FindElement(By.ClassName("Lookup_RenderButton_td")) == null)
-                        throw new InvalidOperationException($"Field: {field} is not lookup");
-
-                    var lookupIcon = input.FindElement(By.ClassName("Lookup_RenderButton_td"));
-                    lookupIcon.Click();
-
-                    var dialogName = $"Dialog_{field}_IMenu";
-                    var dialog = driver.FindElement(By.Id(dialogName));
-
-                    var dialogItems = OpenDialog(dialog).Value;
-
-                    if (!dialogItems.Keys.Contains(value))
-                        throw new InvalidOperationException($"List does not have {value}.");
-
-                    var dialogItem = dialogItems[value];
-                    dialogItem.Click();
-                }
-                else
-                    throw new InvalidOperationException($"Field: {field} Does not exist");
-
-                return true;
-            });
-        }
-
-        /// <summary>
-        /// Sets the lookup.
-        /// </summary>
-        /// <param name="field">The field.</param>
-        /// <param name="openLookupPage">if set to <c>true</c> [open lookup page].</param>
-        /// <returns></returns>
-        public BrowserCommandResult<bool> SetLookup(string field, bool openLookupPage = true)
-        {
-            return this.Execute($"Set Lookup Value: {field}", driver =>
-            {
-                if (driver.HasElement(By.Id(field)))
-                {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
-
-                    if (input.FindElement(By.ClassName("Lookup_RenderButton_td")) == null)
-                        throw new InvalidOperationException($"Field: {field} is not lookup");
-
-                    input.FindElement(By.ClassName("Lookup_RenderButton_td")).Click();
-
-                    var dialogName = $"Dialog_{field}_IMenu";
-                    var dialog = driver.FindElement(By.Id(dialogName));
-
-                    var dialogItems = OpenDialog(dialog).Value;
-
-                    var dialogItem = dialogItems.Values.Last();
-
-                    dialogItem?.Click();
-                }
-                else
-                    throw new InvalidOperationException($"Field: {field} Does not exist");
+                    throw new InvalidOperationException($"Field: {control.Name} Does not exist");
 
                 return true;
             });
