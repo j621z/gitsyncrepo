@@ -14,6 +14,14 @@ namespace Microsoft.Dynamics365.UITests.Api
             this.SwitchToDialogFrame();
         }
 
+        /// <summary>
+        /// Closes the opportunity.
+        /// </summary>
+        /// <param name="revenue">The revenue.</param>
+        /// <param name="closeDate">The close date.</param>
+        /// <param name="description">The description.</param>
+        /// <param name="thinkTime">The think time.</param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> CloseOpportunity(double revenue, DateTime closeDate, string description, int thinkTime = Constants.DefaultThinkTime)
         {
             this.Browser.ThinkTime(thinkTime);

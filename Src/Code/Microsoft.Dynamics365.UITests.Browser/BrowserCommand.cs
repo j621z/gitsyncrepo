@@ -84,34 +84,34 @@ namespace Microsoft.Dynamics365.UITests.Browser
         [DebuggerNonUserCode()]
         public BrowserCommandResult<TReturn> Execute<T1, T2, T3, T4, T5, T6, T7, T8, T9>(IWebDriver driver, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9)
         {
-            int retries = this.Options.RetryAttempts;
+            int retries = this.Options.RetryAttempts;            
             var result = new BrowserCommandResult<TReturn>();
-            result.Result.CommandName = this.Options.CommandName;
+            result.CommandName = this.Options.CommandName;
 
             System.Diagnostics.Trace.CorrelationManager.StartLogicalOperation();
 
-            result.Result.Start();
+            result.Start();
 
             while (retries-- >= 0)
             {
                 try
                 {
-                    result.Result.ExecutionAttempts++;
+                    result.ExecutionAttempts++;
 
                     Trace.TraceEvent(TraceEventType.Information,
                         Constants.Tracing.CommandStartEventId,
                         "Command Start: {0} - Attempt {1}/{2}",
                         this.Options.CommandName,
-                        result.Result.ExecutionAttempts,
+                        result.ExecutionAttempts,
                         this.Options.RetryAttempts);
 
                     result.Value = ExecuteCommand(driver, p1, p2, p3, p4, p5, p6, p7, p8, p9);
-                    result.Result.Success = true;
+                    result.Success = true;
                 }
                 catch (Exception e)
                 {
-                    result.Result.Success = false;
-                    result.Result.Exception = e;
+                    result.Success = false;
+                    result.Exception = e;
 
                     if (this.Options.ExceptionTypes != null && this.Options.ExceptionTypes.Count > 0)
                     {
@@ -124,7 +124,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
                                 Constants.Tracing.CommandErrorEventId,
                                 "Command Error: {0} - Attempt {1}/{2} - {3} - {4}",
                                 this.Options.CommandName,
-                                result.Result.ExecutionAttempts,
+                                result.ExecutionAttempts,
                                 this.Options.RetryAttempts,
                                 e.GetType().FullName, e.Message);
 
@@ -155,7 +155,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
                             Constants.Tracing.CommandErrorEventId,
                             "Command Error: {0} - Attempt {1}/{2} - {3} - {4}",
                             this.Options.CommandName,
-                            result.Result.ExecutionAttempts,
+                            result.ExecutionAttempts,
                             this.Options.RetryAttempts,
                             e.GetType().FullName, e.Message);
 
@@ -167,21 +167,21 @@ namespace Microsoft.Dynamics365.UITests.Browser
                 }
                 finally
                 {
-                    if (result.Result.Success.HasValue && result.Result.Success.Value)
+                    if (result.Success.HasValue && result.Success.Value)
                     {
                         retries = -1;
                     }
                 }
             }
 
-            result.Result.Stop();
+            result.Stop();
 
             Trace.TraceEvent(TraceEventType.Information,
                 Constants.Tracing.CommandStopEventId,
                 "Command Stop: {0} - {1} attempts - total execution time {2}ms",
                 this.Options.CommandName,
-                result.Result.ExecutionAttempts,
-                result.Result.ExecutionTime.TotalMilliseconds);
+                result.ExecutionAttempts,
+                result.ExecutionTime);
 
             System.Diagnostics.Trace.CorrelationManager.StopLogicalOperation();
 

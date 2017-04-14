@@ -38,7 +38,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Grid.SwitchView("Active Accounts");
                 
                 Thread.Sleep(1000);
-                xrmBrowser.Grid.OpenGridRow(0);
+                xrmBrowser.Grid.OpenGridRecord(0);
 
                 //xrmBrowser.Entity.SelectSection("Details");
             }

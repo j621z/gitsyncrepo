@@ -38,25 +38,28 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Grid.SwitchView("All Leads");
 
                 Thread.Sleep(1000);
-                xrmBrowser.Grid.OpenGridRow(0);
+                xrmBrowser.Grid.OpenGridRecord(0);
 
                 var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
                 telemetry.InstrumentationKey = _azureKey;
 
 
-                foreach (var result in xrmBrowser.CommandExecutions)
+                foreach (ICommandResult result in xrmBrowser.ExecutionResults)
                 {
                     
                     var properties = new Dictionary<string, string>();
                     var metrics = new Dictionary<string, double>();
 
+                    properties.Add("StartTime", result.StartTime.Value.ToLongDateString());
+                    properties.Add("EndTime", result.StopTime.Value.ToLongDateString());
+
                     metrics.Add("ThinkTime", result.ThinkTime);
-                    metrics.Add("TransitionTime", result.TransitionTime.TotalMilliseconds);
-                    metrics.Add("ExecutionTime", result.ExecutionTime.TotalMilliseconds);
+                    metrics.Add("TransitionTime", result.TransitionTime);
+                    metrics.Add("ExecutionTime", result.ExecutionTime);
                     metrics.Add("ExecutionAttempts", result.ExecutionAttempts);
 
                     telemetry.TrackEvent(result.CommandName, properties, metrics);
-                  
+                                      
                 }
 
                 telemetry.Flush();

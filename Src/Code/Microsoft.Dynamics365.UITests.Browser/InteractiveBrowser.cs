@@ -122,9 +122,12 @@ namespace Microsoft.Dynamics365.UITests.Browser
 
         protected TraceSource Trace { get; }
 
-        public List<ExecutionResult> CommandExecutions = new List<ExecutionResult>();
-
+        public List<ICommandResult> ExecutionResults = new List<ICommandResult>();
+        
         public int TotalThinkTime = 0;
+
+        internal int CurrentCommandThinkTime = 0;
+        internal DateTime? LastCommandEndTime;
 
         public List<BrowserCommandResult<object>> CommandResults { get; }
 
@@ -134,10 +137,12 @@ namespace Microsoft.Dynamics365.UITests.Browser
 
         public void ThinkTime(int milliseconds)
         {
+            CurrentCommandThinkTime += milliseconds;
             TotalThinkTime += milliseconds;
 
             Thread.Sleep(milliseconds);
         }
+
         public T GetPage<T>()
             where T : BrowserPage
         {
@@ -362,6 +367,23 @@ namespace Microsoft.Dynamics365.UITests.Browser
 
             this.recorderThread = null;
             this.recorder = null;
+        }
+
+        internal void CalculateResults(ICommandResult result)
+        {
+            //Calculate Transition time from the previous command end time. Set the LastCommandEndTime to the current command Stop Time
+            if (result.StartTime.HasValue && LastCommandEndTime.HasValue)
+            {
+                result.TransitionTime = (result.StartTime.Value - LastCommandEndTime.Value).Milliseconds - CurrentCommandThinkTime;
+            }
+
+            //Calculate ThinkTime for the Current Command. Reset the CurrentCommandThinkTime to 0 when finished
+            result.ThinkTime = CurrentCommandThinkTime;
+
+            CurrentCommandThinkTime = 0;
+            LastCommandEndTime = result.StopTime;
+
+            ExecutionResults.Add(result);
         }
 
         #endregion Methods

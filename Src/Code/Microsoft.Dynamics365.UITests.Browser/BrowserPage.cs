@@ -18,7 +18,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var command = cmd.Execute(Browser.Driver);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -28,7 +28,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var command = @delegate.Execute(Browser.Driver);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -39,7 +39,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
             var command =  new DelegateBrowserCommand<TResult>(new BrowserCommandOptions(Constants.DefaultTraceSource, commandName), @delegate)
                 .Execute(Browser.Driver);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -50,7 +50,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
             var command = new DelegateBrowserCommand<T1, TResult>(new BrowserCommandOptions(Constants.DefaultTraceSource, commandName), @delegate)
                 .Execute(Browser.Driver, p1);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -60,8 +60,9 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var command = new DelegateBrowserCommand<T1, T2, TResult>(new BrowserCommandOptions(Constants.DefaultTraceSource, commandName), @delegate)
                 .Execute(Browser.Driver, p1, p2);
-           
-            Browser.CommandExecutions.Add(command.Result);
+
+            
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -72,7 +73,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
             var command = new DelegateBrowserCommand<T1, T2, T3, TResult>(new BrowserCommandOptions(Constants.DefaultTraceSource, commandName), @delegate)
                 .Execute(Browser.Driver, p1, p2, p3);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -83,7 +84,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
             var command =  new DelegateBrowserCommand<T1, T2, T3, T4, TResult>(new BrowserCommandOptions(Constants.DefaultTraceSource, commandName), @delegate)
                 .Execute(Browser.Driver, p1, p2, p3, p4);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -94,7 +95,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
             var command = new DelegateBrowserCommand<T1, T2, T3, T4, T5, TResult>(new BrowserCommandOptions(Constants.DefaultTraceSource, commandName), @delegate)
                 .Execute(Browser.Driver, p1, p2, p3, p4, p5);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -105,7 +106,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
             var command = new DelegateBrowserCommand<T1, T2, T3, T4, T5, T6, TResult>(new BrowserCommandOptions(Constants.DefaultTraceSource, commandName), @delegate)
                 .Execute(Browser.Driver, p1, p2, p3, p4, p5, p6);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -116,7 +117,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
             var command = new DelegateBrowserCommand<T1, T2, T3, T4, T5, T6, T7, TResult>(new BrowserCommandOptions(Constants.DefaultTraceSource, commandName), @delegate)
                 .Execute(Browser.Driver, p1, p2, p3, p4, p5, p6, p7);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -127,7 +128,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
             var command = new DelegateBrowserCommand<T1, T2, T3, T4, T5, T6, T7, T8, TResult>(new BrowserCommandOptions(Constants.DefaultTraceSource, commandName), @delegate)
                 .Execute(Browser.Driver, p1, p2, p3, p4, p5, p6, p7, p8);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -138,7 +139,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
             var command = new DelegateBrowserCommand<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult>(new BrowserCommandOptions(Constants.DefaultTraceSource, commandName), @delegate)
                 .Execute(Browser.Driver, p1, p2, p3, p4, p5, p6, p7, p8, p9);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -148,7 +149,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var command = new DelegateBrowserCommand<TResult>(options, @delegate).Execute(Browser.Driver);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -158,7 +159,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var command = new DelegateBrowserCommand<T1, TResult>(options, @delegate).Execute(Browser.Driver, p1);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -168,7 +169,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var command = new DelegateBrowserCommand<T1, T2, TResult>(options, @delegate).Execute(Browser.Driver, p1, p2);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -178,7 +179,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var command = new DelegateBrowserCommand<T1, T2, T3, TResult>(options, @delegate).Execute(Browser.Driver, p1, p2, p3);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -188,7 +189,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var command = new DelegateBrowserCommand<T1, T2, T3, T4, TResult>(options, @delegate).Execute(Browser.Driver, p1, p2, p3, p4);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -198,7 +199,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var command = new DelegateBrowserCommand<T1, T2, T3, T4, T5, TResult>(options, @delegate).Execute(Browser.Driver, p1, p2, p3, p4, p5);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -208,7 +209,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var command = new DelegateBrowserCommand<T1, T2, T3, T4, T5, T6, TResult>(options, @delegate).Execute(Browser.Driver, p1, p2, p3, p4, p5, p6);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -218,7 +219,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var command = new DelegateBrowserCommand<T1, T2, T3, T4, T5, T6, T7, TResult>(options, @delegate).Execute(Browser.Driver, p1, p2, p3, p4, p5, p6, p7);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -228,7 +229,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var command = new DelegateBrowserCommand<T1, T2, T3, T4, T5, T6, T7, T8, TResult>(options, @delegate).Execute(Browser.Driver, p1, p2, p3, p4, p5, p6, p7, p8);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }
@@ -238,7 +239,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var command = new DelegateBrowserCommand<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult>(options, @delegate).Execute(Browser.Driver, p1, p2, p3, p4, p5, p6, p7, p8, p9);
 
-            Browser.CommandExecutions.Add(command.Result);
+            Browser.CalculateResults(command);
 
             return command;
         }

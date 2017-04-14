@@ -35,7 +35,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
                              
                 Thread.Sleep(3000);
-                xrmBrowser.Grid.OpenGridRow(0);
+                xrmBrowser.Grid.OpenGridRecord(0);
 
                 xrmBrowser.Entity.ClickSubgridAddButton("Stakeholders");
                 xrmBrowser.Entity.SelectSubgridLookup("Stakeholders", 3);
