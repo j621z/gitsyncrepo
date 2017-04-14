@@ -96,5 +96,33 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
+        public BrowserCommandResult<bool> SelectBusinessProcessFlow(string name, int thinkTime = Constants.DefaultThinkTime)
+        {
+            this.Browser.ThinkTime(thinkTime);
+
+            return this.Execute("Delete", driver =>
+            {
+                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.Header]),
+                                          new TimeSpan(0, 0, 10),
+                                          "The Select Business Process Flow dialog is not available.");
+
+                var processes = driver.FindElements(By.ClassName(Elements.CssClass[Reference.Dialogs.SwitchProcess.Ok]));
+                IWebElement element = null; 
+
+                foreach(var process in processes)
+                {
+                    if (process.GetAttribute("title") == name)
+                        element = process;
+                }
+
+                if (element != null)
+                    element.Click();
+                else
+                    throw new InvalidOperationException($"The Business Process with name: '{name}' does not exist");
+
+                return true;
+            });
+        }
     }
 }

@@ -57,6 +57,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Nav_ActionGroupContainerClass"       , "navActionButtonContainer"},
             { "Nav_SubActionElementClass"       , "nav-rowBody"},
             
+            //Dialogs
+            { "Dialog_SwitchProcessTitleClass"       , "ms-crm-ProcessSwitcher-ProcessTitle"},
         };
     }
 
@@ -90,6 +92,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static class Delete
             {
                 public static string Ok = "Dialog_DeleteOk";
+            }
+            public static class SwitchProcess
+            {
+                public static string Ok = "Dialog_SwitchProcessTitleClass";
             }
         }
 
