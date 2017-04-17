@@ -33,7 +33,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Grid.SwitchView("My Open Opportunities");
 
-                xrmBrowser.Grid.OpenGridRow(0);
+                xrmBrowser.Grid.OpenGridRecord(0);
 
                 xrmBrowser.BusinessProcessFlow.NextStage();
 
@@ -62,7 +62,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Grid.SwitchView("My Open Opportunities");
 
-                xrmBrowser.Grid.OpenGridRow(0);
+                xrmBrowser.Grid.OpenGridRecord(0);
 
                 xrmBrowser.BusinessProcessFlow.NextStage();
 
@@ -85,7 +85,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Grid.SwitchView("My Open Opportunities");
 
-                xrmBrowser.Grid.OpenGridRow(0);
+                xrmBrowser.Grid.OpenGridRecord(0);
 
                 xrmBrowser.BusinessProcessFlow.NextStage();
 
@@ -110,7 +110,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Grid.SwitchView("My Open Opportunities");
 
-                xrmBrowser.Grid.OpenGridRow(0);
+                xrmBrowser.Grid.OpenGridRecord(0);
 
                 xrmBrowser.BusinessProcessFlow.Hide();
 
@@ -134,7 +134,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Grid.SwitchView("My Open Opportunities");
 
-                xrmBrowser.Grid.OpenGridRow(0);
+                xrmBrowser.Grid.OpenGridRecord(0);
 
                 xrmBrowser.BusinessProcessFlow.Hide();
 

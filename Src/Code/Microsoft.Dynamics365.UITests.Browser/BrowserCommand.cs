@@ -26,7 +26,6 @@ namespace Microsoft.Dynamics365.UITests.Browser
         }
 
         protected TraceSource Trace { get; }
-        //protected List<BrowserCommandResult<object>> CommandResults { get; }
 
         [DebuggerNonUserCode()]
         public BrowserCommandResult<TReturn> Execute(IWebDriver driver)
@@ -85,7 +84,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         [DebuggerNonUserCode()]
         public BrowserCommandResult<TReturn> Execute<T1, T2, T3, T4, T5, T6, T7, T8, T9>(IWebDriver driver, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9)
         {
-            int retries = this.Options.RetryAttempts;
+            int retries = this.Options.RetryAttempts;            
             var result = new BrowserCommandResult<TReturn>();
             result.CommandName = this.Options.CommandName;
 
@@ -182,11 +181,10 @@ namespace Microsoft.Dynamics365.UITests.Browser
                 "Command Stop: {0} - {1} attempts - total execution time {2}ms",
                 this.Options.CommandName,
                 result.ExecutionAttempts,
-                result.ExecutionTime.TotalMilliseconds);
+                result.ExecutionTime);
 
             System.Diagnostics.Trace.CorrelationManager.StopLogicalOperation();
-
-            //CommandResults.Add(result);
+            
             return result;
         }
 

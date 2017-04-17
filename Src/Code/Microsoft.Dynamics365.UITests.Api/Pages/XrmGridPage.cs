@@ -8,11 +8,12 @@ using Microsoft.Dynamics365.UITests.Browser;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class XrmGridPage
-        : BrowserPage
+        : XrmPage
     {
         public XrmGridPage(InteractiveBrowser browser)
             : base(browser)
         {
+            SwitchToContentFrame();
         }
 
         internal BrowserCommandOptions GetOptions(string commandName)
@@ -30,8 +31,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute("Open View Picker", driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 var dictionary = new Dictionary<string, Guid>();
 
                 var viewSelectorContainer = driver.WaitUntilAvailable(By.Id("gridControlBar"));
@@ -295,9 +294,9 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> OpenGridRow(int index)
+        public BrowserCommandResult<bool> OpenGridRecord(int index)
         {
-            return this.Execute(GetOptions("Open Grid Item"), driver =>
+            return this.Execute(GetOptions("Open Grid Record"), driver =>
             {
                 this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 

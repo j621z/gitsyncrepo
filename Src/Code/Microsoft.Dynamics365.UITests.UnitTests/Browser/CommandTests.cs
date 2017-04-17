@@ -35,7 +35,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 Assert.IsNotNull(result.Success);
                 Assert.IsFalse(result.Success.Value);
 				Assert.AreEqual(Constants.DefaultRetryAttempts, result.ExecutionAttempts);
-				Assert.IsTrue(result.ExecutionTime > TimeSpan.FromMilliseconds(Constants.DefaultRetryDelay * Constants.DefaultRetryAttempts));
+				Assert.IsTrue(result.ExecutionTime > TimeSpan.FromMilliseconds(Constants.DefaultRetryDelay * Constants.DefaultRetryAttempts).Milliseconds);
 				Assert.AreEqual(String.Empty, result.Value);
             }
         }

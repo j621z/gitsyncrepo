@@ -119,25 +119,25 @@ namespace Microsoft.Dynamics365.UITests.Browser
         }
 
         public bool IsRecording => this.recorder != null;
-
         protected TraceSource Trace { get; }
-
-        public List<object> CommandExecutions = new List<object>();
-
+        public List<ICommandResult> CommandResults = new List<ICommandResult>();
         public int TotalThinkTime = 0;
-
-        public List<BrowserCommandResult<object>> CommandResults { get; }
-
+        internal int CurrentCommandThinkTime = 0;
+        internal DateTime? LastCommandEndTime;
+        internal int Depth = 0;
+        
         #endregion Properties
 
         #region Methods
 
         public void ThinkTime(int milliseconds)
         {
+            CurrentCommandThinkTime += milliseconds;
             TotalThinkTime += milliseconds;
 
             Thread.Sleep(milliseconds);
         }
+
         public T GetPage<T>()
             where T : BrowserPage
         {
@@ -362,6 +362,28 @@ namespace Microsoft.Dynamics365.UITests.Browser
 
             this.recorderThread = null;
             this.recorder = null;
+        }
+
+        internal void CalculateResults(ICommandResult result)
+        {
+            //Calculate Transition time from the previous command end time. Set the LastCommandEndTime to the current command Stop Time
+            if (Depth == 1)
+            {
+                if (result.StartTime.HasValue && LastCommandEndTime.HasValue && Depth == 1)
+                {
+                    result.TransitionTime = (result.StartTime.Value - LastCommandEndTime.Value).Milliseconds - CurrentCommandThinkTime;
+                }
+
+                LastCommandEndTime = result.StopTime;
+                CurrentCommandThinkTime = 0;
+            }
+
+            //Calculate ThinkTime for the Current Command. Reset the CurrentCommandThinkTime to 0 when finished
+            result.ThinkTime = CurrentCommandThinkTime;
+            result.Depth = Depth;
+
+            CommandResults.Add(result);
+            Depth--;
         }
 
         #endregion Methods

@@ -15,6 +15,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public XrmNavigationPage(InteractiveBrowser browser)
             : base(browser)
         {
+            browser.Driver.SwitchTo().DefaultContent();
         }
 
         internal BrowserCommandOptions GetOptions(string commandName)
@@ -35,46 +36,49 @@ namespace Microsoft.Dynamics365.UITests.Api
             throw new NotImplementedException();
         }
 
-        public BrowserCommandResult<Dictionary<string, Uri>> OpenHamburgerMenu()
+        public BrowserCommandResult<Dictionary<string, IWebElement>> OpenHamburgerMenu()
         {
-            return this.Execute(GetOptions("Open Hamburger Menu"), driver => 
+            return this.Execute(GetOptions("Open Home Tab Menu"), driver => 
             {
-                var dictionary = new Dictionary<string, Uri>();
+                var dictionary = new Dictionary<string, IWebElement>();
 
-                driver.ClickWhenAvailable(By.Id("HomeTabLink"));
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.HomeTab]));
 
-                var element = driver.FindElement(By.Id("actionGroupControl"));
-                var subItems = element.FindElements(By.ClassName("navActionButtonContainer"));
+                Thread.Sleep(1000);
+
+                var element = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.ActionGroup]));
+                var subItems = element.FindElements(By.ClassName(Elements.CssClass[Reference.Navigation.ActionGroupContainerClass]));
 
                 foreach (var subItem in subItems)
                 {
-                    dictionary.Add(subItem.Text, new Uri(subItem.GetAttribute("href")));
+                    dictionary.Add(subItem.Text, subItem);
                 }
 
                 return dictionary;
             });
         }
 
-        public BrowserCommandResult<Dictionary<string, Uri>> OpenSubMenu(string area)
+        internal BrowserCommandResult<Dictionary<string, IWebElement>> OpenSubMenu(IWebElement area)
         {
             return this.Execute(GetOptions($"Open Sub Menu: {area}"), driver=> 
             {
-                var dictionary = new Dictionary<string, Uri>();
+                var dictionary = new Dictionary<string, IWebElement>();
 
-                var element = driver.FindElement(By.Id("actionGroupControl"));
-                var menuItem = element.FindElement(By.LinkText(area));
-                menuItem.Click();
+                driver.WaitUntilVisible(By.Id(area.GetAttribute("Id")));
 
-                driver.WaitUntilVisible(By.Id("detailActionGroupControl"));
+                area.Click();
 
-                var subNavElement = driver.FindElement(By.Id("detailActionGroupControl"));
-                //element.Click();
+                Thread.Sleep(1000);
 
-                var subItems = subNavElement.FindElements(By.ClassName("nav-rowBody"));
+                driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Navigation.SubActionGroupContainer]));
+
+                var subNavElement = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SubActionGroupContainer]));
+
+                var subItems = subNavElement.FindElements(By.ClassName(Elements.CssClass[Reference.Navigation.SubActionElementClass]));
 
                 foreach (var subItem in subItems)
                 {
-                    dictionary.Add(subItem.Text, new Uri(subItem.GetAttribute("href")));
+                    dictionary.Add(subItem.Text, subItem);
                 }
 
                 return dictionary;
@@ -92,16 +96,15 @@ namespace Microsoft.Dynamics365.UITests.Api
                     throw new InvalidOperationException($"No area with the name '{area}' exists.");
                 }
 
-                var subAreas = OpenSubMenu(area).Value;
+                var subAreas = OpenSubMenu(areas[area]).Value;
 
                 if (!subAreas.ContainsKey(subArea))
                 {
                     throw new InvalidOperationException($"No subarea with the name '{subArea}' exists inside of '{area}'.");
                 }
+                
+                subAreas[subArea].Click();
 
-                var url = subAreas[subArea];
-
-                driver.Navigate().GoToUrl(url);
                 driver.WaitForPageToLoad();
 
                 return true;
@@ -113,8 +116,6 @@ namespace Microsoft.Dynamics365.UITests.Api
             Thread.Sleep(3000);
             return this.Execute(GetOptions("Open Related Menu"), driver =>
             {
-                driver.SwitchTo().DefaultContent();
-
                 driver.ClickWhenAvailable(By.Id("TabNode_tab0Tab"));
 
                 var element = driver.FindElement(By.Id("actionGroupControl"));
@@ -164,7 +165,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 driver.FindElement(By.Id("navTabGlobalCreateImage"))?.Click();
                 var area = driver.FindElement(By.ClassName("navActionGroupContainer"));
                 var items = area.FindElements(By.ClassName("nav-rowLabel"));
-                var item = items.Where(x => x.Text == entity).FirstOrDefault();
+                var item = items.FirstOrDefault(x => x.Text == entity);
 
                 item?.Click();
                 return true;
@@ -212,8 +213,96 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return list;
             });
         }
-        
-        
+
+        public BrowserCommandResult<bool> OpenGuidedHelp()
+        {
+            return this.Execute(GetOptions($"Open Guided Help"), driver =>
+            {
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.GuidedHelp]))?.Click();
+
+                return true;
+            });
+        }
+        public BrowserCommandResult<bool> OpenAdminPortal()
+        {
+            return this.Execute(GetOptions($"Open Admin Portal"), driver =>
+            {
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.AdminPortal]))?.Click();
+
+                return true;
+            });
+        }
+        private static void OpenSettingsOption(IWebDriver driver, string settingPath)
+        {
+            driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Settings]))?.Click();
+
+            driver.WaitUntilVisible(By.XPath(settingPath));
+        }
+
+        public BrowserCommandResult<bool> OpenOptions()
+        {
+            return this.Execute(GetOptions($"Open Options"), driver =>
+            {
+                OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.Options]);
+
+                return true;
+            });
+        }
+        public BrowserCommandResult<bool> OpenPrintPreview()
+        {
+            return this.Execute(GetOptions($"Open PrintPreview"), driver =>
+            {
+                OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.PrintPreview]);
+
+                return true;
+            });
+        }
+        public BrowserCommandResult<bool> OpenAppsForDynamicsCRM()
+        {
+            return this.Execute(GetOptions($"Open Apps for Dynamics"), driver =>
+            {
+                OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.AppsForCRM]);
+
+                return true;
+            });
+        }
+        public BrowserCommandResult<bool> OpenWelcomeScreen()
+        {
+            return this.Execute(GetOptions($"Open Welcome Screen"), driver =>
+            {
+                OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.WelcomeScreen]);
+
+                return true;
+            });
+        }
+        public BrowserCommandResult<bool> OpenAbout()
+        {
+            return this.Execute(GetOptions($"Open About"), driver =>
+            {
+                OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.About]);
+
+                return true;
+            });
+        }
+        public BrowserCommandResult<bool> OpenOptOutLearningPath()
+        {
+            return this.Execute(GetOptions($"Open Opt out of Learning Path"), driver =>
+            {
+                OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.OptOutLP]);
+
+                return true;
+            });
+        }
+        public BrowserCommandResult<bool> OpenPrivacyStatement()
+        {
+            return this.Execute(GetOptions($"Open Privacy Statement"), driver =>
+            {
+                OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.Privacy]);
+
+                return true;
+            });
+        }
+
         public bool SwitchToContentFrame()
         {
             return this.Execute("Switch to content frame", driver =>

@@ -18,6 +18,12 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
         }
 
+        /// <summary>
+        /// Sets the value of a Checkbox field.
+        /// </summary>
+        /// <param name="field">Field name or ID.</param>
+        /// <param name="check">If set to <c>true</c> [check].</param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(string field, bool check)
         {
             //return this.Execute($"Set Value: {field}", SetValue, field, check);
@@ -37,6 +43,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Sets the value of a Date Field.
+        /// </summary>
+        /// <param name="field">The field id or name.</param>
+        /// <param name="date">DateTime value.</param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(string field, DateTime date)
         {
             //return this.Execute($"Set Value: {field}", SetValue, field, date);
@@ -44,17 +56,26 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
+                    var fieldElement = driver.FindElement(By.Id(field));
+                    fieldElement.Click();
 
                     //Check to see if focus is on field already
-                    if (input.FindElement(By.ClassName("ms-crm-Inline-Edit")) != null)
-                        input.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
+                    if (fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")) != null)
+                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
                     else
-                        input.FindElement(By.ClassName("ms-crm-Inline-Value")).Click();
+                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Value")).Click();
 
-                    input.FindElement(By.TagName("input")).SendKeys(date.ToShortDateString());
-                    input.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
+                    var input = fieldElement.FindElement(By.TagName("input"));
+
+                    if (input.GetAttribute("value").Length > 0)
+                    {
+                        input.Clear();
+                        fieldElement.Click();
+                        input.Click();
+                    }
+
+                    input.SendKeys(date.ToShortDateString());
+                    
 
                 }
                 else
@@ -64,6 +85,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Sets the value of a Text/Description field.
+        /// </summary>
+        /// <param name="field">The field id.</param>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(string field, string value)
         {
             //return this.Execute($"Set Value: {field}", SetValue, field, value);
@@ -71,19 +98,25 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
+                    var fieldElement = driver.FindElement(By.Id(field));
+                    fieldElement.Click();
 
                     //Check to see if focus is on field already
-                    if (input.FindElement(By.ClassName("ms-crm-Inline-Edit")) != null)
-                        input.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
+                    if (fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")) != null)
+                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
                     else
-                        input.FindElement(By.ClassName("ms-crm-Inline-Value")).Click();
+                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Value")).Click();
 
-                    if (input.FindElements(By.TagName("textarea")).Count > 0)
-                        input.FindElement(By.TagName("textarea")).SendKeys(value);
+                    if (fieldElement.FindElements(By.TagName("textarea")).Count > 0)
+                    {
+                        fieldElement.FindElement(By.TagName("textarea")).Clear();
+                        fieldElement.FindElement(By.TagName("textarea")).SendKeys(value);
+                    }
                     else
-                        input.FindElement(By.TagName("input")).SendKeys(value);
+                    {
+                        fieldElement.FindElement(By.TagName("input")).Clear();
+                        fieldElement.FindElement(By.TagName("input")).SendKeys(value);
+                    }
 
                 }
                 else
@@ -93,25 +126,37 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Sets the value of a Field.
+        /// </summary>
+        /// <param name="field">The field .</param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(Field field)
         {
             return this.Execute($"Set Value: {field.Name}", driver =>
             {
                 if (driver.HasElement(By.Id(field.Id)))
                 {
-                    var input = driver.FindElement(By.Id(field.Id));
-                    input.Click();
+                    var fieldElement = driver.FindElement(By.Id(field.Id));
+                    fieldElement.Click();
 
                     //Check to see if focus is on field already
-                    if (input.FindElement(By.ClassName("ms-crm-Inline-Edit")) != null)
-                        input.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
+                    if (fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")) != null)
+                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
                     else
-                        input.FindElement(By.ClassName("ms-crm-Inline-Value")).Click();
+                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Value")).Click();
 
-                    if (input.FindElements(By.TagName("textarea")).Count > 0)
-                        input.FindElement(By.TagName("textarea")).SendKeys(field.Value);
+
+                    if (fieldElement.FindElements(By.TagName("textarea")).Count > 0)
+                    {
+                        fieldElement.FindElement(By.TagName("textarea")).Clear();
+                        fieldElement.FindElement(By.TagName("textarea")).SendKeys(field.Value);
+                    }
                     else
-                        input.FindElement(By.TagName("input")).SendKeys(field.Value);
+                    {
+                        fieldElement.FindElement(By.TagName("input")).Clear();
+                        fieldElement.FindElement(By.TagName("input")).SendKeys(field.Value);
+                    }
 
                 }
                 else
@@ -121,6 +166,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Sets the value of a picklist.
+        /// </summary>
+        /// <param name="option">The option you want to set.</param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(OptionSet option)
         {
             return this.Execute($"Set Value: {option.Name}", driver =>
@@ -146,6 +196,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Sets the value of a Composite control.
+        /// </summary>
+        /// <param name="control">The Composite control values you want to set.</param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(CompositeControl control)
         {
             return this.Execute($"Set Conposite Control Value: {control.Id}", driver =>
@@ -168,6 +223,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                             .ToList()
                             .FirstOrDefault(i => i.GetAttribute("id").Contains(field.Id));
 
+                        result?.Clear();
                         result?.SendKeys(field.Value);
                     }
 
@@ -175,6 +231,54 @@ namespace Microsoft.Dynamics365.UITests.Api
                 }
                 else
                     throw new InvalidOperationException($"Composite Control: {control.Id} Does not exist");
+
+                return true;
+            });
+        }
+
+        /// <summary>
+        /// Sets the value of a Lookup.
+        /// </summary>
+        /// <param name="control">The lookup field name, value or index of the lookup.</param>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> SetValue(Lookup control)
+        {
+            return this.Execute($"Set Lookup Value: {control.Name}", driver =>
+            {
+                if (driver.HasElement(By.Id(control.Name)))
+                {
+                    var input = driver.FindElement(By.Id(control.Name));
+                    input.Click();
+
+                    if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
+                        throw new InvalidOperationException($"Field: {control.Name} is not lookup");
+
+                    input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])).Click();
+
+                    var dialogName = $"Dialog_{control.Name}_IMenu";
+                    var dialog = driver.FindElement(By.Id(dialogName));
+
+                    var dialogItems = OpenDialog(dialog).Value;
+
+                    if(control.Value != null)
+                    {
+                        if (!dialogItems.Keys.Contains(control.Value))
+                            throw new InvalidOperationException($"List does not have {control.Value}.");
+
+                        var dialogItem = dialogItems[control.Value];
+                        dialogItem.Click();
+                    }
+                    else
+                    { 
+                        if (dialogItems.Count < control.Index)
+                            throw new InvalidOperationException($"List does not have {control.Index + 1} items.");
+
+                        var dialogItem = dialogItems.Values.ToList()[control.Index];
+                        dialogItem.Click();
+                    }
+                }
+                else
+                    throw new InvalidOperationException($"Field: {control.Name} Does not exist");
 
                 return true;
             });
@@ -244,9 +348,11 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <returns></returns>
         public bool SwitchToRelatedFrame()
         {
+
+            SwitchToContentFrame();
+
             return this.Execute("Switch to Related Frame", driver =>
             {
-                SwitchToContentFrame();
                 //wait for the content panel to render
                 driver.WaitUntilAvailable(By.Id(relatedId));
 
@@ -254,6 +360,30 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 return true;
             });
+        }
+
+
+        private BrowserCommandResult<Dictionary<string, IWebElement>> OpenDialog(IWebElement dialog)
+        {
+            var dictionary = new Dictionary<string, IWebElement>();
+            var dialogItems = dialog.FindElements(By.TagName("li"));
+
+            foreach (var dialogItem in dialogItems)
+            {
+                if (dialogItem.GetAttribute("role") != null && dialogItem.GetAttribute("role") == "menuitem")
+                {
+                    var links = dialogItem.FindElements(By.TagName("a"));
+
+                    if (links != null && links.Count > 1)
+                    {
+                        var title = links[1].GetAttribute("title");
+
+                        dictionary.Add(title, links[1]);
+                    }
+                }
+            }
+
+            return dictionary;
         }
 
     }

@@ -20,12 +20,30 @@ namespace Microsoft.Dynamics365.UITests.Api
             //Dialogs
             { "Dialog_Header"       , "id(\"dialogHeaderTitle\")"},
             { "Dialog_CloseOpportunityOk"       , "id(\"ok_id\")"},
+            { "Dialog_AssignOk"       , "id(\"ok_id\")"},
+            { "Dialog_DeleteOk"       , "id(\"butBegin\")"},
 
             //Frames
             { "Frame_ContentPanel"       , "id(\"crmContentPanel\")"},
             { "Frame_ContentFrame"       , "id(\"currentcontentid\")"},
             { "Frame_DialogFrame"       , "id(\"InlineDialog\")"},
             { "Frame_QuickFindFrame"       , "id(\"globalquickcreate_container_NavBarGloablQuickCreate\")"},
+
+            //Navigation
+            { "Nav_HomeTab"       , "id(\"HomeTabLink\")"},
+            { "Nav_ActionGroup"       , "id(\"actionGroupControl\")"},
+            { "Nav_SubActionGroup"       , "id(\"actionGroupControl\")"},
+            { "Nav_SubActionGroupContainer"       , "id(\"detailActionGroupControl\")"},
+            { "Nav_GuidedHelp"       , "id(\"TabButtonHelpId\")/a"},
+            { "Nav_AdminPortal"       , "id(\"TabAppSwitcherNode\")/a"},
+            { "Nav_Settings"       , "id(\"TabButtonSettingsId\")/a"},
+            { "Nav_Options"       , "id(\"navTabButtonSettingsOptionsId\")"},
+            { "Nav_PrintPreview"       , "id(\"navTabButtonSettingsPrintPreviewId\")"},
+            { "Nav_AppsForCrm"       , "id(\"navTabButtonSettingsNavAppsForCrmId\")"},
+            { "Nav_WelcomeScreen"       , "id(\"navTabButtonSettingsNavTourId\")"},
+            { "Nav_About"       , "id(\"navTabButtonSettingsAboutId\")"},
+            { "Nav_OptOutLP"       , "id(\"navTabButtonSettingsGuidedHelpId\")"},
+            { "Nav_Privacy"       , "id(\"NodeSettingsPrivacyStatementId\")"},
 
         };
 
@@ -40,6 +58,22 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Dialog_ActualRevenue"       , "actualrevenue_id"},
             { "Dialog_CloseDate"       , "closedate_id"},
             { "Dialog_Description"       , "description_id"},
+            { "Dialog_UserOrTeamLookupId"       , "systemuserview_id"},
+
+        };
+
+        public static Dictionary<string, string> CssClass = new Dictionary<string, string>()
+        {
+            //Navigation
+            { "Nav_ActionGroupContainerClass"       , "navActionButtonContainer"},
+            { "Nav_SubActionElementClass"       , "nav-rowBody"},
+            
+            //Dialogs
+            { "Dialog_SwitchProcessTitleClass"       , "ms-crm-ProcessSwitcher-ProcessTitle"},
+
+            //SetValue
+            { "SetValue_LookupRenderClass"       , "Lookup_RenderButton_td"},
+            
         };
     }
 
@@ -65,6 +99,24 @@ namespace Microsoft.Dynamics365.UITests.Api
                 public static string DescriptionId = "Dialog_Description";
                 public static string Ok = "Dialog_CloseOpportunityOk";
             }
+            public static class Assign
+            {
+                public static string Ok = "Dialog_AssignOk";
+                public static string UserOrTeamLookupId = "Dialog_UserOrTeamLookupId";
+            }
+            public static class Delete
+            {
+                public static string Ok = "Dialog_DeleteOk";
+            }
+            public static class SwitchProcess
+            {
+                public static string Ok = "Dialog_SwitchProcessTitleClass";
+            }
+            
+        }
+        public static class SetValue
+        {
+            public static string LookupRenderClass = "SetValue_LookupRenderClass";
         }
 
         public static class Frames
@@ -76,6 +128,26 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string QuickFindFrame = "Frame_QuickFindFrame";
             public static string QuickFindFrameId = "Frame_QuickFindFrameId";
 
+        }
+
+        public static class Navigation
+        {
+            public static string HomeTab = "Nav_HomeTab";
+            public static string ActionGroup = "Nav_ActionGroup";
+            public static string ActionGroupContainerClass = "Nav_ActionGroupContainerClass";
+            public static string SubActionGroup = "Nav_SubActionGroup";
+            public static string SubActionGroupContainer = "Nav_SubActionGroupContainer";
+            public static string SubActionElementClass = "Nav_SubActionElementClass";
+            public static string GuidedHelp = "Nav_GuidedHelp";
+            public static string AdminPortal = "Nav_AdminPortal";
+            public static string Settings = "Nav_Settings";
+            public static string Options = "Nav_Options";
+            public static string PrintPreview = "Nav_PrintPreview";
+            public static string AppsForCRM = "Nav_AppsForCrm";
+            public static string WelcomeScreen = "Nav_WelcomeScreen";
+            public static string About = "Nav_About";
+            public static string OptOutLP = "Nav_OptOutLP";
+            public static string Privacy = "Nav_Privacy";
         }
     }
 }

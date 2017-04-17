@@ -48,4 +48,11 @@ namespace Microsoft.Dynamics365.UITests.Api
         public string Value { get; set; }
     }
 
+    public class Lookup
+    {
+        public string Name { get; set; }
+        public string Value { get; set; }
+        public int Index { get; set; }
+    }
+
 }

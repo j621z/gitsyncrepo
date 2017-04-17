@@ -37,7 +37,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Grid.SwitchView("Open Opportunities");
 
                 Thread.Sleep(1000);
-                xrmBrowser.Grid.OpenGridRow(0);
+                xrmBrowser.Grid.OpenGridRecord(0);
 
                 xrmBrowser.CommandBar.ClickCommand("Close as Won");
 
