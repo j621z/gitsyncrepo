@@ -119,18 +119,13 @@ namespace Microsoft.Dynamics365.UITests.Browser
         }
 
         public bool IsRecording => this.recorder != null;
-
         protected TraceSource Trace { get; }
-
-        public List<ICommandResult> ExecutionResults = new List<ICommandResult>();
-        
+        public List<ICommandResult> CommandResults = new List<ICommandResult>();
         public int TotalThinkTime = 0;
-
         internal int CurrentCommandThinkTime = 0;
         internal DateTime? LastCommandEndTime;
-
-        public List<BrowserCommandResult<object>> CommandResults { get; }
-
+        internal int Depth = 0;
+        
         #endregion Properties
 
         #region Methods
@@ -372,18 +367,23 @@ namespace Microsoft.Dynamics365.UITests.Browser
         internal void CalculateResults(ICommandResult result)
         {
             //Calculate Transition time from the previous command end time. Set the LastCommandEndTime to the current command Stop Time
-            if (result.StartTime.HasValue && LastCommandEndTime.HasValue)
+            if (Depth == 1)
             {
-                result.TransitionTime = (result.StartTime.Value - LastCommandEndTime.Value).Milliseconds - CurrentCommandThinkTime;
+                if (result.StartTime.HasValue && LastCommandEndTime.HasValue && Depth == 1)
+                {
+                    result.TransitionTime = (result.StartTime.Value - LastCommandEndTime.Value).Milliseconds - CurrentCommandThinkTime;
+                }
+
+                LastCommandEndTime = result.StopTime;
+                CurrentCommandThinkTime = 0;
             }
 
             //Calculate ThinkTime for the Current Command. Reset the CurrentCommandThinkTime to 0 when finished
             result.ThinkTime = CurrentCommandThinkTime;
+            result.Depth = Depth;
 
-            CurrentCommandThinkTime = 0;
-            LastCommandEndTime = result.StopTime;
-
-            ExecutionResults.Add(result);
+            CommandResults.Add(result);
+            Depth--;
         }
 
         #endregion Methods

@@ -44,7 +44,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 telemetry.InstrumentationKey = _azureKey;
 
 
-                foreach (ICommandResult result in xrmBrowser.ExecutionResults)
+                foreach (ICommandResult result in xrmBrowser.CommandResults)
                 {
                     
                     var properties = new Dictionary<string, string>();

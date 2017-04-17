@@ -5,7 +5,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
     public class BrowserCommandResult<TReturn>: ICommandResult
     {
         internal BrowserCommandResult()
-        {
+        {            
         }
 
         public BrowserCommandResult(TReturn value)
@@ -62,9 +62,13 @@ namespace Microsoft.Dynamics365.UITests.Browser
         /// </summary>
         public DateTime? StopTime { get; private set; }
 
+
         /// <summary>
-        /// Gets the total execution time of the command.
+        /// Gets the execution time.
         /// </summary>
+        /// <value>
+        /// The execution time.
+        /// </value>
         public int ExecutionTime
         {
             get
@@ -79,14 +83,29 @@ namespace Microsoft.Dynamics365.UITests.Browser
         }
 
         /// <summary>
-        /// The transition time
+        /// Gets or sets the transition time.
         /// </summary>
+        /// <value>
+        /// The transition time.
+        /// </value>
         public int TransitionTime { get; set; }
 
+
         /// <summary>
-        /// The think time
+        /// Gets or sets the think time.
         /// </summary>
+        /// <value>
+        /// The think time.
+        /// </value>
         public int ThinkTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the depth.
+        /// </summary>
+        /// <value>
+        /// The depth.
+        /// </value>
+        public int Depth { get; set; }
 
         #region Implicit conversion to/from TReturn
 

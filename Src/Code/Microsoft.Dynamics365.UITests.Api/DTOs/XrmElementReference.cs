@@ -34,6 +34,17 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Nav_ActionGroup"       , "id(\"actionGroupControl\")"},
             { "Nav_SubActionGroup"       , "id(\"actionGroupControl\")"},
             { "Nav_SubActionGroupContainer"       , "id(\"detailActionGroupControl\")"},
+            { "Nav_GuidedHelp"       , "id(\"TabButtonHelpId\")/a"},
+            { "Nav_AdminPortal"       , "id(\"TabAppSwitcherNode\")/a"},
+            { "Nav_Settings"       , "id(\"TabButtonSettingsId\")/a"},
+            { "Nav_Options"       , "id(\"navTabButtonSettingsOptionsId\")"},
+            { "Nav_PrintPreview"       , "id(\"navTabButtonSettingsPrintPreviewId\")"},
+            { "Nav_AppsForCrm"       , "id(\"navTabButtonSettingsNavAppsForCrmId\")"},
+            { "Nav_WelcomeScreen"       , "id(\"navTabButtonSettingsNavTourId\")"},
+            { "Nav_About"       , "id(\"navTabButtonSettingsAboutId\")"},
+            { "Nav_OptOutLP"       , "id(\"navTabButtonSettingsGuidedHelpId\")"},
+            { "Nav_Privacy"       , "id(\"NodeSettingsPrivacyStatementId\")"},
+
         };
 
         public static Dictionary<string, string> ElementId = new Dictionary<string, string>()
@@ -127,6 +138,16 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string SubActionGroup = "Nav_SubActionGroup";
             public static string SubActionGroupContainer = "Nav_SubActionGroupContainer";
             public static string SubActionElementClass = "Nav_SubActionElementClass";
+            public static string GuidedHelp = "Nav_GuidedHelp";
+            public static string AdminPortal = "Nav_AdminPortal";
+            public static string Settings = "Nav_Settings";
+            public static string Options = "Nav_Options";
+            public static string PrintPreview = "Nav_PrintPreview";
+            public static string AppsForCRM = "Nav_AppsForCrm";
+            public static string WelcomeScreen = "Nav_WelcomeScreen";
+            public static string About = "Nav_About";
+            public static string OptOutLP = "Nav_OptOutLP";
+            public static string Privacy = "Nav_Privacy";
         }
     }
 }

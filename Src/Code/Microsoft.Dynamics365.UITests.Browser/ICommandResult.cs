@@ -21,5 +21,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         int TransitionTime { get; set; }
         
         int ThinkTime { get; set; }
+
+        int Depth { get; set; }
     }
 }
