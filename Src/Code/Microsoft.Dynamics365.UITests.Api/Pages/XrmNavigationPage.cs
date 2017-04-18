@@ -8,28 +8,16 @@ using System.Threading;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class XrmNavigationPage
-        : BrowserPage
+        : XrmPage
     {
         private static string relatedId;
 
         public XrmNavigationPage(InteractiveBrowser browser)
             : base(browser)
         {
-            browser.Driver.SwitchTo().DefaultContent();
+            SwitchToDefaultContent();
         }
-
-        internal BrowserCommandOptions GetOptions(string commandName)
-        {
-            return new BrowserCommandOptions(Constants.DefaultTraceSource,
-                commandName,
-                0,
-                0,
-                null,
-                false,
-                typeof(NoSuchElementException), typeof(StaleElementReferenceException));
-        }
-
-
+        
         public BrowserCommandResult<bool> OpenHomePage()
         {
             //TODO: Implement HomePage logic

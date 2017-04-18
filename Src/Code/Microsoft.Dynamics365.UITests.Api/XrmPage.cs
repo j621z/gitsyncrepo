@@ -362,6 +362,27 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        public bool SwitchToDefaultContent()
+        {
+            return this.Execute("Switch to Default Content", driver =>
+            {
+                driver.SwitchTo().DefaultContent();
+
+                return true;
+            });
+        }
+
+        internal BrowserCommandOptions GetOptions(string commandName)
+        {
+            return new BrowserCommandOptions(Constants.DefaultTraceSource,
+                commandName,
+                1,
+                0,
+                null,
+                false,
+                typeof(NoSuchElementException), typeof(StaleElementReferenceException));
+        }
+
 
         private BrowserCommandResult<Dictionary<string, IWebElement>> OpenDialog(IWebElement dialog)
         {
@@ -382,6 +403,8 @@ namespace Microsoft.Dynamics365.UITests.Api
                     }
                 }
             }
+
+
 
             return dictionary;
         }
