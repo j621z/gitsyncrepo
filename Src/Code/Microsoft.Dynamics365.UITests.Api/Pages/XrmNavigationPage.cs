@@ -224,7 +224,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Settings]))?.Click();
 
-            driver.WaitUntilVisible(By.XPath(settingPath));
+            driver.ClickWhenAvailable(By.XPath(settingPath));
         }
 
         public BrowserCommandResult<bool> OpenOptions()
