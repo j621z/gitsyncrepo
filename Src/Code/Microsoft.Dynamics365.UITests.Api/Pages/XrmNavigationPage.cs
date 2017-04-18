@@ -223,7 +223,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         private static void OpenSettingsOption(IWebDriver driver, string settingPath)
         {
             driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Settings]))?.Click();
-
+            Thread.Sleep(1000);
             driver.ClickWhenAvailable(By.XPath(settingPath));
         }
 
