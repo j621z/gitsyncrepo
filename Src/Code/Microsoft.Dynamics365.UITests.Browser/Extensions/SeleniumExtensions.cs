@@ -197,6 +197,18 @@ namespace Microsoft.Dynamics365.UITests.Browser
             }
         }
 
+        public static bool IsVisible(this IWebDriver driver, By by)
+        {
+            try
+            {
+                return driver.FindElement(by).Displayed;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
         public static void SendKeys(this IWebElement element, string value, bool clear)
         {
             if (clear)

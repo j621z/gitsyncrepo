@@ -66,7 +66,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
                 xrmBrowser.Grid.SwitchView("Active Accounts");
-                xrmBrowser.Grid.OpenGridRecord(0);
+                xrmBrowser.Grid.OpenRecord(0);
 
             }
         }

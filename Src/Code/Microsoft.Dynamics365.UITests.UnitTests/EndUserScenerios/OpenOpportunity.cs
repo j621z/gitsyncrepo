@@ -37,7 +37,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Grid.SwitchView("All Opportunities");
 
                 Thread.Sleep(1000);
-                xrmBrowser.Grid.OpenGridRecord(0);
+                xrmBrowser.Grid.OpenRecord(0);
             }
         }
     }
