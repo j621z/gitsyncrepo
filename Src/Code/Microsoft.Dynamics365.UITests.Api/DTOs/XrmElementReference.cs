@@ -160,21 +160,5 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string OptOutLP = "Nav_OptOutLP";
             public static string Privacy = "Nav_Privacy";
         }
-
-        public static class Grid
-        {
-            public static string JumpBar = "Grid_JumpBar";
-            public static string ShowAll = "Grid_ShowAll";
-            public static string GridTable = "Grid_GridTable";
-            public static string RowSelect = "Grid_RowSelect";
-            public static string Filter = "Grid_Filter";
-            public static string ChartList = "Grid_ChartList";
-            public static string ChartDialog = "Grid_ChartDialog";
-       }
-
-        public static class Entity
-        {
-            public static string Close = "Entity_Close";
-        }
     }
 }

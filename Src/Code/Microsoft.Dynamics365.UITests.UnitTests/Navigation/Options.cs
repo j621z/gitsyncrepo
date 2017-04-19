@@ -52,8 +52,12 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 Thread.Sleep(100);
 
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
+                xrmBrowser.Grid.SwitchView("Active Accounts");
+                xrmBrowser.Grid.SelectGridRecord(1);
                 xrmBrowser.Navigation.OpenPrintPreview();
-                Thread.Sleep(500);
+
+                Thread.Sleep(1000);
             }
         }
 
@@ -148,6 +152,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void TestOpenPrivacyStatement()
         {
+            //Only available on Admin Users
             using (var xrmBrowser = new XrmBrowser(new BrowserOptions
             {
                 BrowserType = BrowserType.Chrome,
@@ -159,6 +164,9 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 Thread.Sleep(100);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
+                xrmBrowser.Grid.SwitchView("Active Accounts");
+                xrmBrowser.Grid.SelectGridRecord(1);
 
                 xrmBrowser.Navigation.OpenPrivacyStatement();
 
