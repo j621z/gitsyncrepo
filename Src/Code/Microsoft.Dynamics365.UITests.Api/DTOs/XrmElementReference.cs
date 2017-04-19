@@ -45,6 +45,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Nav_OptOutLP"       , "id(\"navTabButtonSettingsGuidedHelpId\")"},
             { "Nav_Privacy"       , "id(\"NodeSettingsPrivacyStatementId\")"},
 
+            //Grid
+            { "Grid_JumpBar"       , "id(\"crmGrid_JumpBar\")"},
+            { "Grid_ShowAll"       , "id(\"crmGrid_JumpBar\")/tbody/tr/td[1]"},
+            { "Grid_GridTable"       , "id(\"gridBodyTable\")"},
+            { "Grid_RowSelect"       , "id(\"gridBodyTable\")/tbody/tr[[INDEX]]/td[1]"},
+            { "Grid_Filter"       , "id(\"filterButtonLink\")/a"},
         };
 
         public static Dictionary<string, string> ElementId = new Dictionary<string, string>()
@@ -148,6 +154,15 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string About = "Nav_About";
             public static string OptOutLP = "Nav_OptOutLP";
             public static string Privacy = "Nav_Privacy";
+        }
+
+        public static class Grid
+        {
+            public static string JumpBar = "Grid_JumpBar";
+            public static string ShowAll = "Grid_ShowAll";
+            public static string GridTable = "Grid_GridTable";
+            public static string RowSelect = "Grid_RowSelect";
+            public static string Filter = "Grid_Filter";
         }
     }
 }

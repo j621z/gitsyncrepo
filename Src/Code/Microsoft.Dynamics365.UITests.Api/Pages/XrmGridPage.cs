@@ -15,18 +15,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             SwitchToContentFrame();
         }
-
-        internal BrowserCommandOptions GetOptions(string commandName)
-        {
-            return new BrowserCommandOptions(Constants.DefaultTraceSource,
-                commandName,
-                0,
-                0,
-                null,
-                false,
-                typeof(NoSuchElementException), typeof(StaleElementReferenceException));
-        }
-
+        
         public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker()
         {
             return this.Execute("Open View Picker", driver =>
@@ -232,7 +221,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 var sortCols = driver.FindElements(By.ClassName("ms-crm-List-Sortable"));
-                var sortCol = sortCols.Where(x => x.GetAttribute("fieldname") == columnName).FirstOrDefault();
+                var sortCol = sortCols.FirstOrDefault(x => x.GetAttribute("fieldname") == columnName);
                 if (sortCol == null)
                     throw new InvalidOperationException($"Column: {columnName} Does not exist");
                 else
@@ -332,6 +321,61 @@ namespace Microsoft.Dynamics365.UITests.Api
                 }
 
                 return false;
+            });
+        }
+        public BrowserCommandResult<bool> SelectGridRecord(int index)
+        {
+            return this.Execute(GetOptions("Select Grid Record"), driver =>
+            {
+                //index parameter will be 0 based but the Xpath is 1 based. So we need to increment.
+                index++;
+
+                var select = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.RowSelect].Replace("[INDEX]", index.ToString())),
+                                                        $"Row with index {index.ToString()} is not found");
+                
+                return false;
+            });
+        }
+        public BrowserCommandResult<bool> FilterByLetter(char filter)
+        {
+            if (!Char.IsLetter(filter) && filter != '#')
+                throw new InvalidOperationException("Filter criteria is not valid.");
+
+            return this.Execute(GetOptions("Filter by Letter"), driver =>
+            {
+                var jumpBar = driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.JumpBar]));
+                var letterCells = jumpBar.FindElements(By.TagName("TD"));
+
+                foreach (var letter in letterCells)
+                {
+                    if (letter.Text == filter.ToString())
+                        letter.Click();
+                }
+               
+                return true;
+            });
+        }
+        public BrowserCommandResult<bool> FilterByAll()
+        {
+            return this.Execute(GetOptions("Filter by All Records"), driver =>
+            {
+                var showAll = driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.ShowAll]));
+
+                showAll?.Click();
+
+                return true;
+            });
+        }
+        public BrowserCommandResult<bool> OpenFilter()
+        {
+            return this.Execute(GetOptions("Open Filter"), driver =>
+            {
+                var filter = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.RowSelect]),
+                                                        "Filter option is not available");
+
+                filter?.Click();
+
+                return true;
             });
         }
     }
