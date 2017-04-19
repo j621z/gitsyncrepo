@@ -36,6 +36,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 Thread.Sleep(2000);
                 xrmBrowser.Grid.SwitchView("All Leads");
 
+                xrmBrowser.Grid.FilterByLetter('A');
                 Thread.Sleep(1000);
                 xrmBrowser.Grid.OpenGridRecord(0);
             }
