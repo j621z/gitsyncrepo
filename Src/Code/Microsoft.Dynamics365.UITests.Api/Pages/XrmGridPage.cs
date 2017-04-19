@@ -394,7 +394,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Selects the grid record.
         /// </summary>
-        /// <param name="index">The index.</param>
+        /// <param name="index">The index of the row you want to select. Index starts with 0.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectRecord(int index)
         {
@@ -405,6 +405,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 var select = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.RowSelect].Replace("[INDEX]", index.ToString())),
                                                         $"Row with index {index.ToString()} is not found");
+
+                select?.Click();
                 
                 return false;
             });
