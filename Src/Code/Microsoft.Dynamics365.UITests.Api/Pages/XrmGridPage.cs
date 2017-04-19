@@ -221,7 +221,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
 
                 var sortCols = driver.FindElements(By.ClassName("ms-crm-List-Sortable"));
-                var sortCol = sortCols.FirstOrDefault(x => x.GetAttribute("fieldname") == columnName);
+                var sortCol = sortCols.FirstOrDefault(x => x.Text == columnName);
                 if (sortCol == null)
                     throw new InvalidOperationException($"Column: {columnName} Does not exist");
                 else
