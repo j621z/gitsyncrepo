@@ -35,7 +35,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
                              
                 Thread.Sleep(3000);
-                xrmBrowser.Grid.OpenGridRecord(0);
+                xrmBrowser.Grid.OpenRecord(0);
                 xrmBrowser.Navigation.OpenRelated("Contacts");
                 xrmBrowser.Related.Sort("createdon");
 
@@ -43,7 +43,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Related.Search("P");
                 xrmBrowser.CommandBar.ClickCommand("ADD NEW CONTACT");
-                //xrmBrowser.Related.OpenGridRecord(0);
+                //xrmBrowser.Related.OpenRecord(0);
             }
         }
     }

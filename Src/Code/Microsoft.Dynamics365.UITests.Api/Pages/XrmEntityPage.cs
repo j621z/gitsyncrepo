@@ -15,17 +15,6 @@ namespace Microsoft.Dynamics365.UITests.Api
             : base(browser)
         {
         }
-        
-        internal BrowserCommandOptions GetOptions(string commandName)
-        {
-            return new BrowserCommandOptions(Constants.DefaultTraceSource,
-                commandName,
-                1,
-                0,
-                null,
-                false,
-                typeof(NoSuchElementException), typeof(StaleElementReferenceException));
-        }
 
         private readonly string _navigateDownCssSelector = "img.recnav-down.ms-crm-ImageStrip-Down_Enabled_proxy";
         private readonly string _navigateUpCssSelector = "img.recnav-up.ms-crm-ImageStrip-Up_Enabled_proxy";
@@ -354,6 +343,23 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                     dialogItem?.Click();
                 }
+
+                return true;
+            });
+        }
+
+        /// <summary>
+        /// Closes the current record you are on.
+        /// </summary>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> Close()
+        {
+            return this.Execute(GetOptions("Close Record"), driver =>
+            {
+                var filter = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Entity.Close]),
+                    "Close Buttton is not available");
+
+                filter?.Click();
 
                 return true;
             });
