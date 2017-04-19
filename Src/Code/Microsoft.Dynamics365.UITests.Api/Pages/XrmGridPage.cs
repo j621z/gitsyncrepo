@@ -7,15 +7,27 @@ using Microsoft.Dynamics365.UITests.Browser;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Microsoft.Dynamics365.UITests.Api.XrmPage" />
     public class XrmGridPage
         : XrmPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmGridPage"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmGridPage(InteractiveBrowser browser)
             : base(browser)
         {
             SwitchToContentFrame();
         }
-        
+
+        /// <summary>
+        /// Opens the view picker.
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker()
         {
             return this.Execute("Open View Picker", driver =>
@@ -58,6 +70,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Switches the view.
+        /// </summary>
+        /// <param name="viewName">Name of the view.</param>
+        /// <param name="thinkTime">The think time.</param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime = 1000)
         {
             this.Browser.ThinkTime(thinkTime);
@@ -89,6 +107,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Refreshes this instance.
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Refresh()
         {
             return this.Execute(GetOptions("Refresh"), driver =>
@@ -101,6 +123,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Firsts the page.
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<bool> FirstPage()
         {
             return this.Execute(GetOptions("FirstPage"), driver =>
@@ -117,6 +143,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Nexts the page.
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<bool> NextPage()
         {
             return this.Execute(GetOptions("Next"), driver =>
@@ -133,7 +163,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> ToggleSelectAll()
+        /// <summary>
+        /// Toggles the select all.
+        /// </summary>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> SelectAllRecords()
         {
             return this.Execute(GetOptions("ToggleSelectAll"), driver =>
             {
@@ -149,6 +183,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Previouses the page.
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<bool> PreviousPage()
         {
             return this.Execute(GetOptions("PreviousPage"), driver =>
@@ -165,18 +203,24 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Opens the chart.
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<bool> OpenChart()
         {
             return this.Execute(GetOptions("OpenChart"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 driver.FindElement(By.ClassName("ms-crm-ImageStrip-navLeft")).Click();
 
                 return true;
             });
         }
 
+        /// <summary>
+        /// Closes the chart.
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<bool> CloseChart()
         {
             return this.Execute(GetOptions("CloseChart"), driver =>
@@ -189,6 +233,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Pins this instance.
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Pin()
         {
             return this.Execute(GetOptions("Pin"), driver =>
@@ -201,6 +249,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Searches the specified search criteria.
+        /// </summary>
+        /// <param name="searchCriteria">The search criteria.</param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Search(string searchCriteria)
         {
             return this.Execute(GetOptions("Search"), driver =>
@@ -214,6 +267,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Sorts the specified column name.
+        /// </summary>
+        /// <param name="columnName">Name of the column.</param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Sort(string columnName)
         {
             return this.Execute(GetOptions($"Sort by {columnName}"), driver =>
@@ -230,6 +288,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Gets the grid items.
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<List<XrmGridItem>> GetGridItems()
         {
             return this.Execute(GetOptions("Get Grid Items"), driver =>
@@ -283,7 +345,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> OpenGridRecord(int index)
+        /// <summary>
+        /// Opens the grid record.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> OpenRecord(int index)
         {
             return this.Execute(GetOptions("Open Grid Record"), driver =>
             {
@@ -323,7 +390,13 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return false;
             });
         }
-        public BrowserCommandResult<bool> SelectGridRecord(int index)
+
+        /// <summary>
+        /// Selects the grid record.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> SelectRecord(int index)
         {
             return this.Execute(GetOptions("Select Grid Record"), driver =>
             {
@@ -336,6 +409,13 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return false;
             });
         }
+
+        /// <summary>
+        /// Filters the by letter.
+        /// </summary>
+        /// <param name="filter">The filter.</param>
+        /// <returns></returns>
+        /// <exception cref="System.InvalidOperationException">Filter criteria is not valid.</exception>
         public BrowserCommandResult<bool> FilterByLetter(char filter)
         {
             if (!Char.IsLetter(filter) && filter != '#')
@@ -355,6 +435,11 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
+        /// <summary>
+        /// Filters the by all.
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<bool> FilterByAll()
         {
             return this.Execute(GetOptions("Filter by All Records"), driver =>
@@ -366,6 +451,11 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
+        /// <summary>
+        /// Opens the filter.
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<bool> OpenFilter()
         {
             return this.Execute(GetOptions("Open Filter"), driver =>
@@ -374,6 +464,41 @@ namespace Microsoft.Dynamics365.UITests.Api
                                                         "Filter option is not available");
 
                 filter?.Click();
+
+                return true;
+            });
+        }
+
+        /// <summary>
+        /// Switches the chart on the Grid.
+        /// </summary>
+        /// <param name="chartName">Name of the chart.</param>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> SwitchChart(string chartName)
+        {
+            if (Browser.Driver.IsVisible(By.XPath(Elements.Xpath[Reference.Grid.ChartList])))
+                OpenChart();
+
+            Browser.ThinkTime(1000);
+
+            return this.Execute(GetOptions("Switch Chart"), driver =>
+            {
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Grid.ChartList]));
+
+                var dialog = driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.ChartDialog]));
+                var menuItems = dialog.FindElements(By.TagName("a"));
+                IWebElement selectedItem = null;
+
+                foreach (var item in menuItems)
+                {
+                    if (item.GetAttribute("title") == chartName)
+                        selectedItem = item;
+                }
+
+                if (selectedItem != null)
+                    throw new InvalidOperationException($"Chart with name {chartName} does not exist");
+                else
+                    selectedItem.Click();
 
                 return true;
             });

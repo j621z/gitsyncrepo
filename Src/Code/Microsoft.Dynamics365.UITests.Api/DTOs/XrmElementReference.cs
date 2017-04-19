@@ -51,6 +51,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Grid_GridTable"       , "id(\"gridBodyTable\")"},
             { "Grid_RowSelect"       , "id(\"gridBodyTable\")/tbody/tr[[INDEX]]/td[1]"},
             { "Grid_Filter"       , "id(\"filterButtonLink\")/a"},
+            { "Grid_ChartList"       , "id(\"visualizationListLink\")/a"},
+            { "Grid_ChartDialog"       , "id(\"Dialog_0\")"},
+
+            //Entity
+            { "Entity_Close"       , "id(\"closeButton\")"},
         };
 
         public static Dictionary<string, string> ElementId = new Dictionary<string, string>()
@@ -163,6 +168,13 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string GridTable = "Grid_GridTable";
             public static string RowSelect = "Grid_RowSelect";
             public static string Filter = "Grid_Filter";
+            public static string ChartList = "Grid_ChartList";
+            public static string ChartDialog = "Grid_ChartDialog";
+       }
+
+        public static class Entity
+        {
+            public static string Close = "Entity_Close";
         }
     }
 }
