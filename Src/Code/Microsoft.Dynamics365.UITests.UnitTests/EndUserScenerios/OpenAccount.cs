@@ -40,6 +40,13 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 Thread.Sleep(1000);
                 xrmBrowser.Grid.OpenRecord(0);
 
+                Thread.Sleep(2000);
+                xrmBrowser.Entity.CollapseTab("Summary");
+
+                Thread.Sleep(2000);
+                xrmBrowser.Entity.ExpandTab("Summary");
+
+                Thread.Sleep(2000);
                 //xrmBrowser.Entity.SelectSection("Details");
             }
         }
