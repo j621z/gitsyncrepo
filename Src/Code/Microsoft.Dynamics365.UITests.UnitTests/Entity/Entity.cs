@@ -36,5 +36,25 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
             }
         }
 
+        [TestMethod]
+        public void TestPopOutForm()
+        {
+            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
+            {
+                BrowserType = BrowserType.Chrome,
+                PrivateMode = true,
+                FireEvents = true
+            }))
+            {
+                xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
+                xrmBrowser.Grid.SwitchView("Active Accounts");
+                xrmBrowser.Grid.OpenRecord(0);
+                xrmBrowser.Entity.Popout();
+                Thread.Sleep(10000);
+
+            }
+        }
+
     }
 }
