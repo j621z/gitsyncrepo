@@ -131,6 +131,7 @@
     <Compile Include="EndUserScenerios\OpenContact.cs" />
     <Compile Include="EndUserScenerios\OpenLead.cs" />
     <Compile Include="EndUserScenerios\OpenOpportunity.cs" />
+    <Compile Include="Entity\Entity.cs" />
     <Compile Include="Navigation\AdvancedFind.cs" />
     <Compile Include="Navigation\GlobalSearch.cs" />
     <Compile Include="EndUserScenerios\XrmBrowserTests.cs" />
