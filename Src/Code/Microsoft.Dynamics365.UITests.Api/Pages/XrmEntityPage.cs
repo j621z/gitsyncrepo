@@ -349,12 +349,12 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// Closes the current record you are on.
+        /// Closes the current entity record you are on.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> Close()
+        public BrowserCommandResult<bool> CloseEntity()
         {
-            return this.Execute(GetOptions("Close Record"), driver =>
+            return this.Execute(GetOptions("Close Entity"), driver =>
             {
                 var filter = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Entity.Close]),
                     "Close Buttton is not available");

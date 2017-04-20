@@ -160,5 +160,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string OptOutLP = "Nav_OptOutLP";
             public static string Privacy = "Nav_Privacy";
         }
+
+        public static class Entity
+        {
+            public static string Close = "Entity_Close";
+        }
     }
 }
