@@ -92,7 +92,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         }
 
         [TestMethod]
-        public void TestSelectGridRecord()
+        public void TestSelectRecord()
         {
             using (var xrmBrowser = new XrmBrowser(new BrowserOptions
             {
@@ -107,7 +107,29 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 Thread.Sleep(200);
 
-                xrmBrowser.Grid.SelectGridRecord(1);
+                xrmBrowser.Grid.SelectRecord(1);
+                Thread.Sleep(10000);
+
+            }
+        }
+
+        [TestMethod]
+        public void TestSelectAllRecords()
+        {
+            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
+            {
+                BrowserType = BrowserType.Chrome,
+                PrivateMode = true,
+                FireEvents = true
+            }))
+            {
+                xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
+                xrmBrowser.Grid.SwitchView("Active Accounts");
+
+                Thread.Sleep(200);
+
+                xrmBrowser.Grid.SelectAllRecords();
                 Thread.Sleep(10000);
 
             }
@@ -152,7 +174,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         }
 
         [TestMethod]
-        public void TestOpenFilter()
+        public void TestEnableFilter()
         {
             using (var xrmBrowser = new XrmBrowser(new BrowserOptions
             {
@@ -164,7 +186,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
                 xrmBrowser.Grid.SwitchView("Open Leads");
-                xrmBrowser.Grid.OpenFilter();
+                xrmBrowser.Grid.EnableFilter();
                 Thread.Sleep(10000);
 
             }
@@ -222,6 +244,121 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
                 xrmBrowser.Grid.SwitchView("Open Leads");
                 xrmBrowser.Grid.FirstPage();
+                Thread.Sleep(10000);
+
+            }
+        }
+
+        [TestMethod]
+        public void TestOpenChart()
+        {
+            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
+            {
+                BrowserType = BrowserType.Chrome,
+                PrivateMode = true,
+                FireEvents = true
+            }))
+            {
+                xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
+                xrmBrowser.Grid.SwitchView("Open Leads");
+                xrmBrowser.Grid.OpenChart();
+                Thread.Sleep(10000);
+
+            }
+        }
+
+        [TestMethod]
+        public void TestSwitchChart()
+        {
+            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
+            {
+                BrowserType = BrowserType.Chrome,
+                PrivateMode = true,
+                FireEvents = true
+            }))
+            {
+                xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
+                xrmBrowser.Grid.SwitchView("Active Accounts");
+                xrmBrowser.Grid.OpenChart();
+                xrmBrowser.Grid.SwitchChart("Accounts by Owner");
+                Thread.Sleep(10000);
+
+            }
+        }
+
+        [TestMethod]
+        public void TestRefreshGrid()
+        {
+            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
+            {
+                BrowserType = BrowserType.Chrome,
+                PrivateMode = true,
+                FireEvents = true
+            }))
+            {
+                xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
+                xrmBrowser.Grid.SwitchView("Active Accounts");
+                xrmBrowser.Grid.Refresh();
+                Thread.Sleep(10000);
+
+            }
+        }
+
+        [TestMethod]
+        public void TestCloseChart()
+        {
+            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
+            {
+                BrowserType = BrowserType.Chrome,
+                PrivateMode = true,
+                FireEvents = true
+            }))
+            {
+                xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
+                xrmBrowser.Grid.SwitchView("Open Leads");
+                xrmBrowser.Grid.CloseChart();
+                Thread.Sleep(10000);
+
+            }
+        }
+
+        [TestMethod]
+        public void TestQuickFindSearch()
+        {
+            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
+            {
+                BrowserType = BrowserType.Chrome,
+                PrivateMode = true,
+                FireEvents = true
+            }))
+            {
+                xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
+                xrmBrowser.Grid.SwitchView("Open Leads");
+                xrmBrowser.Grid.SwitchToQuickFindFrame();
+                Thread.Sleep(10000);
+
+            }
+        }
+
+        [TestMethod]
+        public void TestPinDefaultView()
+        {
+            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
+            {
+                BrowserType = BrowserType.Chrome,
+                PrivateMode = true,
+                FireEvents = true
+            }))
+            {
+                xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
+                xrmBrowser.Grid.SwitchView("Open Leads");
+                xrmBrowser.Grid.Pin();
                 Thread.Sleep(10000);
 
             }

@@ -54,7 +54,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
                 xrmBrowser.Grid.SwitchView("Active Accounts");
-                xrmBrowser.Grid.SelectGridRecord(1);
+                xrmBrowser.Grid.SelectRecord(1);
                 xrmBrowser.Navigation.OpenPrintPreview();
 
                 Thread.Sleep(1000);
@@ -166,7 +166,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 Thread.Sleep(100);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
                 xrmBrowser.Grid.SwitchView("Active Accounts");
-                xrmBrowser.Grid.SelectGridRecord(1);
+                xrmBrowser.Grid.SelectRecord(1);
 
                 xrmBrowser.Navigation.OpenPrivacyStatement();
 
