@@ -14,6 +14,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public XrmEntityPage(InteractiveBrowser browser)
             : base(browser)
         {
+            SwitchToContentFrame();
         }
 
         private readonly string _navigateDownCssSelector = "img.recnav-down.ms-crm-ImageStrip-Down_Enabled_proxy";
@@ -90,14 +91,68 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> SelectTab(string name)
+        /// <summary>
+        /// Selects the tab and clicks. If the tab is expanded it will collapse it. If the tab is collapsed it will expand it. 
+        /// </summary>
+        /// <param name="name">The name of the tab.</param>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> SelectTab(string name, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"SelectTab: {name}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                var section = driver.FindElement(By.Id(Elements.ElementId[Reference.Entity.Tab].Replace("[NAME]", name.ToUpper())));
 
-                var sections = driver.FindElements(By.ClassName("ms-crm-InlineTabHeaderText"));
-                sections.Where(x => x.FindElement(By.TagName("h2")).Text == name).FirstOrDefault()?.Click();
+                if (section == null)
+                    throw new InvalidOperationException($"Section with name {name} does not exist.");
+                
+                section?.Click();
+
+                return true;
+            });
+        }
+        /// <summary>
+        /// Collapses the Tab on a CRM Entity form.
+        /// </summary>
+        /// <param name="name">The name of the Tab.</param>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> CollapseTab(string name, int thinkTime = Constants.DefaultThinkTime)
+        {
+            Browser.ThinkTime(thinkTime);
+
+            return this.Execute(GetOptions($"Collapse Tab: {name}"), driver =>
+            {
+                var section = driver.FindElement(By.Id(Elements.ElementId[Reference.Entity.Tab].Replace("[NAME]",name.ToUpper())));
+
+                if (section == null)
+                    throw new InvalidOperationException($"Section with name {name} does not exist.");
+                
+                if (section.GetAttribute("title").Contains("Collapse"))
+                    section?.Click();
+
+                return true;
+            });
+        }
+        /// <summary>
+        /// Expands the Tab on a CRM Entity form.
+        /// </summary>
+        /// <param name="name">The name of the Tab.</param>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> ExpandTab(string name, int thinkTime = Constants.DefaultThinkTime)
+        {
+            Browser.ThinkTime(thinkTime);
+
+            return this.Execute(GetOptions($"Expand Tab: {name}"), driver =>
+            {
+                var section = driver.FindElement(By.Id(Elements.ElementId[Reference.Entity.Tab].Replace("[NAME]", name.ToUpper())));
+
+                if (section == null)
+                    throw new InvalidOperationException($"Section with name {name} does not exist.");
+
+                if (section.GetAttribute("title").Contains("Expand"))
+                    section?.Click();
+
                 return true;
             });
         }
@@ -349,12 +404,12 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// Closes the current record you are on.
+        /// Closes the current entity record you are on.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> Close()
+        public BrowserCommandResult<bool> CloseEntity()
         {
-            return this.Execute(GetOptions("Close Record"), driver =>
+            return this.Execute(GetOptions("Close Entity"), driver =>
             {
                 var filter = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Entity.Close]),
                     "Close Buttton is not available");

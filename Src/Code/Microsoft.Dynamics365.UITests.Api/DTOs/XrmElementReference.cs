@@ -71,6 +71,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Dialog_Description"       , "description_id"},
             { "Dialog_UserOrTeamLookupId"       , "systemuserview_id"},
 
+            //Entity
+            { "Entity_TabId"       , "[NAME]_TAB_headerText_anchor"},
         };
 
         public static Dictionary<string, string> CssClass = new Dictionary<string, string>()
@@ -174,6 +176,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public static class Entity
         {
             public static string Close = "Entity_Close";
+            public static string Tab = "Entity_TabId";
         }
     }
 }
