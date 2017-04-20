@@ -73,8 +73,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> OpenSubArea(string area, string subArea)
+        public BrowserCommandResult<bool> OpenSubArea(string area, string subArea, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($": {area} > {subArea}"), driver =>
             {
                 var areas = OpenHamburgerMenu().Value;
