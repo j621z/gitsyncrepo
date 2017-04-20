@@ -5,9 +5,6 @@ using System.Linq;
 using System.Threading;
 using Microsoft.Dynamics365.UITests.Browser;
 
-/// <summary>
-/// 
-/// </summary>
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class XrmBusinessProcessFlow
@@ -107,6 +104,22 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 driver.FindElement(By.XPath(xpath))
                       .Click();
+
+                return true;
+            });
+        }
+
+        public BrowserCommandResult<bool> SetActive(int thinkTime = Constants.DefaultThinkTime)
+        {
+            this.Browser.ThinkTime(thinkTime);
+
+            return this.Execute("Set Active", driver =>
+            {
+                if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.SetActive])))
+                    throw new Exception("Business Process Flow Set Active Element does not exist");
+
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.SetActive]))
+                    .Click();
 
                 return true;
             });
