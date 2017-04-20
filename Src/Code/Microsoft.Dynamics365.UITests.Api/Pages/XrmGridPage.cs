@@ -458,11 +458,11 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Opens the filter.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> OpenFilter()
+        public BrowserCommandResult<bool> EnableFilter()
         {
-            return this.Execute(GetOptions("Open Filter"), driver =>
+            return this.Execute(GetOptions("Enable Filter"), driver =>
             {
-                var filter = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.RowSelect]),
+                var filter = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.Filter]),
                                                         "Filter option is not available");
 
                 filter?.Click();
