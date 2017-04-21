@@ -7,23 +7,12 @@ using Microsoft.Dynamics365.UITests.Browser;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class XrmLookupPage
-        : BrowserPage
+        : XrmPage
     {
         public XrmLookupPage(InteractiveBrowser browser)
             : base(browser)
         {
-            this.Browser.GetPage<XrmNavigationPage>().SwitchToDialogFrame();
-        }
-
-        internal BrowserCommandOptions GetOptions(string commandName)
-        {
-            return new BrowserCommandOptions(Constants.DefaultTraceSource,
-                commandName,
-                1,
-                0,
-                null,
-                false,
-                typeof(NoSuchElementException), typeof(StaleElementReferenceException));
+            SwitchToDialogFrame();
         }
 
         private BrowserCommandResult<Dictionary<string, IWebElement>> OpenEntityPicker()

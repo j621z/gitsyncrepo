@@ -6,7 +6,7 @@ using Microsoft.Dynamics365.UITests.Browser;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class XrmAppMessageBarPage
-        : BrowserPage
+        : XrmPage
     {
         public XrmAppMessageBarPage(InteractiveBrowser browser)
             : base(browser)

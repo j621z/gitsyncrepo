@@ -8,11 +8,12 @@ using Microsoft.Dynamics365.UITests.Browser;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class XrmBusinessProcessFlow
-        : BrowserPage
+        : XrmPage
     {
         public XrmBusinessProcessFlow(InteractiveBrowser browser)
             : base(browser)
         {
+            SwitchToContentFrame();
         }
 
         /// <summary>
@@ -26,8 +27,6 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute("Next Stage", driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.NextStage])))
                     throw new Exception("Business Process Flow Next Stage Element does not exist");
 
@@ -49,8 +48,6 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute("Previous Stage", driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.PreviousStage])))
                     throw new Exception("Business Process Flow Next Stage Element does not exist");
                 
@@ -72,8 +69,6 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute("Hide", driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.Hide])))
                     throw new Exception("Business Process Flow Next Stage Element does not exist");
 
@@ -95,8 +90,6 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute("Select Stage", driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 var xpath = Elements.Xpath[Reference.BusinessProcessFlow.SelectStage].Replace("[STAGENUM]", stagenumber.ToString());
 
                 if (!driver.HasElement(By.XPath(xpath)))
@@ -109,6 +102,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Sets the current selected Stage as Active.
+        /// </summary>
+        /// <param name="thinkTime">The think time.</param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SetActive(int thinkTime = Constants.DefaultThinkTime)
         {
             this.Browser.ThinkTime(thinkTime);

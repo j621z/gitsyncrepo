@@ -12,11 +12,12 @@ using Microsoft.Dynamics365.UITests.Browser;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class XrmPerformanceCenterPage
-        : BrowserPage
+        : XrmPage
     {
         public XrmPerformanceCenterPage(InteractiveBrowser browser)
             : base(browser)
         {
+            SwitchToContentFrame();
         }
 
         internal const string GetAllMarkersJavascriptCommand = "return Mscrm.Performance.PerformanceMarkerManager.get_instance().get_allMarkersJson();";
@@ -61,7 +62,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                     }
                     else
                     {
-                        this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
+                        SwitchToContentFrame();
 
                         _performanceMarkersVisible = false;
                     }

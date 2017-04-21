@@ -82,8 +82,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"SelectForm: {name}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 driver.FindElement(By.Id("formselectorcontainer"))?.FindElement(By.TagName("a"))?.Click();
                 var items = driver.FindElements(By.ClassName("ms-crm-FS-MenuItem-Title"));
                 items.Where(x => x.Text == name).FirstOrDefault()?.Click();
@@ -161,8 +159,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver => 
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (driver.HasElement(By.Id(field)))
                 {
                     var input = driver.FindElement(By.Id(field));
@@ -195,8 +191,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver=> 
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (driver.HasElement(By.Id(field)))
                 {
                     var input = driver.FindElement(By.Id(field));
@@ -230,8 +224,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver=> 
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (driver.HasElement(By.Id(field)))
                 {
                     var input = driver.FindElement(By.Id(field));
@@ -285,8 +277,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Popout"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 driver.FindElement(By.ClassName("ms-crm-ImageStrip-popout"))?.Click();
 
                 return true;
@@ -297,8 +287,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Click add button of {subgridName}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 driver.FindElement(By.Id($"{subgridName}_addImageButton"))?.Click();
 
                 return true;
@@ -309,8 +297,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Click GridView button of {subgridName}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 driver.FindElement(By.Id($"{subgridName}_openAssociatedGridViewImageButtonImage"))?.Click();
 
                 return true;
@@ -321,8 +307,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value for Subgrid {subgridName}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
                     var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
@@ -351,8 +335,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value for Subgrid {subgridName}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
                     var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
@@ -380,8 +362,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value for Subgrid {subgridName}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
                     var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));

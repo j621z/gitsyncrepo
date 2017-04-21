@@ -8,7 +8,7 @@ using Microsoft.Dynamics365.UITests.Browser;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class XrmNotficationPage
-        : BrowserPage
+        : XrmPage
     {
         public XrmNotficationPage(InteractiveBrowser browser)
             : base(browser)

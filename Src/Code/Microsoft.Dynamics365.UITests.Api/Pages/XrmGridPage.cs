@@ -82,8 +82,6 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Switch View"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 var views = OpenViewPicker().Value;
 
                 if (!views.ContainsKey(viewName))
@@ -114,9 +112,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public BrowserCommandResult<bool> Refresh()
         {
             return this.Execute(GetOptions("Refresh"), driver =>
-            {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-                
+            {                
                 driver.FindElement(By.Id("grid_refresh")).Click();
 
                 return true;
@@ -131,8 +127,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions("FirstPage"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 var firstPageIcon = driver.FindElement(By.Id("fastRewind"));
 
                 if (firstPageIcon.GetAttribute("disabled") != null)
@@ -151,8 +145,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions("Next"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 var nextIcon = driver.FindElement(By.Id("_nextPageImg"));
 
                 if (nextIcon.GetAttribute("disabled") != null)
@@ -171,8 +163,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions("ToggleSelectAll"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 // We can check if any record selected by using
                 // driver.FindElements(By.ClassName("ms-crm-List-SelectedRow")).Count == 0
                 // but this function doesn't check it.
@@ -191,8 +181,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions("PreviousPage"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 var previousIcon = driver.FindElement(By.Id("_prevPageImg"));
 
                 if (previousIcon.GetAttribute("disabled") != null)
@@ -225,8 +213,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions("CloseChart"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 driver.FindElement(By.ClassName("ms-crm-PaneChevron")).Click();
 
                 return true;
@@ -241,8 +227,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions("Pin"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 driver.FindElement(By.Id("defaultViewIcon")).Click();
 
                 return true;
@@ -258,8 +242,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions("Search"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 driver.FindElement(By.Id("crmGrid_findCriteria")).SendKeys(searchCriteria);
                 driver.FindElement(By.Id("crmGrid_findCriteriaImg")).Click();
 
@@ -276,8 +258,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Sort by {columnName}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 var sortCols = driver.FindElements(By.ClassName("ms-crm-List-Sortable"));
                 var sortCol = sortCols.FirstOrDefault(x => x.Text == columnName);
                 if (sortCol == null)
@@ -296,8 +276,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions("Get Grid Items"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 var returnList = new List<XrmGridItem>();
 
                 var itemsTable = driver.FindElement(By.XPath(@"//*[@id=""gridBodyTable""]/tbody"));
@@ -354,8 +332,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions("Open Grid Record"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 var itemsTable = driver.WaitUntilAvailable(By.Id("gridBodyTable"));
                 var links = itemsTable.FindElements(By.TagName("a"));
 
