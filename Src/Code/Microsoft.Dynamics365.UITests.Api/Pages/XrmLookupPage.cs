@@ -60,8 +60,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> SwitchEntity(string entityName)
+        public BrowserCommandResult<bool> SwitchEntity(string entityName, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Switch Entity"), driver =>
             {
                 var entities = OpenEntityPicker().Value;
@@ -76,8 +78,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> SwitchView(string viewName)
+        public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Switch View"), driver =>
             {
                 var views = OpenViewPicker().Value;
@@ -91,8 +95,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> Search(string searchCriteria)
+        public BrowserCommandResult<bool> Search(string searchCriteria, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Search"), driver =>
             {
                 driver.FindElement(By.Id("crmGrid_findCriteria")).SendKeys(searchCriteria);
@@ -153,8 +159,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> SelectItem(int index)
+        public BrowserCommandResult<bool> SelectItem(int index, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Select Item"), driver =>
             {
                 var itemsTable = driver.WaitUntilAvailable(By.Id("gridBodyTable"));
@@ -169,8 +177,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> SelectItem(string value)
+        public BrowserCommandResult<bool> SelectItem(string value, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Select Item"), driver =>
             {
                 var itemsTable = driver.WaitUntilAvailable(By.Id("gridBodyTable"));
@@ -192,8 +202,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> Add()
+        public BrowserCommandResult<bool> Add(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Add"), driver =>
             {               
                 var add = driver.FindElement(By.Id("butBegin"));
@@ -204,8 +216,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> Select()
+        public BrowserCommandResult<bool> Select(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Select"), driver =>
             {
                 var add = driver.FindElement(By.Id("btnAdd"));
@@ -216,8 +230,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> Remove()
+        public BrowserCommandResult<bool> Remove(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Remove"), driver =>
             {
                 var add = driver.FindElement(By.Id("btnRemove"));
@@ -228,8 +244,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> New()
+        public BrowserCommandResult<bool> New(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("New"), driver =>
             {
                 var add = driver.FindElement(By.Id("btnNew"));
@@ -240,8 +258,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> Cancel()
+        public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Cancel"), driver =>
             {
                 var add = driver.FindElement(By.Id("cmdDialogCancel"));

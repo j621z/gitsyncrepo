@@ -16,8 +16,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             SwitchToQuickFindFrame();
         }
         
-        public BrowserCommandResult<bool> Cancel()
+        public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Cancel"), driver =>
             {
                 SwitchToDefaultContent();
@@ -27,8 +29,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> Save()
+        public BrowserCommandResult<bool> Save(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Save"), driver =>
             {
                 SwitchToDefaultContent();

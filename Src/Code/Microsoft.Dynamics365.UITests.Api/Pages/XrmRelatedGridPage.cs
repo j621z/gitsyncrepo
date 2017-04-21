@@ -17,8 +17,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             SwitchToRelatedFrame();
         }
 
-        public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker()
+        public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute("Open View Picker", driver =>
             {
                 var dictionary = new Dictionary<string, Guid>();
@@ -56,8 +58,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> SwitchView(string viewName)
+        public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Switch View"), driver =>
             {
                 var views = OpenViewPicker().Value;
@@ -83,8 +87,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> Refresh()
+        public BrowserCommandResult<bool> Refresh(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Refresh"), driver =>
             {                
                 driver.FindElement(By.Id("grid_refresh")).Click();
@@ -93,8 +99,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> FirstPage()
+        public BrowserCommandResult<bool> FirstPage(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("FirstPage"), driver =>
             {
                 var firstPageIcon = driver.FindElement(By.Id("fastRewind"));
@@ -107,8 +115,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> NextPage()
+        public BrowserCommandResult<bool> NextPage(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Next"), driver =>
             {
                 var nextIcon = driver.FindElement(By.Id("_nextPageImg"));
@@ -121,8 +131,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> ToggleSelectAll()
+        public BrowserCommandResult<bool> ToggleSelectAll(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("ToggleSelectAll"), driver =>
             {
                 // We can check if any record selected by using
@@ -135,8 +147,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> PreviousPage()
+        public BrowserCommandResult<bool> PreviousPage(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("PreviousPage"), driver =>
             {
                 var previousIcon = driver.FindElement(By.Id("_prevPageImg"));
@@ -149,8 +163,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
        
-        public BrowserCommandResult<bool> Search(string searchCriteria)
+        public BrowserCommandResult<bool> Search(string searchCriteria, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Search"), driver =>
             {
                 var inputs = driver.FindElements(By.TagName("input"));
@@ -163,8 +179,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> Sort(string columnName)
+        public BrowserCommandResult<bool> Sort(string columnName, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Sort by {columnName}"), driver =>
             {                
                 var sortCols = driver.FindElements(By.ClassName("ms-crm-List-Sortable"));
@@ -178,8 +196,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<List<XrmGridItem>> GetGridItems()
+        public BrowserCommandResult<List<XrmGridItem>> GetGridItems(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Get Grid Items"), driver =>
             {
                 var returnList = new List<XrmGridItem>();
@@ -229,8 +249,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> OpenGridRow(int index)
+        public BrowserCommandResult<bool> OpenGridRow(int index, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Open Grid Item"), driver =>
             {
                 var itemsTable = driver.WaitUntilAvailable(By.Id("gridBodyTable"));
@@ -284,9 +306,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> ClickCommand(string name, string subName = "", bool moreCommands = false)
+        public BrowserCommandResult<bool> ClickCommand(string name, string subName = "", bool moreCommands = false, int thinkTime = Constants.DefaultThinkTime)
         {
-            //return this.Execute(GetOptions(), this.ClickCommandButton, name);
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("ClickCommand"), driver =>
             {
                 if (moreCommands)

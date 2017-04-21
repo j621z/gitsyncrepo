@@ -26,8 +26,10 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         /// </summary>
         /// <param name="tabname">The tabname.</param>
         /// <returns></returns>
-        public BrowserCommandResult<bool> SelectTab(Tab tabname)
+        public BrowserCommandResult<bool> SelectTab(Tab tabname, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Select Tab on the Record Wall"), driver =>
             {
                 if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.RecordWall.NotesControl])))
@@ -47,8 +49,10 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
             });
         }
 
-        public BrowserCommandResult<bool> AddNote(string noteText)
+        public BrowserCommandResult<bool> AddNote(string noteText, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Add Note"), driver =>
             {
                 if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.RecordWall.NotesWall])))
@@ -65,8 +69,10 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
                 return true;
             });
         }
-        public BrowserCommandResult<bool> AddPost(string postText)
+        public BrowserCommandResult<bool> AddPost(string postText, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Add Post"), driver =>
             {
                 if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.RecordWall.NotesWall])))

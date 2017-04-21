@@ -18,14 +18,17 @@ namespace Microsoft.Dynamics365.UITests.Api
             SwitchToDefaultContent();
         }
         
-        public BrowserCommandResult<bool> OpenHomePage()
+        public BrowserCommandResult<bool> OpenHomePage(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             //TODO: Implement HomePage logic
             throw new NotImplementedException();
         }
-
-        public BrowserCommandResult<Dictionary<string, IWebElement>> OpenHamburgerMenu()
+        public BrowserCommandResult<Dictionary<string, IWebElement>> OpenHamburgerMenu(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Open Home Tab Menu"), driver => 
             {
                 var dictionary = new Dictionary<string, IWebElement>();
@@ -45,34 +48,6 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return dictionary;
             });
         }
-
-        internal BrowserCommandResult<Dictionary<string, IWebElement>> OpenSubMenu(IWebElement area)
-        {
-            return this.Execute(GetOptions($"Open Sub Menu: {area}"), driver=> 
-            {
-                var dictionary = new Dictionary<string, IWebElement>();
-
-                driver.WaitUntilVisible(By.Id(area.GetAttribute("Id")));
-
-                area.Click();
-
-                Thread.Sleep(1000);
-
-                driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Navigation.SubActionGroupContainer]));
-
-                var subNavElement = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SubActionGroupContainer]));
-
-                var subItems = subNavElement.FindElements(By.ClassName(Elements.CssClass[Reference.Navigation.SubActionElementClass]));
-
-                foreach (var subItem in subItems)
-                {
-                    dictionary.Add(subItem.Text, subItem);
-                }
-
-                return dictionary;
-            });
-        }
-
         public BrowserCommandResult<bool> OpenSubArea(string area, string subArea, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -100,10 +75,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-
-        public BrowserCommandResult<bool> OpenRelated(string relatedArea)
+        public BrowserCommandResult<bool> OpenRelated(string relatedArea, int thinkTime = Constants.DefaultThinkTime)
         {
-            Thread.Sleep(3000);
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Open Related Menu"), driver =>
             {
                 driver.ClickWhenAvailable(By.Id("TabNode_tab0Tab"));
@@ -118,9 +93,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-
-        public BrowserCommandResult<bool> GlobalSearch(string searchText)
+        public BrowserCommandResult<bool> GlobalSearch(string searchText, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Global Search: {searchText}"), driver => 
             {
                 //Narrow down the scope to the Search Tab when looking for the search input
@@ -134,9 +110,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-
-        public BrowserCommandResult<bool> OpenAdvancedFind()
+        public BrowserCommandResult<bool> OpenAdvancedFind(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Open Advanced Find"), driver=> 
             {
                 //Narrow down the scope to the Search Tab when looking for the search input
@@ -147,9 +124,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-
-        public BrowserCommandResult<bool> QuickCreate(string entity)
+        public BrowserCommandResult<bool> QuickCreate(string entity,int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Open Quick Create"), driver=> 
             {
                 driver.FindElement(By.Id("navTabGlobalCreateImage"))?.Click();
@@ -161,9 +139,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-
-        public BrowserCommandResult<bool> SignOut()
+        public BrowserCommandResult<bool> SignOut(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"SignOut"), driver => 
             {
                 var userInfo = driver.FindElement(By.Id("navTabButtonUserInfoLinkId"));
@@ -173,8 +152,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-
-        public BrowserCommandResult<List<XrmLink>> OpenMruMenu()
+        public BrowserCommandResult<List<XrmLink>> OpenMruMenu(int thinkTime = Constants.DefaultThinkTime)
         {
             return this.Execute(GetOptions("Open MRU Menu"), driver =>
             {
@@ -203,9 +181,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return list;
             });
         }
-
-        public BrowserCommandResult<bool> OpenGuidedHelp()
+        public BrowserCommandResult<bool> OpenGuidedHelp(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Open Guided Help"), driver =>
             {
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.GuidedHelp]))?.Click();
@@ -213,8 +192,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-        public BrowserCommandResult<bool> OpenAdminPortal()
+        public BrowserCommandResult<bool> OpenAdminPortal(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Open Admin Portal"), driver =>
             {
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.AdminPortal]))?.Click();
@@ -222,15 +203,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-        private static void OpenSettingsOption(IWebDriver driver, string settingPath)
+        public BrowserCommandResult<bool> OpenOptions(int thinkTime = Constants.DefaultThinkTime)
         {
-            driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Settings]))?.Click();
-            Thread.Sleep(1000);
-            driver.ClickWhenAvailable(By.XPath(settingPath));
-        }
+            Browser.ThinkTime(thinkTime);
 
-        public BrowserCommandResult<bool> OpenOptions()
-        {
             return this.Execute(GetOptions($"Open Options"), driver =>
             {
                 OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.Options]);
@@ -238,8 +214,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-        public BrowserCommandResult<bool> OpenPrintPreview()
+        public BrowserCommandResult<bool> OpenPrintPreview(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Open PrintPreview"), driver =>
             {
                 OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.PrintPreview]);
@@ -247,8 +225,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-        public BrowserCommandResult<bool> OpenAppsForDynamicsCRM()
+        public BrowserCommandResult<bool> OpenAppsForDynamicsCRM(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Open Apps for Dynamics"), driver =>
             {
                 OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.AppsForCRM]);
@@ -256,8 +236,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-        public BrowserCommandResult<bool> OpenWelcomeScreen()
+        public BrowserCommandResult<bool> OpenWelcomeScreen(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Open Welcome Screen"), driver =>
             {
                 OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.WelcomeScreen]);
@@ -265,8 +247,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-        public BrowserCommandResult<bool> OpenAbout()
+        public BrowserCommandResult<bool> OpenAbout(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Open About"), driver =>
             {
                 OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.About]);
@@ -274,8 +258,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-        public BrowserCommandResult<bool> OpenOptOutLearningPath()
+        public BrowserCommandResult<bool> OpenOptOutLearningPath(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Open Opt out of Learning Path"), driver =>
             {
                 OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.OptOutLP]);
@@ -283,14 +269,51 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
-        public BrowserCommandResult<bool> OpenPrivacyStatement()
+        public BrowserCommandResult<bool> OpenPrivacyStatement(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Open Privacy Statement"), driver =>
             {
                 OpenSettingsOption(driver, Elements.Xpath[Reference.Navigation.Privacy]);
 
                 return true;
             });
+        }
+
+
+        internal BrowserCommandResult<Dictionary<string, IWebElement>> OpenSubMenu(IWebElement area)
+        {
+            return this.Execute(GetOptions($"Open Sub Menu: {area}"), driver =>
+            {
+                var dictionary = new Dictionary<string, IWebElement>();
+
+                driver.WaitUntilVisible(By.Id(area.GetAttribute("Id")));
+
+                area.Click();
+
+                Thread.Sleep(1000);
+
+                driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Navigation.SubActionGroupContainer]));
+
+                var subNavElement = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SubActionGroupContainer]));
+
+                var subItems = subNavElement.FindElements(By.ClassName(Elements.CssClass[Reference.Navigation.SubActionElementClass]));
+
+                foreach (var subItem in subItems)
+                {
+                    dictionary.Add(subItem.Text, subItem);
+                }
+
+                return dictionary;
+            });
+        }
+
+        private static void OpenSettingsOption(IWebDriver driver, string settingPath)
+        {
+            driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Settings]))?.Click();
+            Thread.Sleep(1000);
+            driver.ClickWhenAvailable(By.XPath(settingPath));
         }
     }
 }

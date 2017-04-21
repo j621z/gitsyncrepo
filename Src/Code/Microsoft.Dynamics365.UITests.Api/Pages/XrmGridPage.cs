@@ -28,8 +28,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Opens the view picker.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker()
+        public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute("Open View Picker", driver =>
             {
                 var dictionary = new Dictionary<string, Guid>();
@@ -76,9 +78,9 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <param name="viewName">Name of the view.</param>
         /// <param name="thinkTime">The think time.</param>
         /// <returns></returns>
-        public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime = 1000)
+        public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime = Constants.DefaultThinkTime)
         {
-            this.Browser.ThinkTime(thinkTime);
+            Browser.ThinkTime(thinkTime);
 
             return this.Execute(GetOptions("Switch View"), driver =>
             {
@@ -109,8 +111,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Refreshes this instance.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> Refresh()
+        public BrowserCommandResult<bool> Refresh(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Refresh"), driver =>
             {                
                 driver.FindElement(By.Id("grid_refresh")).Click();
@@ -123,8 +127,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Firsts the page.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> FirstPage()
+        public BrowserCommandResult<bool> FirstPage(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("FirstPage"), driver =>
             {
                 var firstPageIcon = driver.FindElement(By.Id("fastRewind"));
@@ -141,8 +147,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Nexts the page.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> NextPage()
+        public BrowserCommandResult<bool> NextPage(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Next"), driver =>
             {
                 var nextIcon = driver.FindElement(By.Id("_nextPageImg"));
@@ -159,8 +167,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Toggles the select all.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> SelectAllRecords()
+        public BrowserCommandResult<bool> SelectAllRecords(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("ToggleSelectAll"), driver =>
             {
                 // We can check if any record selected by using
@@ -177,8 +187,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Previouses the page.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> PreviousPage()
+        public BrowserCommandResult<bool> PreviousPage(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("PreviousPage"), driver =>
             {
                 var previousIcon = driver.FindElement(By.Id("_prevPageImg"));
@@ -195,8 +207,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Opens the chart.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> OpenChart()
+        public BrowserCommandResult<bool> OpenChart(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("OpenChart"), driver =>
             {
                 driver.FindElement(By.ClassName("ms-crm-ImageStrip-navLeft")).Click();
@@ -209,8 +223,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Closes the chart.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> CloseChart()
+        public BrowserCommandResult<bool> CloseChart(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("CloseChart"), driver =>
             {
                 driver.FindElement(By.ClassName("ms-crm-PaneChevron")).Click();
@@ -223,8 +239,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Pins this instance.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> Pin()
+        public BrowserCommandResult<bool> Pin(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Pin"), driver =>
             {
                 driver.FindElement(By.Id("defaultViewIcon")).Click();
@@ -238,8 +256,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// </summary>
         /// <param name="searchCriteria">The search criteria.</param>
         /// <returns></returns>
-        public BrowserCommandResult<bool> Search(string searchCriteria)
+        public BrowserCommandResult<bool> Search(string searchCriteria, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Search"), driver =>
             {
                 driver.FindElement(By.Id("crmGrid_findCriteria")).SendKeys(searchCriteria);
@@ -254,8 +274,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// </summary>
         /// <param name="columnName">Name of the column.</param>
         /// <returns></returns>
-        public BrowserCommandResult<bool> Sort(string columnName)
+        public BrowserCommandResult<bool> Sort(string columnName,int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Sort by {columnName}"), driver =>
             {
                 var sortCols = driver.FindElements(By.ClassName("ms-crm-List-Sortable"));
@@ -274,6 +296,8 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <returns></returns>
         public BrowserCommandResult<List<XrmGridItem>> GetGridItems()
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Get Grid Items"), driver =>
             {
                 var returnList = new List<XrmGridItem>();
@@ -328,8 +352,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns></returns>
-        public BrowserCommandResult<bool> OpenRecord(int index)
+        public BrowserCommandResult<bool> OpenRecord(int index,int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Open Grid Record"), driver =>
             {
                 var itemsTable = driver.WaitUntilAvailable(By.Id("gridBodyTable"));
@@ -372,8 +398,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// </summary>
         /// <param name="index">The index of the row you want to select. Index starts with 0.</param>
         /// <returns></returns>
-        public BrowserCommandResult<bool> SelectRecord(int index)
+        public BrowserCommandResult<bool> SelectRecord(int index, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Select Grid Record"), driver =>
             {
                 //index parameter will be 0 based but the Xpath is 1 based. So we need to increment.
@@ -394,8 +422,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <param name="filter">The filter.</param>
         /// <returns></returns>
         /// <exception cref="System.InvalidOperationException">Filter criteria is not valid.</exception>
-        public BrowserCommandResult<bool> FilterByLetter(char filter)
+        public BrowserCommandResult<bool> FilterByLetter(char filter, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             if (!Char.IsLetter(filter) && filter != '#')
                 throw new InvalidOperationException("Filter criteria is not valid.");
 
@@ -418,8 +448,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Filters the by all.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> FilterByAll()
+        public BrowserCommandResult<bool> FilterByAll(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Filter by All Records"), driver =>
             {
                 var showAll = driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.ShowAll]));
@@ -434,8 +466,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Opens the filter.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> EnableFilter()
+        public BrowserCommandResult<bool> EnableFilter(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Enable Filter"), driver =>
             {
                 var filter = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.Filter]),
@@ -452,8 +486,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// </summary>
         /// <param name="chartName">Name of the chart.</param>
         /// <returns></returns>
-        public BrowserCommandResult<bool> SwitchChart(string chartName)
+        public BrowserCommandResult<bool> SwitchChart(string chartName, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             if (Browser.Driver.IsVisible(By.XPath(Elements.Xpath[Reference.Grid.ChartList])))
                 OpenChart();
 

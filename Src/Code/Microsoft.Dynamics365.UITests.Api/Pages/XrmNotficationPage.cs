@@ -15,8 +15,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
         }
         
-        public BrowserCommandResult<bool> CloseNotifications()
+        public BrowserCommandResult<bool> CloseNotifications(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute("Close Notifications", driver =>
             {
                 Thread.Sleep(2000);
