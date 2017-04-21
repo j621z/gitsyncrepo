@@ -81,7 +81,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
             return Execute(driver, p1, p2, p3, p4, p5, p6, p7, p8, default(object));
         }
 
-        [DebuggerNonUserCode()]
+        //[DebuggerNonUserCode()]
         public BrowserCommandResult<TReturn> Execute<T1, T2, T3, T4, T5, T6, T7, T8, T9>(IWebDriver driver, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9)
         {
             int retries = this.Options.RetryAttempts;            

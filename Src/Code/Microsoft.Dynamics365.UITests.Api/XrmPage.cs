@@ -376,13 +376,12 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return new BrowserCommandOptions(Constants.DefaultTraceSource,
                 commandName,
-                1,
+                0,
                 0,
                 null,
                 false,
                 typeof(NoSuchElementException), typeof(StaleElementReferenceException));
         }
-
 
         private BrowserCommandResult<Dictionary<string, IWebElement>> OpenDialog(IWebElement dialog)
         {

@@ -56,6 +56,22 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             //Entity
             { "Entity_Close"       , "id(\"closeButton\")"},
+
+            //Global Search
+            { "Search_Filter"       , "id(\"filterCombo\")"},
+            { "Search_Text"       , "id(\"searchTextBox\")"},
+            { "Search_Button"       , "id(\"SearchButton\")"},
+            { "Search_Result"       , "id(\"contentResult\")"},
+            
+            //RecordWall
+            { "Notes_NotesControl"       , "id(\"notescontrol\")"},
+            { "Notes_NotesWall"       , "id(\"notesWall\")"},
+            { "Notes_NotesText"       , "id(\"createNote_notesTextBox\")"},
+            { "Notes_NotesButton"       , "id(\"postButton\")"},
+            { "Notes_PostWall"       , "id(\"activityFeedsWall\")"},
+            { "Notes_PostButton"       , "id(\"postButton\")"},
+            { "Notes_PostText"       , "id(\"postTextBox\")"},
+            
         };
 
         public static Dictionary<string, string> ElementId = new Dictionary<string, string>()
@@ -73,6 +89,12 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             //Entity
             { "Entity_TabId"       , "[NAME]_TAB_headerText_anchor"},
+
+            //Global Searc
+            { "Search_EntityNameId"       , "entityName"},
+            { "Search_RecordNameId"       , "attribone"},
+            
+
         };
 
         public static Dictionary<string, string> CssClass = new Dictionary<string, string>()
@@ -86,7 +108,9 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             //SetValue
             { "SetValue_LookupRenderClass"       , "Lookup_RenderButton_td"},
-            
+
+            //GlobalSearch
+            { "Search_EntityContainerClass"       , "panoramaItem panoramaItemMargin meqfpanoramaItem meqfTabBorder panoramaItemMarginDisplay"},
         };
     }
 
@@ -177,6 +201,28 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             public static string Close = "Entity_Close";
             public static string Tab = "Entity_TabId";
+        }
+
+        public static class GlobalSearch
+        {
+            public static string Filter = "Search_Filter";
+            public static string SearchText = "Search_Text";
+            public static string SearchButton = "Search_Button";
+            public static string SearchResults = "Search_Result";
+            public static string EntityContainerClass = "Search_EntityContainerClass";
+            public static string EntityNameId = "Search_EntityNameId";
+            public static string RecordNameId = "Search_RecordNameId";
+        }
+
+        public static class RecordWall
+        {
+            public static string NotesControl = "Notes_NotesControl";
+            public static string NotesWall = "Notes_NotesWall";
+            public static string NotesText = "Notes_NotesText";
+            public static string NotesButton = "Notes_NoteButton";
+            public static string PostWall = "Notes_PostWall";
+            public static string PostText = "Notes_PostText";
+            public static string PostButton = "Notes_PostButton";
         }
     }
 }

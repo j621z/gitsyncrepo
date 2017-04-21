@@ -6,7 +6,7 @@ using Microsoft.Dynamics365.UITests.Browser;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class Office365NavigationPage
-        : BrowserPage
+        : XrmPage
     {
         public Office365NavigationPage(InteractiveBrowser browser)
             : base(browser)

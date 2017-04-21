@@ -8,40 +8,34 @@ using Microsoft.Dynamics365.UITests.Browser;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class XrmQuickCreatePage
-        : BrowserPage
+        : XrmPage
     {
         public XrmQuickCreatePage(InteractiveBrowser browser)
             : base(browser)
         {
-        }
-
-        internal BrowserCommandOptions GetOptions(string commandName)
-        {
-            return new BrowserCommandOptions(Constants.DefaultTraceSource,
-                commandName,
-                1,
-                0,
-                null,
-                false,
-                typeof(NoSuchElementException), typeof(StaleElementReferenceException));
+            SwitchToQuickFindFrame();
         }
         
-        public BrowserCommandResult<bool> Cancel()
+        public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Cancel"), driver =>
             {
-                driver.SwitchTo().DefaultContent();
+                SwitchToDefaultContent();
 
                 driver.FindElement(By.Id("globalquickcreate_cancel_button_NavBarGloablQuickCreate"))?.Click();
                 return true;
             });
         }
 
-        public BrowserCommandResult<bool> Save()
+        public BrowserCommandResult<bool> Save(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Save"), driver =>
             {
-                driver.SwitchTo().DefaultContent();
+                SwitchToDefaultContent();
 
                 driver.FindElement(By.Id("globalquickcreate_save_button_NavBarGloablQuickCreate"))?.Click();
                 return true;
@@ -52,8 +46,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
-
                 if (driver.HasElement(By.Id(field)))
                 {
                     var input = driver.FindElement(By.Id(field));
@@ -86,8 +78,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
-
                 if (driver.HasElement(By.Id(field)))
                 {
                     var input = driver.FindElement(By.Id(field));
@@ -121,8 +111,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
-
                 if (driver.HasElement(By.Id(field)))
                 {
                     var input = driver.FindElement(By.Id(field));
@@ -183,8 +171,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
-
                 if (driver.HasElement(By.Id("int_" + field)))
                 {
                     var input = driver.FindElement(By.Id("int_" + field));
@@ -203,9 +189,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
-
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
-
                 if (driver.HasElement(By.Id(field)))
                 {
                     var input = driver.FindElement(By.Id(field));
@@ -232,8 +215,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
-
                 if (driver.HasElement(By.Id(field)))
                 {
                     var input = driver.FindElement(By.Id(field));
@@ -262,8 +243,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions(""), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
-
                 if (driver.HasElement(By.Id(field.Id)))
                 {
                     var input = driver.FindElement(By.Id(field.Id));
@@ -292,8 +271,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Value: {option.Name}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
-
                 if (driver.HasElement(By.Id(option.Name)))
                 {
                     var input = driver.FindElement(By.Id(option.Name));
@@ -319,8 +296,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Conposite Control Value: {control.Id}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToQuickFindFrame();
-
                 if (!driver.HasElement(By.Id(control.Id)))
                     return false;
 

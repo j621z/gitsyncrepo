@@ -15,24 +15,15 @@ namespace Microsoft.Dynamics365.UITests.Api
         public string Title { get; set; }
     }
 
-    public class XrmCommandBarPage : BrowserPage
+    public class XrmCommandBarPage : XrmPage
     {
         public XrmCommandBarPage(InteractiveBrowser browser)
             : base(browser)
         {
+            SwitchToDefaultContent();
         }
               
-        internal BrowserCommandOptions GetOptions()
-        {
-            return new BrowserCommandOptions(Constants.DefaultTraceSource,
-                "Ribbon command",
-                0,
-                2000,
-                null,
-                false,
-                typeof(NoSuchElementException), typeof(StaleElementReferenceException));
-        }
-
+        
         private BrowserCommandResult<ReadOnlyCollection<IWebElement>> GetCommands(bool moreCommands = false)
         {
             return this.Execute("Get Command Bar Buttons", driver =>
@@ -51,14 +42,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> ClickCommand(string name, string subName = "", bool moreCommands = false)
+        public BrowserCommandResult<bool> ClickCommand(string name, string subName = "", bool moreCommands = false, int thinkTime = Constants.DefaultThinkTime)
         {
-            //return this.Execute(GetOptions(), this.ClickCommandButton, name);
-            Thread.Sleep(4000);
-            return this.Execute(GetOptions(), driver => 
-            {
-                driver.SwitchTo().DefaultContent();
+            Browser.ThinkTime(thinkTime);
 
+            return this.Execute(GetOptions("Click Command"), driver => 
+            {
                 if (moreCommands)
                     driver.FindElement(By.Id("moreCommands")).Click();
 

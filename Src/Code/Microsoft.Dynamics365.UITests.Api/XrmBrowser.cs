@@ -192,6 +192,18 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         #endregion Dialog
 
+        #region GlobalSearch
+
+        public XrmGlobalSearchPage GlobalSearch
+        {
+            get
+            {
+                return this.GetPage<XrmGlobalSearchPage>();
+            }
+        }
+
+        #endregion GlobalSearch
+
         #region Document
 
         public XrmDocumentPage Document
