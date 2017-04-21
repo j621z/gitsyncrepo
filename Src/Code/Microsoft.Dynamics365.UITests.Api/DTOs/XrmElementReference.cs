@@ -50,7 +50,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Grid_ShowAll"       , "id(\"crmGrid_JumpBar\")/tbody/tr/td[1]"},
             { "Grid_GridTable"       , "id(\"gridBodyTable\")"},
             { "Grid_RowSelect"       , "id(\"gridBodyTable\")/tbody/tr[[INDEX]]/td[1]"},
-            { "Grid_Filter"       , "id(\"filterButtonLink\")/a"},
+            { "Grid_Filter"       , "id(\"filterButtonLink\")"},
             { "Grid_ChartList"       , "id(\"visualizationListLink\")/a"},
             { "Grid_ChartDialog"       , "id(\"Dialog_0\")"},
 
