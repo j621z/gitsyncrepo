@@ -383,7 +383,6 @@ namespace Microsoft.Dynamics365.UITests.Browser
             result.Depth = Depth;
 
             CommandResults.Add(result);
-            Depth--;
         }
 
         #endregion Methods

@@ -33,9 +33,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
                 
                 xrmBrowser.Grid.SwitchView("All Leads");
-
-                xrmBrowser.Grid.FilterByLetter('A');
-
+                
                 xrmBrowser.Grid.OpenRecord(0);
                 
             }

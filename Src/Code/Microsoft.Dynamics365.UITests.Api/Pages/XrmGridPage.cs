@@ -296,8 +296,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <returns></returns>
         public BrowserCommandResult<List<XrmGridItem>> GetGridItems()
         {
-            Browser.ThinkTime(thinkTime);
-
             return this.Execute(GetOptions("Get Grid Items"), driver =>
             {
                 var returnList = new List<XrmGridItem>();
