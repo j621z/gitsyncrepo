@@ -16,7 +16,7 @@ namespace Microsoft.Dynamics365.UITests.Api
     }
 
     public class LoginPage
-        : BrowserPage
+        : XrmPage
     {
         public string[] OnlineDomains { get; set; }
 

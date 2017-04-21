@@ -8,7 +8,7 @@ using Microsoft.Dynamics365.UITests.Browser;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class XrmGuidedHelpPage
-        : BrowserPage
+        : XrmPage
     {
         public XrmGuidedHelpPage(InteractiveBrowser browser)
             : base(browser)

@@ -11,7 +11,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
     /// The XRM Document Page that provides methods to interact with the browswer DOM. 
     /// </summary>
     /// <seealso cref="Microsoft.Dynamics365.UITests.Browser.BrowserPage" />
-    public class XrmDocumentPage : BrowserPage
+    public class XrmDocumentPage : XrmPage
     {
 
         /// <summary>
@@ -23,16 +23,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         {
            
         }
-        internal BrowserCommandOptions GetOptions(string commandName)
-        {
-            return new BrowserCommandOptions(Constants.DefaultTraceSource,
-                commandName,
-                0,
-                0,
-                null,
-                false,
-                typeof(NoSuchElementException), typeof(StaleElementReferenceException));
-        }
+
         /// <summary>
         /// Returns the document element that has the ID attribute with the specified value.
         /// </summary>

@@ -7,7 +7,7 @@ using Microsoft.Dynamics365.UITests.Browser;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class Office365XrmInstancePickerPage
-        : BrowserPage
+        : XrmPage
     {
         public Office365XrmInstancePickerPage(InteractiveBrowser browser)
             : base(browser)

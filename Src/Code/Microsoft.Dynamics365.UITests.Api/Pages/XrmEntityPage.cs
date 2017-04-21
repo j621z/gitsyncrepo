@@ -20,8 +20,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         private readonly string _navigateDownCssSelector = "img.recnav-down.ms-crm-ImageStrip-Down_Enabled_proxy";
         private readonly string _navigateUpCssSelector = "img.recnav-up.ms-crm-ImageStrip-Up_Enabled_proxy";
 
-        public BrowserCommandResult<bool> OpenEntity(string entityName, Guid id)
+        public BrowserCommandResult<bool> OpenEntity(string entityName, Guid id, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Open: {entityName} {id}"), driver =>
             {
                 var uri = new Uri(this.Browser.Driver.Url);
@@ -30,8 +32,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> OpenEntity(Uri uri)
+        public BrowserCommandResult<bool> OpenEntity(Uri uri, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute($"Open: {uri}", driver =>
             {
                 driver.Navigate().GoToUrl(uri);
@@ -42,9 +46,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> NavigateDown()
+        public BrowserCommandResult<bool> NavigateDown(int thinkTime = Constants.DefaultThinkTime)
         {
-            //return this.Execute("Navigate Down", NavigateUpDown, _navigateDownCssSelector);
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Navigate Down"), driver =>
             {
                 if (!driver.HasElement(By.CssSelector(_navigateDownCssSelector)))
@@ -60,9 +65,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> NavigateUp()
+        public BrowserCommandResult<bool> NavigateUp(int thinkTime = Constants.DefaultThinkTime)
         {
-            //return this.Execute("Navigate Down", NavigateUpDown, _navigateUpCssSelector);
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Navigate Up"), driver =>
             {
                 if (!driver.HasElement(By.CssSelector(_navigateUpCssSelector)))
@@ -78,12 +84,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> SelectForm(string name)
+        public BrowserCommandResult<bool> SelectForm(string name, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"SelectForm: {name}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 driver.FindElement(By.Id("formselectorcontainer"))?.FindElement(By.TagName("a"))?.Click();
                 var items = driver.FindElements(By.ClassName("ms-crm-FS-MenuItem-Title"));
                 items.Where(x => x.Text == name).FirstOrDefault()?.Click();
@@ -161,8 +167,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver => 
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (driver.HasElement(By.Id(field)))
                 {
                     var input = driver.FindElement(By.Id(field));
@@ -195,8 +199,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver=> 
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (driver.HasElement(By.Id(field)))
                 {
                     var input = driver.FindElement(By.Id(field));
@@ -230,8 +232,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver=> 
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (driver.HasElement(By.Id(field)))
                 {
                     var input = driver.FindElement(By.Id(field));
@@ -281,48 +281,48 @@ namespace Microsoft.Dynamics365.UITests.Api
             return dictionary;
         }
 
-        public BrowserCommandResult<bool> Popout()
+        public BrowserCommandResult<bool> Popout(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Popout"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 driver.FindElement(By.ClassName("ms-crm-ImageStrip-popout"))?.Click();
 
                 return true;
             });
         }
 
-        public BrowserCommandResult<bool> ClickSubgridAddButton(string subgridName)
+        public BrowserCommandResult<bool> ClickSubgridAddButton(string subgridName, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Click add button of {subgridName}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 driver.FindElement(By.Id($"{subgridName}_addImageButton"))?.Click();
 
                 return true;
             });
         }
 
-        public BrowserCommandResult<bool> ClickSubgridGridViewButton(string subgridName)
+        public BrowserCommandResult<bool> ClickSubgridGridViewButton(string subgridName, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Click GridView button of {subgridName}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 driver.FindElement(By.Id($"{subgridName}_openAssociatedGridViewImageButtonImage"))?.Click();
 
                 return true;
             });
         }
 
-        public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName, string value)
+        public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName, string value, int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions($"Set Lookup Value for Subgrid {subgridName}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
                     var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
@@ -351,8 +351,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value for Subgrid {subgridName}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
                     var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
@@ -380,8 +378,6 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Lookup Value for Subgrid {subgridName}"), driver =>
             {
-                this.Browser.GetPage<XrmNavigationPage>().SwitchToContentFrame();
-
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
                     var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
@@ -407,8 +403,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Closes the current entity record you are on.
         /// </summary>
         /// <returns></returns>
-        public BrowserCommandResult<bool> CloseEntity()
+        public BrowserCommandResult<bool> CloseEntity(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute(GetOptions("Close Entity"), driver =>
             {
                 var filter = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Entity.Close]),

@@ -8,15 +8,17 @@ using Microsoft.Dynamics365.UITests.Browser;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     public class XrmNotficationPage
-        : BrowserPage
+        : XrmPage
     {
         public XrmNotficationPage(InteractiveBrowser browser)
             : base(browser)
         {
         }
         
-        public BrowserCommandResult<bool> CloseNotifications()
+        public BrowserCommandResult<bool> CloseNotifications(int thinkTime = Constants.DefaultThinkTime)
         {
+            Browser.ThinkTime(thinkTime);
+
             return this.Execute("Close Notifications", driver =>
             {
                 Thread.Sleep(2000);
