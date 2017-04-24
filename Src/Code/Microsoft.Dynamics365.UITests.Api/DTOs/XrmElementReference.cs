@@ -22,6 +22,9 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Dialog_CloseOpportunityOk"       , "id(\"ok_id\")"},
             { "Dialog_AssignOk"       , "id(\"ok_id\")"},
             { "Dialog_DeleteOk"       , "id(\"butBegin\")"},
+            { "Dialog_DuplicateOk"       , "id(\"butBegin\")"},
+            { "Dialog_DuplicateCancel"       , "id(\"cmdDialogCancel\")"},
+
 
             //Frames
             { "Frame_ContentPanel"       , "id(\"crmContentPanel\")"},
@@ -56,6 +59,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             //Entity
             { "Entity_Close"       , "id(\"closeButton\")"},
+            { "Entity_Save"       , "id(\"savefooter_statuscontrol\")"},
 
             //Global Search
             { "Search_Filter"       , "id(\"filterCombo\")"},
@@ -149,7 +153,13 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 public static string Ok = "Dialog_SwitchProcessTitleClass";
             }
+            public static class DuplicateDetection
+            {
+                public static string Save = "Dialog_DuplicateOk";
+                public static string Cancel = "Dialog_DuplicateCancel";
             
+            }
+
         }
         public static class SetValue
         {
@@ -201,6 +211,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             public static string Close = "Entity_Close";
             public static string Tab = "Entity_TabId";
+            public static string Save = "Entity_Save";
         }
 
         public static class GlobalSearch
