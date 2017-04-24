@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.Events;
 namespace Microsoft.Dynamics365.UITests.UnitTests
 {
     [TestClass]
-    public class OpenLead
+    public class RunWorkFlow
     {
 
         private readonly SecureString _username = System.Configuration.ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();
@@ -18,7 +18,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void OpenActiveLead()
+        public void RunWorkFlowTest()
         {
             using (var xrmBrowser = new XrmBrowser(new BrowserOptions
             {
@@ -29,14 +29,19 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
-                
-                xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
-                
-                xrmBrowser.Grid.SwitchView("All Leads");
-                
+
+                Thread.Sleep(500);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
+
+                Thread.Sleep(2000);
+                xrmBrowser.Grid.SwitchView("Active Accounts");
+
+                Thread.Sleep(1000);
                 xrmBrowser.Grid.OpenRecord(0);
 
-                
+                xrmBrowser.Dialogs.RunWorkFlowCommand();
+
+                Thread.Sleep(10000);
             }
         }
     }

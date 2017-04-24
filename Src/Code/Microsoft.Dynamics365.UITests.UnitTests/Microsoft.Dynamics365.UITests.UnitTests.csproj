@@ -118,7 +118,9 @@
     <Compile Include="BusinessProcessFlow\BusinessProcessFlow.cs" />
     <Compile Include="CommandBar\CommandButton.cs" />
     <Compile Include="CustomerScenarios\AA_CreateLead.cs" />
+    <Compile Include="Dashboard\Dashboard.cs" />
     <Compile Include="Dialogs\CloseOpportunity.cs" />
+    <Compile Include="Dialogs\RunWorkFlow.cs" />
     <Compile Include="EndUserScenerios\RelatedTest.cs" />
     <Compile Include="EndUserScenerios\LeadSubgridTest.cs" />
     <Compile Include="EndUserScenerios\QuickCreateAccountTest.cs" />
@@ -164,6 +166,9 @@
       <Project>{bf80d7f6-a20a-4e4c-a956-b0f4b38c429d}</Project>
       <Name>Microsoft.Dynamics365.UITests.Translation</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EndUserScenerios\Entity\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

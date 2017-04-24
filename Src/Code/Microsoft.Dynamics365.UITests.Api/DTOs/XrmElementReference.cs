@@ -235,5 +235,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string PostText = "Notes_PostText";
             public static string PostButton = "Notes_PostButton";
         }
+
+        public static class DashBoard
+        {
+            public static string NotesControl = "Notes_NotesControl";
+            public static string NotesWall = "Notes_NotesWall";
+        }
     }
 }
