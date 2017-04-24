@@ -142,5 +142,31 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
+        /// <summary>
+        /// Selects RunWorkFlow from the MoreCommands.
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
+
+        public BrowserCommandResult<bool> RunWorkFlowCommand(int thinkTime = Constants.DefaultThinkTime)
+        {
+            Browser.ThinkTime(thinkTime);
+
+            return this.Execute(GetOptions("Run WorkFlow Command"), driver =>
+            {
+                driver.FindElement(By.Id("moreCommands")).Click();
+
+                var runWorkFlow = driver.FindElement(By.ClassName("ms-crm-ImageStrip-StartWorkflow_16"));
+                runWorkFlow.Click();
+
+                var addWorkFlow = driver.WaitUntilAvailable(By.Id("crmDialogFooter"));
+                addWorkFlow.FindElement(By.Id("butBegin")).Click();
+
+
+                driver.WaitForPageToLoad();
+                return true;
+            });
+        }
     }
 }

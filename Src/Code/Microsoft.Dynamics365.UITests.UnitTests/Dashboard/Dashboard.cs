@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.Events;
 namespace Microsoft.Dynamics365.UITests.UnitTests
 {
     [TestClass]
-    public class OpenLead
+    public class Dashboard
     {
 
         private readonly SecureString _username = System.Configuration.ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();
@@ -18,7 +18,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void OpenActiveLead()
+        public void SwitchDashboard()
         {
             using (var xrmBrowser = new XrmBrowser(new BrowserOptions
             {
@@ -29,13 +29,12 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
-                
-                xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
-                
-                xrmBrowser.Grid.SwitchView("All Leads");
-                
-                xrmBrowser.Grid.OpenRecord(0);
 
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Dashboards");
+
+                //xrmBrowser.Dashboard.SelectDashBoard("Sales Dashboard");
+
+                xrmBrowser.Dashboard.SelectDashBoard("Sales Performance Dashboard");
                 
             }
         }

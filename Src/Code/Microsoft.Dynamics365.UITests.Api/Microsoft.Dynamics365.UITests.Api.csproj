@@ -65,6 +65,7 @@
     <Compile Include="DTOs\XrmPerformanceMarker.cs" />
     <Compile Include="LoginRedirectEventArgs.cs" />
     <Compile Include="Office365Browser.cs" />
+    <Compile Include="Pages\XrmDashboardPage.cs" />
     <Compile Include="Pages\XrmGlobalSearchPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\Office365NavigationPage.cs" />
