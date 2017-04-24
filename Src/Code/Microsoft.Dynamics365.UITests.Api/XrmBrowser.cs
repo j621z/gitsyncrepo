@@ -96,6 +96,18 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         #endregion Views
 
+        #region DashBoards
+
+        public XrmDashboardPage Dashboard
+        {
+            get
+            {
+                return this.GetPage<XrmDashboardPage>();
+            }
+        }
+
+        #endregion DashBoards
+
         #region Forms
 
         public XrmEntityPage Entity

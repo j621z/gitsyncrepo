@@ -116,7 +116,9 @@ namespace Microsoft.Dynamics365.UITests.Api
                     {
                         fieldElement.FindElement(By.TagName("input")).Clear();
                         fieldElement.FindElement(By.TagName("input")).SendKeys(value);
+
                     }
+
 
                 }
                 else
@@ -283,6 +285,50 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
+        /// <summary>
+        /// Gets the value of a Text/Description field.
+        /// </summary>
+        /// <param name="field">The field id.</param>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        //public BrowserCommandResult<string> GetValue(string field)
+        //{
+        //    //return this.Execute($"Set Value: {field}", SetValue, field, value);
+        //    return this.Execute($"Get Value: {field}", driver =>
+        //    {
+        //        if (driver.HasElement(By.Id(field)))
+        //        {
+        //            var fieldElement = driver.FindElement(By.Id(field));
+        //            fieldElement.Click();
+
+        //            if (fieldElement.FindElements(By.TagName("textarea")).Count > 0)
+        //            {
+        //                var fieldValue = fieldElement.FindElement(By.TagName("textarea")).Text;
+        //            }
+        //            else
+        //            {
+        //                var link = fieldElement.FindElement(By.ClassName("ms-crm-gridurl"));
+        //                if (link != null)
+        //                {
+        //                    var fieldValue = link.Text;
+        //                }
+        //                else
+        //                {
+        //                    return fieldElement.FindElement(By.TagName("label")).Text;
+        //                }
+
+        //            }
+
+        //           // var text = fieldElement.FindElement(By.ClassName("ms-crm-gridurl")).Text;
+
+        //        }
+        //        else
+        //            throw new InvalidOperationException($"Field: {field} Does not exist");
+
+        //        return true;
+        //    });
+        //}
 
         /// <summary>
         /// Switches to content frame in the CRM application.
