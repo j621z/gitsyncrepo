@@ -72,7 +72,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                     Thread.Sleep(1500);
                     perf.ToggleVisibility();
                     Dictionary<string,XrmPerformanceMarker>  perfResults = perf.GetMarkers();
-
+                    
                     
                     //Iterate through markers
                 }

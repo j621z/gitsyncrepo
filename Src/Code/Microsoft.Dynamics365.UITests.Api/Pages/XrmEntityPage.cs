@@ -417,6 +417,11 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+        /// <summary>
+        /// Saves the specified entity record.
+        /// </summary>
+        /// <param name="thinkTime">The think time.</param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Save(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
