@@ -417,5 +417,24 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+        /// <summary>
+        /// Saves the specified entity record.
+        /// </summary>
+        /// <param name="thinkTime">The think time.</param>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> Save(int thinkTime = Constants.DefaultThinkTime)
+        {
+            Browser.ThinkTime(thinkTime);
+
+            return this.Execute(GetOptions("Save Entity"), driver =>
+            {
+                var save = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Entity.Save]),
+                    "Save Buttton is not available");
+
+                save?.Click();
+
+                return true;
+            });
+        }
     }
 }

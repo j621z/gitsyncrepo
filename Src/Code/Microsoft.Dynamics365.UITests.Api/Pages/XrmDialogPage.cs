@@ -144,27 +144,50 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// Selects RunWorkFlow from the MoreCommands.
+        /// Checks for Duplicate Detection Dialog. If duplicate detection is enable then you can confirm the save or cancel.
         /// </summary>
-        /// <param name="thinkTime"></param>
+        /// <param name="save">If set to <c>true</c> Save the record otherwise it will cancel.</param>
+        /// <param name="thinkTime">The think time.</param>
         /// <returns></returns>
-
-        public BrowserCommandResult<bool> RunWorkFlowCommand(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> DuplicateDetection(bool save, int thinkTime = Constants.DefaultThinkTime)
         {
-            Browser.ThinkTime(thinkTime);
+            this.Browser.ThinkTime(thinkTime);
 
-            return this.Execute(GetOptions("Run WorkFlow Command"), driver =>
+            return this.Execute("Duplicate Detection", driver =>
             {
-                driver.FindElement(By.Id("moreCommands")).Click();
+                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.Header]), 
+                                            new TimeSpan(0, 0, 10), 
+                                            d => //If duplicate detection dialog shows up
+                 {
 
-                var runWorkFlow = driver.FindElement(By.ClassName("ms-crm-ImageStrip-StartWorkflow_16"));
-                runWorkFlow.Click();
+                     if (save)
+                         driver.FindElement(By.XPath(Elements.Xpath[Reference.Dialogs.DuplicateDetection.Save]))
+                                 .Click();
+                     else
+                         driver.FindElement(By.XPath(Elements.Xpath[Reference.Dialogs.DuplicateDetection.Cancel]))
+                                 .Click();
+                 });
 
-                var addWorkFlow = driver.WaitUntilAvailable(By.Id("crmDialogFooter"));
-                addWorkFlow.FindElement(By.Id("butBegin")).Click();
+                return true;
+            });
+        }
 
+        public BrowserCommandResult<bool> RunWorkflow(string name, int thinkTime = Constants.DefaultThinkTime)
+        {
+            this.Browser.ThinkTime(thinkTime);
 
-                driver.WaitForPageToLoad();
+            return this.Execute("Run Workflow", driver =>
+            {
+                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.Header]),
+                                          new TimeSpan(0, 0, 10),
+                                          "The Delete dialog is not available.");
+
+                var lookup = this.Browser.GetPage<XrmLookupPage>();
+
+                lookup.Search(name);
+                lookup.SelectItem(name);
+                lookup.Select();
+
                 return true;
             });
         }
