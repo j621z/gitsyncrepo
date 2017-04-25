@@ -260,6 +260,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
             }))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+                xrmBrowser.GuidedHelp.CloseGuidedHelp();
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
                 xrmBrowser.Grid.SwitchView("Open Leads");
                 xrmBrowser.Grid.OpenChart();
