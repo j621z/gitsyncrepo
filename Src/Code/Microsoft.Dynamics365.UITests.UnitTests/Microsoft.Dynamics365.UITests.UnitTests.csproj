@@ -121,6 +121,7 @@
     <Compile Include="Dashboard\Dashboard.cs" />
     <Compile Include="Dialogs\CloseOpportunity.cs" />
     <Compile Include="Dialogs\RunWorkFlow.cs" />
+    <Compile Include="EndUserScenerios\Entity\GetValue.cs" />
     <Compile Include="EndUserScenerios\RelatedTest.cs" />
     <Compile Include="EndUserScenerios\LeadSubgridTest.cs" />
     <Compile Include="EndUserScenerios\QuickCreateAccountTest.cs" />
@@ -167,9 +168,7 @@
       <Name>Microsoft.Dynamics365.UITests.Translation</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EndUserScenerios\Entity\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
