@@ -22,6 +22,9 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Dialog_CloseOpportunityOk"       , "id(\"ok_id\")"},
             { "Dialog_AssignOk"       , "id(\"ok_id\")"},
             { "Dialog_DeleteOk"       , "id(\"butBegin\")"},
+            { "Dialog_DuplicateOk"       , "id(\"butBegin\")"},
+            { "Dialog_DuplicateCancel"       , "id(\"cmdDialogCancel\")"},
+
 
             //Frames
             { "Frame_ContentPanel"       , "id(\"crmContentPanel\")"},
@@ -56,6 +59,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             //Entity
             { "Entity_Close"       , "id(\"closeButton\")"},
+            { "Entity_Save"       , "id(\"savefooter_statuscontrol\")"},
 
             //Global Search
             { "Search_Filter"       , "id(\"filterCombo\")"},
@@ -63,7 +67,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Search_Button"       , "id(\"SearchButton\")"},
             { "Search_Result"       , "id(\"contentResult\")"},
             
-            //RecordWall
+            //ActivityFeed
             { "Notes_NotesControl"       , "id(\"notescontrol\")"},
             { "Notes_NotesWall"       , "id(\"notesWall\")"},
             { "Notes_NotesText"       , "id(\"createNote_notesTextBox\")"},
@@ -71,8 +75,25 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Notes_PostWall"       , "id(\"activityFeedsWall\")"},
             { "Notes_PostButton"       , "id(\"postButton\")"},
             { "Notes_PostText"       , "id(\"postTextBox\")"},
-            
-        };
+            { "Notes_ActivityWall"       , "id(\"notescontrolactivityContainer_notescontrol\")"},
+            { "Notes_ActivityStatusFilter"       , "id(\"activityWallFilterButton\")"},
+            { "Notes_ActivityStatusFilterDialog"       , "id(\"moreActivitiesList\")"},
+            { "Notes_ActivityStatusAll"       , "id(\"AllActivitiesButton\")"},
+            { "Notes_ActivityStatusOpen"       , "id(\"OpenActivitiesButton\")"},
+            { "Notes_ActivityStatusOverdue"       , "id(\"OverdueActivitiesButton\")"},
+            { "Notes_ActivityAssociatedView"       , "id(\"OpenAssociatedGridView\")"},
+            { "Notes_ActivityPhoneCallOk"       , "id(\"save4210QuickCreateButton\")"},
+            { "Notes_ActivityTaskOk", "id(\"save4212QuickCreateButton\")"},
+            { "Notes_ActivityMoreActivities", "id(\"moreActivitiesButton\")"},
+
+            { "Notes_ActivityAddEmail", "id(\"AddemailButton\")"},
+            { "Notes_ActivityAddAppointment", "id(\"AddappointmentButton\")"},
+            { "Notes_ActivityAddPhoneCall", "id(\"activityLabelinlineactivitybar4210\")"},
+            { "Notes_ActivityAddTask", "id(\"activityLabelinlineactivitybar4212\")"},
+
+
+
+    };
 
         public static Dictionary<string, string> ElementId = new Dictionary<string, string>()
         {
@@ -90,12 +111,21 @@ namespace Microsoft.Dynamics365.UITests.Api
             //Entity
             { "Entity_TabId"       , "[NAME]_TAB_headerText_anchor"},
 
-            //Global Searc
+            //Global Search
             { "Search_EntityNameId"       , "entityName"},
             { "Search_RecordNameId"       , "attribone"},
-            
 
-        };
+            //ActivityFeed
+            { "Notes_ActivityPhoneCallDescId"       , "quickCreateActivity4210controlId_description_i"},
+            { "Notes_ActivityPhoneCallVoiceMailId"       , "PhoneCallQuickformleftvoiceCheckBoxContol"},
+            { "Notes_ActivityPhoneCallDirectionId"       , "quickCreateActivity4210controlId_directioncode_i"},
+            { "Notes_ActivityTaskSubjectId"      , "quickCreateActivity4212controlId_subject_i"},
+            { "Notes_ActivityTaskDescriptionId"      , "quickCreateActivity4212controlId_description_i"},
+            { "Notes_ActivityTaskScheduledEndId"      , "quickCreateActivity4212controlId_scheduledend_iDateInput"},
+            { "Notes_ActivityTaskPriorityId"      , "quickCreateActivity4212controlId_prioritycode_i"},
+
+
+    };
 
         public static Dictionary<string, string> CssClass = new Dictionary<string, string>()
         {
@@ -149,7 +179,13 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 public static string Ok = "Dialog_SwitchProcessTitleClass";
             }
+            public static class DuplicateDetection
+            {
+                public static string Save = "Dialog_DuplicateOk";
+                public static string Cancel = "Dialog_DuplicateCancel";
             
+            }
+
         }
         public static class SetValue
         {
@@ -201,6 +237,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             public static string Close = "Entity_Close";
             public static string Tab = "Entity_TabId";
+            public static string Save = "Entity_Save";
         }
 
         public static class GlobalSearch
@@ -214,7 +251,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string RecordNameId = "Search_RecordNameId";
         }
 
-        public static class RecordWall
+        public static class ActivityFeed
         {
             public static string NotesControl = "Notes_NotesControl";
             public static string NotesWall = "Notes_NotesWall";
@@ -223,6 +260,28 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string PostWall = "Notes_PostWall";
             public static string PostText = "Notes_PostText";
             public static string PostButton = "Notes_PostButton";
+            public static string ActivityWall = "Notes_ActivityWall";
+            public static string ActivityStatusFilter = "Notes_ActivityStatusFilter";
+            public static string ActivityStatusFilterDialog = "Notes_ActivityStatusFilterDialog";
+            public static string ActivityStatusAll = "Notes_ActivityStatusAll";
+            public static string ActivityStatusOpen = "Notes_ActivityStatusOpen";
+            public static string ActivitySTatusOverdue = "Notes_ActivityStatusOverdue";
+            public static string ActivityAssociatedView = "Notes_ActivityAssociatedView";
+            public static string ActivityPhoneCallDescriptionId = "Notes_ActivityPhoneCallDescId";
+            public static string ActivityPhoneCallVoiceMailId = "Notes_ActivityPhoneCallVoiceMailId";
+            public static string ActivityPhoneCallDirectionId = "Notes_ActivityPhoneCallDirectionId";
+            public static string ActivityPhoneCallOk = "Notes_ActivityPhoneCallOk";
+            public static string ActivityTaskOk = "Notes_ActivityTaskOk";
+            public static string ActivityTaskSubjectId = "Notes_ActivityTaskSubjectId";
+            public static string ActivityTaskDescriptionId = "Notes_ActivityTaskDescriptionId";
+            public static string ActivityTaskScheduledEndId = "Notes_ActivityTaskScheduledEndId";
+            public static string ActivityTaskPriorityId = "Notes_ActivityTaskPriorityId";
+            public static string ActivityMoreActivities = "Notes_ActivityMoreActivities";
+            public static string ActivityAddEmail = "Notes_ActivityAddEmail";
+            public static string ActivityAddAppointment = "Notes_ActivityAddAppointment";
+            public static string ActivityAddPhoneCall = "Notes_ActivityAddPhoneCall";
+            public static string ActivityAddTask = "Notes_ActivityAddTask";
+
         }
 
         public static class DashBoard
