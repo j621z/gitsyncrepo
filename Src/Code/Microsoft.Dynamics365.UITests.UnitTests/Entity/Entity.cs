@@ -16,8 +16,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly SecureString _password = System.Configuration.ConfigurationManager.AppSettings["OnlinePassword"].ToSecureString();
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
-
-
         [TestMethod]
         public void OpenEntity()
         {
@@ -64,8 +62,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Grid.OpenRecord(2);
                 xrmBrowser.Entity.NavigateUp();
                 Thread.Sleep(5000);
-
-
             }
         }
 
@@ -91,8 +87,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Grid.OpenRecord(1);
                 xrmBrowser.Entity.NavigateDown();
                 Thread.Sleep(5000);
-
-
             }
         }
         [TestMethod]
@@ -112,7 +106,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Entity.SelectTab("Summary");
                 Thread.Sleep(1000);
-
             }
         }
 
@@ -133,7 +126,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Entity.Popout();
 
                 Thread.Sleep(10000);
-
             }
         }
 
@@ -179,7 +171,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Entity.Save();
 
                 Thread.Sleep(5000);
-
             }
         }
 
@@ -201,7 +192,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Entity.CloseEntity();
 
                 Thread.Sleep(5000);
-
             }
         }
 
@@ -225,7 +215,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Entity.ExpandTab("Summary");
 
                 Thread.Sleep(5000);
-
             }
         }
 
@@ -249,7 +238,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Entity.SelectTab("Details");
 
                 Thread.Sleep(5000);
-
             }
         }
 
@@ -272,7 +260,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Entity.SelectForm("Details");
 
                 Thread.Sleep(5000);
-
             }
         }
     }

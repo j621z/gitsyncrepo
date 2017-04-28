@@ -39,7 +39,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 Thread.Sleep(1000);
                 xrmBrowser.Grid.OpenRecord(0);
 
-                xrmBrowser.Dialogs.RunWorkFlowCommand();
+                xrmBrowser.Dialogs.RunWorkflow("Account Set Phone Number");
 
                 Thread.Sleep(10000);
             }
