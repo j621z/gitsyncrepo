@@ -228,6 +228,18 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         #endregion Document
 
+        #region Document
+
+        public XrmActivityFeedPage ActivityFeed
+        {
+            get
+            {
+                return this.GetPage<XrmActivityFeedPage>();
+            }
+        }
+
+        #endregion Document
+
     }
 
 

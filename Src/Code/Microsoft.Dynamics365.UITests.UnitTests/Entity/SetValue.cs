@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.Events;
 namespace Microsoft.Dynamics365.UITests.UnitTests
 {
     [TestClass]
-    public class GetValue
+    public class SetValue
     {
 
         private readonly SecureString _username = System.Configuration.ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();
@@ -18,7 +18,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void GetValueFromOpenActiveLead()
+        public void SetValues()
         {
             using (var xrmBrowser = new XrmBrowser(new BrowserOptions
             {
@@ -38,19 +38,19 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 List<Field> fields = new List<Field>
                 {
-                    new Field() {Id = "firstname"},
-                    new Field() {Id = "lastname"}
+                    new Field() {Id = "firstname", Value = "Test"},
+                    new Field() {Id = "lastname", Value = "Lead"}
                 };
+                xrmBrowser.Entity.SetValue("subject", "Test API Lead");
+                xrmBrowser.Entity.SetValue(new CompositeControl() { Id = "fullname", Fields = fields });
+                xrmBrowser.Entity.SetValue("mobilephone", "555-555-5555");
+                xrmBrowser.Entity.SetValue("description", "Test lead creation with API commands");
 
-                string subject = xrmBrowser.Entity.GetValue("subject");
-                string mobilePhone = xrmBrowser.Entity.GetValue("mobilephone");
-                string fullName = xrmBrowser.Entity.GetValue(new CompositeControl() { Id = "fullname", Fields = fields });
             }
         }
 
-
         [TestMethod]
-        public void GetValueFromOpenContact()
+        public void SelectOptionSetValue()
         {
             using (var xrmBrowser = new XrmBrowser(new BrowserOptions
             {
@@ -71,15 +71,13 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 Thread.Sleep(5000);
                 xrmBrowser.Grid.OpenRecord(0);
 
-                string birthDate = xrmBrowser.Entity.GetValue("birthdate");
-                string options = xrmBrowser.Entity.GetValue(new OptionSet { Name = "preferredcontactmethodcode"});
-                
+                xrmBrowser.Entity.SetValue(new OptionSet { Name = "preferredcontactmethodcode", Value = "Email" });
 
             }
         }
 
         [TestMethod]
-        public void GetValueFromActiveAccounts()
+        public void OpenLookupSetValue()
         {
             using (var xrmBrowser = new XrmBrowser(new BrowserOptions
             {
@@ -100,7 +98,34 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 Thread.Sleep(5000);
                 xrmBrowser.Grid.OpenRecord(0);
 
-                string lookupValue = xrmBrowser.Entity.GetValue(new Lookup { Name = "primarycontactid" });
+                xrmBrowser.Entity.SetValue(new Lookup { Name = "primarycontactid",Value = "Rene Valdes (sample)" });
+
+            }
+        }
+
+        [TestMethod]
+        public void SelectDateSetValue()
+        {
+            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
+            {
+                BrowserType = BrowserType.Chrome,
+                PrivateMode = true,
+                FireEvents = true
+            }))
+            {
+                xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+                xrmBrowser.GuidedHelp.CloseGuidedHelp();
+
+                Thread.Sleep(500);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Contacts");
+
+                Thread.Sleep(2000);
+                xrmBrowser.Grid.SwitchView("Active Contacts");
+
+                Thread.Sleep(5000);
+                xrmBrowser.Grid.OpenRecord(0);
+
+                xrmBrowser.Entity.SetValue("birthdate", DateTime.Parse("11/1/1980"));
 
             }
         }
