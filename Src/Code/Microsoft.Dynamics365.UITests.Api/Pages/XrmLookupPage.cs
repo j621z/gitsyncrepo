@@ -193,7 +193,9 @@ namespace Microsoft.Dynamics365.UITests.Api
                     if (primary.Text == value)
                     {
                         var checkbox = item.FindElements(By.TagName("td"))[0];
-                        checkbox.Click();
+
+                        if(item.GetAttribute("selected") != "true")
+                            checkbox.Click();
                         break;
                     }
                 }

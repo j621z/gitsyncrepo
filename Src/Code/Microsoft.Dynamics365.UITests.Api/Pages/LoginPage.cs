@@ -92,13 +92,16 @@ namespace Microsoft.Dynamics365.UITests.Api
                         // Pause for validation (just in case)
                         Thread.Sleep(500);
 
-                        d.ClickWhenAvailable(By.Id("cred_sign_in_button"), new TimeSpan(0, 0, 2));                        
+                        d.ClickWhenAvailable(By.Id("cred_sign_in_button"), new TimeSpan(0, 0, 2));
+
+                        d.WaitForPageToLoad();
                     },
                     d =>
                     {
                         redirectAction?.Invoke(new LoginRedirectEventArgs(username, password, d));
 
                         redirect = true;
+
                     });
             }
 
