@@ -19,11 +19,13 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             //Dialogs
             { "Dialog_Header"       , "id(\"dialogHeaderTitle\")"},
+            { "Dialog_WorkflowHeader", "id(\"DlgHdContainer\")" },
             { "Dialog_CloseOpportunityOk"       , "id(\"ok_id\")"},
             { "Dialog_AssignOk"       , "id(\"ok_id\")"},
             { "Dialog_DeleteOk"       , "id(\"butBegin\")"},
             { "Dialog_DuplicateOk"       , "id(\"butBegin\")"},
             { "Dialog_DuplicateCancel"       , "id(\"cmdDialogCancel\")"},
+            { "Dialog_ConfirmWorkflow"       , "id(\"butBegin\")"},
 
 
             //Frames
@@ -99,8 +101,8 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             //Frames
             { "Frame_ContentFrameId"       , "currentcontentid"},
-            { "Frame_DialogFrameId"       , "InlineDialog_Iframe"},
-            { "Frame_QuickFindFrame"       , "InlineDialog_Iframe"},
+            { "Frame_DialogFrameId"       , "InlineDialog[INDEX]_Iframe"},
+            { "Frame_QuickFindFrameId"       , "NavBarGloablQuickCreate"},
 
             //Dialogs
             { "Dialog_ActualRevenue"       , "actualrevenue_id"},
@@ -158,6 +160,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public static class Dialogs
         {
             public static string Header = "Dialog_Header";
+            public static string WorkflowHeader = "Dialog_WorkflowHeader";
 
             public static class CloseOpportunity
             {
@@ -184,6 +187,11 @@ namespace Microsoft.Dynamics365.UITests.Api
                 public static string Save = "Dialog_DuplicateOk";
                 public static string Cancel = "Dialog_DuplicateCancel";
             
+            }
+
+            public static class RunWorkflow
+            {
+                public static string Confirm = "Dialog_ConfirmWorkflow";
             }
 
         }

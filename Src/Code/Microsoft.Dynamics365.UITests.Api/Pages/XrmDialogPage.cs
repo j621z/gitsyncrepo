@@ -178,16 +178,18 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute("Run Workflow", driver =>
             {
-                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.Header]),
+                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.WorkflowHeader]),
                                           new TimeSpan(0, 0, 10),
-                                          "The Delete dialog is not available.");
+                                          "The RunWorkflow dialog is not available.");
 
                 var lookup = this.Browser.GetPage<XrmLookupPage>();
 
                 lookup.Search(name);
                 lookup.SelectItem(name);
-                lookup.Select();
+                lookup.Add();
 
+                SwitchToDialogFrame(1);
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Dialogs.RunWorkflow.Confirm])).Click();
                 return true;
             });
         }

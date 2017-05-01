@@ -28,11 +28,8 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
-
-                Thread.Sleep(500);
-
+                
                 xrmBrowser.Navigation.GlobalSearch("Contoso");
-                Thread.Sleep(4000);
 
 
             }
