@@ -33,7 +33,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public BrowserCommandResult<bool> CloseOpportunity(double revenue, DateTime closeDate, string description, int thinkTime = Constants.DefaultThinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
-            return this.Execute("Close Opportunity", driver =>
+            return this.Execute(GetOptions("Close Opportunity"), driver =>
             {
                 driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.Header]),
                                           new TimeSpan(0, 0, 10), 
@@ -61,7 +61,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             this.Browser.ThinkTime(thinkTime);
 
-            return this.Execute("Assign", driver =>
+            return this.Execute(GetOptions("Assign"), driver =>
             {
                 driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.Header]),
                                           new TimeSpan(0, 0, 10),
@@ -96,9 +96,9 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             this.Browser.ThinkTime(thinkTime);
 
-            return this.Execute("Delete", driver =>
+            return this.Execute(GetOptions("Delete"), driver =>
             {
-                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.Header]),
+                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.DeleteHeader]),
                                           new TimeSpan(0, 0, 10),
                                           "The Delete dialog is not available.");
 
@@ -119,7 +119,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             this.Browser.ThinkTime(thinkTime);
 
-            return this.Execute("Delete", driver =>
+            return this.Execute(GetOptions("Delete"), driver =>
             {
                 driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.Header]),
                                           new TimeSpan(0, 0, 10),
@@ -153,10 +153,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             this.Browser.ThinkTime(thinkTime);
 
-            return this.Execute("Duplicate Detection", driver =>
+            return this.Execute(GetOptions("Duplicate Detection"), driver =>
             {
                 driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.Header]), 
-                                            new TimeSpan(0, 0, 10), 
+                                            new TimeSpan(0, 0, 5), 
                                             d => //If duplicate detection dialog shows up
                  {
 
@@ -176,7 +176,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             this.Browser.ThinkTime(thinkTime);
 
-            return this.Execute("Run Workflow", driver =>
+            return this.Execute(GetOptions("Run Workflow"), driver =>
             {
                 driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.WorkflowHeader]),
                                           new TimeSpan(0, 0, 10),

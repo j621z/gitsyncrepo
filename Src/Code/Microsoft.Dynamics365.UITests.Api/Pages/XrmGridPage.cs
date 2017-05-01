@@ -176,7 +176,8 @@ namespace Microsoft.Dynamics365.UITests.Api
                 // We can check if any record selected by using
                 // driver.FindElements(By.ClassName("ms-crm-List-SelectedRow")).Count == 0
                 // but this function doesn't check it.
-
+                
+               
                 driver.FindElement(By.Id("chkAll"))?.Click();
 
                 return true;

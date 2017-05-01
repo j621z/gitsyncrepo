@@ -98,6 +98,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
+                    driver.WaitUntilAvailable(By.Id(field),$"The Field: {field} is not available.");
+
                     var fieldElement = driver.FindElement(By.Id(field));
                     fieldElement.Click();
 
