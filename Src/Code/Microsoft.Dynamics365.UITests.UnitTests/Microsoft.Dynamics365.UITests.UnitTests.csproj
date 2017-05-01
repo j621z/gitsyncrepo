@@ -119,8 +119,12 @@
     <Compile Include="CommandBar\CommandButton.cs" />
     <Compile Include="CustomerScenarios\AA_CreateLead.cs" />
     <Compile Include="Dashboard\Dashboard.cs" />
+    <Compile Include="Dialogs\Assign.cs" />
     <Compile Include="Dialogs\CloseOpportunity.cs" />
+    <Compile Include="Dialogs\Delete.cs" />
+    <Compile Include="Dialogs\DuplicateDetection.cs" />
     <Compile Include="Dialogs\RunWorkFlow.cs" />
+    <Compile Include="Dialogs\SelectBusinessProcessFlow.cs" />
     <Compile Include="Entity\GetValue.cs" />
     <Compile Include="Entity\RecordWall.cs" />
     <Compile Include="Entity\SetValue.cs" />

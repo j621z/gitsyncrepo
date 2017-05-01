@@ -19,6 +19,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             //Dialogs
             { "Dialog_Header"       , "id(\"dialogHeaderTitle\")"},
+            { "Dialog_DeleteHeader"       , "id(\"tdDialogHeader\")"},
+            
             { "Dialog_WorkflowHeader", "id(\"DlgHdContainer\")" },
             { "Dialog_CloseOpportunityOk"       , "id(\"ok_id\")"},
             { "Dialog_AssignOk"       , "id(\"ok_id\")"},
@@ -160,6 +162,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public static class Dialogs
         {
             public static string Header = "Dialog_Header";
+            public static string DeleteHeader = "Dialog_DeleteHeader";
             public static string WorkflowHeader = "Dialog_WorkflowHeader";
 
             public static class CloseOpportunity
