@@ -143,7 +143,11 @@
     <Compile Include="EndUserScenerios\XrmBrowserTests.cs" />
     <Compile Include="Browser\Office365Tests.cs" />
     <Compile Include="Browser\OpenBrowserTests.cs" />
+    <Compile Include="Navigation\GuidedHelp.cs" />
     <Compile Include="Navigation\Options.cs" />
+    <Compile Include="Navigation\Portal.cs" />
+    <Compile Include="Navigation\QuickCreate.cs" />
+    <Compile Include="Navigation\SignOut.cs" />
     <Compile Include="Notification\Notifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Translations\TranslationTest.cs" />

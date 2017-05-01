@@ -464,15 +464,19 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Switches to dialog frame in the CRM application.
         /// </summary>
         /// <returns></returns>
-        public bool SwitchToDialogFrame()
+        public bool SwitchToDialogFrame(int frameIndex = 0)
         {
             return this.Execute("Switch to dialog frame", driver =>
             {
+                var index = "";
+                if (frameIndex > 0)
+                    index = frameIndex.ToString();
+
                 driver.SwitchTo().DefaultContent();
                 //wait for the content panel to render
-                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.DialogFrame]));
+                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.DialogFrame]+index));
 
-                driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.DialogFrameId]);
+                driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.DialogFrameId].Replace("[INDEX]",index));
 
                 return true;
             });

@@ -29,15 +29,14 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
-
-                Thread.Sleep(500);
+                
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
-
-                Thread.Sleep(2000);
+                
                 xrmBrowser.Grid.SwitchView("Active Accounts");
-
-                Thread.Sleep(1000);
+                
                 xrmBrowser.Grid.OpenRecord(0);
+
+                xrmBrowser.CommandBar.ClickCommand("Run Workflow", "", true);
 
                 xrmBrowser.Dialogs.RunWorkflow("Account Set Phone Number");
 
