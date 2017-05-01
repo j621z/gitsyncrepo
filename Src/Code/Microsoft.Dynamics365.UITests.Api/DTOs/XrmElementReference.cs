@@ -27,6 +27,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Dialog_DuplicateCancel"       , "id(\"cmdDialogCancel\")"},
             { "Dialog_ConfirmWorkflow"       , "id(\"butBegin\")"},
 
+
             //Frames
             { "Frame_ContentPanel"       , "id(\"crmContentPanel\")"},
             { "Frame_ContentFrame"       , "id(\"currentcontentid\")"},
