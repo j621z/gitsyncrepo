@@ -409,6 +409,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Close Entity"), driver =>
             {
+                SwitchToDefaultContent();
+
                 var filter = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Entity.Close]),
                     "Close Buttton is not available");
 

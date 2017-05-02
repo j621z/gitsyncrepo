@@ -18,7 +18,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void SelectBusinessProcessFlowTest()
+        public void TestSelectBusinessProcessFlow()
         {
             using (var xrmBrowser = new XrmBrowser(new BrowserOptions
             {
@@ -41,7 +41,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.CommandBar.ClickCommand("Switch Process");
 
-                xrmBrowser.Dialogs.SelectBusinessProcessFlow("Opportunity Sales Processs Alt");
+                xrmBrowser.BusinessProcessFlow.SelectBusinessProcessFlow("Opportunity Sales Process Alt");
             }
         }
     }
