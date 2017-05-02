@@ -142,5 +142,33 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
             }
         }
 
+
+        [TestMethod]
+        public void TestBusinessProcessFlowSetActive()
+        {
+            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
+            {
+                BrowserType = BrowserType.Chrome,
+                PrivateMode = true,
+                FireEvents = true
+            }))
+            {
+                xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+                xrmBrowser.GuidedHelp.CloseGuidedHelp();
+
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Opportunities");
+
+                xrmBrowser.Grid.SwitchView("My Open Opportunities");
+
+                xrmBrowser.Grid.OpenRecord(0);
+
+                xrmBrowser.BusinessProcessFlow.Hide();
+
+                xrmBrowser.BusinessProcessFlow.SelectStage(0);
+
+                xrmBrowser.BusinessProcessFlow.SetActive();
+            }
+        }
+
     }
 }
