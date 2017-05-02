@@ -59,7 +59,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 Thread.Sleep(2000);
                 xrmBrowser.Grid.SwitchView("Active Contacts");
 
-                xrmBrowser.Grid.OpenRecord(2);
+                xrmBrowser.Grid.OpenRecord(1);
                 xrmBrowser.Entity.NavigateUp();
                 Thread.Sleep(5000);
             }
@@ -84,7 +84,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 Thread.Sleep(2000);
                 xrmBrowser.Grid.SwitchView("Active Contacts");
 
-                xrmBrowser.Grid.OpenRecord(1);
+                xrmBrowser.Grid.OpenRecord(0);
                 xrmBrowser.Entity.NavigateDown();
                 Thread.Sleep(5000);
             }

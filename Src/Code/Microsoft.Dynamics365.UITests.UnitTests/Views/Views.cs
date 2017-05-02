@@ -139,7 +139,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
                 xrmBrowser.Grid.SwitchView("Active Accounts");
 
-                Thread.Sleep(200);
 
                 xrmBrowser.Grid.SelectAllRecords();
                 Thread.Sleep(10000);

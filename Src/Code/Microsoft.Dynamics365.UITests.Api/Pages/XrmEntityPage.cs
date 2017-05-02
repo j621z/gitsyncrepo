@@ -52,6 +52,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Navigate Down"), driver =>
             {
+                SwitchToDefaultContent();
                 if (!driver.HasElement(By.CssSelector(_navigateDownCssSelector)))
                     return false;
 
@@ -71,6 +72,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Navigate Up"), driver =>
             {
+                SwitchToDefaultContent();
                 if (!driver.HasElement(By.CssSelector(_navigateUpCssSelector)))
                     return false;
 
@@ -287,6 +289,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions($"Popout"), driver =>
             {
+                SwitchToDefaultContent();
                 driver.FindElement(By.ClassName("ms-crm-ImageStrip-popout"))?.Click();
 
                 return true;
