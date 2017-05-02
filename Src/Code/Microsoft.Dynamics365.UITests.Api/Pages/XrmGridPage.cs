@@ -176,9 +176,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 // We can check if any record selected by using
                 // driver.FindElements(By.ClassName("ms-crm-List-SelectedRow")).Count == 0
                 // but this function doesn't check it.
-                
-               
-                driver.FindElement(By.Id("chkAll"))?.Click();
+                var selectAll = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.ToggleSelectAll]),
+                          "The Toggle SelectAll is not available.");
+
+                selectAll.Click();
 
                 return true;
             });
@@ -508,7 +509,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                         selectedItem = item;
                 }
 
-                if (selectedItem != null)
+                if (selectedItem == null)
                     throw new InvalidOperationException($"Chart with name {chartName} does not exist");
                 else
                     selectedItem.Click();
@@ -516,5 +517,6 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
     }
 }

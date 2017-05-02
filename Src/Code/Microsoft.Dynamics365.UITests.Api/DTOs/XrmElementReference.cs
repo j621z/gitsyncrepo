@@ -58,8 +58,9 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Grid_GridTable"       , "id(\"gridBodyTable\")"},
             { "Grid_RowSelect"       , "id(\"gridBodyTable\")/tbody/tr[[INDEX]]/td[1]"},
             { "Grid_Filter"       , "id(\"filterButtonLink\")"},
-            { "Grid_ChartList"       , "id(\"visualizationListLink\")/a"},
-            { "Grid_ChartDialog"       , "id(\"Dialog_0\")"},
+            { "Grid_ChartList"       , "id(\"visualizationListLink\")"},
+            { "Grid_ChartDialog"       , "id(\"Dialog_1\")"},
+            { "Grid_ToggleSelectAll"   , "id(\"crmGrid_gridBodyTable_checkBox_Image_All\")" },
 
             //Entity
             { "Entity_Close"       , "id(\"closeButton\")"},
@@ -242,6 +243,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string Filter = "Grid_Filter";
             public static string ChartList = "Grid_ChartList";
             public static string ChartDialog = "Grid_ChartDialog";
+            public static string ToggleSelectAll = "Grid_ToggleSelectAll";
+
         }
 
         public static class Entity
