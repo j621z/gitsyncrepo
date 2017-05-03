@@ -65,6 +65,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             //Entity
             { "Entity_Close"       , "id(\"closeButton\")"},
             { "Entity_Save"       , "id(\"savefooter_statuscontrol\")"},
+            { "Entity_ContentTable" , "id(\"flyoutFormSection_ContentTable\")" },
+            { "Entity_SelectForm",  "id(\"FormSecNavigationControl-Icon\")"},
 
             //Global Search
             { "Search_Filter"       , "id(\"filterCombo\")"},
@@ -252,6 +254,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string Close = "Entity_Close";
             public static string Tab = "Entity_TabId";
             public static string Save = "Entity_Save";
+            public static string ContentTable = "Entity_ContentTable";
+            public static string SelectForm = "Entity_SelectForm";
         }
 
         public static class GlobalSearch

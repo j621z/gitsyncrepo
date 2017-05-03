@@ -36,11 +36,13 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             Browser.ThinkTime(thinkTime);
 
-            return this.Execute($"Open: {uri}", driver =>
+            return this.Execute(GetOptions($"Open: {uri}"), driver =>
             {
+
                 driver.Navigate().GoToUrl(uri);
 
-                driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
+               // driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
+                driver.WaitForPageToLoad();
 
                 return true;
             });
@@ -91,11 +93,15 @@ namespace Microsoft.Dynamics365.UITests.Api
             Browser.ThinkTime(thinkTime);
 
             return this.Execute(GetOptions($"SelectForm: {name}"), driver =>
-            {
-                driver.FindElement(By.Id("formselectorcontainer"))?.FindElement(By.TagName("a"))?.Click();
-                var items = driver.FindElements(By.ClassName("ms-crm-FS-MenuItem-Title"));
+            { 
+                var form = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Entity.SelectForm]) ,"The Select Form option is not available.");
+                form.Click();
+
+                var items = driver.FindElement(By.XPath(Elements.Xpath[Reference.Entity.ContentTable])).FindElements(By.TagName("a"));
                 items.Where(x => x.Text == name).FirstOrDefault()?.Click();
+
                 return true;
+
             });
         }
 
