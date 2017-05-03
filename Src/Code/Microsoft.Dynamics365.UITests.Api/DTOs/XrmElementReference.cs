@@ -314,6 +314,5 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string Password = "Login_Password";
             public static string SignIn = "Login_SignIn";
         }
-        public static class
     }
 }
