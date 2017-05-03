@@ -81,7 +81,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
 
             return this.Execute(GetOptions($"Add Post"), driver =>
             {
-                if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.NotesWall])))
+                if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.PostWall])))
                     throw new InvalidOperationException("The Post Wall is not available. Please check that the Posts tab is selected.");
 
                 var wall = driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.PostWall]));

@@ -74,25 +74,25 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             if (online)
             {
-                driver.WaitUntilAvailable(By.Id("cred_userid_inputtext"),
+                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Login.UserId]),
                     $"The Office 365 sign in page did not return the expected result and the user '{username}' could not be signed in.");
 
-                driver.FindElement(By.Id("cred_userid_inputtext")).SendKeys(username.ToUnsecureString());
-                driver.FindElement(By.Id("cred_userid_inputtext")).SendKeys(Keys.Enter);
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.UserId])).SendKeys(username.ToUnsecureString());
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.UserId])).SendKeys(Keys.Enter);
 
                 //If expecting redirect then wait for redirect to trigger
                 if(redirectAction!= null) Thread.Sleep(3000);
 
-                driver.WaitUntilVisible(By.Id("cred_password_inputtext"),
+                driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.Password]),
                     new TimeSpan(0, 0, 2),
                     d =>
                     {
-                        d.FindElement(By.Id("cred_password_inputtext")).SendKeys(password.ToUnsecureString());
+                        d.FindElement(By.XPath(Elements.Xpath[Reference.Login.Password])).SendKeys(password.ToUnsecureString());
 
                         // Pause for validation (just in case)
                         Thread.Sleep(500);
 
-                        d.ClickWhenAvailable(By.Id("cred_sign_in_button"), new TimeSpan(0, 0, 2));
+                        d.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Login.SignIn]), new TimeSpan(0, 0, 2));
 
                         d.WaitForPageToLoad();
                     },

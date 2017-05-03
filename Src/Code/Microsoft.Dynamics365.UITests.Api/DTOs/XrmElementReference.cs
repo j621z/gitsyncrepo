@@ -16,12 +16,13 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "BPF_Hide"            , "id(\"processControlCollapseButton\")/img[1]" },
             { "BPF_SetActive"       , "id(\"stageSetActiveActionContainer\")/div[1]" },
             { "BPF_SelectStage"     , "id(\"stage_[STAGENUM]\")/div[2]/div[1]/div[1]/div[1]/span[1]" },
+            { "BPF_Ok"     , "id(\"SwitchProcess-Select\")" },
 
             //Dialogs
             { "Dialog_Header"       , "id(\"dialogHeaderTitle\")"},
-            { "Dialog_DeleteHeader"       , "id(\"tdDialogHeader\")"},
-            
+            { "Dialog_DeleteHeader"       , "id(\"tdDialogHeader\")"},            
             { "Dialog_WorkflowHeader", "id(\"DlgHdContainer\")" },
+            { "Dialog_ProcessFlowHeader", "id(\"processSwitcherFlyout\")" },
             { "Dialog_CloseOpportunityOk"       , "id(\"ok_id\")"},
             { "Dialog_AssignOk"       , "id(\"ok_id\")"},
             { "Dialog_DeleteOk"       , "id(\"butBegin\")"},
@@ -73,6 +74,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Search_Text"       , "id(\"searchTextBox\")"},
             { "Search_Button"       , "id(\"SearchButton\")"},
             { "Search_Result"       , "id(\"contentResult\")"},
+            { "Search_Container"       , "id(\"panoramaContainer\")"},
             
             //ActivityFeed
             { "Notes_NotesControl"       , "id(\"notescontrol\")"},
@@ -92,14 +94,16 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Notes_ActivityPhoneCallOk"       , "id(\"save4210QuickCreateButton\")"},
             { "Notes_ActivityTaskOk", "id(\"save4212QuickCreateButton\")"},
             { "Notes_ActivityMoreActivities", "id(\"moreActivitiesButton\")"},
-
             { "Notes_ActivityAddEmail", "id(\"AddemailButton\")"},
             { "Notes_ActivityAddAppointment", "id(\"AddappointmentButton\")"},
             { "Notes_ActivityAddPhoneCall", "id(\"activityLabelinlineactivitybar4210\")"},
             { "Notes_ActivityAddTask", "id(\"activityLabelinlineactivitybar4212\")"},
 
-
-
+            //Login
+            
+            { "Login_UserId", "id(\"cred_userid_inputtext\")"},
+            { "Login_Password", "id(\"cred_password_inputtext\")"},
+            { "Login_SignIn", "id(\"cred_sign_in_button\")"},
     };
 
         public static Dictionary<string, string> ElementId = new Dictionary<string, string>()
@@ -121,6 +125,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             //Global Search
             { "Search_EntityNameId"       , "entityName"},
             { "Search_RecordNameId"       , "attribone"},
+            { "Search_EntityContainersId"       , "entitypic"},
 
             //ActivityFeed
             { "Notes_ActivityPhoneCallDescId"       , "quickCreateActivity4210controlId_description_i"},
@@ -130,8 +135,6 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Notes_ActivityTaskDescriptionId"      , "quickCreateActivity4212controlId_description_i"},
             { "Notes_ActivityTaskScheduledEndId"      , "quickCreateActivity4212controlId_scheduledend_iDateInput"},
             { "Notes_ActivityTaskPriorityId"      , "quickCreateActivity4212controlId_prioritycode_i"},
-
-
     };
 
         public static Dictionary<string, string> CssClass = new Dictionary<string, string>()
@@ -145,9 +148,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             //SetValue
             { "SetValue_LookupRenderClass"       , "Lookup_RenderButton_td"},
-
-            //GlobalSearch
-            { "Search_EntityContainerClass"       , "panoramaItem panoramaItemMargin meqfpanoramaItem meqfTabBorder panoramaItemMarginDisplay"},
+            
+            
         };
     }
 
@@ -160,6 +162,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string Hide = "BPF_Hide";
             public static string SetActive = "BPF_SetActive";
             public static string SelectStage = "BPF_SelectStage";
+            public static string Ok = "BPF_Ok";
         }
 
         public static class Dialogs
@@ -167,6 +170,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string Header = "Dialog_Header";
             public static string DeleteHeader = "Dialog_DeleteHeader";
             public static string WorkflowHeader = "Dialog_WorkflowHeader";
+            public static string ProcessFlowHeader = "Dialog_ProcessFlowHeader";
 
             public static class CloseOpportunity
             {
@@ -186,7 +190,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             }
             public static class SwitchProcess
             {
-                public static string Ok = "Dialog_SwitchProcessTitleClass";
+                public static string Process = "Dialog_SwitchProcessTitleClass";
             }
             public static class DuplicateDetection
             {
@@ -264,7 +268,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string SearchText = "Search_Text";
             public static string SearchButton = "Search_Button";
             public static string SearchResults = "Search_Result";
-            public static string EntityContainerClass = "Search_EntityContainerClass";
+            public static string Container = "Search_Container";
+            public static string EntityContainersId = "Search_EntityContainersId";
             public static string EntityNameId = "Search_EntityNameId";
             public static string RecordNameId = "Search_RecordNameId";
         }
@@ -306,6 +311,12 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             public static string NotesControl = "Notes_NotesControl";
             public static string NotesWall = "Notes_NotesWall";
+        }
+        public static class Login
+        {
+            public static string UserId = "Login_UserId";
+            public static string Password = "Login_Password";
+            public static string SignIn = "Login_SignIn";
         }
     }
 }

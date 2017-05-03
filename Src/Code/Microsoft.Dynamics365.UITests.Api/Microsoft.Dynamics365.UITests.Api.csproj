@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\CrmControls.cs" />
-    <Compile Include="DTOs\XrmAppMessage.cs" />
+    <Compile Include="DTOs\XrmAppNotification.cs" />
     <Compile Include="DTOs\XrmElementReference.cs" />
     <Compile Include="DTOs\XrmGridItem.cs" />
     <Compile Include="DTOs\XrmInstanceInfo.cs" />
@@ -70,7 +70,6 @@
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\Office365NavigationPage.cs" />
     <Compile Include="Pages\Office365XrmInstancePickerPage.cs" />
-    <Compile Include="Pages\XrmAppMessageBarPage.cs" />
     <Compile Include="Pages\XrmCommandBarPage.cs" />
     <Compile Include="Pages\XrmDialogPage.cs" />
     <Compile Include="Pages\XrmEntityPage.cs" />
