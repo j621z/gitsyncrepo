@@ -30,10 +30,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 Thread.Sleep(500);
-                xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
-
-                Thread.Sleep(2000);
-                xrmBrowser.Grid.SwitchView("Active Accounts");
 
                 xrmBrowser.Entity.OpenEntity("account", Guid.Parse("BD8AC246-2416-E711-8104-FC15B4282DF4"));
                 Thread.Sleep(5000);
