@@ -95,6 +95,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Notes_ActivityAddAppointment", "id(\"AddappointmentButton\")"},
             { "Notes_ActivityAddPhoneCall", "id(\"activityLabelinlineactivitybar4210\")"},
             { "Notes_ActivityAddTask", "id(\"activityLabelinlineactivitybar4212\")"},
+
+            //Login
+            
+            { "Login_UserId", "id(\"cred_userid_inputtext\")"},
+            { "Login_Password", "id(\"cred_password_inputtext\")"},
+            { "Login_SignIn", "id(\"cred_sign_in_button\")"},
     };
 
         public static Dictionary<string, string> ElementId = new Dictionary<string, string>()
@@ -298,6 +304,12 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             public static string NotesControl = "Notes_NotesControl";
             public static string NotesWall = "Notes_NotesWall";
+        }
+        public static class Login
+        {
+            public static string UserId = "Login_UserId";
+            public static string Password = "Login_Password";
+            public static string SignIn = "Login_SignIn";
         }
     }
 }
