@@ -122,5 +122,41 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
+        /// <summary>
+        /// Selects the Business Process Flow from the Dialog.
+        /// </summary>
+        /// <param name="name">The name of the business process flow you want to select.</param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
+        public BrowserCommandResult<bool> SelectBusinessProcessFlow(string name, int thinkTime = Constants.DefaultThinkTime)
+        {
+            this.Browser.ThinkTime(thinkTime);
+
+            return this.Execute(GetOptions("Delete"), driver =>
+            {
+                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.ProcessFlowHeader]),
+                                          new TimeSpan(0, 0, 10),
+                                          "The Select Business Process Flow dialog is not available.");
+
+                var processes = driver.FindElements(By.ClassName(Elements.CssClass[Reference.Dialogs.SwitchProcess.Process]));
+                IWebElement element = null;
+
+                foreach (var process in processes)
+                {
+                    if (process.Text == name)
+                        element = process;
+                }
+
+                if (element != null)
+                    element.Click();
+                else
+                    throw new InvalidOperationException($"The Business Process with name: '{name}' does not exist");
+
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.Ok]));
+
+                return true;
+            });
+        }
     }
 }

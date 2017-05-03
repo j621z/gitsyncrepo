@@ -88,8 +88,9 @@ namespace Microsoft.Dynamics365.UITests.Api
                     throw new InvalidOperationException("Search Results is not available");
 
                 var results = driver.FindElement(By.XPath(Elements.Xpath[Reference.GlobalSearch.SearchResults]));
-                var entityContainers = results.FindElements(By.ClassName(Elements.CssClass[Reference.GlobalSearch.EntityContainerClass]));
-                var entityContainer = entityContainers.FirstOrDefault(x => x.Text.Trim() == entity);
+                var resultsContainer = results.FindElement(By.XPath(Elements.Xpath[Reference.GlobalSearch.Container]));
+                var entityContainers = resultsContainer.FindElements(By.Id(Elements.ElementId[Reference.GlobalSearch.EntityContainersId]));
+                var entityContainer = entityContainers.FirstOrDefault(x => x.FindElement(By.Id(Elements.ElementId[Reference.GlobalSearch.EntityNameId])).Text.Trim() == entity);
 
                 if(entityContainer==null)
                     throw new InvalidOperationException($"Entity {entity} was not found in the results");

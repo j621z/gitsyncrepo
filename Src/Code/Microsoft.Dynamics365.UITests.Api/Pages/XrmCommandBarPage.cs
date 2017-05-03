@@ -64,8 +64,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                     var subButtons = driver.FindElement(By.Id(flyoutId)).FindElements(By.TagName("li"));
                     subButtons.Where(x => x.Text.ToLower() == subName.ToLower()).FirstOrDefault()?.Click();
                 }
-
-                SwitchToContentFrame();
+                
                 driver.WaitForPageToLoad();
                  return true;
             });
