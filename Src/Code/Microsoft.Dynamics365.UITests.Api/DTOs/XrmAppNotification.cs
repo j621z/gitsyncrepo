@@ -2,14 +2,14 @@
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
-    public class XrmAppMessage
+    public class XrmAppNotification
     {
-        internal XrmAppMessage(XrmAppMessageBarPage page)
+        internal XrmAppNotification(XrmNotficationPage page)
         {
             _page = page;
         }
 
-        private XrmAppMessageBarPage _page;
+        private XrmNotficationPage _page;
 
         public Int32 Index { get; internal set; }
         public string Title { get; internal set; }
