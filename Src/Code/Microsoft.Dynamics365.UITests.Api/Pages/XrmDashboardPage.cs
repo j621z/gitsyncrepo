@@ -63,14 +63,14 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 var dictionary = new Dictionary<string, Guid>();
 
-                var dashboardSelectorContainer = driver.WaitUntilAvailable(By.Id("dashboardSelector"));
+                var dashboardSelectorContainer = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.DashBoard.Selector]));
                 var viewLink = dashboardSelectorContainer.FindElement(By.TagName("a"));
 
                 viewLink.Click();
 
                 Thread.Sleep(500);
 
-                var viewContainer = driver.WaitUntilAvailable(By.ClassName("ms-crm-VS-Menu"));
+                var viewContainer = driver.WaitUntilAvailable(By.ClassName(Elements.CssClass[Reference.DashBoard.ViewContainerClass]));
                 var viewItems = viewContainer.FindElements(By.TagName("li"));
 
                 foreach (var viewItem in viewItems)
