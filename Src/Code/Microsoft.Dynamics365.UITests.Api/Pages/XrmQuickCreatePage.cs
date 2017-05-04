@@ -51,10 +51,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                     var input = driver.FindElement(By.Id(field));
                     input.Click();
 
-                    if (input.FindElement(By.ClassName("Lookup_RenderButton_td")) == null)
+                    if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
 
-                    input.FindElement(By.ClassName("Lookup_RenderButton_td")).Click();
+                    input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])).Click();
 
                     var dialogName = $"Dialog_{field}_IMenu";
                     var dialog = driver.FindElement(By.Id(dialogName));
@@ -83,10 +83,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                     var input = driver.FindElement(By.Id(field));
                     input.Click();
 
-                    if (input.FindElement(By.ClassName("Lookup_RenderButton_td")) == null)
+                    if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
 
-                    var lookupIcon = input.FindElement(By.ClassName("Lookup_RenderButton_td"));
+                    var lookupIcon = input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass]));
                     lookupIcon.Click();
 
                     var dialogName = $"Dialog_{field}_IMenu";
@@ -116,10 +116,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                     var input = driver.FindElement(By.Id(field));
                     input.Click();
 
-                    if (input.FindElement(By.ClassName("Lookup_RenderButton_td")) == null)
+                    if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
 
-                    input.FindElement(By.ClassName("Lookup_RenderButton_td")).Click();
+                    input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])).Click();
 
                     var dialogName = $"Dialog_{field}_IMenu";
                     var dialog = driver.FindElement(By.Id(dialogName));
@@ -195,13 +195,13 @@ namespace Microsoft.Dynamics365.UITests.Api
                     input.Click();
 
                     //Check to see if focus is on field already
-                    if (input.FindElement(By.ClassName("ms-crm-Inline-Edit")) != null)
-                        input.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
+                    if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
+                        input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])).Click();
                     else
-                        input.FindElement(By.ClassName("ms-crm-Inline-Value")).Click();
+                        input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.ValueClass])).Click();
 
                     input.FindElement(By.TagName("input")).SendKeys(date.ToShortDateString());
-                    input.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
+                    input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])).Click();
 
                 }
                 else
@@ -221,10 +221,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                     input.Click();
 
                     //Check to see if focus is on field already
-                    if (input.FindElement(By.ClassName("ms-crm-Inline-Edit")) != null)
-                        input.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
+                    if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
+                        input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])).Click();
                     else
-                        input.FindElement(By.ClassName("ms-crm-Inline-Value")).Click();
+                        input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.ValueClass])).Click();
 
                     if (input.FindElements(By.TagName("textarea")).Count > 0)
                         input.FindElement(By.TagName("textarea")).SendKeys(value);
@@ -249,10 +249,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                     input.Click();
 
                     //Check to see if focus is on field already
-                    if (input.FindElement(By.ClassName("ms-crm-Inline-Edit")) != null)
-                        input.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
+                    if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
+                        input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])).Click();
                     else
-                        input.FindElement(By.ClassName("ms-crm-Inline-Value")).Click();
+                        input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.ValueClass])).Click();
 
                     if (input.FindElements(By.TagName("textarea")).Count > 0)
                         input.FindElement(By.TagName("textarea")).SendKeys(field.Value);

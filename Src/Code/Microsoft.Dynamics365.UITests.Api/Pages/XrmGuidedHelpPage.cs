@@ -36,10 +36,10 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 if (IsEnabled)
                 {
-                    driver.WaitUntilVisible(By.Id("marsOverlay"), new TimeSpan(0, 0, 10), d =>
+                    driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.GuidedHelp.MarsOverlay]), new TimeSpan(0, 0, 10), d =>
                     {
                         var allMarsElements = driver
-                            .FindElement(By.Id("marsOverlay"))
+                            .FindElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.MarsOverlay]))
                             .FindElements(By.XPath(".//*"));
 
                         foreach (var element in allMarsElements)
@@ -87,11 +87,11 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                     // Check for element on new page
                     // In this case is get the email of the alert message to click and close the window
-                    var webElement = driver.FindElement(By.Id("butBegin"));
+                    var webElement = driver.FindElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButBegin]));
 
                     if (webElement.Text == "OK")
                     {
-                        driver.FindElement(By.Id("butBegin")).Click();
+                        driver.FindElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButBegin])).Click();
                     }
                 }
 
@@ -113,9 +113,9 @@ namespace Microsoft.Dynamics365.UITests.Api
                     driver.SwitchTo().Frame(frame);
 
                     // look for nav tour
-                    if (driver.HasElement(By.Id("butBegin")))
+                    if (driver.HasElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButBegin])))
                     {
-                        driver.FindElement(By.Id("butBegin")).Click();
+                        driver.FindElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButBegin])).Click();
 
                         Thread.Sleep(1000);
 
@@ -124,9 +124,9 @@ namespace Microsoft.Dynamics365.UITests.Api
                         continue;
                     }
 
-                    if (driver.HasElement(By.Id("buttonClose")))
+                    if (driver.HasElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButtonClose])))
                     {
-                        driver.FindElement(By.Id("buttonClose")).Click();
+                        driver.FindElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButtonClose])).Click();
 
                         Thread.Sleep(1000);
 

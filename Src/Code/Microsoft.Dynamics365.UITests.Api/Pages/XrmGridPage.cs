@@ -36,14 +36,14 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 var dictionary = new Dictionary<string, Guid>();
 
-                var viewSelectorContainer = driver.WaitUntilAvailable(By.Id("gridControlBar"));
+                var viewSelectorContainer = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.ControlBar]));
                 var viewLink = viewSelectorContainer.FindElement(By.TagName("a"));
 
                 viewLink.Click();
 
                 Thread.Sleep(500);
 
-                var viewContainer = driver.WaitUntilAvailable(By.ClassName("ms-crm-VS-Menu"));
+                var viewContainer = driver.WaitUntilAvailable(By.ClassName(Elements.CssClass[Reference.Grid.ViewContainer]));
                 var viewItems = viewContainer.FindElements(By.TagName("li"));
 
                 foreach (var viewItem in viewItems)
@@ -116,8 +116,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             Browser.ThinkTime(thinkTime);
 
             return this.Execute(GetOptions("Refresh"), driver =>
-            {                
-                driver.FindElement(By.Id("grid_refresh")).Click();
+            {
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.Refresh])).Click();
 
                 return true;
             });
@@ -133,7 +133,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("FirstPage"), driver =>
             {
-                var firstPageIcon = driver.FindElement(By.Id("fastRewind"));
+                var firstPageIcon = driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.FirstPage]));
 
                 if (firstPageIcon.GetAttribute("disabled") != null)
                     return false;
@@ -153,7 +153,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Next"), driver =>
             {
-                var nextIcon = driver.FindElement(By.Id("_nextPageImg"));
+                var nextIcon = driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.NextPage]));
 
                 if (nextIcon.GetAttribute("disabled") != null)
                     return false;
@@ -195,7 +195,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("PreviousPage"), driver =>
             {
-                var previousIcon = driver.FindElement(By.Id("_prevPageImg"));
+                var previousIcon = driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.PreviousPage]));
 
                 if (previousIcon.GetAttribute("disabled") != null)
                     return false;
@@ -215,7 +215,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("OpenChart"), driver =>
             {
-                driver.FindElement(By.ClassName("ms-crm-ImageStrip-navLeft")).Click();
+                driver.FindElement(By.ClassName(Elements.CssClass[Reference.Grid.OpenChart])).Click();
 
                 return true;
             });
@@ -231,7 +231,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("CloseChart"), driver =>
             {
-                driver.FindElement(By.ClassName("ms-crm-PaneChevron")).Click();
+                driver.FindElement(By.ClassName(Elements.CssClass[Reference.Grid.CloseChart])).Click();
 
                 return true;
             });
@@ -247,7 +247,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Pin"), driver =>
             {
-                driver.FindElement(By.Id("defaultViewIcon")).Click();
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.DefaultViewIcon])).Click();
 
                 return true;
             });
@@ -264,8 +264,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Search"), driver =>
             {
-                driver.FindElement(By.Id("crmGrid_findCriteria")).SendKeys(searchCriteria);
-                driver.FindElement(By.Id("crmGrid_findCriteriaImg")).Click();
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.FindCriteria])).SendKeys(searchCriteria);
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.FindCriteriaImg])).Click();
 
                 return true;
             });
@@ -282,7 +282,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions($"Sort by {columnName}"), driver =>
             {
-                var sortCols = driver.FindElements(By.ClassName("ms-crm-List-Sortable"));
+                var sortCols = driver.FindElements(By.ClassName(Elements.CssClass[Reference.Grid.SortColumn]));
                 var sortCol = sortCols.FirstOrDefault(x => x.Text == columnName);
                 if (sortCol == null)
                     throw new InvalidOperationException($"Column: {columnName} Does not exist");
@@ -358,7 +358,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Open Grid Record"), driver =>
             {
-                var itemsTable = driver.WaitUntilAvailable(By.Id("gridBodyTable"));
+            var itemsTable = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.GridBodyTable]));
                 var links = itemsTable.FindElements(By.TagName("a"));
 
                 var currentIndex = 0;

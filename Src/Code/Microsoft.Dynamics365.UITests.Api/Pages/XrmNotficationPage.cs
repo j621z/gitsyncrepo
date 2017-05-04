@@ -21,9 +21,9 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute("Close Notifications", driver =>
             {
                 Thread.Sleep(2000);
-                while(driver.WaitUntilAvailable(By.Id("crmAppMessageBar"), new TimeSpan(0, 0, 10)) != null)
+                while(driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Notification.AppMessageBar]), new TimeSpan(0, 0, 10)) != null)
                 {
-                    driver.ClickWhenAvailable(By.Id("crmAppMessageBarCloseButton"), new TimeSpan(0, 0, 1));
+                    driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Notification.Close]), new TimeSpan(0, 0, 1));
                 }
 
                 driver.WaitForPageToLoad();
@@ -41,15 +41,15 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 bool returnValue = false;
 
-                driver.WaitUntilVisible(By.Id("crmAppMessageBar"), new TimeSpan(0, 0, 5), d =>
+                driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Notification.AppMessageBar]), new TimeSpan(0, 0, 5), d =>
                 {
-                    var container = driver.FindElement(By.Id("crmAppMessageBar"));
-                    var rows = container.FindElements(By.ClassName("crmAppMessageBarRow"));
+                    var container = driver.FindElement(By.XPath(Elements.Xpath[Reference.Notification.AppMessageBar]));
+                    var rows = container.FindElements(By.ClassName(Elements.CssClass[Reference.Notification.MessageBarRow]));
 
                     if (rows.Count > index)
                     {
                         var row = rows[index];
-                        var dismissButtonElement = row.FindElement(By.ClassName("crmAppMessageBarButtonContainer"));
+                        var dismissButtonElement = row.FindElement(By.ClassName(Elements.CssClass[Reference.Notification.MessageBarButtonContainer]));
                         var dismissButton = dismissButtonElement.FindElement(By.TagName("a"));
 
                         dismissButton.Click();
@@ -71,16 +71,16 @@ namespace Microsoft.Dynamics365.UITests.Api
                     var returnList = new List<XrmAppNotification>();
                     var index = 0;
 
-                    driver.WaitUntilVisible(By.Id("crmAppMessageBar"), new TimeSpan(0, 0, 5), d =>
+                    driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Notification.AppMessageBar]), new TimeSpan(0, 0, 5), d =>
                     {
-                        var container = driver.FindElement(By.Id("crmAppMessageBar"));
-                        var rows = container.FindElements(By.ClassName("crmAppMessageBarRow"));
+                        var container = driver.FindElement(By.XPath(Elements.Xpath[Reference.Notification.AppMessageBar]));
+                        var rows = container.FindElements(By.ClassName(Elements.CssClass[Reference.Notification.MessageBarRow]));
 
                         foreach (var row in rows)
                         {
-                            var titleElement = row.FindElement(By.ClassName("crmAppMessageBarTitle"));
-                            var messageElement = row.FindElement(By.ClassName("crmAppMessageBarMessage"));
-                            var dismissButtonElement = row.FindElement(By.ClassName("crmAppMessageBarButtonContainer"));
+                            var titleElement = row.FindElement(By.ClassName(Elements.CssClass[Reference.Notification.MessageBarTitle]));
+                            var messageElement = row.FindElement(By.ClassName(Elements.CssClass[Reference.Notification.MessageBarMessage]));
+                            var dismissButtonElement = row.FindElement(By.ClassName(Elements.CssClass[Reference.Notification.MessageBarButtonContainer]));
 
                             var newItem = new XrmAppNotification(this)
                             {

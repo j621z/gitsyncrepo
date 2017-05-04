@@ -296,7 +296,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute(GetOptions($"Popout"), driver =>
             {
                 SwitchToDefaultContent();
-                driver.FindElement(By.ClassName("ms-crm-ImageStrip-popout"))?.Click();
+                driver.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.Popout]))?.Click();
 
                 return true;
             });
@@ -337,7 +337,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                     var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
                     input.Click();
                     
-                    var lookupIcon = input.FindElement(By.ClassName("Lookup_RenderButton_td"));
+                    var lookupIcon = input.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.LookupRender]));
                     lookupIcon.Click();
 
                     var dialogName = $"Dialog_lookup_{subgridName}_i_IMenu";
@@ -365,7 +365,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                     var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
                     input.Click();
 
-                    input.FindElement(By.ClassName("Lookup_RenderButton_td")).Click();
+                    input.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.LookupRender])).Click();
 
                     var dialogName = $"Dialog_lookup_{subgridName}_i_IMenu";
                     var dialog = driver.FindElement(By.Id(dialogName));
@@ -392,7 +392,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                     var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
                     input.Click();
                     
-                    input.FindElement(By.ClassName("Lookup_RenderButton_td")).Click();
+                    input.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.LookupRender])).Click();
 
                     var dialogName = $"Dialog_lookup_{subgridName}_i_IMenu";
                     var dialog = driver.FindElement(By.Id(dialogName));
