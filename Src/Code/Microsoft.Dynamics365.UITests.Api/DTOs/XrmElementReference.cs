@@ -428,11 +428,5 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string MessageBarTitle = "Notification_MessageBarTitleClass";
 
         }
-        public static class Login
-        {
-            public static string UserId = "Login_UserId";
-            public static string Password = "Login_Password";
-            public static string SignIn = "Login_SignIn";
-        }
     }
 }
