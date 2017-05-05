@@ -381,7 +381,11 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
                 xrmBrowser.Grid.SwitchView("Open Leads");
 
-                xrmBrowser.Grid.SwitchToQuickFindFrame();
+                xrmBrowser.Grid.Search("Test");
+
+                //This is for Quick Create and method was named wrong. 
+                //xrmBrowser.Grid.SwitchToQuickCreateFrame();
+
                 Thread.Sleep(10000);
 
             }

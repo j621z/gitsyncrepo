@@ -40,7 +40,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Frame_ContentPanel"       , "id(\"crmContentPanel\")"},
             { "Frame_ContentFrame"       , "id(\"currentcontentid\")"},
             { "Frame_DialogFrame"       , "id(\"InlineDialog\")"},
-            { "Frame_QuickFindFrame"       , "id(\"globalquickcreate_container_NavBarGloablQuickCreate\")"},
+            { "Frame_QuickCreateFrame"       , "id(\"globalquickcreate_container_NavBarGloablQuickCreate\")"},
 
             //Navigation
             { "Nav_HomeTab"       , "id(\"HomeTabLink\")"},
@@ -146,7 +146,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             //Frames
             { "Frame_ContentFrameId"       , "currentcontentid"},
             { "Frame_DialogFrameId"       , "InlineDialog[INDEX]_Iframe"},
-            { "Frame_QuickFindFrameId"       , "NavBarGloablQuickCreate"},
+            { "Frame_QuickCreateFrameId"       , "NavBarGloablQuickCreate"},
 
             //Dialogs
             { "Dialog_ActualRevenue"       , "actualrevenue_id"},
@@ -279,8 +279,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string ContentFrameId = "Frame_ContentFrameId";
             public static string DialogFrame = "Frame_DialogFrame";
             public static string DialogFrameId = "Frame_DialogFrameId";
-            public static string QuickFindFrame = "Frame_QuickFindFrame";
-            public static string QuickFindFrameId = "Frame_QuickFindFrameId";
+            public static string QuickCreateFrame = "Frame_QuickCreateFrame";
+            public static string QuickCreateFrameId = "Frame_QuickCreateFrameId";
 
         }
 
@@ -409,13 +409,6 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string List = "CommandBar_List";
             public static string MoreCommands = "CommandBar_MoreCommands";
             public static string FlyoutAnchorArrow = "CommandBar_FlyoutAnchorArrow";
-
-        }
-        public static class Login
-        {
-            public static string UserId = "Login_UserId";
-            public static string Password = "Login_Password";
-            public static string SignIn = "Login_SignIn";
 
         }
         public static class GuidedHelp

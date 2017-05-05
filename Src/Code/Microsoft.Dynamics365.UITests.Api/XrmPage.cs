@@ -488,15 +488,15 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Switches to Quick Find frame in the CRM application.
         /// </summary>
         /// <returns></returns>
-        public bool SwitchToQuickFindFrame()
+        public bool SwitchToQuickCreateFrame()
         {
-            return this.Execute("Switch to QuickFind Frame", driver =>
+            return this.Execute("Switch to Quick Create Frame", driver =>
             {
                 driver.SwitchTo().DefaultContent();
                 //wait for the content panel to render
-                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.QuickFindFrame]));
+                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.QuickCreateFrame]));
 
-                driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.QuickFindFrameId]);
+                driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.QuickCreateFrameId]);
 
                 return true;
             });

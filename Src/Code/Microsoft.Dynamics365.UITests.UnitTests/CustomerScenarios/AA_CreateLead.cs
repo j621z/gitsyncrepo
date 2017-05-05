@@ -51,7 +51,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Entity.SetValue(new OptionSet() { Name = "aa_product_interest", Value = "100000000" });
                 xrmBrowser.Entity.SetValue(new OptionSet() { Name = "aa_leadsourceglobal", Value = "100000001" });
                 
-                
                 xrmBrowser.CommandBar.ClickCommand("Save");
 
                 xrmBrowser.Navigation.OpenRelated("Activities");
