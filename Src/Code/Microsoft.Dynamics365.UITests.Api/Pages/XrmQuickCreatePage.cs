@@ -13,7 +13,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public XrmQuickCreatePage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToQuickFindFrame();
+            SwitchToQuickCreateFrame();
         }
         
         public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
