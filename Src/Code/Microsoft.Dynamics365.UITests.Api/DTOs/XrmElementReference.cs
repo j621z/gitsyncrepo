@@ -411,13 +411,6 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string FlyoutAnchorArrow = "CommandBar_FlyoutAnchorArrow";
 
         }
-        public static class Login
-        {
-            public static string UserId = "Login_UserId";
-            public static string Password = "Login_Password";
-            public static string SignIn = "Login_SignIn";
-
-        }
         public static class GuidedHelp
         {
             public static string MarsOverlay = "GuidedHelp_MarsOverlay";
