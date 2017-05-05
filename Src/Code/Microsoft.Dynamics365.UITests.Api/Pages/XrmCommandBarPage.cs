@@ -28,13 +28,13 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute("Get Command Bar Buttons", driver =>
             {
-                driver.WaitUntilAvailable(By.Id("crmRibbonManager"),new TimeSpan(0,0,5));
+                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.CommandBar.RibbonManager]),new TimeSpan(0,0,5));
 
                 IWebElement ribbon = null;
                 if (moreCommands)
-                    ribbon = driver.FindElement(By.Id("moreCommandsList"));
+                    ribbon = driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.MoreCommands]));
                 else
-                    ribbon = driver.FindElement(By.Id("crmRibbonManager"));
+                    ribbon = driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.RibbonManager]));
 
                 var items = ribbon.FindElements(By.TagName("li"));
 
@@ -49,7 +49,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute(GetOptions("Click Command"), driver => 
             {
                 if (moreCommands)
-                    driver.FindElement(By.Id("moreCommands")).Click();
+                    driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.MoreCommands])).Click();
 
                 var buttons = GetCommands(moreCommands).Value;
                 var button = buttons.Where(x => x.Text.ToLower() == name.ToLower()).FirstOrDefault();
@@ -58,7 +58,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                     button.Click();
                 else
                 {
-                    button.FindElement(By.ClassName("flyoutAnchorArrow")).Click();
+                    button.FindElement(By.ClassName(Elements.Xpath[Reference.CommandBar.FlyoutAnchorArrow])).Click();
 
                     var flyoutId = button.GetAttribute("id").Replace("|", "_").Replace(".", "_") + "Menu";
                     var subButtons = driver.FindElement(By.Id(flyoutId)).FindElements(By.TagName("li"));

@@ -81,9 +81,9 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Open Related Menu"), driver =>
             {
-                driver.ClickWhenAvailable(By.Id("TabNode_tab0Tab"));
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.TabNode]));
 
-                var element = driver.FindElement(By.Id("actionGroupControl"));
+                var element = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.ActionGroup]));
                 var subItems = element.FindElements(By.ClassName("nav-rowBody"));
 
                 var related = subItems.Where(x => x.Text == relatedArea).FirstOrDefault();
@@ -105,7 +105,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 input.SendKeys(searchText);
 
-                navBar.FindElement(By.Id("findCriteriaButton")).Click();
+                navBar.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.FindCriteria])).Click();
 
                 return true;
             });
@@ -117,7 +117,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute(GetOptions($"Open Advanced Find"), driver=> 
             {
                 //Narrow down the scope to the Search Tab when looking for the search input
-                var navBar = driver.FindElement(By.Id("AdvFindSearch"));
+                var navBar = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.AdvFindSearch]));
 
                 navBar.FindElement(By.ClassName("navTabButtonLink")).Click();
 
@@ -130,7 +130,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions($"Open Quick Create"), driver=> 
             {
-                driver.FindElement(By.Id("navTabGlobalCreateImage"))?.Click();
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.GlobalCreate]))?.Click();
                 var area = driver.FindElement(By.ClassName("navActionGroupContainer"));
                 var items = area.FindElements(By.ClassName("nav-rowLabel"));
                 var item = items.FirstOrDefault(x => x.Text == entity);
@@ -145,9 +145,9 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions($"SignOut"), driver => 
             {
-                var userInfo = driver.FindElement(By.Id("navTabButtonUserInfoLinkId"));
+                var userInfo = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.UserInfo]));
                 userInfo?.Click();
-                var signOut = driver.FindElement(By.Id("navTabButtonUserInfoSignOutId"));
+                var signOut = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SignOut]));
                 signOut?.Click();
                 return true;
             });
@@ -158,10 +158,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 var list = new List<XrmLink>();
 
-                var mruSpan = driver.FindElement(By.Id("TabGlobalMruNode"));
+                var mruSpan = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.TabGlobalMruNode]));
                 mruSpan.Click();
 
-                var navContainer = driver.WaitUntilAvailable(By.Id("nav-shuffle"));
+                var navContainer = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Navigation.Shuffle]));
                 var links = navContainer.FindElements(By.TagName("a"));
 
                 foreach (var link in links)

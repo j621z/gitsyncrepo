@@ -357,6 +357,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
                 xrmBrowser.Grid.SwitchView("Open Leads");
+                xrmBrowser.Grid.OpenChart();
                 xrmBrowser.Grid.CloseChart();
 
                 Thread.Sleep(10000);
