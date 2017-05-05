@@ -42,7 +42,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 foreach (var subItem in subItems)
                 {
-                    dictionary.Add(subItem.Text, subItem);
+                    dictionary.Add(subItem.Text.ToLower(), subItem);
                 }
 
                 return dictionary;
@@ -56,14 +56,14 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 var areas = OpenHamburgerMenu().Value;
 
-                if (!areas.ContainsKey(area))
+                if (!areas.ContainsKey(area.ToLower()))
                 {
                     throw new InvalidOperationException($"No area with the name '{area}' exists.");
                 }
 
                 var subAreas = OpenSubMenu(areas[area]).Value;
 
-                if (!subAreas.ContainsKey(subArea))
+                if (!subAreas.ContainsKey(subArea.ToLower()))
                 {
                     throw new InvalidOperationException($"No subarea with the name '{subArea}' exists inside of '{area}'.");
                 }
@@ -302,7 +302,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 foreach (var subItem in subItems)
                 {
-                    dictionary.Add(subItem.Text, subItem);
+                    dictionary.Add(subItem.Text.ToLower(), subItem);
                 }
 
                 return dictionary;
