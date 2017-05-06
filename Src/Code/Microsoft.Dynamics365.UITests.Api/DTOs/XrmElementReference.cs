@@ -499,5 +499,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string Begin = "LookUp_Begin";
 
         }
+        public static class Login
+        {
+            public static string UserId = "Login_UserId";
+            public static string Password = "Login_Password";
+            public static string SignIn = "Login_SignIn";
+
+        }
     }
 }
