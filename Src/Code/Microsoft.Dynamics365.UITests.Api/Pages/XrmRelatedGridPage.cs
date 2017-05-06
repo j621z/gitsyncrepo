@@ -25,14 +25,14 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 var dictionary = new Dictionary<string, Guid>();
 
-                var viewSelectorContainer = driver.WaitUntilAvailable(By.Id("viewSelectorContainer"));
+                var viewSelectorContainer = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.ViewSelectorContainer]));
                 var viewLink = viewSelectorContainer.FindElement(By.TagName("a"));
 
                 viewLink.Click();
 
                 Thread.Sleep(500);
 
-                var viewContainer = driver.WaitUntilAvailable(By.ClassName("ms-crm-VS-Menu"));
+                var viewContainer = driver.WaitUntilAvailable(By.ClassName(Elements.CssClass[Reference.Grid.ViewContainer]));
                 var viewItems = viewContainer.FindElements(By.TagName("li"));
 
                 foreach (var viewItem in viewItems)
@@ -93,7 +93,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Refresh"), driver =>
             {                
-                driver.FindElement(By.Id("grid_refresh")).Click();
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.Refresh])).Click();
 
                 return true;
             });
@@ -105,7 +105,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("FirstPage"), driver =>
             {
-                var firstPageIcon = driver.FindElement(By.Id("fastRewind"));
+                var firstPageIcon = driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.FirstPage]));
 
                 if (firstPageIcon.GetAttribute("disabled") != null)
                     return false;
@@ -121,7 +121,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Next"), driver =>
             {
-                var nextIcon = driver.FindElement(By.Id("_nextPageImg"));
+                var nextIcon = driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.NextPage]));
 
                 if (nextIcon.GetAttribute("disabled") != null)
                     return false;
@@ -131,7 +131,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        public BrowserCommandResult<bool> ToggleSelectAll(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> SelectAllRecords(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
@@ -140,8 +140,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                 // We can check if any record selected by using
                 // driver.FindElements(By.ClassName("ms-crm-List-SelectedRow")).Count == 0
                 // but this function doesn't check it.
-                
-                driver.FindElement(By.Id("chkAll"))?.Click();
+                var selectAll = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.ToggleSelectAll]),
+                          "The Toggle SelectAll is not available.");
+
+                selectAll.Click();
 
                 return true;
             });
@@ -153,7 +155,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("PreviousPage"), driver =>
             {
-                var previousIcon = driver.FindElement(By.Id("_prevPageImg"));
+                var previousIcon = driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.PreviousPage]));
 
                 if (previousIcon.GetAttribute("disabled") != null)
                     return false;
@@ -185,7 +187,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions($"Sort by {columnName}"), driver =>
             {                
-                var sortCols = driver.FindElements(By.ClassName("ms-crm-List-Sortable"));
+                var sortCols = driver.FindElements(By.ClassName(Elements.CssClass[Reference.Grid.SortColumn]));
                 var sortCol = sortCols.Where(x => x.GetAttribute("fieldname") == columnName).FirstOrDefault();
                 
                 if (sortCol == null)
@@ -232,7 +234,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                             var name = column.GetAttribute<string>("name");
 
                             if (!string.IsNullOrEmpty(name)
-                                && column.GetAttribute("class").Contains("ms-crm-List-DataColumn")
+                                && column.GetAttribute("class").Contains(Elements.CssClass[Reference.Grid.DataColumn])
                                 && cells.Count > idx)
                             {
                                 item[name] = cells[idx].Text;
@@ -255,7 +257,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Open Grid Item"), driver =>
             {
-                var itemsTable = driver.WaitUntilAvailable(By.Id("gridBodyTable"));
+                var itemsTable = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.GridBodyTable]));
                 var links = itemsTable.FindElements(By.TagName("a"));
 
                 var currentIndex = 0;
@@ -265,7 +267,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 {
                     var id = link.GetAttribute("id");
 
-                    if (id != null && id.StartsWith("gridBodyTable_primaryField_"))
+                    if (id != null && id.StartsWith(Elements.ElementId[Reference.Grid.PrimaryField]))
                     {
                         if (currentIndex == index)
                         {
@@ -296,9 +298,9 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 IWebElement ribbon = null;
                 if (moreCommands)
-                    ribbon = driver.FindElement(By.Id("moreCommandsList"));
+                    ribbon = driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.List]));
                 else
-                    ribbon = driver.FindElement(By.Id("crmRibbonManager"));
+                    ribbon = driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.RibbonManager]));
 
                 var items = ribbon.FindElements(By.TagName("li"));
 
@@ -313,7 +315,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute(GetOptions("ClickCommand"), driver =>
             {
                 if (moreCommands)
-                    driver.FindElement(By.Id("moreCommands")).Click();
+                    driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.MoreCommands])).Click();
 
                 var buttons = GetCommands(moreCommands).Value;
                 var button = buttons.Where(x => x.Text.ToLower() == name.ToLower()).FirstOrDefault();
@@ -322,7 +324,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                     button.Click();
                 else
                 {
-                    button.FindElement(By.ClassName("ms-crm-Menu-Label-Flyout")).Click();
+                    button.FindElement(By.ClassName(Elements.CssClass[Reference.CommandBar.FlyoutAnchorArrow])).Click();
 
                     var flyoutId = button.GetAttribute("id").Replace("|", "_").Replace(".", "_") + "Menu";
                     var subButtons = driver.FindElement(By.Id(flyoutId)).FindElements(By.TagName("li"));

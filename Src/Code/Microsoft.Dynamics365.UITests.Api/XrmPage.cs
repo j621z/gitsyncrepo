@@ -60,10 +60,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                     fieldElement.Click();
 
                     //Check to see if focus is on field already
-                    if (fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")) != null)
-                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
+                    if (fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
+                        fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])).Click();
                     else
-                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Value")).Click();
+                        fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.ValueClass])).Click();
 
                     var input = fieldElement.FindElement(By.TagName("input"));
 
@@ -104,10 +104,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                     fieldElement.Click();
 
                     //Check to see if focus is on field already
-                    if (fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")) != null)
-                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
+                    if (fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
+                        fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])).Click();
                     else
-                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Value")).Click();
+                        fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.ValueClass])).Click();
 
                     if (fieldElement.FindElements(By.TagName("textarea")).Count > 0)
                     {
@@ -143,10 +143,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                     fieldElement.Click();
 
                     //Check to see if focus is on field already
-                    if (fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")) != null)
-                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
+                    if (fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
+                        fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])).Click();
                     else
-                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Value")).Click();
+                        fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.ValueClass])).Click();
 
 
                     if (fieldElement.FindElements(By.TagName("textarea")).Count > 0)
@@ -205,31 +205,30 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(CompositeControl control)
         {
-            return this.Execute($"Set Composite Control Value: {control.Id}", driver =>
+            return this.Execute(GetOptions($"Set Conposite Control Value: {control.Id}"), driver =>
             {
                 if (!driver.HasElement(By.Id(control.Id)))
                     return false;
 
                 driver.FindElement(By.Id(control.Id)).Click();
 
-                if (driver.HasElement(By.Id(control.Id + "_compositionLinkControl_flyoutLoadingArea_flyOut")))
+                if (driver.HasElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.FlyOut])))
                 {
                     var compcntrl =
-                        driver.FindElement(By.Id(control.Id + "_compositionLinkControl_flyoutLoadingArea_flyOut"));
+                        driver.FindElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.FlyOut]));
 
                     foreach (var field in control.Fields)
                     {
-                        compcntrl.FindElement(By.Id("fullname_compositionLinkControl_" + field.Id)).Click();
+                        compcntrl.FindElement(By.Id(Elements.ElementId[Reference.SetValue.CompositionLinkControl] + field.Id)).Click();
 
                         var result = compcntrl.FindElements(By.TagName("input"))
                             .ToList()
                             .FirstOrDefault(i => i.GetAttribute("id").Contains(field.Id));
 
-                        result?.Clear();
                         result?.SendKeys(field.Value);
                     }
 
-                    compcntrl.FindElement(By.Id(control.Id + "_compositionLinkControl_flyoutLoadingArea-confirm")).Click();
+                    compcntrl.FindElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.Confirm])).Click();
                 }
                 else
                     throw new InvalidOperationException($"Composite Control: {control.Id} Does not exist");
@@ -336,10 +335,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                     fieldElement.Click();
 
                     //Check to see if focus is on field already
-                    if (fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")) != null)
-                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Edit")).Click();
+                    if (fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
+                        fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])).Click();
                     else
-                        fieldElement.FindElement(By.ClassName("ms-crm-Inline-Value")).Click();
+                        fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.ValueClass])).Click();
 
 
                     if (fieldElement.FindElements(By.TagName("textarea")).Count > 0)
@@ -372,14 +371,14 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 driver.FindElement(By.Id(control.Id)).Click();
 
-                if (driver.HasElement(By.Id(control.Id + "_compositionLinkControl_flyoutLoadingArea_flyOut")))
+                if (driver.HasElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.FlyOut])))
                 {
                     var compcntrl =
-                        driver.FindElement(By.Id(control.Id + "_compositionLinkControl_flyoutLoadingArea_flyOut"));
+                        driver.FindElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.FlyOut]));
 
                     foreach (var field in control.Fields)
                     {
-                        compcntrl.FindElement(By.Id("fullname_compositionLinkControl_" + field.Id)).Click();
+                        compcntrl.FindElement(By.Id(Elements.ElementId[Reference.SetValue.CompositionLinkControl] + field.Id)).Click();
 
                         var result = compcntrl.FindElements(By.TagName("input"))
                             .ToList()
@@ -387,7 +386,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                         text += result.GetAttribute("value");
                     }
 
-                    compcntrl.FindElement(By.Id(control.Id + "_compositionLinkControl_flyoutLoadingArea-confirm")).Click();
+                    compcntrl.FindElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.Confirm])).Click();
                 }
                 else
                     throw new InvalidOperationException($"Composite Control: {control.Id} Does not exist");
@@ -562,9 +561,6 @@ namespace Microsoft.Dynamics365.UITests.Api
                     }
                 }
             }
-
-
-
             return dictionary;
         }
 

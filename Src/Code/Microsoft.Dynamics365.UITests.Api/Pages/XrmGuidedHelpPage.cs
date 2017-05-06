@@ -46,7 +46,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                         {
                             var buttonId = driver.ExecuteScript("return arguments[0].id;", element).ToString();
 
-                            if (buttonId.Equals("closeButton", StringComparison.InvariantCultureIgnoreCase))
+                            if (buttonId.Equals(Elements.ElementId[Reference.GuidedHelp.Close], StringComparison.InvariantCultureIgnoreCase))
                             {
                                 driver.WaitUntilVisible(By.Id(buttonId), new TimeSpan(0, 0, 2));
 

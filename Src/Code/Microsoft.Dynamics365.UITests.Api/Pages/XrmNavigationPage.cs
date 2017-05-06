@@ -84,7 +84,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.TabNode]));
 
                 var element = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.ActionGroup]));
-                var subItems = element.FindElements(By.ClassName("nav-rowBody"));
+                var subItems = element.FindElements(By.ClassName(Elements.CssClass[Reference.Navigation.SubActionElementClass]));
 
                 var related = subItems.Where(x => x.Text == relatedArea).FirstOrDefault();
                 relatedId = related.GetAttribute("id").Replace("Node_nav", "area");
@@ -100,8 +100,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute(GetOptions($"Global Search: {searchText}"), driver => 
             {
                 //Narrow down the scope to the Search Tab when looking for the search input
-                var navBar = driver.FindElement(By.Id("TabSearch"));
-                var input = navBar.FindElement(By.Id("search"));
+                var navBar = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.TabSearch]));
+                var input = navBar.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Search]));
 
                 input.SendKeys(searchText);
 
@@ -119,7 +119,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 //Narrow down the scope to the Search Tab when looking for the search input
                 var navBar = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.AdvFindSearch]));
 
-                navBar.FindElement(By.ClassName("navTabButtonLink")).Click();
+                navBar.FindElement(By.ClassName((Elements.CssClass[Reference.Navigation.TabButtonLink]))).Click();
 
                 return true;
             });
@@ -131,8 +131,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute(GetOptions($"Open Quick Create"), driver=> 
             {
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.GlobalCreate]))?.Click();
-                var area = driver.FindElement(By.ClassName("navActionGroupContainer"));
-                var items = area.FindElements(By.ClassName("nav-rowLabel"));
+                var area = driver.FindElement(By.ClassName(Elements.CssClass[Reference.Navigation.ActionGroupContainer]));
+                var items = area.FindElements(By.ClassName(Elements.CssClass[Reference.Navigation.RowLabel]));
                 var item = items.FirstOrDefault(x => x.Text == entity);
 
                 item?.Click();
