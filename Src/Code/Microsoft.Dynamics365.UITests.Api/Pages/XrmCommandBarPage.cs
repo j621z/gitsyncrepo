@@ -32,7 +32,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 IWebElement ribbon = null;
                 if (moreCommands)
-                    ribbon = driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.MoreCommands]));
+                    ribbon = driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.List]));
                 else
                     ribbon = driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.RibbonManager]));
 
@@ -58,7 +58,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                     button.Click();
                 else
                 {
-                    button.FindElement(By.ClassName(Elements.Xpath[Reference.CommandBar.FlyoutAnchorArrow])).Click();
+                    button.FindElement(By.ClassName(Elements.CssClass[Reference.CommandBar.FlyoutAnchorArrow])).Click();
 
                     var flyoutId = button.GetAttribute("id").Replace("|", "_").Replace(".", "_") + "Menu";
                     var subButtons = driver.FindElement(By.Id(flyoutId)).FindElements(By.TagName("li"));

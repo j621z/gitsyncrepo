@@ -180,10 +180,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                     var input = driver.FindElement(By.Id(field));
                     input.Click();
 
-                    if (input.FindElement(By.ClassName("Lookup_RenderButton_td")) == null)
+                    if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
 
-                    input.FindElement(By.ClassName("Lookup_RenderButton_td")).Click();
+                    input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])).Click();
 
                     var dialogName = $"Dialog_{field}_IMenu";
                     var dialog = driver.FindElement(By.Id(dialogName));
@@ -212,7 +212,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                     var input = driver.FindElement(By.Id(field));
                     input.Click();
 
-                    if (input.FindElement(By.ClassName("Lookup_RenderButton_td")) == null)
+                    if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
 
                     var lookupIcon = input.FindElement(By.ClassName("Lookup_RenderButton_td"));
@@ -245,10 +245,10 @@ namespace Microsoft.Dynamics365.UITests.Api
                     var input = driver.FindElement(By.Id(field));
                     input.Click();
 
-                    if (input.FindElement(By.ClassName("Lookup_RenderButton_td")) == null)
+                    if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
 
-                    input.FindElement(By.ClassName("Lookup_RenderButton_td")).Click();
+                    input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])).Click();
 
                     var dialogName = $"Dialog_{field}_IMenu";
                     var dialog = driver.FindElement(By.Id(dialogName));

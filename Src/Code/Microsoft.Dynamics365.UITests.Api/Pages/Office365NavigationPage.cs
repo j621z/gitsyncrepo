@@ -23,7 +23,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                     5,
                     1000,
                     null,
-                    false, 
+                    false,
                     typeof(StaleElementReferenceException));
             }
         }
@@ -34,10 +34,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 var dictionary = new Dictionary<string, Uri>();
 
-                driver.ClickWhenAvailable(By.Id("O365_MainLink_NavMenu"));
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Office365Navigation.NavMenu]));
 
-                var element = driver.FindElement(By.ClassName("o365cs-nav-navMenuTabContainer"));
-                var subItems = element.FindElements(By.ClassName("o365cs-nav-appItem"));
+                var element = driver.FindElement(By.ClassName(Elements.CssClass[Reference.Office365Navigation.MenuTabContainer]));
+                var subItems = element.FindElements(By.ClassName(Elements.CssClass[Reference.Office365Navigation.AppItem]));
 
                 foreach (var subItem in subItems)
                 {

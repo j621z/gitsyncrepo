@@ -330,7 +330,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                             var name = column.GetAttribute<string>("name");
 
                             if (!string.IsNullOrEmpty(name)
-                                && column.GetAttribute("class").Contains("ms-crm-List-DataColumn")
+                                && column.GetAttribute("class").Contains(Elements.CssClass[Reference.Grid.DataColumn])
                                 && cells.Count > idx)
                             {
                                 item[name] = cells[idx].Text;
@@ -368,7 +368,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 {
                     var id = link.GetAttribute("id");
 
-                    if (id != null && id.StartsWith("gridBodyTable_primaryField_"))
+                    if (id != null && id.StartsWith(Elements.ElementId[Reference.Grid.PrimaryField]))
                     {
                         if (currentIndex == index)
                         {

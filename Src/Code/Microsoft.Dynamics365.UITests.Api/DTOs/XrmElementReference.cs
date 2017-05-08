@@ -65,12 +65,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Nav_FindCriteria"       , "id(\"findCriteriaButton\")"},
             { "Nav_Shuffle"       , "id(\"nav-shuffle\")"},
             { "Nav_TabNode"       , "id(\"TabNode_tab0Tab\")"},
-                
-            
+            { "Nav_TabSearch"       , "id(\"TabSearch\")"},
+            { "Nav_Search"       , "id(\"search\")"},
+                  
             //Grid
             { "Grid_JumpBar"       , "id(\"crmGrid_JumpBar\")"},
             { "Grid_ShowAll"       , "id(\"crmGrid_JumpBar\")/tbody/tr/td[1]"},
-            { "Grid_GridTable"       , "id(\"gridBodyTable\")"},
             { "Grid_RowSelect"       , "id(\"gridBodyTable\")/tbody/tr[[INDEX]]/td[1]"},
             { "Grid_Filter"       , "id(\"filterButtonLink\")"},
             { "Grid_ChartList"       , "id(\"visualizationListLink\")"},
@@ -85,8 +85,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Grid_DefaultViewIcon"   , "id(\"defaultViewIcon\")" },
             { "Grid_ControlBar"   , "id(\"gridControlBar\")" },
             { "Grid_Refresh"   , "id(\"grid_refresh\")" },
-
-             
+            { "Grid_ViewSelectorContainer"   , "id(\"viewSelectorContainer\")" },
+                   
             //Entity
             { "Entity_Close"       , "id(\"closeButton\")"},
             { "Entity_Save"       , "id(\"savefooter_statuscontrol\")"},
@@ -139,6 +139,23 @@ namespace Microsoft.Dynamics365.UITests.Api
             //Notification           
             { "Notification_AppMessageBar", "id(\"crmAppMessageBar\")"},
             { "Notification_Close", "id(\"crmAppMessageBarCloseButton\")"},
+
+            //Office365Navigation           
+            { "Office365Navigation_NavMenu", "id(\"O365_MainLink_NavMenu\")"},
+
+            //QuickCreate           
+            { "QuickCreate_Cancel", "id(\"globalquickcreate_cancel_button_NavBarGloablQuickCreate\")"},
+            { "QuickCreate_Save", "id(\"globalquickcreate_save_button_NavBarGloablQuickCreate\")"},  
+            
+            //LookUp
+            { "LookUp_SelObjects", "id(\"selObjects\")"},
+            { "LookUp_SavedQuerySelector", "id(\"crmGrid_SavedQuerySelector\")"},
+            { "LookUp_DialogCancel", "id(\"cmdDialogCancel\")"},
+            { "LookUp_New", "id(\"btnNew\")"},
+            { "LookUp_Remove", "id(\"btnRemove\")"},
+            { "LookUp_Add", "id(\"btnAdd\")"},
+            { "LookUp_Begin", "id(\"butBegin\")"},
+
     };
 
         public static Dictionary<string, string> ElementId = new Dictionary<string, string>()
@@ -148,6 +165,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Frame_DialogFrameId"       , "InlineDialog[INDEX]_Iframe"},
             { "Frame_QuickCreateFrameId"       , "NavBarGloablQuickCreate"},
 
+            //SetValue
+            { "SetValue_ConfirmId"       , "_compositionLinkControl_flyoutLoadingArea-confirm"},
+            { "SetValue_FlyOutId"       , "_compositionLinkControl_flyoutLoadingArea_flyOut"},
+            { "SetValue_CompositionLinkControlId"       , "fullname_compositionLinkControl_"},
+                                
             //Dialogs
             { "Dialog_ActualRevenue"       , "actualrevenue_id"},
             { "Dialog_CloseDate"       , "closedate_id"},
@@ -156,6 +178,12 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             //Entity
             { "Entity_TabId"       , "[NAME]_TAB_headerText_anchor"},
+
+            //GuidedHelp
+            { "GuidedHelp_Close"       , "closeButton"},
+
+            //Grid
+            { "Grid_PrimaryField"       , "gridBodyTable_primaryField_"},
 
             //Global Search
             { "Search_EntityNameId"       , "entityName"},
@@ -177,12 +205,17 @@ namespace Microsoft.Dynamics365.UITests.Api
             //Navigation
             { "Nav_ActionGroupContainerClass"       , "navActionButtonContainer"},
             { "Nav_SubActionElementClass"       , "nav-rowBody"},
-            
+            { "Nav_TabButtonLinkClass"       , "navTabButtonLink"},
+            { "Nav_ActionGroupContainerClass"       , "navActionGroupContainer"},
+            { "Nav_RowLabelClass"       , "nav-rowLabel"},
+                      
             //Dialogs
             { "Dialog_SwitchProcessTitleClass"       , "ms-crm-ProcessSwitcher-ProcessTitle"},
 
             //SetValue
             { "SetValue_LookupRenderClass"       , "Lookup_RenderButton_td"},
+            { "SetValue_EditClass"     , "ms-crm-Inline-Edit"},
+            { "SetValue_ValueClass"       , "ms-crm-Inline-Value"},    
 
             //DashBoard
             { "DashBoard_ViewContainerClass"       , "ms-crm-VS-Menu"},
@@ -195,6 +228,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Grid_OpenChartClass"       , "ms-crm-ImageStrip-navLeft"},
             { "Grid_CloseChartClass"       , "ms-crm-PaneChevron"},
             { "Grid_SortColumnClass"       , "ms-crm-List-Sortable"},
+            { "Grid_DataColumnClass"       , "ms-crm-List-DataColumn"},
 
             //Entity
             { "Entity_LookupRenderClass"       , "Lookup_RenderButton_td"},
@@ -206,9 +240,9 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Notification_MessageBarMessageClass"       , "crmAppMessageBarMessage"},
             { "Notification_MessageBarTitleClass"       , "crmAppMessageBarTitle"},
 
-            //SetValue
-            { "SetValue_EditClass"     , "ms-crm-Inline-Edit"},
-            { "SetValue_ValueClass"       , "ms-crm-Inline-Value"},     
+            //Office365Navigation
+            { "Office365Navigation_MenuTabContainerClass"     , "o365cs-nav-navMenuTabContainer"},
+            { "Office365Navigation_AppItemClass"       , "o365cs-nav-appItem"},
 
         };
     }
@@ -270,7 +304,24 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string LookupRenderClass = "SetValue_LookupRenderClass";
             public static string EditClass = "SetValue_EditClass";
             public static string ValueClass = "SetValue_ValueClass";
- 
+            public static string Confirm = "SetValue_ConfirmId";
+            public static string FlyOut = "SetValue_FlyOutId";
+            public static string CompositionLinkControl = "SetValue_CompositionLinkControlId";
+            public static string Cancel = "SetValue_Cancel";
+            public static string Save = "SetValue_Save";
+        }
+
+        public static class QuickCreate
+        {
+            public static string Cancel = "QuickCreate_Cancel";
+            public static string Save = "QuickCreate_Save";
+        }
+        public static class Office365Navigation
+        {
+            public static string NavMenu = "Office365Navigation_NavMenu";
+            public static string MenuTabContainer = "Office365Navigation_MenuTabContainerClass";
+            public static string AppItem = "Office365Navigation_AppItemClass";
+
         }
 
         public static class Frames
@@ -310,12 +361,17 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string FindCriteria = "Nav_FindCriteria";
             public static string Shuffle = "Nav_Shuffle";
             public static string TabNode = "Nav_TabNode";
+            public static string TabSearch = "Nav_TabSearch";
+            public static string Search = "Nav_Search";
+            public static string TabButtonLink = "Nav_TabButtonLinkClass";
+            public static string ActionGroupContainer = "Nav_ActionGroupContainerClass";
+            public static string RowLabel = "Nav_RowLabelClass";
+                      
         }
         public static class Grid
         {
             public static string JumpBar = "Grid_JumpBar";
             public static string ShowAll = "Grid_ShowAll";
-            public static string GridTable = "Grid_GridTable";
             public static string RowSelect = "Grid_RowSelect";
             public static string Filter = "Grid_Filter";
             public static string ChartList = "Grid_ChartList";
@@ -334,7 +390,9 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string OpenChart = "Grid_OpenChartClass";
             public static string CloseChart = "Grid_CloseChartClass";
             public static string SortColumn = "Grid_SortColumnClass";
-
+            public static string PrimaryField = "Grid_PrimaryField";
+            public static string DataColumn = "Grid_DataColumnClass";
+            public static string ViewSelectorContainer = "Grid_ViewSelectorContainer";
             
         }
 
@@ -416,6 +474,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string MarsOverlay = "GuidedHelp_MarsOverlay";
             public static string ButBegin = "GuidedHelp_ButBegin";
             public static string ButtonClose = "GuidedHelp_ButtonClose";
+            public static string Close = "GuidedHelp_Close";
 
         }
         public static class Notification
@@ -426,6 +485,18 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string MessageBarButtonContainer = "Notification_MessageBarButtonContainerClass";
             public static string MessageBarMessage = "Notification_MessageBarMessageClass";
             public static string MessageBarTitle = "Notification_MessageBarTitleClass";
+
+        }
+
+        public static class LookUp
+        {
+            public static string SelObjects = "LookUp_SelObjects";
+            public static string SavedQuerySelector = "LookUp_SavedQuerySelector";
+            public static string DialogCancel = "LookUp_DialogCancel";
+            public static string New = "LookUp_New";
+            public static string Remove = "LookUp_Remove";
+            public static string Add = "LookUp_Add";
+            public static string Begin = "LookUp_Begin";
 
         }
         public static class Login

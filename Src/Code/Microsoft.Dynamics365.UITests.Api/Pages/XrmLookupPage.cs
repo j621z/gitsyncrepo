@@ -21,7 +21,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 var dictionary = new Dictionary<string, IWebElement>();
 
-                var entitySelectorContainer = driver.FindElement(By.Id("selObjects"));
+                var entitySelectorContainer = driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.SelObjects]));
                 entitySelectorContainer.Click();
 
                 Thread.Sleep(500);
@@ -43,7 +43,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 var dictionary = new Dictionary<string, IWebElement>();
 
-                var viewSelectorContainer = driver.WaitUntilAvailable(By.Id("crmGrid_SavedQuerySelector"));
+                var viewSelectorContainer = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.LookUp.SavedQuerySelector]));
                 viewSelectorContainer.Click();
 
                 Thread.Sleep(500);
@@ -101,8 +101,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Search"), driver =>
             {
-                driver.FindElement(By.Id("crmGrid_findCriteria")).SendKeys(searchCriteria);
-                driver.FindElement(By.Id("crmGrid_findCriteriaImg")).Click();
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.FindCriteria])).SendKeys(searchCriteria);
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.FindCriteriaImg])).Click();
 
                 return true;
             });
@@ -142,7 +142,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                             var name = column.GetAttribute<string>("name");
 
                             if (!string.IsNullOrEmpty(name)
-                                && column.GetAttribute("class").Contains("ms-crm-List-DataColumn")
+                                && column.GetAttribute("class").Contains(Elements.CssClass[Reference.Grid.DataColumn])
                                 && cells.Count > idx)
                             {
                                 item[name] = cells[idx].Text;
@@ -165,7 +165,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Select Item"), driver =>
             {
-                var itemsTable = driver.WaitUntilAvailable(By.Id("gridBodyTable"));
+                var itemsTable = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.GridBodyTable]));
                 var items = itemsTable.FindElements(By.TagName("tr"));
 
                 var item = items[index + 1];
@@ -183,7 +183,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Select Item"), driver =>
             {
-                var itemsTable = driver.WaitUntilAvailable(By.Id("gridBodyTable"));
+                var itemsTable = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.GridBodyTable]));
                 var tbody = itemsTable.FindElement(By.TagName("tbody"));
                 var items = tbody.FindElements(By.TagName("tr"));
 
@@ -210,7 +210,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Add"), driver =>
             {               
-                var add = driver.FindElement(By.Id("butBegin"));
+                var add = driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.Begin]));
 
                 add?.Click();
 
@@ -224,7 +224,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Select"), driver =>
             {
-                var add = driver.FindElement(By.Id("btnAdd"));
+                var add = driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.Add]));
 
                 add?.Click();
 
@@ -238,7 +238,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Remove"), driver =>
             {
-                var add = driver.FindElement(By.Id("btnRemove"));
+                var add = driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.Remove]));
 
                 add?.Click();
 
@@ -252,7 +252,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("New"), driver =>
             {
-                var add = driver.FindElement(By.Id("btnNew"));
+                var add = driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.New]));
 
                 add?.Click();
 
@@ -266,7 +266,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Cancel"), driver =>
             {
-                var add = driver.FindElement(By.Id("cmdDialogCancel"));
+                var add = driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.DialogCancel]));
 
                 add?.Click();
 

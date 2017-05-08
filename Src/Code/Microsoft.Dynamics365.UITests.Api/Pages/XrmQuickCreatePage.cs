@@ -23,8 +23,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute(GetOptions("Cancel"), driver =>
             {
                 SwitchToDefaultContent();
-
-                driver.FindElement(By.Id("globalquickcreate_cancel_button_NavBarGloablQuickCreate"))?.Click();
+                
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.QuickCreate.Cancel]))?.Click();
                 return true;
             });
         }
@@ -37,7 +37,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 SwitchToDefaultContent();
 
-                driver.FindElement(By.Id("globalquickcreate_save_button_NavBarGloablQuickCreate"))?.Click();
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.QuickCreate.Save]))?.Click();
                 return true;
             });
         }
@@ -300,15 +300,15 @@ namespace Microsoft.Dynamics365.UITests.Api
                     return false;
 
                 driver.FindElement(By.Id(control.Id)).Click();
-
-                if (driver.HasElement(By.Id(control.Id + "_compositionLinkControl_flyoutLoadingArea_flyOut")))
+                
+                if (driver.HasElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.FlyOut])))
                 {
                     var compcntrl =
-                        driver.FindElement(By.Id(control.Id + "_compositionLinkControl_flyoutLoadingArea_flyOut"));
+                        driver.FindElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.FlyOut]));
 
                     foreach (var field in control.Fields)
                     {
-                        compcntrl.FindElement(By.Id("fullname_compositionLinkControl_" + field.Id)).Click();
+                        compcntrl.FindElement(By.Id(Elements.ElementId[Reference.SetValue.CompositionLinkControl] + field.Id)).Click();
 
                         var result = compcntrl.FindElements(By.TagName("input"))
                             .ToList()
@@ -317,7 +317,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                         result?.SendKeys(field.Value);
                     }
 
-                    compcntrl.FindElement(By.Id(control.Id + "_compositionLinkControl_flyoutLoadingArea-confirm")).Click();
+                    compcntrl.FindElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.Confirm])).Click();
                 }
                 else
                     throw new InvalidOperationException($"Composite Control: {control.Id} Does not exist");
