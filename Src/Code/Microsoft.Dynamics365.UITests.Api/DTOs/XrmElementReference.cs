@@ -339,7 +339,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             public static string HomeTab = "Nav_HomeTab";
             public static string ActionGroup = "Nav_ActionGroup";
-            public static string ActionGroupContainerClass = "Nav_ActionGroupContainerClass";
+            public static string ActionButtonContainer = "Nav_ActionButtonContainerClass";
             public static string SubActionGroup = "Nav_SubActionGroup";
             public static string SubActionGroupContainer = "Nav_SubActionGroupContainer";
             public static string SubActionElementClass = "Nav_SubActionElementClass";
