@@ -61,14 +61,14 @@ namespace Microsoft.Dynamics365.UITests.Api
                     throw new InvalidOperationException($"No area with the name '{area}' exists.");
                 }
 
-                var subAreas = OpenSubMenu(areas[area]).Value;
+                var subAreas = OpenSubMenu(areas[area.ToLower()]).Value;
 
                 if (!subAreas.ContainsKey(subArea.ToLower()))
                 {
                     throw new InvalidOperationException($"No subarea with the name '{subArea}' exists inside of '{area}'.");
                 }
                 
-                subAreas[subArea].Click();
+                subAreas[subArea.ToLower()].Click();
 
                 driver.WaitForPageToLoad();
 
