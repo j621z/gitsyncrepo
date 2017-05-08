@@ -203,7 +203,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public static Dictionary<string, string> CssClass = new Dictionary<string, string>()
         {
             //Navigation
-            { "Nav_ActionGroupContainerClass"       , "navActionButtonContainer"},
+            { "Nav_ActionButtonContainerClass"       , "navActionButtonContainer"},
             { "Nav_SubActionElementClass"       , "nav-rowBody"},
             { "Nav_TabButtonLinkClass"       , "navTabButtonLink"},
             { "Nav_ActionGroupContainerClass"       , "navActionGroupContainer"},
