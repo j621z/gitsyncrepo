@@ -17,7 +17,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             SwitchToDefaultContent();
         }
-        
+
         public BrowserCommandResult<bool> OpenHomePage(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -25,11 +25,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             //TODO: Implement HomePage logic
             throw new NotImplementedException();
         }
-        public BrowserCommandResult<Dictionary<string, IWebElement>> OpenHamburgerMenu(int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<Dictionary<string, IWebElement>> OpenMenu(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
-            return this.Execute(GetOptions("Open Home Tab Menu"), driver => 
+            return this.Execute(GetOptions("Open Menu Menu"), driver =>
             {
                 var dictionary = new Dictionary<string, IWebElement>();
 
@@ -42,7 +42,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 foreach (var subItem in subItems)
                 {
-                    dictionary.Add(subItem.Text.ToLower(), subItem);
+                    dictionary.Add(subItem.Text, subItem);
                 }
 
                 return dictionary;
@@ -54,21 +54,21 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions($": {area} > {subArea}"), driver =>
             {
-                var areas = OpenHamburgerMenu().Value;
+                var areas = OpenMenu().Value;
 
-                if (!areas.ContainsKey(area.ToLower()))
+                if (!areas.ContainsKey(area))
                 {
                     throw new InvalidOperationException($"No area with the name '{area}' exists.");
                 }
 
-                var subAreas = OpenSubMenu(areas[area.ToLower()]).Value;
+                var subAreas = OpenSubMenu(areas[area]).Value;
 
-                if (!subAreas.ContainsKey(subArea.ToLower()))
+                if (!subAreas.ContainsKey(subArea))
                 {
                     throw new InvalidOperationException($"No subarea with the name '{subArea}' exists inside of '{area}'.");
                 }
-                
-                subAreas[subArea.ToLower()].Click();
+
+                subAreas[subArea].Click();
 
                 driver.WaitForPageToLoad();
 
@@ -84,7 +84,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.TabNode]));
 
                 var element = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.ActionGroup]));
-                var subItems = element.FindElements(By.ClassName(Elements.CssClass[Reference.Navigation.SubActionElementClass]));
+                var subItems = element.FindElements(By.ClassName("nav-rowBody"));
 
                 var related = subItems.Where(x => x.Text == relatedArea).FirstOrDefault();
                 relatedId = related.GetAttribute("id").Replace("Node_nav", "area");
@@ -97,11 +97,11 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             Browser.ThinkTime(thinkTime);
 
-            return this.Execute(GetOptions($"Global Search: {searchText}"), driver => 
+            return this.Execute(GetOptions($"Global Search: {searchText}"), driver =>
             {
                 //Narrow down the scope to the Search Tab when looking for the search input
-                var navBar = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.TabSearch]));
-                var input = navBar.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Search]));
+                var navBar = driver.FindElement(By.Id("TabSearch"));
+                var input = navBar.FindElement(By.Id("search"));
 
                 input.SendKeys(searchText);
 
@@ -114,25 +114,25 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             Browser.ThinkTime(thinkTime);
 
-            return this.Execute(GetOptions($"Open Advanced Find"), driver=> 
+            return this.Execute(GetOptions($"Open Advanced Find"), driver =>
             {
                 //Narrow down the scope to the Search Tab when looking for the search input
                 var navBar = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.AdvFindSearch]));
 
-                navBar.FindElement(By.ClassName((Elements.CssClass[Reference.Navigation.TabButtonLink]))).Click();
+                navBar.FindElement(By.ClassName("navTabButtonLink")).Click();
 
                 return true;
             });
         }
-        public BrowserCommandResult<bool> QuickCreate(string entity,int thinkTime = Constants.DefaultThinkTime)
+        public BrowserCommandResult<bool> QuickCreate(string entity, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
 
-            return this.Execute(GetOptions($"Open Quick Create"), driver=> 
+            return this.Execute(GetOptions($"Open Quick Create"), driver =>
             {
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.GlobalCreate]))?.Click();
-                var area = driver.FindElement(By.ClassName(Elements.CssClass[Reference.Navigation.ActionGroupContainer]));
-                var items = area.FindElements(By.ClassName(Elements.CssClass[Reference.Navigation.RowLabel]));
+                var area = driver.FindElement(By.ClassName("navActionGroupContainer"));
+                var items = area.FindElements(By.ClassName("nav-rowLabel"));
                 var item = items.FirstOrDefault(x => x.Text == entity);
 
                 item?.Click();
@@ -143,7 +143,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             Browser.ThinkTime(thinkTime);
 
-            return this.Execute(GetOptions($"SignOut"), driver => 
+            return this.Execute(GetOptions($"SignOut"), driver =>
             {
                 var userInfo = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.UserInfo]));
                 userInfo?.Click();
@@ -302,7 +302,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 foreach (var subItem in subItems)
                 {
-                    dictionary.Add(subItem.Text.ToLower(), subItem);
+                    dictionary.Add(subItem.Text, subItem);
                 }
 
                 return dictionary;
