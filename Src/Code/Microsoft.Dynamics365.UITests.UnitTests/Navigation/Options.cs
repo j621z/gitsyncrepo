@@ -90,7 +90,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
             {
                 BrowserType = BrowserType.Chrome,
                 PrivateMode = true,
-                FireEvents = true
+                FireEvents = true                
             }))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
