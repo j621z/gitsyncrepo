@@ -538,7 +538,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 0,
                 0,
                 null,
-                false,
+                true,
                 typeof(NoSuchElementException), typeof(StaleElementReferenceException));
         }
 

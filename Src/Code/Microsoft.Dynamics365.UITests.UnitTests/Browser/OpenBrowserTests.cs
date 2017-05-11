@@ -12,11 +12,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void TestOpenInternetExplorer()
         {
-            using (var browser = new InteractiveBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.IE,
-                PrivateMode = true
-            }))
+            using (var browser = new InteractiveBrowser(TestSettings.Options))
             {
                 browser.Driver.Navigate().GoToUrl(_homePageUri);
             }
@@ -25,11 +21,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 		[TestMethod]
 		public void TestOpenChrome()
 		{
-			using (var browser = new InteractiveBrowser(new BrowserOptions
-			{
-				BrowserType = BrowserType.Chrome,
-				PrivateMode = true
-			}))
+			using (var browser = new InteractiveBrowser(TestSettings.Options))
 			{
 				browser.Driver.Navigate().GoToUrl(_homePageUri);
 			}
@@ -38,11 +30,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 		[TestMethod]
 		public void TestOpenFirefox()
 		{
-			using (var browser = new InteractiveBrowser(new BrowserOptions
-			{
-				BrowserType = BrowserType.Firefox,
-				PrivateMode = true
-			}))
+			using (var browser = new InteractiveBrowser(TestSettings.Options))
 			{
 				browser.Driver.Navigate().GoToUrl(_homePageUri);
 			}
@@ -51,11 +39,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 		[TestMethod]
 		public void TestOpenEdge()
 		{
-			using (var browser = new InteractiveBrowser(new BrowserOptions
-			{
-				BrowserType = BrowserType.Edge,
-				PrivateMode = true
-			}))
+			using (var browser = new InteractiveBrowser(TestSettings.Options))
 			{
 				browser.Driver.Navigate().GoToUrl(_homePageUri);
 			}
@@ -64,11 +48,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 		[TestMethod]
 		public void TestOpenPhantomJs()
 		{
-			using (var browser = new InteractiveBrowser(new BrowserOptions
-			{
-				BrowserType = BrowserType.PhantomJs,
-				PrivateMode = true
-			}))
+			using (var browser = new InteractiveBrowser(TestSettings.Options))
 			{
 				browser.Driver.Navigate().GoToUrl(_homePageUri);
 			}
