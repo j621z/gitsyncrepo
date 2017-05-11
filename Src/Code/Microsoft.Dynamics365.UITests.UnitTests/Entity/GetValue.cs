@@ -20,12 +20,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void GetValueFromOpenActiveLead()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -43,12 +38,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
         public void GetValueFromCompositeControl()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -72,12 +62,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void GetValueFromOptionSet()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -101,12 +86,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void GetValueFromLookup()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();

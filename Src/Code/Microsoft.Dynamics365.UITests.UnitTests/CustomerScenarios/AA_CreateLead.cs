@@ -20,12 +20,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void CreateNewLead()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password, ADFSLogin);
 
@@ -65,12 +60,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void QualifyLead()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password, ADFSLogin);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();

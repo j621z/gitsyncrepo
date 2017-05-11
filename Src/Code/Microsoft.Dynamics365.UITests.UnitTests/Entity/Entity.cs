@@ -19,19 +19,14 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void OpenEntity()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 Thread.Sleep(500);
 
-                xrmBrowser.Entity.OpenEntity("account", Guid.Parse("BD8AC246-2416-E711-8104-FC15B4282DF4"));
+                xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
                 Thread.Sleep(5000);
             }
         }
@@ -39,12 +34,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void NavigateUp()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -64,12 +54,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void NavigateDown()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -88,17 +73,12 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void CollapseTab()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                xrmBrowser.Entity.OpenEntity("account", Guid.Parse("BD8AC246-2416-E711-8104-FC15B4282DF4"));
+                xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
 
                 xrmBrowser.Entity.SelectTab("Summary");
                 Thread.Sleep(1000);
@@ -108,17 +88,12 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void PopOutForm()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                xrmBrowser.Entity.OpenEntity("account", Guid.Parse("BD8AC246-2416-E711-8104-FC15B4282DF4"));
+                xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
                 xrmBrowser.Entity.Popout();
 
                 Thread.Sleep(10000);
@@ -128,22 +103,17 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void OpenLookup()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 Thread.Sleep(500);
 
-                xrmBrowser.Entity.OpenEntity("account", Guid.Parse("BD8AC246-2416-E711-8104-FC15B4282DF4"));
+                xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
 
-                xrmBrowser.Entity.SelectLookup("primarycontactid", "Rene Valdes (sample)");
-                xrmBrowser.Entity.SelectLookup("primarycontactid", 0);
+                xrmBrowser.Entity.SelectLookup(TestSettings.LookupField, TestSettings.LookupName);
+                xrmBrowser.Entity.SelectLookup(TestSettings.LookupField, 0);
 
             }
         }
@@ -151,19 +121,14 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void SaveEntity()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 Thread.Sleep(500);
 
-                xrmBrowser.Entity.OpenEntity("account", Guid.Parse("BD8AC246-2416-E711-8104-FC15B4282DF4"));
+                xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
                 xrmBrowser.Entity.Save();
 
                 Thread.Sleep(5000);
@@ -173,17 +138,12 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void CloseEntity()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                xrmBrowser.Entity.OpenEntity("account", Guid.Parse("BD8AC246-2416-E711-8104-FC15B4282DF4"));
+                xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
 
                 xrmBrowser.Entity.CloseEntity();
 
@@ -194,18 +154,13 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void ExpandTab()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 Thread.Sleep(500);
-                xrmBrowser.Entity.OpenEntity("account", Guid.Parse("BD8AC246-2416-E711-8104-FC15B4282DF4"));
+                xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
 
                 xrmBrowser.Entity.CollapseTab("Summary");
                 xrmBrowser.Entity.ExpandTab("Summary");
@@ -217,18 +172,13 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void SelectTab()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 Thread.Sleep(500);
-                xrmBrowser.Entity.OpenEntity("account", Guid.Parse("BD8AC246-2416-E711-8104-FC15B4282DF4"));
+                xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
 
                 xrmBrowser.Entity.SelectTab("Summary");
                 xrmBrowser.Entity.SelectTab("Details");
@@ -240,18 +190,13 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void SelectForm()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 Thread.Sleep(500);
-                xrmBrowser.Entity.OpenEntity("account", Guid.Parse("BD8AC246-2416-E711-8104-FC15B4282DF4"));
+                xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
 
                 xrmBrowser.Entity.SelectForm("Details");
 

@@ -19,12 +19,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void TestSwitchView()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -39,12 +34,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void TestGetGridItems()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -60,12 +50,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void TestOpenGridRecord()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -80,12 +65,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void TestSortGridRow()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -102,12 +82,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void TestSelectRecord()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -126,12 +101,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void TestSelectAllRecords()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -149,12 +119,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void TestFilterGridByLetter()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -170,12 +135,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void FilterGridByAll()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -191,12 +151,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void EnableFilter()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -212,12 +167,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void GridNextPage()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -234,12 +184,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void GridPreviousPage()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -256,12 +201,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void GridFirstPage()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -278,12 +218,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void OpenChart()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -300,12 +235,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void SwitchChart()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -323,12 +253,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void RefreshGrid()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -345,12 +270,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void CloseChart()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -368,12 +288,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void QuickFindSearch()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -394,12 +309,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void PinDefaultView()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
