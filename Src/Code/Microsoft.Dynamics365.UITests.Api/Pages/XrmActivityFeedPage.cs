@@ -66,11 +66,14 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
 
                 var wall = driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.NotesWall]));
                 var text = wall.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.NotesText]));
-
                 text.Click();
-                text.SendKeys(noteText);
+                var textArea = wall.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.NotesText]));
+                textArea.Click();
+                textArea.SendKeys(noteText);
 
-                wall.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.NotesButton])).Click();
+               var post= driver.FindElement(By.Id("doneSpacer"));
+                var done=post.FindElement(By.Id("postButton"));
+                done.Click();
 
                 return true;
             });
@@ -151,7 +154,9 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityAddPhoneCall])).Click();
 
                 this.SetValue(Elements.ElementId[Reference.ActivityFeed.ActivityPhoneCallDescriptionId], description);
-                this.SetValue(Elements.ElementId[Reference.ActivityFeed.ActivityPhoneCallOk], leftVoiceMail);
+
+                var mailId=driver.FindElement(By.Id("PhoneCallQuickformleftvoiceCheckBoxContol"));
+                mailId.Click();
 
                 if (!outgoing)
                     driver.FindElement(By.Id(Elements.ElementId[Reference.ActivityFeed.ActivityPhoneCallDirectionId])).Click();
