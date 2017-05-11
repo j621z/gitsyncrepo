@@ -38,7 +38,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 Thread.Sleep(1000);
 
                 var element = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.ActionGroup]));
-                var subItems = element.FindElements(By.ClassName(Elements.CssClass[Reference.Navigation.ActionGroupContainerClass]));
+                var subItems = element.FindElements(By.ClassName(Elements.CssClass[Reference.Navigation.ActionButtonContainer]));
 
                 foreach (var subItem in subItems)
                 {
