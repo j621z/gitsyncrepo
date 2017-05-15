@@ -41,7 +41,9 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 driver.Navigate().GoToUrl(uri);
 
-               // driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
+                DismissAlertIfPresent();
+
+                // driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
                 driver.WaitForPageToLoad();
 
                 return true;
@@ -443,6 +445,22 @@ namespace Microsoft.Dynamics365.UITests.Api
                     "Save Buttton is not available");
 
                 save?.Click();
+
+                return true;
+            });
+        }
+        public BrowserCommandResult<bool> DismissAlertIfPresent(bool stay = false)
+        {
+
+            return this.Execute(GetOptions("Dismiss Confirm Save Alert"), driver =>
+            {
+                if (driver.AlertIsPresent())
+                {
+                    if (stay)
+                        driver.SwitchTo().Alert().Dismiss();
+                    else
+                        driver.SwitchTo().Alert().Accept();
+                }
 
                 return true;
             });
