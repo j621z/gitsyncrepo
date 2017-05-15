@@ -112,7 +112,6 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Notes_NotesControl"       , "id(\"notescontrol\")"},
             { "Notes_NotesWall"       , "id(\"notesWall\")"},
             { "Notes_NotesText"       , "id(\"createNote_notesTextBox\")"},
-            { "Notes_NotesButton"       , "id(\"postButton\")"},
             { "Notes_PostWall"       , "id(\"activityFeedsWall\")"},
             { "Notes_PostButton"       , "id(\"postButton\")"},
             { "Notes_PostText"       , "id(\"postTextBox\")"},
@@ -130,7 +129,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Notes_ActivityAddAppointment", "id(\"AddappointmentButton\")"},
             { "Notes_ActivityAddPhoneCall", "id(\"activityLabelinlineactivitybar4210\")"},
             { "Notes_ActivityAddTask", "id(\"activityLabelinlineactivitybar4212\")"},
-
+            { "Notes_Done"                 , "id(\"doneSpacer\")"},
+            
             //Login           
             { "Login_UserId", "id(\"cred_userid_inputtext\")"},
             { "Login_Password", "id(\"cred_password_inputtext\")"},
@@ -424,10 +424,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string NotesControl = "Notes_NotesControl";
             public static string NotesWall = "Notes_NotesWall";
             public static string NotesText = "Notes_NotesText";
-            public static string NotesButton = "Notes_NoteButton";
+            public static string NotesDone = "Notes_Done";
             public static string PostWall = "Notes_PostWall";
             public static string PostText = "Notes_PostText";
-            public static string PostButton = "Notes_PostButton";
+            public static string PostButton = "Notes_PostButton";           
             public static string ActivityWall = "Notes_ActivityWall";
             public static string ActivityStatusFilter = "Notes_ActivityStatusFilter";
             public static string ActivityStatusFilterDialog = "Notes_ActivityStatusFilterDialog";
@@ -448,7 +448,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string ActivityAddEmail = "Notes_ActivityAddEmail";
             public static string ActivityAddAppointment = "Notes_ActivityAddAppointment";
             public static string ActivityAddPhoneCall = "Notes_ActivityAddPhoneCall";
-            public static string ActivityAddTask = "Notes_ActivityAddTask";
+            public static string ActivityAddTask = "Notes_ActivityAddTask";            
 
         }
 

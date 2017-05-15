@@ -66,11 +66,15 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
 
                 var wall = driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.NotesWall]));
                 var text = wall.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.NotesText]));
-
                 text.Click();
-                text.SendKeys(noteText);
 
-                wall.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.NotesButton])).Click();
+                var textArea = wall.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.NotesText]));
+                textArea.Click();
+                textArea.SendKeys(noteText);
+
+                var post = driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.NotesDone]));
+                var done = post.FindElement(By.Id("postButton"));
+                done.Click();
 
                 return true;
             });
