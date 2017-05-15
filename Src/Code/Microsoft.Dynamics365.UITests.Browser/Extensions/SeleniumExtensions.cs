@@ -219,6 +219,36 @@ namespace Microsoft.Dynamics365.UITests.Browser
             element.SendKeys(value);
         }
 
+        public static bool AlertIsPresent(this IWebDriver driver)
+        {
+            return AlertIsPresent(driver, new TimeSpan(0, 0, 2));
+        }
+
+        public static bool AlertIsPresent(this IWebDriver driver, TimeSpan timeout)
+        {
+            var returnvalue = false;
+
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+            try
+            {
+                wait.Until(ExpectedConditions.AlertIsPresent());
+
+                returnvalue = true;
+            }
+            catch (NoSuchElementException)
+            {
+                returnvalue = false;
+            }
+            catch (WebDriverTimeoutException)
+            {
+                returnvalue = false;
+            }
+
+            return returnvalue;
+
+        }
+
         #endregion Elements
 
         #region Waits

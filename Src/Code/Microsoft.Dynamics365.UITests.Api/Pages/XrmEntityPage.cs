@@ -447,5 +447,21 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+        public BrowserCommandResult<bool> DismissAlertIfPresent(bool stay = false)
+        {
+
+            return this.Execute(GetOptions("Dismiss Confirm Save Alert"), driver =>
+            {
+                if (driver.AlertIsPresent())
+                {
+                    if (stay)
+                        driver.SwitchTo().Alert().Dismiss();
+                    else
+                        driver.SwitchTo().Alert().Accept();
+                }
+
+                return true;
+            });
+        }
     }
 }
