@@ -130,7 +130,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Notes_ActivityAddPhoneCall", "id(\"activityLabelinlineactivitybar4210\")"},
             { "Notes_ActivityAddTask", "id(\"activityLabelinlineactivitybar4212\")"},
             { "Notes_Done"                 , "id(\"doneSpacer\")"},
-            
+            { "Notes_VoiceMail"                 , "id(\"PhoneCallQuickformleftvoiceCheckBoxContol\")"},
+                       
             //Login           
             { "Login_UserId", "id(\"cred_userid_inputtext\")"},
             { "Login_Password", "id(\"cred_password_inputtext\")"},
@@ -191,7 +192,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Search_EntityContainersId"       , "entitypic"},
 
             //ActivityFeed
-            { "Notes_ActivityPhoneCallDescId"       , "quickCreateActivity4210controlId_description_i"},
+            { "Notes_ActivityPhoneCallDescId"       , "quickCreateActivity4210controlId_description"},
             { "Notes_ActivityPhoneCallVoiceMailId"       , "PhoneCallQuickformleftvoiceCheckBoxContol"},
             { "Notes_ActivityPhoneCallDirectionId"       , "quickCreateActivity4210controlId_directioncode_i"},
             { "Notes_ActivityTaskSubjectId"      , "quickCreateActivity4212controlId_subject_i"},
@@ -448,7 +449,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string ActivityAddEmail = "Notes_ActivityAddEmail";
             public static string ActivityAddAppointment = "Notes_ActivityAddAppointment";
             public static string ActivityAddPhoneCall = "Notes_ActivityAddPhoneCall";
-            public static string ActivityAddTask = "Notes_ActivityAddTask";            
+            public static string ActivityAddTask = "Notes_ActivityAddTask";
+            public static string VoiceMail = "Notes_VoiceMail";
 
         }
 

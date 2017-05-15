@@ -155,7 +155,11 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityAddPhoneCall])).Click();
 
                 this.SetValue(Elements.ElementId[Reference.ActivityFeed.ActivityPhoneCallDescriptionId], description);
-                this.SetValue(Elements.ElementId[Reference.ActivityFeed.ActivityPhoneCallOk], leftVoiceMail);
+                if (leftVoiceMail)
+                {
+                    var mailId = driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.VoiceMail]));
+                    mailId.Click();
+                }
 
                 if (!outgoing)
                     driver.FindElement(By.Id(Elements.ElementId[Reference.ActivityFeed.ActivityPhoneCallDirectionId])).Click();
