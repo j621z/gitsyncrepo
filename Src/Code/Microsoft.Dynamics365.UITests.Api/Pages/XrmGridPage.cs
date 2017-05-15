@@ -494,7 +494,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             Browser.ThinkTime(thinkTime);
 
-            if (Browser.Driver.IsVisible(By.XPath(Elements.Xpath[Reference.Grid.ChartList])))
+            if (!Browser.Driver.IsVisible(By.XPath(Elements.Xpath[Reference.Grid.ChartList])))
                 OpenChart();
 
             Browser.ThinkTime(1000);
