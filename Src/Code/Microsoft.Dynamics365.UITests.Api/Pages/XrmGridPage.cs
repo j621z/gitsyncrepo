@@ -87,7 +87,9 @@ namespace Microsoft.Dynamics365.UITests.Api
                 var views = OpenViewPicker().Value;
 
                 if (!views.ContainsKey(viewName))
-                    return false;
+                {
+                    throw new InvalidOperationException($"No view with the name '{viewName}' exists.");
+                }
 
                 var viewId = views[viewName];
 
@@ -388,8 +390,10 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                     return true;
                 }
-
-                return false;
+               else
+               {
+                   throw new InvalidOperationException($"No record with the index '{index}' exists.");
+                }
             });
         }
 

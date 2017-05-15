@@ -27,7 +27,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public BrowserCommandResult<bool> SetValue(string field, bool check)
         {
             //return this.Execute($"Set Value: {field}", SetValue, field, check);
-            return this.Execute($"Set Value: {field}", driver =>
+            return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
                 if (driver.HasElement(By.Id("int_" + field)))
                 {
@@ -52,7 +52,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public BrowserCommandResult<bool> SetValue(string field, DateTime date)
         {
             //return this.Execute($"Set Value: {field}", SetValue, field, date);
-            return this.Execute($"Set Value: {field}", driver =>
+            return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
                 if (driver.HasElement(By.Id(field)))
                 {
@@ -94,7 +94,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public BrowserCommandResult<bool> SetValue(string field, string value)
         {
             //return this.Execute($"Set Value: {field}", SetValue, field, value);
-            return this.Execute($"Set Value: {field}", driver =>
+            return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
                 if (driver.HasElement(By.Id(field)))
                 {
@@ -135,7 +135,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(Field field)
         {
-            return this.Execute($"Set Value: {field.Name}", driver =>
+            return this.Execute(GetOptions($"Set Value: {field.Name}"), driver =>
             {
                 if (driver.HasElement(By.Id(field.Id)))
                 {
@@ -175,7 +175,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(OptionSet option)
         {
-            return this.Execute($"Set Value: {option.Name}", driver =>
+            return this.Execute(GetOptions($"Set Value: {option.Name}"), driver =>
             {
                 if (driver.HasElement(By.Id(option.Name)))
                 {
@@ -244,7 +244,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(Lookup control)
         {
-            return this.Execute($"Set Lookup Value: {control.Name}", driver =>
+            return this.Execute(GetOptions($"Set Lookup Value: {control.Name}"), driver =>
             {
                 if (driver.HasElement(By.Id(control.Name)))
                 {
