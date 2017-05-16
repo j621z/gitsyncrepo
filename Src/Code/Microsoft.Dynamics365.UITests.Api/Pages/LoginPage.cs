@@ -76,6 +76,9 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Login.UserId]),
                     $"The Office 365 sign in page did not return the expected result and the user '{username}' could not be signed in.");
+                
+                if (driver.IsVisible(By.Id("use_another_account_link")))
+                    driver.FindElement(By.Id("use_another_account_link")).Click();
 
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.UserId])).SendKeys(username.ToUnsecureString());
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.UserId])).SendKeys(Keys.Enter);
