@@ -86,7 +86,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             var options = new EdgeOptions()
             {
-                PageLoadStrategy = EdgePageLoadStrategy.Default
+                PageLoadStrategy = EdgePageLoadStrategy.Normal
             };
 
             return options;

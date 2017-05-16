@@ -42,7 +42,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 foreach (var subItem in subItems)
                 {
-                    dictionary.Add(subItem.Text, subItem);
+                    dictionary.Add(subItem.Text.ToLowerString(), subItem);
                 }
 
                 return dictionary;
@@ -54,6 +54,9 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions($": {area} > {subArea}"), driver =>
             {
+                area = area.ToLower();
+                subArea = subArea.ToLower();
+
                 var areas = OpenMenu().Value;
 
                 if (!areas.ContainsKey(area))
@@ -302,7 +305,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 foreach (var subItem in subItems)
                 {
-                    dictionary.Add(subItem.Text, subItem);
+                    dictionary.Add(subItem.Text.ToLowerString(), subItem);
                 }
 
                 return dictionary;

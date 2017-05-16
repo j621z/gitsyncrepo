@@ -34,6 +34,14 @@ namespace Microsoft.Dynamics365.UITests.Browser
                 Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
             }
         }
+        public static string ToLowerString(this string value)
+        {
+            return value.Trim()
+                        .Replace("\r", string.Empty)
+                        .Replace("\n", string.Empty)
+                        .Replace(Environment.NewLine, string.Empty)
+                        .ToLower();
+        }
     }
 
     public static class BoolExtensions
