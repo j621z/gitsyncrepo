@@ -313,7 +313,8 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Settings]))?.Click();
             Thread.Sleep(1000);
-            driver.ClickWhenAvailable(By.XPath(settingPath));
+            driver.WaitUntilVisible(By.XPath(settingPath));
+            driver.FindElement(By.XPath(settingPath)).Click();
         }
     }
 }
