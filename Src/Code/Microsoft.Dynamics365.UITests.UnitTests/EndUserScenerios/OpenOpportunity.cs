@@ -29,7 +29,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Opportunities");
 
                 Thread.Sleep(2000);
-                xrmBrowser.Grid.SwitchView("All Opportunities");
+                xrmBrowser.Grid.SwitchView("Open Opportunities");
 
                 Thread.Sleep(1000);
                 xrmBrowser.Grid.OpenRecord(0);

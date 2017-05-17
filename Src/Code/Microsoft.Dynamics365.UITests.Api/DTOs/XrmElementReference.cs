@@ -178,7 +178,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Dialog_UserOrTeamLookupId"       , "systemuserview_id"},
 
             //Entity
-            { "Entity_TabId"       , "[NAME]_TAB_headerText_anchor"},
+            { "Entity_TabId"       , "[NAME]_TAB_header_image_div"},
 
             //GuidedHelp
             { "GuidedHelp_Close"       , "closeButton"},
