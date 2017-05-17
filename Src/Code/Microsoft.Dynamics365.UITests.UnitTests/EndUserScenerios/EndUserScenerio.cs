@@ -20,12 +20,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void EndUserScenerio()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true,
-                FireEvents = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -46,7 +41,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Entity.SetValue("name", "Test API Account");
                 xrmBrowser.Entity.SetValue("telephone1", "555-555-5555");
-                xrmBrowser.Entity.SetValue("emailaddress1", "test@contoso.com");
                 xrmBrowser.Entity.SetValue("websiteurl", "https://easyrepro.crm.dynamics.com");
 
                 xrmBrowser.CommandBar.ClickCommand("Save & Close");

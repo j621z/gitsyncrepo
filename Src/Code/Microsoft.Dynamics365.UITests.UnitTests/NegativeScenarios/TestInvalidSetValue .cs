@@ -9,7 +9,7 @@ using OpenQA.Selenium.Support.Events;
 namespace Microsoft.Dynamics365.UITests.UnitTests
 {
     [TestClass]
-    public class GlobalSearchXrm
+    public class TestInvalidSetValue
     {
 
         private readonly SecureString _username = System.Configuration.ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();
@@ -17,26 +17,25 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void TestGlobalSearch()
+        public void InvalidSetValue()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
 
-                xrmBrowser.Navigation.GlobalSearch("contoso");
+                xrmBrowser.CommandBar.ClickCommand("New");
 
-                xrmBrowser.GlobalSearch.Search("Contoso");
-                Thread.Sleep(4000);
-
+                xrmBrowser.Entity.SetValue("subject1", "Test API to Create leads");
 
             }
         }
 
         [TestMethod]
-        public void TestOpenRecord()
+        public void InvalidOptionSetValue()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -44,18 +43,17 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 Thread.Sleep(500);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
 
-                xrmBrowser.Navigation.GlobalSearch("");
-                xrmBrowser.GlobalSearch.Search("Contoso");
-                xrmBrowser.GlobalSearch.OpenRecord("Accounts",0) ;
-                Thread.Sleep(4000);
+                xrmBrowser.CommandBar.ClickCommand("New");
 
+                xrmBrowser.Entity.SetValue(new OptionSet { Name = "Invalidcontactmethodcode", Value = "Email" });
 
             }
         }
 
         [TestMethod]
-        public void TestFilterWith()
+        public void InvalidOpenLookupSetValue()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -63,15 +61,14 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 Thread.Sleep(500);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
 
-                xrmBrowser.Navigation.GlobalSearch("");
-                xrmBrowser.GlobalSearch.Search("Contoso");
-                xrmBrowser.GlobalSearch.FilterWith("Account");
+                xrmBrowser.CommandBar.ClickCommand("New");
 
-                Thread.Sleep(4000);
-
+                xrmBrowser.Entity.SetValue(new Lookup { Name = "prrimarycontactid", Value = "Rene Valdes (sample)" });
 
             }
         }
+
     }
 }

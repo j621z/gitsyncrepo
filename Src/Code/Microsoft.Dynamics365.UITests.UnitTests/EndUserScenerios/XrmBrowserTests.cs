@@ -25,11 +25,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void TestOnPremLogin()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.IE,
-                PrivateMode = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_onPremUri, _onPremUsername, _onPremPassword);
 
@@ -39,11 +35,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void TestOpenLeadsView()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
@@ -82,11 +74,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         [TestMethod]
         public void TestActiveContactsView()
         {
-            using (var xrmBrowser = new XrmBrowser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true
-            }))
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();

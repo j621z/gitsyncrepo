@@ -15,11 +15,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 		[TestMethod]
         public void TestLoginToOffice365()
         {
-            using (var officeBrowser = new Office365Browser(new BrowserOptions
-            {
-                BrowserType = BrowserType.Chrome,
-                PrivateMode = true
-            }))
+            using (var officeBrowser = new XrmBrowser(TestSettings.Options))
             {
                 officeBrowser.LoginPage.Login(_username, _password);
             }
@@ -28,31 +24,23 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 		[TestMethod]
 		public void TestOpenOffice365WaffleMenu()
 		{
-			using (var officeBrowser = new Office365Browser(new BrowserOptions
-			{
-				BrowserType = BrowserType.Chrome,
-				PrivateMode = true
-			}))
-			{
-				officeBrowser.LoginPage.Login(_username, _password);
+            using (var officeBrowser = new Office365Browser(TestSettings.Options))
+            {
+                officeBrowser.LoginPage.Login(_username, _password);
 
-				var menuItems = officeBrowser.Navigation.OpenWaffleMenu().Value;
+                var menuItems = officeBrowser.Navigation.OpenWaffleMenu().Value;
 
-				// Menu items should have a "CRM" item, if not the subscription doesn't have Dynamics CRM licenses or our test failed.
-				Assert.IsTrue(menuItems.ContainsKey("CRM"));
-			}
+                // Menu items should have a "CRM" item, if not the subscription doesn't have Dynamics CRM licenses or our test failed.
+                Assert.IsTrue(menuItems.ContainsKey("CRM"));
+            }
 		}
 
 		[TestMethod]
 		public void TestOpenGladosInstancePicker()
 		{
-			using (var officeBrowser = new Office365Browser(new BrowserOptions
-			{
-				BrowserType = BrowserType.Chrome,
-				PrivateMode = true
-			}))
-			{
-				officeBrowser.LoginPage.Login(_username, _password);
+            using (var officeBrowser = new Office365Browser(TestSettings.Options))
+            {
+                officeBrowser.LoginPage.Login(_username, _password);
 
 				var orgs = officeBrowser.XrmInstancePicker.GetInstances();
 

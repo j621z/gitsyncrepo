@@ -219,6 +219,36 @@ namespace Microsoft.Dynamics365.UITests.Browser
             element.SendKeys(value);
         }
 
+        public static bool AlertIsPresent(this IWebDriver driver)
+        {
+            return AlertIsPresent(driver, new TimeSpan(0, 0, 2));
+        }
+
+        public static bool AlertIsPresent(this IWebDriver driver, TimeSpan timeout)
+        {
+            var returnvalue = false;
+
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+            try
+            {
+                wait.Until(ExpectedConditions.AlertIsPresent());
+
+                returnvalue = true;
+            }
+            catch (NoSuchElementException)
+            {
+                returnvalue = false;
+            }
+            catch (WebDriverTimeoutException)
+            {
+                returnvalue = false;
+            }
+
+            return returnvalue;
+
+        }
+
         #endregion Elements
 
         #region Waits
@@ -239,19 +269,75 @@ namespace Microsoft.Dynamics365.UITests.Browser
 
         public static bool WaitForPageToLoad(this IWebDriver driver)
         {
-            return WaitForPageToLoad(driver, Constants.DefaultTimeout);
+            return WaitForPageToLoad(driver, Constants.DefaultTimeout.Seconds);
         }
 
-        public static bool WaitForPageToLoad(this IWebDriver driver, TimeSpan timeout)
+        //public static bool WaitForPageToLoad(this IWebDriver driver, TimeSpan timeout)
+        //{
+        //    object readyState = WaitForScript(driver, "if (document.readyState) return document.readyState;", timeout);
+
+        //    if (readyState != null)
+        //        return readyState.ToString().ToLower() == "complete";
+
+        //    return false;
+        //}
+
+        public static bool WaitForPageToLoad(this IWebDriver driver, int maxWaitTimeInSeconds)
         {
-            object readyState = WaitForScript(driver, "if (document.readyState) return document.readyState;", timeout);
+            string state = string.Empty;
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(maxWaitTimeInSeconds));
 
-            if (readyState != null)
-                return readyState.ToString().ToLower() == "complete";
+                //Checks every 500 ms whether predicate returns true if returns exit otherwise keep trying till it returns ture
+                wait.Until(d => {
 
-            return false;
+                    try
+                    {
+                        state = ((IJavaScriptExecutor)driver).ExecuteScript(@"return document.readyState").ToString();
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        //Ignore
+                    }
+                    catch (NoSuchWindowException)
+                    {
+                        //when popup is closed, switch to last windows
+                        driver.SwitchTo().Window(driver.WindowHandles.Last(driver));
+                    }
+                    //In IE7 there are chances we may get state as loaded instead of complete
+                    return (state.Equals("complete", StringComparison.InvariantCultureIgnoreCase));
+
+                });
+            }
+            catch (TimeoutException)
+            {
+                //sometimes Page remains in Interactive mode and never becomes Complete, then we can still try to access the controls
+                if (!state.Equals("interactive", StringComparison.InvariantCultureIgnoreCase))
+                    throw;
+            }
+            catch (NullReferenceException)
+            {
+                //sometimes Page remains in Interactive mode and never becomes Complete, then we can still try to access the controls
+                if (!state.Equals("interactive", StringComparison.InvariantCultureIgnoreCase))
+                    throw;
+            }
+            catch (WebDriverException)
+            {
+                if (driver.WindowHandles.Count == 1)
+                {
+                    driver.SwitchTo().Window(driver.WindowHandles[0]);
+                }
+                state = ((IJavaScriptExecutor)driver).ExecuteScript(@"return document.readyState").ToString();
+                if (!(state.Equals("complete", StringComparison.InvariantCultureIgnoreCase) || state.Equals("loaded", StringComparison.InvariantCultureIgnoreCase)))
+                    throw;
+            }
+            return true;
         }
-
+        public static string Last(this System.Collections.ObjectModel.ReadOnlyCollection<string> handles, IWebDriver driver)
+        {
+            return handles[handles.Count - 1];
+        }
         public static object WaitForScript(this IWebDriver driver, string script)
         {
             return WaitForScript(driver, script, Constants.DefaultTimeout);

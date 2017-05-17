@@ -87,7 +87,9 @@ namespace Microsoft.Dynamics365.UITests.Api
                 var views = OpenViewPicker().Value;
 
                 if (!views.ContainsKey(viewName))
-                    return false;
+                {
+                    throw new InvalidOperationException($"No view with the name '{viewName}' exists.");
+                }
 
                 var viewId = views[viewName];
 
@@ -384,12 +386,14 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 if (clicked)
                 {
-                    driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
-
+                    //driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
+                    driver.WaitForPageToLoad();
                     return true;
                 }
-
-                return false;
+               else
+               {
+                   throw new InvalidOperationException($"No record with the index '{index}' exists.");
+                }
             });
         }
 
@@ -490,7 +494,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             Browser.ThinkTime(thinkTime);
 
-            if (Browser.Driver.IsVisible(By.XPath(Elements.Xpath[Reference.Grid.ChartList])))
+            if (!Browser.Driver.IsVisible(By.XPath(Elements.Xpath[Reference.Grid.ChartList])))
                 OpenChart();
 
             Browser.ThinkTime(1000);
