@@ -90,7 +90,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 var subItems = element.FindElements(By.ClassName("nav-rowBody"));
 
                 var related = subItems.Where(x => x.Text == relatedArea).FirstOrDefault();
-                relatedId = related.GetAttribute("id").Replace("Node_nav", "area");
+                Browser.ActiveFrameId = related.GetAttribute("id").Replace("Node_nav", "area");
                 related?.Click();
 
                 return true;
