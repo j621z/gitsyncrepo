@@ -38,7 +38,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 var viewSelectorContainer = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.ControlBar]));
                 var viewLink = viewSelectorContainer.FindElement(By.TagName("a"));
-
+                Thread.Sleep(2000);
                 viewLink.Click();
 
                 Thread.Sleep(500);
@@ -85,7 +85,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute(GetOptions("Switch View"), driver =>
             {
                 var views = OpenViewPicker().Value;
-
+                Thread.Sleep(2000);
                 if (!views.ContainsKey(viewName))
                 {
                     throw new InvalidOperationException($"No view with the name '{viewName}' exists.");
