@@ -80,7 +80,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
 
-                xrmBrowser.Entity.SelectTab("Summary");
+                xrmBrowser.Entity.CollapseTab("Summary");
                 Thread.Sleep(1000);
             }
         }

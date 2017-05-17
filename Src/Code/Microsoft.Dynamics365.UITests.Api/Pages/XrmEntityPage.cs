@@ -144,8 +144,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 if (section == null)
                     throw new InvalidOperationException($"Section with name {name} does not exist.");
-                
-                if (section.GetAttribute("title").Contains("Collapse"))
+
+               if (section.FindElement(By.TagName("img")).GetAttribute("title").Contains("Collapse"))
                     section?.Click();
 
                 return true;
@@ -167,7 +167,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 if (section == null)
                     throw new InvalidOperationException($"Section with name {name} does not exist.");
 
-                if (section.GetAttribute("title").Contains("Expand"))
+                if (section.FindElement(By.TagName("img")).GetAttribute("title").Contains("Expand"))
                     section?.Click();
 
                 return true;
