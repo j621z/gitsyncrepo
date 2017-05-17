@@ -37,7 +37,9 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Related.SwitchView("Active Cases");
 
                 xrmBrowser.Related.Search("P");
-                xrmBrowser.CommandBar.ClickCommand("ADD NEW CASE");
+
+                //TODO: This is commented out until the ClickCommand is supported for related frame.
+                //xrmBrowser.CommandBar.ClickCommand("ADD NEW CASE");
                 //xrmBrowser.Related.OpenRecord(0);
             }
         }

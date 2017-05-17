@@ -38,8 +38,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Entity.SetValue("name", "Test API Opportunity");
                 xrmBrowser.Entity.SetValue("description", "Testing the create api for Opportunity");
-                xrmBrowser.Entity.SetValue("closeprobability", "10");
-                xrmBrowser.Entity.SetValue("addtoforecast", false);
 
                 xrmBrowser.CommandBar.ClickCommand("Save");
                 Thread.Sleep(2000);

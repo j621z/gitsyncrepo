@@ -97,6 +97,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                         d.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Login.SignIn]), new TimeSpan(0, 0, 2));
 
+                        Thread.Sleep(2000);
                         d.WaitForPageToLoad();
                     },
                     d =>
