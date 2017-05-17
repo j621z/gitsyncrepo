@@ -64,7 +64,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 buttons[0].Click();
 
-                driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
+                //driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
+                driver.WaitForPageToLoad();
 
                 return true;
             });
@@ -84,8 +85,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 buttons[0].Click();
 
-                driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
-
+                //driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
+                driver.WaitForPageToLoad();
                 return true;
             });
         }

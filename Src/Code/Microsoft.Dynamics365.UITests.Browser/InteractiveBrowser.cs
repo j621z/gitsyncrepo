@@ -122,6 +122,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         protected TraceSource Trace { get; }
         public List<ICommandResult> CommandResults = new List<ICommandResult>();
         public int TotalThinkTime = 0;
+        public string ActiveFrameId = "";
         internal int CurrentCommandThinkTime = 0;
         internal DateTime? LastCommandEndTime;
         internal int Depth = 0;
