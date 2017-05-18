@@ -4,7 +4,6 @@ using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Collections.Generic;
 using System.Security;
-using System.Threading;
 using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
@@ -18,7 +17,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void RunWorkFlowTest()
+        public void TestRunWorkFlow()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -35,7 +34,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Dialogs.RunWorkflow("Account Set Phone Number");
 
-                Thread.Sleep(10000);
+                xrmBrowser.ThinkTime(10000);
             }
         }
     }

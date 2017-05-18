@@ -3,7 +3,6 @@ using Microsoft.Dynamics365.UITests.Api;
 using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Security;
-using System.Threading;
 using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
@@ -17,61 +16,61 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void OpenEntity()
+        public void TestOpenEntity()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
             }
         }
 
         [TestMethod]
-        public void NavigateUp()
+        public void TestNavigateUp()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Contacts");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Grid.SwitchView("Active Contacts");
 
                 xrmBrowser.Grid.OpenRecord(1);
                 xrmBrowser.Entity.NavigateUp();
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
             }
         }
 
         [TestMethod]
-        public void NavigateDown()
+        public void TestNavigateDown()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Contacts");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Grid.SwitchView("Active Contacts");
 
                 xrmBrowser.Grid.OpenRecord(0);
                 xrmBrowser.Entity.NavigateDown();
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
             }
         }
         [TestMethod]
-        public void CollapseTab()
+        public void TestCollapseTab()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -81,12 +80,12 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
 
                 xrmBrowser.Entity.CollapseTab("Summary");
-                Thread.Sleep(1000);
+                xrmBrowser.ThinkTime(5000);
             }
         }
 
         [TestMethod]
-        public void PopOutForm()
+        public void TestPopOutForm()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -96,19 +95,19 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
                 xrmBrowser.Entity.Popout();
 
-                Thread.Sleep(10000);
+                xrmBrowser.ThinkTime(10000);
             }
         }
 
         [TestMethod]
-        public void OpenLookup()
+        public void TestOpenLookup()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
 
@@ -119,24 +118,24 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         }
 
         [TestMethod]
-        public void SaveEntity()
+        public void TestSaveEntity()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
                 xrmBrowser.Entity.Save();
 
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
             }
         }
 
         [TestMethod]
-        public void CloseEntity()
+        public void TestCloseEntity()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -147,60 +146,60 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Entity.CloseEntity();
 
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
             }
         }
 
         [TestMethod]
-        public void ExpandTab()
+        public void TestExpandTab()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
 
                 xrmBrowser.Entity.CollapseTab("Summary");
                 xrmBrowser.Entity.ExpandTab("Summary");
 
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
             }
         }
 
         [TestMethod]
-        public void SelectTab()
+        public void TestSelectTab()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
 
                 xrmBrowser.Entity.SelectTab("Summary");
                 xrmBrowser.Entity.SelectTab("Details");
 
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
             }
         }
 
         [TestMethod]
-        public void SelectForm()
+        public void TestSelectForm()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
 
                 xrmBrowser.Entity.SelectForm("Details");
 
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
             }
         }
     }

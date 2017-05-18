@@ -4,7 +4,6 @@ using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Collections.Generic;
 using System.Security;
-using System.Threading;
 using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
@@ -18,20 +17,20 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void CloseOpportunityTest()
+        public void TestCloseOpportunity()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
+                xrmBrowser.ThinkTime(500);
 
-                Thread.Sleep(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Opportunities");
+                xrmBrowser.ThinkTime(1000);
 
-                Thread.Sleep(2000);
                 xrmBrowser.Grid.SwitchView("Open Opportunities");
+                xrmBrowser.ThinkTime(1000);
 
-                Thread.Sleep(1000);
                 xrmBrowser.Grid.OpenRecord(0);
 
                 xrmBrowser.CommandBar.ClickCommand("Close as Won");

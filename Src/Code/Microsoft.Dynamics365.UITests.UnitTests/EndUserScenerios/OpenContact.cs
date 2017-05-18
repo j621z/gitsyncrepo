@@ -4,7 +4,6 @@ using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Collections.Generic;
 using System.Security;
-using System.Threading;
 using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
@@ -18,7 +17,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void OpenActiveContact()
+        public void TestOpenActiveContact()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -30,13 +29,13 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 if (!perf.IsEnabled)
                     perf.IsEnabled = true;
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Contacts");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Grid.SwitchView("Active Contacts");
 
-                Thread.Sleep(1000);
+                xrmBrowser.ThinkTime(1000);
                 xrmBrowser.Grid.OpenRecord(0);
 
             }

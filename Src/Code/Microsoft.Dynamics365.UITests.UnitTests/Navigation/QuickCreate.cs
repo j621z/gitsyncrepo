@@ -16,7 +16,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void OpenCreate()
+        public void TestOpenCreate()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -30,7 +30,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 
                 xrmBrowser.QuickCreate.Save();
 
-                Thread.Sleep(4000);
+                xrmBrowser.ThinkTime(4000);
 
             }
         }

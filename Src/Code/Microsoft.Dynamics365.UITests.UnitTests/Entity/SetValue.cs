@@ -4,7 +4,6 @@ using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Collections.Generic;
 using System.Security;
-using System.Threading;
 using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
@@ -18,7 +17,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void SetValues()
+        public void TestSetValue()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -45,20 +44,20 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         }
 
         [TestMethod]
-        public void SelectOptionSetValue()
+        public void TestSelectOptionSetValue()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Contacts");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Grid.SwitchView("Active Contacts");
 
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
                 xrmBrowser.Grid.OpenRecord(0);
 
                 xrmBrowser.Entity.SetValue(new OptionSet { Name = "preferredcontactmethodcode", Value = "Email" });
@@ -67,42 +66,43 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         }
 
         [TestMethod]
-        public void OpenLookupSetValue()
+        public void TestOpenLookupSetValue()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Grid.SwitchView("Active Accounts");
 
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
                 xrmBrowser.Grid.OpenRecord(0);
 
                 xrmBrowser.Entity.SetValue(new Lookup { Name = "primarycontactid",Value = "Rene Valdes (sample)" });
+                xrmBrowser.ThinkTime(1000);
 
             }
         }
 
         [TestMethod]
-        public void SelectDateSetValue()
+        public void TestSelectDateSetValue()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Contacts");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Grid.SwitchView("Active Contacts");
 
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
                 xrmBrowser.Grid.OpenRecord(0);
 
                 xrmBrowser.Entity.SetValue("birthdate", DateTime.Parse("11/1/1980"));

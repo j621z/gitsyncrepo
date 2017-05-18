@@ -18,7 +18,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void GetValueFromOpenActiveLead()
+        public void TestGetValueFromOpenActiveLead()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -36,7 +36,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
             }
         }
 
-        public void GetValueFromCompositeControl()
+        public void TestGetValueFromCompositeControl()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -60,20 +60,20 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
 
         [TestMethod]
-        public void GetValueFromOptionSet()
+        public void TestGetValueFromOptionSet()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Contacts");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Grid.SwitchView("Active Contacts");
 
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
                 xrmBrowser.Grid.OpenRecord(0);
 
                 string birthDate = xrmBrowser.Entity.GetValue("birthdate");
@@ -84,20 +84,20 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         }
 
         [TestMethod]
-        public void GetValueFromLookup()
+        public void TestGetValueFromLookup()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Grid.SwitchView("Active Accounts");
 
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
                 xrmBrowser.Grid.OpenRecord(0);
 
                 string lookupValue = xrmBrowser.Entity.GetValue(new Lookup { Name = "primarycontactid" });

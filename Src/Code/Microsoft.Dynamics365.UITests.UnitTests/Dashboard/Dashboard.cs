@@ -18,7 +18,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void SwitchDashboard()
+        public void TestSwitchDashboard()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -27,9 +27,9 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Dashboards");
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
-                //xrmBrowser.Dashboard.SelectDashBoard("Sales Dashboard");
 
                 xrmBrowser.Dashboard.SelectDashBoard("Sales Performance Dashboard");
+                xrmBrowser.ThinkTime(5000);
 
             }
         }

@@ -4,7 +4,6 @@ using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Collections.Generic;
 using System.Security;
-using System.Threading;
 using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
@@ -18,23 +17,23 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void CreateNewContact()
+        public void TestCreateNewContact()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Contacts");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(1000);
                 xrmBrowser.Grid.SwitchView("Active Contacts");
 
-                Thread.Sleep(1000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.CommandBar.ClickCommand("New");
 
-                Thread.Sleep(5000);
+                xrmBrowser.ThinkTime(5000);
 
                 var fields = new List<Field>
                 {

@@ -10,7 +10,7 @@ using System.Drawing.Imaging;
 namespace Microsoft.Dynamics365.UITests.UnitTests
 {
     [TestClass]
-    public class RelatedTest
+    public class Related
     {
 
         private readonly SecureString _username = System.Configuration.ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();
@@ -18,7 +18,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void AccountRelated()
+        public void TestAccountRelated()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -26,10 +26,10 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
                 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
                              
-                Thread.Sleep(3000);
+                xrmBrowser.ThinkTime(3000);
                 xrmBrowser.Grid.OpenRecord(0);
                 xrmBrowser.Navigation.OpenRelated("Cases");
                 xrmBrowser.Related.Sort("createdon"); 
@@ -41,9 +41,9 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Related.ClickCommand("ADD NEW CASE");
                 xrmBrowser.QuickCreate.Cancel();
                 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Related.OpenGridRow(0);
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
             }
         }
     }

@@ -3,7 +3,6 @@ using Microsoft.Dynamics365.UITests.Api;
 using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Security;
-using System.Threading;
 using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
@@ -26,8 +25,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
 
                 xrmBrowser.CommandBar.ClickCommand("New");
-                Thread.Sleep(4000);
-
+                xrmBrowser.ThinkTime(2000);
 
             }
         }

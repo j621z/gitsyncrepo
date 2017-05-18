@@ -4,7 +4,6 @@ using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Collections.Generic;
 using System.Security;
-using System.Threading;
 using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
@@ -24,19 +23,20 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
+                xrmBrowser.ThinkTime(500);
 
-                Thread.Sleep(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Opportunities");
+                xrmBrowser.ThinkTime(2000);
 
-                Thread.Sleep(2000);
                 xrmBrowser.Grid.SwitchView("Open Opportunities");
-
-                Thread.Sleep(1000);
+                xrmBrowser.ThinkTime(1000);
                 xrmBrowser.Grid.OpenRecord(0);
 
                 xrmBrowser.CommandBar.ClickCommand("Assign");
 
                 xrmBrowser.Dialogs.Assign(XrmDialogPage.AssignTo.Me, "");
+
+                xrmBrowser.ThinkTime(2000);
             }
         }
     }

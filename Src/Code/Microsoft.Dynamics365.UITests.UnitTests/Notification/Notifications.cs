@@ -17,17 +17,17 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void CloseNotifications()
+        public void TestCloseNotifications()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Notifications.CloseNotifications();
-                Thread.Sleep(4000);
+                xrmBrowser.ThinkTime(4000);
             }
         }
     }
