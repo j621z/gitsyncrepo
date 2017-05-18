@@ -293,6 +293,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 driver.WaitUntilVisible(By.Id(area.GetAttribute("Id")));
 
+                driver.FindElement(By.Id("SFA")).Click();
+
                 area.Click();
 
                 Thread.Sleep(1000);

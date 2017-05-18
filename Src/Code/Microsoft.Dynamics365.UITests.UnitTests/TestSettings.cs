@@ -12,7 +12,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
         public static BrowserOptions Options = new BrowserOptions
                                                 {
-                                                    BrowserType = BrowserType.Edge,
+                                                    BrowserType = BrowserType.IE,
                                                     PrivateMode = true,
                                                     FireEvents = true
                                                 };
