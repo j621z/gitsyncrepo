@@ -209,6 +209,15 @@ namespace Microsoft.Dynamics365.UITests.Browser
             }
         }
 
+        public static void SetVisible(this IWebDriver driver, By by, bool visible)
+        {
+            IWebElement element = driver.FindElement(by);
+            if(visible)
+                driver.ExecuteScript($"document.getElementById('{element.GetAttribute("Id")}').setAttribute('style', 'display: inline;')");
+            else
+                driver.ExecuteScript($"document.getElementById('{element.GetAttribute("Id")}').setAttribute('style', 'display: none;')");
+        }
+
         public static void SendKeys(this IWebElement element, string value, bool clear)
         {
             if (clear)
