@@ -3,7 +3,6 @@ using Microsoft.Dynamics365.UITests.Api;
 using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Security;
-using System.Threading;
 using OpenQA.Selenium.Support.Events;
 using System.Drawing.Imaging;
 
@@ -18,7 +17,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void ClickSubGridInLead()
+        public void TestClickSubGridInLead()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {

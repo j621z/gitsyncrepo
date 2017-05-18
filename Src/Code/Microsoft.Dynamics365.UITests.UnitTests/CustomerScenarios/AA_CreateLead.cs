@@ -5,7 +5,6 @@ using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Security;
-using System.Threading;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
 {
@@ -18,7 +17,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void CreateNewLead()
+        public void TestCreateNewLead()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -58,7 +57,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         }
 
         [TestMethod]
-        public void QualifyLead()
+        public void TestQualifyLead()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {

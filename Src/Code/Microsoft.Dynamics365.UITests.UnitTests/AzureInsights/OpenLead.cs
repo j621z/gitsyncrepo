@@ -19,7 +19,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly string _azureKey = System.Configuration.ConfigurationManager.AppSettings["AzureKey"].ToString();
 
         [TestMethod]
-        public void OpenActiveLead()
+        public void TestOpenActiveLead()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {

@@ -3,7 +3,6 @@ using Microsoft.Dynamics365.UITests.Api;
 using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Security;
-using System.Threading;
 using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
@@ -24,12 +23,12 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Navigation.GlobalSearch("contoso");
 
                 xrmBrowser.GlobalSearch.Search("Contoso");
-                Thread.Sleep(4000);
+                xrmBrowser.ThinkTime(4000);
 
 
             }
@@ -43,12 +42,12 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Navigation.GlobalSearch("");
                 xrmBrowser.GlobalSearch.Search("Contoso");
                 xrmBrowser.GlobalSearch.OpenRecord("Accounts",0) ;
-                Thread.Sleep(4000);
+                xrmBrowser.ThinkTime(4000);
 
 
             }
@@ -62,13 +61,13 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Navigation.GlobalSearch("");
                 xrmBrowser.GlobalSearch.Search("Contoso");
                 xrmBrowser.GlobalSearch.FilterWith("Account");
 
-                Thread.Sleep(4000);
+                xrmBrowser.ThinkTime(4000);
 
 
             }

@@ -4,7 +4,6 @@ using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Collections.Generic;
 using System.Security;
-using System.Threading;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
 {
@@ -17,7 +16,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void CreateNewLead()
+        public void TestCreateNewLead()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {

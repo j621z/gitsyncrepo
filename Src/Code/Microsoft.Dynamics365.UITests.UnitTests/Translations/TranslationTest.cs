@@ -13,7 +13,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
     public class TranslationTest
     {
         [TestMethod]
-        public void TranslateElementIdTest()
+        public void TestTranslateElementId()
         {
             var elementId = "HomeTabLink";
 

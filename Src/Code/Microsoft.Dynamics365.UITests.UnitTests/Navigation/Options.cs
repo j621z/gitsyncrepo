@@ -3,8 +3,6 @@ using Microsoft.Dynamics365.UITests.Api;
 using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Security;
-using System.Threading;
-using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
 {
@@ -24,10 +22,10 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Navigation.OpenOptions();
-                Thread.Sleep(10000);
+                xrmBrowser.ThinkTime(5000);
 
             }
         }
@@ -40,14 +38,14 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(100);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
                 xrmBrowser.Grid.SwitchView("Active Accounts");
                 xrmBrowser.Grid.SelectRecord(1);
                 xrmBrowser.Navigation.OpenPrintPreview();
 
-                Thread.Sleep(1000);
+                xrmBrowser.ThinkTime(1000);
             }
         }
 
@@ -59,11 +57,11 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(100);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Navigation.OpenAppsForDynamicsCRM();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(1000);
 
             }
         }
@@ -76,11 +74,11 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(100);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Navigation.OpenWelcomeScreen();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(1000);
 
             }
         }
@@ -93,11 +91,11 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(50);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Navigation.OpenAbout();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(1000);
 
             }
         }
@@ -110,11 +108,11 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(100);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Navigation.OpenOptOutLearningPath();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(1000);
 
             }
         }
@@ -128,14 +126,14 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(100);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
                 xrmBrowser.Grid.SwitchView("Active Accounts");
                 xrmBrowser.Grid.SelectRecord(1);
 
                 xrmBrowser.Navigation.OpenPrivacyStatement();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(1000);
             }
         }
     }

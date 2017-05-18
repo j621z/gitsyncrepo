@@ -9,7 +9,7 @@ using OpenQA.Selenium.Support.Events;
 namespace Microsoft.Dynamics365.UITests.UnitTests
 {
     [TestClass]
-    public class TestInvalidSubArea
+    public class InvalidSubArea
     {
 
         private readonly SecureString _username = System.Configuration.ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();
@@ -17,20 +17,20 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void InvalidOpenSubArea()
+        public void TestInvalidOpenSubArea()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(100);
+                xrmBrowser.ThinkTime(100);
 
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Acounts");
                 xrmBrowser.Grid.SwitchView("Active Accounts");
                 xrmBrowser.Grid.SelectRecord(1);
 
-                Thread.Sleep(1000);
+                xrmBrowser.ThinkTime(1000);
             }
         }
 

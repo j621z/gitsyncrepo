@@ -4,7 +4,6 @@ using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Collections.Generic;
 using System.Security;
-using System.Threading;
 using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
@@ -25,18 +24,19 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Opportunities");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Grid.SwitchView("Open Opportunities");
 
-                Thread.Sleep(1000);
+                xrmBrowser.ThinkTime(1000);
                 xrmBrowser.Grid.OpenRecord(0);
 
                 xrmBrowser.CommandBar.ClickCommand("Delete");
 
                 xrmBrowser.Dialogs.Delete();
+                xrmBrowser.ThinkTime(500);
             }
         }
     }

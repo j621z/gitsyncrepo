@@ -19,25 +19,25 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void QuickCreateNewAccount()
+        public void TestQuickCreateNewAccount()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Navigation.QuickCreate("Account");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
 
                 xrmBrowser.QuickCreate.SetValue("name", "Test API Account");
                 xrmBrowser.QuickCreate.SetValue("telephone1", "555-555-5555");
                 xrmBrowser.QuickCreate.SelectLookup("primarycontactid", 0);
                 xrmBrowser.QuickCreate.Save();
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
             }
         }
     }

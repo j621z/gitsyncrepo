@@ -3,7 +3,6 @@ using Microsoft.Dynamics365.UITests.Api;
 using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Security;
-using System.Threading;
 using OpenQA.Selenium.Support.Events;
 using System.Drawing.Imaging;
 
@@ -18,7 +17,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void OpenActiveAccount()
+        public void TestOpenActiveAccount()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -26,22 +25,22 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
                 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Grid.SwitchView("Active Accounts");
                 
-                Thread.Sleep(1000);
+                xrmBrowser.ThinkTime(1000);
                 xrmBrowser.Grid.OpenRecord(0);
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Entity.CollapseTab("Summary");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Entity.ExpandTab("Summary");
 
-                Thread.Sleep(2000);
+                xrmBrowser.ThinkTime(2000);
                 //xrmBrowser.Entity.SelectSection("Details");
             }
         }

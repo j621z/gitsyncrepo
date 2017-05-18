@@ -4,9 +4,7 @@ using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Collections.Generic;
 using System.Security;
-using System.Threading;
 using OpenQA.Selenium.Support.Events;
-using System.Linq;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests
 {
@@ -45,14 +43,14 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 if (!perf.IsEnabled)
                     perf.IsEnabled = true;
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
-                Thread.Sleep(4000);
+                xrmBrowser.ThinkTime(4000);
 
                 //var views = xrmBrowser.OpenViewPicker();
                 xrmBrowser.Grid.SwitchView("All Leads");
-                Thread.Sleep(1000);
+                xrmBrowser.ThinkTime(1000);
 
                 var items = xrmBrowser.Grid.GetGridItems().Value;
 
@@ -61,7 +59,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                     xrmBrowser.Entity.OpenEntity(item.Url);
 
                     perf.ToggleVisibility();
-                    Thread.Sleep(1500);
+                    xrmBrowser.ThinkTime(1500);
                     perf.ToggleVisibility();
                     Dictionary<string,XrmPerformanceMarker>  perfResults = perf.GetMarkers();
                     
@@ -84,14 +82,14 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 if (!perf.IsEnabled)
                     perf.IsEnabled = true;
 
-                Thread.Sleep(500);
+                xrmBrowser.ThinkTime(500);
 
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Contacts");
-                Thread.Sleep(4000);
+                xrmBrowser.ThinkTime(4000);
 
                 //var views = xrmBrowser.OpenViewPicker();
                 xrmBrowser.Grid.SwitchView("Active Contacts");
-                Thread.Sleep(1000);
+                xrmBrowser.ThinkTime(1000);
 
                 var items = xrmBrowser.Grid.GetGridItems().Value;
 
@@ -100,7 +98,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                     xrmBrowser.Entity.OpenEntity(item.Url);
 
                     perf.ToggleVisibility();
-                    Thread.Sleep(1500);
+                    xrmBrowser.ThinkTime(1500);
                     perf.ToggleVisibility();
                     Dictionary<string, XrmPerformanceMarker> perfResults = perf.GetMarkers();
 

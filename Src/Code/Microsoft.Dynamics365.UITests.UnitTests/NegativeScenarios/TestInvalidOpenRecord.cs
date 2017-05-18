@@ -9,7 +9,7 @@ using OpenQA.Selenium.Support.Events;
 namespace Microsoft.Dynamics365.UITests.UnitTests
 {
     [TestClass]
-    public class TestInvalidOpenRecord
+    public class InvalidOpenRecord
     {
 
         private readonly SecureString _username = System.Configuration.ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();
@@ -17,7 +17,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void InvalidOpenRecord()
+        public void TestInvalidOpenRecord()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {

@@ -14,7 +14,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void OpenGuidedHelp()
+        public void TestOpenGuidedHelp()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
