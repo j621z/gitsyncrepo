@@ -20,24 +20,35 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute("Close Notifications", driver =>
             {
-                Thread.Sleep(2000);
-                while (driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Notification.AppMessageBar]), new TimeSpan(0, 0, 10)) != null)
-                {
-                    driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Notification.Close]), new TimeSpan(0, 0, 1));
-                }
+                bool returnValue = false;
 
-                driver.WaitForPageToLoad();
-                return true;
+                driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Notification.AppMessageBar]), new TimeSpan(0, 0, 5), d =>
+                {
+                    var container = driver.FindElement(By.XPath(Elements.Xpath[Reference.Notification.AppMessageBar]));
+                    var rows = container.FindElements(By.ClassName(Elements.CssClass[Reference.Notification.MessageBarRow]));
+
+                    foreach(var row in rows)
+                    {
+                        var dismissButtonElement = row.FindElement(By.ClassName(Elements.CssClass[Reference.Notification.MessageBarButtonContainer]));
+                        var dismissButton = dismissButtonElement.FindElement(By.TagName("a"));
+
+                        dismissButton.Click();
+
+                        returnValue = true;
+                    }
+                });
+
+                return returnValue;
             });
         }
-        public BrowserCommandResult<bool> Dismiss(XrmAppNotification notification)
+        public BrowserCommandResult<bool> Close(XrmAppNotification notification)
         {
-            return Dismiss(notification.Index);
+            return Close(notification.Index);
         }
 
-        public BrowserCommandResult<bool> Dismiss(Int32 index)
+        public BrowserCommandResult<bool> Close(Int32 index)
         {
-            return this.Execute("Dismiss App Message", driver =>
+            return this.Execute("Dismiss App Notification", driver =>
             {
                 bool returnValue = false;
 

@@ -73,6 +73,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             driver.Navigate().GoToUrl(uri);
 
 
+
             if (online)
             {
                 driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Login.UserId]),
