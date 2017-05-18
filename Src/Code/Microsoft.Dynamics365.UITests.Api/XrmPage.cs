@@ -68,11 +68,18 @@ namespace Microsoft.Dynamics365.UITests.Api
                     var input = fieldElement.FindElement(By.TagName("input"));
 
                     if (input.GetAttribute("value").Length > 0)
-                        input.SendKeys(date.ToShortDateString(), true);
-                    else
+                    {
+                        input.Clear();
+                        input.SendKeys(Keys.Enter);
+                        fieldElement.Click();
                         input.SendKeys(date.ToShortDateString());
-                    
-
+                        input.SendKeys(Keys.Enter);
+                    }
+                    else
+                    {
+                        input.SendKeys(date.ToShortDateString());
+                        input.SendKeys(Keys.Enter);
+                    }
                 }
                 else
                     throw new InvalidOperationException($"Field: {field} Does not exist");
@@ -114,7 +121,6 @@ namespace Microsoft.Dynamics365.UITests.Api
                     {
                         fieldElement.FindElement(By.TagName("input")).Clear();
                         fieldElement.FindElement(By.TagName("input")).SendKeys(value);
-
                     }
                 }
                 else

@@ -95,10 +95,14 @@ namespace Microsoft.Dynamics365.UITests.Api
                         d.FindElement(By.XPath(Elements.Xpath[Reference.Login.Password])).SendKeys(password.ToUnsecureString());
 
                         // Pause for validation (just in case)
-
-                        d.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Login.SignIn]), new TimeSpan(0, 0, 5));
                         Thread.Sleep(2000);
-                        d.WaitForPageToLoad();
+
+                        d.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Login.SignIn]), new TimeSpan(0, 0, 10));
+
+                        d.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.CrmMainPage])
+                            , new TimeSpan(0, 0, 5),
+                            e => { d.WaitForPageToLoad(); },
+                            f => { throw new Exception("Login page failed."); });                        
                     },
                     d =>
                     {

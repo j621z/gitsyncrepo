@@ -136,6 +136,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Login_UserId", "id(\"cred_userid_inputtext\")"},
             { "Login_Password", "id(\"cred_password_inputtext\")"},
             { "Login_SignIn", "id(\"cred_sign_in_button\")"},
+            { "Login_CrmMainPage", "id(\"crmTopBar\")"},
 
             //Notification           
             { "Notification_AppMessageBar", "id(\"crmAppMessageBar\")"},
@@ -506,6 +507,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string UserId = "Login_UserId";
             public static string Password = "Login_Password";
             public static string SignIn = "Login_SignIn";
+            public static string CrmMainPage = "Login_CrmMainPage";
 
         }
     }

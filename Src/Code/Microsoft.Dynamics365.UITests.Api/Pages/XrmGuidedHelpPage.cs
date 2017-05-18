@@ -30,7 +30,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         public BrowserCommandResult<bool> CloseGuidedHelp()
         {
-            return this.Execute("Close Guided Help", driver =>
+            return this.Execute(GetOptions("Close Guided Help"), driver =>
             {
                 bool returnValue = false;
 
@@ -65,7 +65,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         [Obsolete("Modal dialogs are no longer considered supported for most modern browsers", false)]
         public BrowserCommandResult<bool> CloseModalDialogs()
         {
-            return this.Execute("Close Modal Dialog", driver =>
+            return this.Execute(GetOptions("Close Modal Dialog"), driver =>
             {
                 // Get the current window handles
                 string popupHandle = string.Empty;
@@ -104,7 +104,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         public BrowserCommandResult<bool> CloseWelcomeTour()
         {
-            return this.Execute("Close Welcome Tour", driver =>
+            return this.Execute(GetOptions("Close Welcome Tour"), driver =>
             {
                 // Close the email and nav tour approval dialog if it's there - go top to bottom (reverse)
                 foreach (var frame in driver.FindElements(By.TagName("iframe")).Reverse())
