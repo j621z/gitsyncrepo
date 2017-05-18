@@ -61,7 +61,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
             int retryAttempts = Constants.DefaultRetryAttempts,
             int retryDelay = Constants.DefaultRetryDelay,
             Action<Exception> exceptionAction = null,
-            bool throwExceptions = false,
+            bool throwExceptions = true,
             params Type[] exceptions)
         {
             this.TraceSource = traceSource;

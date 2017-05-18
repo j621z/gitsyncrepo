@@ -509,9 +509,9 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute("Switch to Related Frame", driver =>
             {
                 //wait for the content panel to render
-                driver.WaitUntilAvailable(By.Id(relatedId));
+                driver.WaitUntilAvailable(By.Id(Browser.ActiveFrameId));
 
-                driver.SwitchTo().Frame(relatedId + "Frame");
+                driver.SwitchTo().Frame(Browser.ActiveFrameId + "Frame");
 
                 return true;
             });

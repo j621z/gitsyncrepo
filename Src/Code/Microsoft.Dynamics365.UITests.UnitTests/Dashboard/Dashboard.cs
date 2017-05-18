@@ -26,7 +26,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Dashboards");
-
+                xrmBrowser.GuidedHelp.CloseGuidedHelp();
                 //xrmBrowser.Dashboard.SelectDashBoard("Sales Dashboard");
 
                 xrmBrowser.Dashboard.SelectDashBoard("Sales Performance Dashboard");

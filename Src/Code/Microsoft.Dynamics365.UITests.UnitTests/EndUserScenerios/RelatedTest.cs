@@ -31,13 +31,15 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                              
                 Thread.Sleep(3000);
                 xrmBrowser.Grid.OpenRecord(0);
-                xrmBrowser.Navigation.OpenRelated("Contacts");
-                xrmBrowser.Related.Sort("createdon");
+                xrmBrowser.Navigation.OpenRelated("Cases");
+                xrmBrowser.Related.Sort("createdon"); 
 
                 xrmBrowser.Related.SwitchView("Active Cases");
 
                 xrmBrowser.Related.Search("P");
-                xrmBrowser.CommandBar.ClickCommand("ADD NEW CONTACT");
+
+                //TODO: This is commented out until the ClickCommand is supported for related frame.
+                //xrmBrowser.CommandBar.ClickCommand("ADD NEW CASE");
                 //xrmBrowser.Related.OpenRecord(0);
             }
         }
