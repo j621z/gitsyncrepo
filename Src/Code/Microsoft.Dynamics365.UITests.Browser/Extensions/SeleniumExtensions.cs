@@ -484,6 +484,50 @@ namespace Microsoft.Dynamics365.UITests.Browser
             return success.Value;
         }
 
+        public static bool WaitUntilClickable(this IWebDriver driver, By by)
+        {
+            return WaitUntilClickable(driver, by, Constants.DefaultTimeout, null, null);
+        }
+
+        public static bool WaitUntilClickable(this IWebDriver driver, By by, TimeSpan timeout)
+        {
+            return WaitUntilClickable(driver, by, timeout, null, null);
+        }
+
+        public static bool WaitUntilClickable(this IWebDriver driver, By by, TimeSpan timeout, Action<IWebDriver> successCallback)
+        {
+            return WaitUntilClickable(driver, by, timeout, successCallback, null);
+        }
+
+        public static bool WaitUntilClickable(this IWebDriver driver, By by, TimeSpan timeout, Action<IWebDriver> successCallback, Action<IWebDriver> failureCallback)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            bool? success;
+
+            wait.IgnoreExceptionTypes(typeof(NoSuchElementException), typeof(StaleElementReferenceException));
+
+            try
+            {
+                wait.Until(ExpectedConditions.ElementToBeClickable(by));
+
+                success = true;
+            }
+            catch (NoSuchElementException)
+            {
+                success = false;
+            }
+            catch (WebDriverTimeoutException)
+            {
+                success = false;
+            }
+
+            if (success.HasValue && success.Value && successCallback != null)
+                successCallback(driver);
+            else if (success.HasValue && !success.Value && failureCallback != null)
+                failureCallback(driver);
+
+            return success.Value;
+        }
         #endregion Waits
 
         #region Args / Tracing

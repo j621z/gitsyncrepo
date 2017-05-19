@@ -36,9 +36,21 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 var dictionary = new Dictionary<string, Guid>();
 
-                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Grid.ViewSelector]));
+                driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Grid.ViewSelector]),
+                                         new TimeSpan(0,0,10),
+                                         d=> { d.FindElement(By.XPath(Elements.Xpath[Reference.Grid.ViewSelector])).Click(); },
+                                         d=> { throw new Exception("Unable to click the View Picker"); });                
 
-                driver.WaitUntilVisible(By.ClassName(Elements.CssClass[Reference.Grid.ViewContainer]));
+                driver.WaitUntilVisible(By.ClassName(Elements.CssClass[Reference.Grid.ViewContainer]),
+                                        new TimeSpan(0, 0, 10),
+                                        null,
+                                        d => 
+                                        {
+                                            //Fix for Firefox not clicking the element in the event above. Issue with the driver. 
+                                            d.FindElement(By.XPath(Elements.Xpath[Reference.Grid.ViewSelector])).Click();
+                                            driver.WaitUntilVisible(By.ClassName(Elements.CssClass[Reference.Grid.ViewContainer]), new TimeSpan(0, 0, 3), null, e => { throw new Exception("View Picker menu is not avilable"); });
+
+                                        });
 
                 var viewContainer = driver.FindElement(By.ClassName(Elements.CssClass[Reference.Grid.ViewContainer]));
                 var viewItems = viewContainer.FindElements(By.TagName("li"));
@@ -385,7 +397,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 {
                     SwitchToContentFrame();
                     driver.WaitForPageToLoad();
-                    driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Entity.Form]), 
+                    driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Entity.Form]), 
                                                 new TimeSpan(0,0,30),
                                                 null, 
                                                 d=> { throw new Exception("CRM Form is Unavailable or not finished loading. Timeout Exceeded"); }

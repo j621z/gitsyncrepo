@@ -87,6 +87,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 //driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
                 driver.WaitForPageToLoad();
+                
                 return true;
             });
         }
