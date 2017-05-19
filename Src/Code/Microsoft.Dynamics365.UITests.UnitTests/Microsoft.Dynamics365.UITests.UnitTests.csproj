@@ -152,11 +152,11 @@
     <Compile Include="Navigation\Portal.cs" />
     <Compile Include="Navigation\QuickCreate.cs" />
     <Compile Include="Navigation\SignOut.cs" />
-    <Compile Include="NegativeScenarios\TestInvalidOpenArea .cs" />
-    <Compile Include="NegativeScenarios\TestInvalidOpenRecord.cs" />
-    <Compile Include="NegativeScenarios\TestInvalidSetValue .cs" />
-    <Compile Include="NegativeScenarios\TestInvalidSubArea .cs" />
-    <Compile Include="NegativeScenarios\TestInvalidSwitchView.cs" />
+    <Compile Include="NegativeScenarios\InvalidOpenArea.cs" />
+    <Compile Include="NegativeScenarios\InvalidOpenRecord.cs" />
+    <Compile Include="NegativeScenarios\InvalidSetValue.cs" />
+    <Compile Include="NegativeScenarios\InvalidSubArea.cs" />
+    <Compile Include="NegativeScenarios\InvalidSwitchView.cs" />
     <Compile Include="Notification\Notifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestSettings.cs" />
