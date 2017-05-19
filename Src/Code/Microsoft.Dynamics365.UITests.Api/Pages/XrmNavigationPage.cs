@@ -73,6 +73,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 subAreas[subArea].Click();
 
+                SwitchToContentFrame();
                 driver.WaitForPageToLoad();
 
                 return true;

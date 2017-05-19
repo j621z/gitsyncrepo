@@ -300,6 +300,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 string text = string.Empty;
                 if (driver.HasElement(By.Id(field)))
                 {
+                    driver.WaitUntilVisible(By.Id(field));
                     var fieldElement = driver.FindElement(By.Id(field));
                     fieldElement.Click();
 

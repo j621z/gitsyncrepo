@@ -32,18 +32,15 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             Browser.ThinkTime(thinkTime);
 
-            return this.Execute("Open View Picker", driver =>
+            return this.Execute(GetOptions("Open View Picker"), driver =>
             {
                 var dictionary = new Dictionary<string, Guid>();
 
-                var viewSelectorContainer = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.ControlBar]));
-                var viewLink = viewSelectorContainer.FindElement(By.TagName("a"));
-                Thread.Sleep(2000);
-                viewLink.Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Grid.ViewSelector]));
 
-                Thread.Sleep(500);
+                driver.WaitUntilVisible(By.ClassName(Elements.CssClass[Reference.Grid.ViewContainer]));
 
-                var viewContainer = driver.WaitUntilAvailable(By.ClassName(Elements.CssClass[Reference.Grid.ViewContainer]));
+                var viewContainer = driver.FindElement(By.ClassName(Elements.CssClass[Reference.Grid.ViewContainer]));
                 var viewItems = viewContainer.FindElements(By.TagName("li"));
 
                 foreach (var viewItem in viewItems)
@@ -360,7 +357,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Open Grid Record"), driver =>
             {
-            var itemsTable = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.GridBodyTable]));
+                var itemsTable = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.GridBodyTable]));
                 var links = itemsTable.FindElements(By.TagName("a"));
 
                 var currentIndex = 0;
@@ -386,8 +383,14 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 if (clicked)
                 {
-                    //driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
+                    SwitchToContentFrame();
                     driver.WaitForPageToLoad();
+                    driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Entity.Form]), 
+                                                new TimeSpan(0,0,30),
+                                                null, 
+                                                d=> { throw new Exception("CRM Form is Unavailable or not finished loading. Timeout Exceeded"); }
+                                            );
+                    
                     return true;
                 }
                else
