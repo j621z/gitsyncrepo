@@ -31,7 +31,8 @@ namespace Microsoft.Dynamics365.UITests.Browser
                     var ffService = FirefoxDriverService.CreateDefaultService();
                     ffService.HideCommandPromptWindow = options.HideDiagnosticWindow;
                     driver = new FirefoxDriver(ffService);
-
+                    driver.Manage().Timeouts().ImplicitWait = new TimeSpan(0, 0, 5);
+                    driver.Manage().Window.Maximize();
                     break;
                 case BrowserType.PhantomJs:
                     driver = new PhantomJSDriver(options.DriversPath);
@@ -48,7 +49,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
                         $"The browser type '{options.BrowserType}' is not recognized.");
             }
 
-            driver.Manage().Timeouts().SetPageLoadTimeout(options.PageLoadTimeout);
+            driver.Manage().Timeouts().PageLoad = options.PageLoadTimeout;
 
             if (options.FireEvents || options.EnableRecording)
             {

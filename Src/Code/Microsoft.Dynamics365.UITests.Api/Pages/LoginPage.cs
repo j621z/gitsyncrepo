@@ -72,45 +72,38 @@ namespace Microsoft.Dynamics365.UITests.Api
             
             driver.Navigate().GoToUrl(uri);
 
-
-
             if (online)
             {
-                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Login.UserId]),
-                    $"The Office 365 sign in page did not return the expected result and the user '{username}' could not be signed in.");
-                
                 if (driver.IsVisible(By.Id("use_another_account_link")))
                     driver.FindElement(By.Id("use_another_account_link")).Click();
 
+                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Login.UserId]),
+                    $"The Office 365 sign in page did not return the expected result and the user '{username}' could not be signed in.");
+
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.UserId])).SendKeys(username.ToUnsecureString());
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.UserId])).SendKeys(Keys.Enter);
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.UserId])).SendKeys(Keys.Tab);
 
                 //If expecting redirect then wait for redirect to trigger
-                if(redirectAction!= null) Thread.Sleep(3000);
+                if (redirectAction != null)
+                {
+                    //Wait for redirect to occur.
+                    Thread.Sleep(3000);
 
-                driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.Password]),
-                    new TimeSpan(0, 0, 2),
-                    d =>
-                    {
-                        d.FindElement(By.XPath(Elements.Xpath[Reference.Login.Password])).SendKeys(password.ToUnsecureString());
+                    redirectAction?.Invoke(new LoginRedirectEventArgs(username, password, driver));
 
-                        // Pause for validation (just in case)
-                        Thread.Sleep(2000);
+                    redirect = true;
+                }
+                else
+                {
+                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.Password])).SendKeys(password.ToUnsecureString());
+                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.Password])).SendKeys(Keys.Tab);
+                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.Password])).Submit();
 
-                        d.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Login.SignIn]), new TimeSpan(0, 0, 10));
-
-                        d.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.CrmMainPage])
-                            , new TimeSpan(0, 0, 5),
-                            e => { d.WaitForPageToLoad(); },
-                            f => { throw new Exception("Login page failed."); });                        
-                    },
-                    d =>
-                    {
-                        redirectAction?.Invoke(new LoginRedirectEventArgs(username, password, d));
-
-                        redirect = true;
-
-                    });
+                    driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.CrmMainPage])
+                        , new TimeSpan(0, 0, 30),
+                        e => { e.WaitForPageToLoad(); },
+                        f => { throw new Exception("Login page failed."); });
+                }
             }
 
             return redirect ? LoginResult.Redirect : LoginResult.Success;
