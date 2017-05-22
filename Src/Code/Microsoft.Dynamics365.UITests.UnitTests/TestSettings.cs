@@ -14,7 +14,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                                                 {
                                                     BrowserType = BrowserType.Firefox,
                                                     PrivateMode = true,
-                                                    FireEvents = true
+                                                    FireEvents = false
                                                 };
     }
 }

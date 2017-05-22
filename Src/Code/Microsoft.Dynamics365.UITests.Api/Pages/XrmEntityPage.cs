@@ -405,7 +405,15 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                     var dialogItem = dialogItems.Values.Last();
 
-                    dialogItem?.Click();
+                    if (this.Browser.Options.BrowserType == BrowserType.Firefox)
+                    {
+                        var id = dialog.FindElements(By.TagName("li")).Last().GetAttribute("id");
+
+                        driver.ExecuteScript($"document.getElementById('{id}').childNodes[1].click();");
+                        dialogItem?.Click();
+                    }
+                    else
+                        dialogItem?.Click();
                 }
 
                 return true;
