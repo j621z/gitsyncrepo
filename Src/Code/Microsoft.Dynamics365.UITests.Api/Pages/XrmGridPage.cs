@@ -384,8 +384,11 @@ namespace Microsoft.Dynamics365.UITests.Api
                         if (currentIndex == index)
                         {
                             //adding fix for Firefox click issue
-                            driver.ExecuteScript($"document.getElementById('{id}').focus();");
-                            link.Click();
+                            if (this.Browser.Options.BrowserType == BrowserType.Firefox)
+                                driver.ExecuteScript($"document.getElementById('{id}').click();");
+                            else
+                                link.Click();
+
                             clicked = true;
 
                             break;

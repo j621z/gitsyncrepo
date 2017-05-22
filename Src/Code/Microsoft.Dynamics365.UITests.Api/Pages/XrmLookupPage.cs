@@ -210,9 +210,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Add"), driver =>
             {               
-                var add = driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.Begin]));
-
-                add?.Click();
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.Begin])).Click();
 
                 return true;
             });
@@ -224,10 +222,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Select"), driver =>
             {
-                var add = driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.Add]));
-
-                add?.Click();
-
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.Add])).Click();
+                
                 return true;
             });
         }
@@ -238,10 +234,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Remove"), driver =>
             {
-                var add = driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.Remove]));
-
-                add?.Click();
-
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.Remove])).Click();
+                
                 return true;
             });
         }
@@ -252,9 +246,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("New"), driver =>
             {
-                var add = driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.New]));
-
-                add?.Click();
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.New])).Click();
 
                 return true;
             });
@@ -266,9 +258,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions("Cancel"), driver =>
             {
-                var add = driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.DialogCancel]));
-
-                add?.Click();
+                driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.DialogCancel])).Click();
 
                 return true;
             });
