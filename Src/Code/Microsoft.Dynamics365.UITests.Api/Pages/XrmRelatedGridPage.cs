@@ -318,7 +318,9 @@ namespace Microsoft.Dynamics365.UITests.Api
                     driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.MoreCommands])).Click();
 
                 var buttons = GetCommands(moreCommands).Value;
-                var button = buttons.Where(x => x.Text.ToLower() == name.ToLower()).FirstOrDefault();
+                var button = buttons.Where(x => x.Text.Contains(name)).FirstOrDefault();
+
+                if (button == null) { throw new Exception($"Command Button with name: {name} does not exist."); }
 
                 if (string.IsNullOrEmpty(subName))
                     button.Click();
