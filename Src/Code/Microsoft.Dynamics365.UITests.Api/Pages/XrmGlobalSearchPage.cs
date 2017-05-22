@@ -38,7 +38,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 IWebElement select = options.FirstOrDefault(x => x.Text == entity);
 
                 if (select == null)
-                    throw new InvalidOperationException($"Entity {entity} does not exist in the Filter options.");
+                    throw new InvalidOperationException($"Entity '{entity}' does not exist in the Filter options.");
 
                 select.Click();
 

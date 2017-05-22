@@ -31,7 +31,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 Dictionary<string, System.Guid> dashboards = OpenViewPicker();
 
                 if (!dashboards.ContainsKey(dashBoardName))
-                    throw new InvalidOperationException($"Dashboard {dashBoardName} does not exist in the dashboard select options");
+                    throw new InvalidOperationException($"Dashboard '{dashBoardName}' does not exist in the dashboard select options");
 
                 var viewId = dashboards[dashBoardName];
 
