@@ -12,7 +12,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
         public static BrowserOptions Options = new BrowserOptions
                                                 {
-                                                    BrowserType = BrowserType.Firefox,
+                                                    BrowserType = BrowserType.Chrome,
                                                     PrivateMode = true,
                                                     FireEvents = true
                                                 };

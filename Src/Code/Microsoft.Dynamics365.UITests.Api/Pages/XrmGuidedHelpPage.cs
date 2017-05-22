@@ -13,6 +13,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public XrmGuidedHelpPage(InteractiveBrowser browser)
             : base(browser)
         {
+            SwitchToDefaultContent();
         }
 
         public bool IsEnabled
@@ -36,7 +37,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 if (IsEnabled)
                 {
-                    driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.GuidedHelp.MarsOverlay]), new TimeSpan(0, 0, 10), d =>
+                    driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.GuidedHelp.MarsOverlay]), new TimeSpan(0, 0, 15), d =>
                     {
                         var allMarsElements = driver
                             .FindElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.MarsOverlay]))
@@ -48,7 +49,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                             if (buttonId.Equals(Elements.ElementId[Reference.GuidedHelp.Close], StringComparison.InvariantCultureIgnoreCase))
                             {
-                                driver.WaitUntilVisible(By.Id(buttonId), new TimeSpan(0, 0, 2));
+                                driver.WaitUntilClickable(By.Id(buttonId), new TimeSpan(0, 0, 10));
 
                                 element.Click();
                             }
