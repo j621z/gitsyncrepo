@@ -49,7 +49,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                             if (buttonId.Equals(Elements.ElementId[Reference.GuidedHelp.Close], StringComparison.InvariantCultureIgnoreCase))
                             {
-                                driver.WaitUntilClickable(By.Id(buttonId), new TimeSpan(0, 0, 10));
+                                driver.WaitUntilAvailable(By.Id(buttonId), new TimeSpan(0, 0, 5));
 
                                 element.Click();
                             }
