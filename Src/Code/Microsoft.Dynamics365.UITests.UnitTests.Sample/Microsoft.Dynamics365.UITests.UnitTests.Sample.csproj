@@ -101,28 +101,27 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Dashboard\Dashboard.cs" />
-    <Compile Include="Dialogs\CloseOpportunity.cs" />
-    <Compile Include="EndUserScenerios\CreateAccount.cs" />
-    <Compile Include="EndUserScenerios\CreateCase.cs" />
-    <Compile Include="EndUserScenerios\CreateContact.cs" />
-    <Compile Include="EndUserScenerios\CreateLead.cs" />
-    <Compile Include="EndUserScenerios\CreateOpportunity.cs" />
-    <Compile Include="EndUserScenerios\OpenAccount.cs" />
-    <Compile Include="EndUserScenerios\OpenCase.cs" />
-    <Compile Include="EndUserScenerios\OpenContact.cs" />
-    <Compile Include="EndUserScenerios\OpenLead.cs" />
-    <Compile Include="EndUserScenerios\OpenOpportunity.cs" />
-    <Compile Include="EndUserScenerios\UpdateAccount.cs" />
-    <Compile Include="EndUserScenerios\UpdateCase.cs" />
-    <Compile Include="EndUserScenerios\UpdateContact.cs" />
-    <Compile Include="EndUserScenerios\UpdateLead.cs" />
-    <Compile Include="EndUserScenerios\UpdateOpportunity.cs" />
-    <Compile Include="Navigation\GlobalSearch.cs" />
+    <Compile Include="Dashboard.cs" />
+    <Compile Include="CloseOpportunity.cs" />
+    <Compile Include="CreateAccount.cs" />
+    <Compile Include="CreateCase.cs" />
+    <Compile Include="CreateContact.cs" />
+    <Compile Include="CreateLead.cs" />
+    <Compile Include="CreateOpportunity.cs" />
+    <Compile Include="OpenAccount.cs" />
+    <Compile Include="OpenCase.cs" />
+    <Compile Include="OpenContact.cs" />
+    <Compile Include="OpenLead.cs" />
+    <Compile Include="OpenOpportunity.cs" />
+    <Compile Include="UpdateAccount.cs" />
+    <Compile Include="UpdateCase.cs" />
+    <Compile Include="UpdateContact.cs" />
+    <Compile Include="UpdateLead.cs" />
+    <Compile Include="UpdateOpportunity.cs" />
+    <Compile Include="GlobalSearch.cs" />
     <Compile Include="TestSettings.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Views.cs" />
+    <Compile Include="Views.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Dynamics365.UITests.Api\Microsoft.Dynamics365.UITests.Api.csproj">
@@ -147,6 +146,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

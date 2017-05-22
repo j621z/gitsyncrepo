@@ -2,10 +2,7 @@
 using Microsoft.Dynamics365.UITests.Api;
 using Microsoft.Dynamics365.UITests.Browser;
 using System;
-using System.Collections.Generic;
 using System.Security;
-using System.Threading;
-using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
 {
@@ -18,7 +15,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void SwitchDashboard()
+        public void TestSwitchDashboard()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -26,8 +23,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Dashboards");
-
-                //xrmBrowser.Dashboard.SelectDashBoard("Sales Dashboard");
+                xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 xrmBrowser.Dashboard.SelectDashBoard("Sales Performance Dashboard");
 

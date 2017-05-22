@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Dynamics365.UITests.Browser;
 using Microsoft.Dynamics365.UITests.Api;
-using System.Collections.Generic;
 using System.Security;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
@@ -30,7 +29,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
 
                
                 xrmBrowser.Entity.SetValue("subject", "Update test API Lead");
-                //xrmBrowser.Entity.SetValue("mobilephone", "555-555-5555");
                 xrmBrowser.Entity.SetValue("description", "Test lead updation with API commands");
 
                 xrmBrowser.Entity.Save();

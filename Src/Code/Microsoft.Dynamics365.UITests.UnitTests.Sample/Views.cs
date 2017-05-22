@@ -3,8 +3,6 @@ using Microsoft.Dynamics365.UITests.Api;
 using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Security;
-using System.Threading;
-using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
 {
@@ -27,8 +25,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
                 xrmBrowser.Grid.SwitchView("Active Accounts");
                 xrmBrowser.Grid.Sort("Account Name");
-               
-                Thread.Sleep(10000);
+                xrmBrowser.ThinkTime(2000);
 
             }
         }
@@ -44,13 +41,13 @@ namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
                 xrmBrowser.Grid.SwitchView("Active Accounts");
                 xrmBrowser.Grid.FilterByLetter('A');
-                Thread.Sleep(10000);
+                xrmBrowser.ThinkTime(2000);
 
             }
         }
 
         [TestMethod]
-        public void FilterGridByAll()
+        public void TestFilterGridByAll()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -60,13 +57,13 @@ namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
                 xrmBrowser.Grid.SwitchView("Open Leads");
                 xrmBrowser.Grid.FilterByAll();
-                Thread.Sleep(10000);
+                xrmBrowser.ThinkTime(2000);
 
             }
         }
 
         [TestMethod]
-        public void EnableFilter()
+        public void TestEnableFilter()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -76,7 +73,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
                 xrmBrowser.Grid.SwitchView("Open Leads");
                 xrmBrowser.Grid.EnableFilter();
-                Thread.Sleep(10000);
+                xrmBrowser.ThinkTime(2000);
 
             }
         }

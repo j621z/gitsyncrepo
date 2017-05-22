@@ -2,15 +2,12 @@
 using Microsoft.Dynamics365.UITests.Api;
 using Microsoft.Dynamics365.UITests.Browser;
 using System;
-using System.Collections.Generic;
 using System.Security;
-using System.Threading;
-using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
 {
     [TestClass]
-    public class CreateOpportunity
+    public class OpenAccount
     {
 
         private readonly SecureString _username = System.Configuration.ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();
@@ -18,29 +15,25 @@ namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void CreateNewOpportunity()
+        public void TestOpenActiveAccount()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 xrmBrowser.ThinkTime(500);
-                xrmBrowser.Navigation.OpenSubArea("Sales", "Opportunities");
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
 
-                xrmBrowser.ThinkTime(200);
-                xrmBrowser.Grid.SwitchView("Open Opportunities");
+                xrmBrowser.ThinkTime(2000);
+                xrmBrowser.Grid.SwitchView("Active Accounts");
 
                 xrmBrowser.ThinkTime(1000);
-                xrmBrowser.CommandBar.ClickCommand("New");
+                xrmBrowser.Grid.OpenRecord(0);
 
-                xrmBrowser.ThinkTime(5000);
-
-                xrmBrowser.Entity.SetValue("name", "Test API Opportunity");
-                xrmBrowser.Entity.SetValue("description", "Testing the create api for Opportunity");
-
-                xrmBrowser.CommandBar.ClickCommand("Save");
                 xrmBrowser.ThinkTime(2000);
+
             }
         }
     }
