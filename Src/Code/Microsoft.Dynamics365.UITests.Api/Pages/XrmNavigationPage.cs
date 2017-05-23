@@ -139,7 +139,13 @@ namespace Microsoft.Dynamics365.UITests.Api
                 var items = area.FindElements(By.ClassName("nav-rowLabel"));
                 var item = items.FirstOrDefault(x => x.Text == entity);
 
-                item?.Click();
+                if(item == null)
+                {
+                    throw new InvalidOperationException($"No Entity with the name '{entity}' exists inside QuickCreate.");
+                }   
+                            
+                item.Click();
+                
                 return true;
             });
         }
