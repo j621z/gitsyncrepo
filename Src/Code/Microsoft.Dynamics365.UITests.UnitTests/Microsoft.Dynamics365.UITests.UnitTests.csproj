@@ -164,6 +164,7 @@
     <Compile Include="NegativeScenarios\GlobalSearch\InvalidFilterWith.cs" />
     <Compile Include="NegativeScenarios\GlobalSearch\InvalidOpenRecord.cs" />
     <Compile Include="NegativeScenarios\Grid\InvalidSort.cs" />
+    <Compile Include="NegativeScenarios\Grid\InvalidSwitchChart.cs" />
     <Compile Include="NegativeScenarios\InvalidOpenArea.cs" />
     <Compile Include="NegativeScenarios\InvalidOpenRecord.cs" />
     <Compile Include="NegativeScenarios\InvalidSetValue.cs" />
