@@ -66,7 +66,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Nav_Shuffle"       , "id(\"nav-shuffle\")"},
             { "Nav_TabNode"       , "id(\"TabNode_tab0Tab\")"},
             { "Nav_TabSearch"       , "id(\"TabSearch\")"},
+            { "Nav_SearchButton"       , "id(\"SearchNode\")/a"},
+            //*[@id="findHintText"]
+            { "Nav_SearchLabel"       , "id(\"findHintText\")"},
             { "Nav_Search"       , "id(\"search\")"},
+            { "Nav_StartSearch"       , "id(\"findCriteriaButton\")"},
                   
             //Grid
             { "Grid_JumpBar"       , "id(\"crmGrid_JumpBar\")"},
@@ -364,12 +368,13 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string FindCriteria = "Nav_FindCriteria";
             public static string Shuffle = "Nav_Shuffle";
             public static string TabNode = "Nav_TabNode";
-            public static string TabSearch = "Nav_TabSearch";
+            public static string SearchLabel = "Nav_SearchLabel";
+            public static string SearchButton = "Nav_SearchButton";
             public static string Search = "Nav_Search";
+            public static string StartSearch = "Nav_StartSearch";
             public static string TabButtonLink = "Nav_TabButtonLinkClass";
             public static string ActionGroupContainer = "Nav_ActionGroupContainerClass";
-            public static string RowLabel = "Nav_RowLabelClass";
-                      
+            public static string RowLabel = "Nav_RowLabelClass";                           
         }
         public static class Grid
         {
