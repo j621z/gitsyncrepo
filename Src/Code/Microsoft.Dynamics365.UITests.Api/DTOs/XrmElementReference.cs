@@ -83,11 +83,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Grid_FindCriteria"       , "id(\"crmGrid_findCriteria\")"},
             { "Grid_GridBodyTable"   , "id(\"gridBodyTable\")" },
             { "Grid_DefaultViewIcon"   , "id(\"defaultViewIcon\")" },
-            { "Grid_ControlBar"   , "id(\"gridControlBar\")" },
+            { "Grid_ViewSelector"   , "id(\"crmGrid_SavedNewQuerySelector\")" },
             { "Grid_Refresh"   , "id(\"grid_refresh\")" },
             { "Grid_ViewSelectorContainer"   , "id(\"viewSelectorContainer\")" },
                    
             //Entity
+            { "Entity_Form"       , "id(\"tab0\")"},
             { "Entity_Close"       , "id(\"closeButton\")"},
             { "Entity_Save"       , "id(\"savefooter_statuscontrol\")"},
             { "Entity_ContentTable" , "id(\"flyoutFormSection_ContentTable\")" },
@@ -136,6 +137,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Login_UserId", "id(\"cred_userid_inputtext\")"},
             { "Login_Password", "id(\"cred_password_inputtext\")"},
             { "Login_SignIn", "id(\"cred_sign_in_button\")"},
+            { "Login_CrmMainPage", "id(\"crmTopBar\")"},
 
             //Notification           
             { "Notification_AppMessageBar", "id(\"crmAppMessageBar\")"},
@@ -385,7 +387,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string FindCriteriaImg = "Grid_FindCriteriaImg";
             public static string GridBodyTable = "Grid_GridBodyTable";
             public static string FindCriteria = "Grid_FindCriteria";
-            public static string ControlBar = "Grid_ControlBar";
+            public static string ViewSelector = "Grid_ViewSelector";
             public static string Refresh = "Grid_Refresh";
             public static string ViewContainer = "Grid_ViewContainerClass";
             public static string OpenChart = "Grid_OpenChartClass";
@@ -398,7 +400,8 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         public static class Entity
-        {
+        {            
+            public static string Form = "Entity_Form";
             public static string Close = "Entity_Close";
             public static string Tab = "Entity_TabId";
             public static string Save = "Entity_Save";
@@ -506,6 +509,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string UserId = "Login_UserId";
             public static string Password = "Login_Password";
             public static string SignIn = "Login_SignIn";
+            public static string CrmMainPage = "Login_CrmMainPage";
 
         }
     }

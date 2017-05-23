@@ -42,6 +42,11 @@ namespace Microsoft.Dynamics365.UITests.Browser
                         .Replace(Environment.NewLine, string.Empty)
                         .ToLower();
         }
+        public static bool Contains(this string source, string value, StringComparison compare)
+        {
+            return source.IndexOf(value, compare) >= 0;
+        }
+
     }
 
     public static class BoolExtensions

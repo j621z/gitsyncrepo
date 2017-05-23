@@ -1,6 +1,6 @@
 ﻿using Microsoft.Dynamics365.UITests.Browser;
 
-namespace Microsoft.Dynamics365.UITests.UnitTests
+namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
 {
     public static class TestSettings
     {
@@ -14,7 +14,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                                                 {
                                                     BrowserType = BrowserType.Chrome,
                                                     PrivateMode = true,
-                                                    FireEvents = false
+                                                    FireEvents = true
                                                 };
     }
 }
