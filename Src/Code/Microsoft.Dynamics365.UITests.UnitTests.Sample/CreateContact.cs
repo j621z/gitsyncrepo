@@ -4,12 +4,11 @@ using Microsoft.Dynamics365.UITests.Browser;
 using System;
 using System.Collections.Generic;
 using System.Security;
-using System.Threading;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
 {
     [TestClass]
-    public class CreateLead
+    public class CreateContact
     {
 
         private readonly SecureString _username = System.Configuration.ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();
@@ -17,30 +16,38 @@ namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void CreateNewLead()
+        public void TestCreateNewContact()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
-                
-                xrmBrowser.Navigation.OpenSubArea("Sales", "Leads");
-                
-                xrmBrowser.Grid.SwitchView("All Leads");
-                
+
+                xrmBrowser.ThinkTime(500);
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Contacts");
+
+                xrmBrowser.ThinkTime(2000);
+                xrmBrowser.Grid.SwitchView("Active Contacts");
+
+                xrmBrowser.ThinkTime(1000);
                 xrmBrowser.CommandBar.ClickCommand("New");
-                Thread.Sleep(2000);
-                List<Field> fields = new List<Field>
+
+                xrmBrowser.ThinkTime(5000);
+
+                var fields = new List<Field>
                 {
                     new Field() {Id = "firstname", Value = "Test"},
-                    new Field() {Id = "lastname", Value = "Lead"}
+                    new Field() {Id = "lastname", Value = "Contact"}
                 };
-                xrmBrowser.Entity.SetValue("subject", "Test API Lead");
-                xrmBrowser.Entity.SetValue(new CompositeControl() { Id = "fullname", Fields = fields });
+                xrmBrowser.Entity.SetValue(new CompositeControl() {Id = "fullname", Fields = fields});
+                xrmBrowser.Entity.SetValue("emailaddress1", "test@contoso.com");
                 xrmBrowser.Entity.SetValue("mobilephone", "555-555-5555");
-                xrmBrowser.Entity.SetValue("description", "Test lead creation with API commands");
+                xrmBrowser.Entity.SetValue("birthdate", DateTime.Parse("11/1/1980"));
+                xrmBrowser.Entity.SetValue(new OptionSet {Name = "preferredcontactmethodcode", Value = "Email"});
 
                 xrmBrowser.CommandBar.ClickCommand("Save");
+                xrmBrowser.ThinkTime(5000);
+
             }
         }
     }

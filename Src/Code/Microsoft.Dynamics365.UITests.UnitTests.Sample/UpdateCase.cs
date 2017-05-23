@@ -35,6 +35,11 @@ namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
                 xrmBrowser.Related.OpenGridRow(0);
                 xrmBrowser.ThinkTime(2000);
 
+                xrmBrowser.Entity.SetValue(new OptionSet { Name = "caseorigincode", Value = "Email" });
+                xrmBrowser.Entity.Save();
+                xrmBrowser.ThinkTime(10000);
+
+
 
             }
         }

@@ -1,21 +1,21 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Dynamics365.UITests.Browser;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Dynamics365.UITests.Api;
-using System.Threading;
+using Microsoft.Dynamics365.UITests.Browser;
+using System;
 using System.Security;
 
 namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
 {
     [TestClass]
-    public class UpdateOpportunity
+    public class CreateOpportunity
     {
+
         private readonly SecureString _username = System.Configuration.ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();
         private readonly SecureString _password = System.Configuration.ConfigurationManager.AppSettings["OnlinePassword"].ToSecureString();
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void TestUpdateOpportunity()
+        public void TestCreateNewOpportunity()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
@@ -28,14 +28,16 @@ namespace Microsoft.Dynamics365.UITests.UnitTests.Sample
                 xrmBrowser.ThinkTime(200);
                 xrmBrowser.Grid.SwitchView("Open Opportunities");
 
-
                 xrmBrowser.ThinkTime(1000);
-                xrmBrowser.Grid.OpenRecord(0);
+                xrmBrowser.CommandBar.ClickCommand("New");
 
-                xrmBrowser.Entity.SetValue("description", "Testing the update api for Opportunity");
-               
+                xrmBrowser.ThinkTime(5000);
 
-                xrmBrowser.Entity.Save();
+                xrmBrowser.Entity.SetValue("name", "Test API Opportunity");
+                xrmBrowser.Entity.SetValue("description", "Testing the create api for Opportunity");
+
+                xrmBrowser.CommandBar.ClickCommand("Save");
+                xrmBrowser.ThinkTime(2000);
             }
         }
     }
