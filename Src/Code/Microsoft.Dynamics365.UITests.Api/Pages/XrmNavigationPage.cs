@@ -73,6 +73,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 subAreas[subArea].Click();
 
+                SwitchToContentFrame();
                 driver.WaitForPageToLoad();
 
                 return true;
@@ -293,6 +294,8 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 driver.WaitUntilVisible(By.Id(area.GetAttribute("Id")));
 
+                driver.FindElement(By.Id("SFA")).Click();
+
                 area.Click();
 
                 Thread.Sleep(1000);
@@ -316,6 +319,12 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Settings]))?.Click();
             Thread.Sleep(1000);
+
+            //Bug: 563823 
+            //Issue with CRM Style where the Options menu is not visible in IE. Works in Chrome but going to set the style to Display: Block so that we can click it.  
+            driver.SetVisible(By.XPath(settingPath), true);
+            //End bug fix
+
             driver.WaitUntilVisible(By.XPath(settingPath));
             driver.FindElement(By.XPath(settingPath)).Click();
         }

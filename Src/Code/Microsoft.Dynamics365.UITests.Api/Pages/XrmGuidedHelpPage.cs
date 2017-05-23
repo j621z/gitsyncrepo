@@ -13,6 +13,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         public XrmGuidedHelpPage(InteractiveBrowser browser)
             : base(browser)
         {
+            SwitchToDefaultContent();
         }
 
         public bool IsEnabled
@@ -30,13 +31,13 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         public BrowserCommandResult<bool> CloseGuidedHelp()
         {
-            return this.Execute("Close Guided Help", driver =>
+            return this.Execute(GetOptions("Close Guided Help"), driver =>
             {
                 bool returnValue = false;
 
                 if (IsEnabled)
                 {
-                    driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.GuidedHelp.MarsOverlay]), new TimeSpan(0, 0, 10), d =>
+                    driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.GuidedHelp.MarsOverlay]), new TimeSpan(0, 0, 15), d =>
                     {
                         var allMarsElements = driver
                             .FindElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.MarsOverlay]))
@@ -48,7 +49,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                             if (buttonId.Equals(Elements.ElementId[Reference.GuidedHelp.Close], StringComparison.InvariantCultureIgnoreCase))
                             {
-                                driver.WaitUntilVisible(By.Id(buttonId), new TimeSpan(0, 0, 2));
+                                driver.WaitUntilAvailable(By.Id(buttonId), new TimeSpan(0, 0, 5));
 
                                 element.Click();
                             }
@@ -65,7 +66,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         [Obsolete("Modal dialogs are no longer considered supported for most modern browsers", false)]
         public BrowserCommandResult<bool> CloseModalDialogs()
         {
-            return this.Execute("Close Modal Dialog", driver =>
+            return this.Execute(GetOptions("Close Modal Dialog"), driver =>
             {
                 // Get the current window handles
                 string popupHandle = string.Empty;
@@ -104,7 +105,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         public BrowserCommandResult<bool> CloseWelcomeTour()
         {
-            return this.Execute("Close Welcome Tour", driver =>
+            return this.Execute(GetOptions("Close Welcome Tour"), driver =>
             {
                 // Close the email and nav tour approval dialog if it's there - go top to bottom (reverse)
                 foreach (var frame in driver.FindElements(By.TagName("iframe")).Reverse())

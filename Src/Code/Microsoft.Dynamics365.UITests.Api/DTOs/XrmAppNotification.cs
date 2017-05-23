@@ -18,7 +18,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
         public void Dismiss()
         {
-            _page.Dismiss(this);
+            _page.Close(this);
         }
     }
 }

@@ -70,13 +70,16 @@ namespace Microsoft.Dynamics365.UITests.Api
                     if (input.GetAttribute("value").Length > 0)
                     {
                         input.Clear();
+                        input.SendKeys(Keys.Enter);
                         fieldElement.Click();
-                        input.Click();
+                        input.SendKeys(date.ToShortDateString());
+                        input.SendKeys(Keys.Enter);
                     }
-
-                    input.SendKeys(date.ToShortDateString());
-                    
-
+                    else
+                    {
+                        input.SendKeys(date.ToShortDateString());
+                        input.SendKeys(Keys.Enter);
+                    }
                 }
                 else
                     throw new InvalidOperationException($"Field: {field} Does not exist");
@@ -118,7 +121,6 @@ namespace Microsoft.Dynamics365.UITests.Api
                     {
                         fieldElement.FindElement(By.TagName("input")).Clear();
                         fieldElement.FindElement(By.TagName("input")).SendKeys(value);
-
                     }
                 }
                 else
@@ -298,6 +300,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 string text = string.Empty;
                 if (driver.HasElement(By.Id(field)))
                 {
+                    driver.WaitUntilVisible(By.Id(field));
                     var fieldElement = driver.FindElement(By.Id(field));
                     fieldElement.Click();
 
@@ -564,5 +567,6 @@ namespace Microsoft.Dynamics365.UITests.Api
             return dictionary;
         }
 
+       
     }
 }
