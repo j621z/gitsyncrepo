@@ -23,7 +23,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests.NegativeScenarios.Entity
 
                 xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
 
-                xrmBrowser.Entity.CollapseTab("Summary223");
+                xrmBrowser.Entity.CollapseTab("Summarry");
                 xrmBrowser.ThinkTime(5000);
             }
         }

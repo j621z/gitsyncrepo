@@ -184,6 +184,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute(GetOptions("Select Item"), driver =>
             {
                 var itemsTable = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.GridBodyTable]));
+
+                if(itemsTable.GetAttribute("totalrecordcount") == "0")
+                {
+                    throw new InvalidOperationException($"No Process records are available in this view for the Search'{value}'");
+                }
                 var tbody = itemsTable.FindElement(By.TagName("tbody"));
                 var items = tbody.FindElements(By.TagName("tr"));
 

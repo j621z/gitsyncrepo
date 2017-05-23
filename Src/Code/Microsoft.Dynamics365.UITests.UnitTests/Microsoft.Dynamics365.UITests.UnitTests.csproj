@@ -158,8 +158,11 @@
     <Compile Include="NegativeScenarios\BusinessProcessFlow\InvalidSelectBusinessProcessFlow.cs" />
     <Compile Include="NegativeScenarios\CommandBar\InvalidClickCommand.cs" />
     <Compile Include="NegativeScenarios\DashBoard\InvalidSwitchDashBoard.cs" />
+    <Compile Include="NegativeScenarios\Dialogs\InvalidRunWorkFlow.cs" />
     <Compile Include="NegativeScenarios\Entity\InvalidCollapseTab.cs" />
+    <Compile Include="NegativeScenarios\Entity\InvalidExpandTab.cs" />
     <Compile Include="NegativeScenarios\Entity\InvalidOpenEntity.cs" />
+    <Compile Include="NegativeScenarios\Entity\InvalidSelectTab.cs" />
     <Compile Include="NegativeScenarios\Grid\InvalidFilterByLetter.cs" />
     <Compile Include="NegativeScenarios\GlobalSearch\InvalidFilterWith.cs" />
     <Compile Include="NegativeScenarios\GlobalSearch\InvalidOpenRecord.cs" />
