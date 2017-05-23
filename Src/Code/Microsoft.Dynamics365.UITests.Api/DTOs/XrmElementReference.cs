@@ -43,7 +43,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Frame_QuickCreateFrame"       , "id(\"globalquickcreate_container_NavBarGloablQuickCreate\")"},
 
             //Navigation
-            { "Nav_HomeTab"       , "id(\"HomeTabLink\")"},
+            { "Nav_HomeTab"       , "id(\"TabSFA\")"},
             { "Nav_ActionGroup"       , "id(\"actionGroupControl\")"},
             { "Nav_SubActionGroup"       , "id(\"actionGroupControl\")"},
             { "Nav_SubActionGroupContainer"       , "id(\"detailActionGroupControl\")"},
