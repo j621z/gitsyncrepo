@@ -11,11 +11,11 @@ namespace Microsoft.Dynamics365.UITests.Api
         public static Dictionary<string, string> Xpath = new Dictionary<string, string>()
         {
             //Business Process Flow
-            { "BPF_NextStage"       , "id(\"stageAdvanceActionContainer\")/div[1]"},
-            { "BPF_PreviousStage"   , "id(\"stageBackActionContainer\")/div[1]/img[1]"},
-            { "BPF_Hide"            , "id(\"processControlCollapseButton\")/img[1]" },
-            { "BPF_SetActive"       , "id(\"stageSetActiveActionContainer\")/div[1]" },
-            { "BPF_SelectStage"     , "id(\"stage_[STAGENUM]\")/div[2]/div[1]/div[1]/div[1]/span[1]" },
+            { "BPF_NextStage"       , "id(\"stageAdvanceActionContainer\")/div"},
+            { "BPF_PreviousStage"   , "id(\"stageBackActionContainer\")/div"},
+            { "BPF_Hide"            , "id(\"processControlCollapseButton\")" },
+            { "BPF_SetActive"       , "id(\"stageSetActiveActionContainer\")" },
+            { "BPF_SelectStage"     , "id(\"stage_[STAGENUM]\")/div[2]/div/div/div/span" },
             { "BPF_Ok"     , "id(\"SwitchProcess-Select\")" },
 
             //Dialogs
@@ -67,7 +67,6 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Nav_TabNode"       , "id(\"TabNode_tab0Tab\")"},
             { "Nav_TabSearch"       , "id(\"TabSearch\")"},
             { "Nav_SearchButton"       , "id(\"SearchNode\")/a"},
-            //*[@id="findHintText"]
             { "Nav_SearchLabel"       , "id(\"findHintText\")"},
             { "Nav_Search"       , "id(\"search\")"},
             { "Nav_StartSearch"       , "id(\"findCriteriaButton\")"},

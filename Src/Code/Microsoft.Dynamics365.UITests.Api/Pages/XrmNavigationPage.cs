@@ -10,8 +10,6 @@ namespace Microsoft.Dynamics365.UITests.Api
     public class XrmNavigationPage
         : XrmPage
     {
-        private static string relatedId;
-
         public XrmNavigationPage(InteractiveBrowser browser)
             : base(browser)
         {
