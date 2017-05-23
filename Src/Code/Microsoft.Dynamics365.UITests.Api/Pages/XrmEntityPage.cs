@@ -45,6 +45,11 @@ namespace Microsoft.Dynamics365.UITests.Api
 
                 // driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
                 driver.WaitForPageToLoad();
+                driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Entity.Form]),
+                                            new TimeSpan(0, 0, 30),
+                                            null,
+                                            d => { throw new Exception("CRM Record is Unavailable or not finished loading. Timeout Exceeded"); }
+                                        );
 
                 return true;
             });
@@ -120,10 +125,11 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions($"SelectTab: {name}"), driver =>
             {
+                if (!driver.HasElement(By.Id(Elements.ElementId[Reference.Entity.Tab].Replace("[NAME]", name.ToUpper()))))
+                {
+                    throw new InvalidOperationException($"Section with name '{name}' does not exist.");
+                }
                 var section = driver.FindElement(By.Id(Elements.ElementId[Reference.Entity.Tab].Replace("[NAME]", name.ToUpper())));
-
-                if (section == null)
-                    throw new InvalidOperationException($"Section with name {name} does not exist.");
                 
                 section?.Click();
 
@@ -141,10 +147,11 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions($"Collapse Tab: {name}"), driver =>
             {
+                if(!driver.HasElement(By.Id(Elements.ElementId[Reference.Entity.Tab].Replace("[NAME]", name.ToUpper()))))
+                {
+                    throw new InvalidOperationException($"Section with name '{name}' does not exist.");
+                }
                 var section = driver.FindElement(By.Id(Elements.ElementId[Reference.Entity.Tab].Replace("[NAME]",name.ToUpper())));
-
-                if (section == null)
-                    throw new InvalidOperationException($"Section with name {name} does not exist.");
 
                if (section.FindElement(By.TagName("img")).GetAttribute("title").Contains("Collapse"))
                     section?.Click();
@@ -163,10 +170,11 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions($"Expand Tab: {name}"), driver =>
             {
+                if (!driver.HasElement(By.Id(Elements.ElementId[Reference.Entity.Tab].Replace("[NAME]", name.ToUpper()))))
+                {
+                    throw new InvalidOperationException($"Section with name '{name}' does not exist.");
+                }
                 var section = driver.FindElement(By.Id(Elements.ElementId[Reference.Entity.Tab].Replace("[NAME]", name.ToUpper())));
-
-                if (section == null)
-                    throw new InvalidOperationException($"Section with name {name} does not exist.");
 
                 if (section.FindElement(By.TagName("img")).GetAttribute("title").Contains("Expand"))
                     section?.Click();

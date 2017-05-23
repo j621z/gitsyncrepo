@@ -30,6 +30,8 @@ namespace Microsoft.Dynamics365.UITests.UnitTests.NegativeScenarios.BusinessProc
                 xrmBrowser.ThinkTime(1000);
                 xrmBrowser.Grid.OpenRecord(0);
 
+                xrmBrowser.BusinessProcessFlow.SelectStage(3);
+
                 xrmBrowser.BusinessProcessFlow.NextStage();
 
                 xrmBrowser.ThinkTime(1000);
