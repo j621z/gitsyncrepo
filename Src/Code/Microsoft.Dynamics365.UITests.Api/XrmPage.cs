@@ -70,7 +70,6 @@ namespace Microsoft.Dynamics365.UITests.Api
                     if (input.GetAttribute("value").Length > 0)
                     {
                         input.Clear();
-                        input.SendKeys(Keys.Enter);
                         fieldElement.Click();
                         input.SendKeys(date.ToShortDateString());
                         input.SendKeys(Keys.Enter);
