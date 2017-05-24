@@ -58,11 +58,14 @@ namespace Microsoft.Dynamics365.UITests.Api
                     button.Click();
                 else
                 {
+
                     button.FindElement(By.ClassName(Elements.CssClass[Reference.CommandBar.FlyoutAnchorArrow])).Click();
 
-                    var flyoutId = button.GetAttribute("id").Replace("|", "_").Replace(".", "_") + "Menu";
-                    var subButtons = driver.FindElement(By.Id(flyoutId)).FindElements(By.TagName("li"));
-                    subButtons.Where(x => x.Text.ToLower() == subName.ToLower()).FirstOrDefault()?.Click();
+                    var subButtons = driver.FindElements(By.ClassName("ms-crm-Menu-Label"));
+                    var item = subButtons.Where(x => x.Text.ToLower() == subName.ToLower()).FirstOrDefault();
+                    if(item == null) { throw new InvalidOperationException($"The sub menu item '{subName}' is not found."); }
+
+                    item.Click();
                 }
                 
                 driver.WaitForPageToLoad();
