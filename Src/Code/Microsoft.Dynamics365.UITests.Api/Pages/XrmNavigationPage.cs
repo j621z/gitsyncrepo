@@ -108,13 +108,14 @@ namespace Microsoft.Dynamics365.UITests.Api
 
 
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Navigation.Search]),
-                            new TimeSpan(0, 0, 5),
-                            d => {
-                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SearchLabel])).Click();
-                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Search])).SendKeys(searchText,true);
-                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.StartSearch])).Click();
-                                 },
-                            d => { throw new InvalidOperationException("The Global Search text field is not available."); });
+                                            new TimeSpan(0, 0, 5),
+                                            d => {
+                                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SearchLabel])).Click();
+                                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Search])).SendKeys(searchText,true);
+                                                    Thread.Sleep(500);
+                                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.StartSearch])).Click();
+                                                },
+                                            d => { throw new InvalidOperationException("The Global Search text field is not available."); });
                 
                 return true;
             });
