@@ -15,6 +15,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             SwitchToDialogFrame();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private BrowserCommandResult<Dictionary<string, IWebElement>> OpenEntityPicker()
         {
             return this.Execute(GetOptions("Open Entity Picker"), driver =>
@@ -37,6 +41,11 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return dictionary;
             });
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private BrowserCommandResult<Dictionary<string, IWebElement>> OpenViewPicker()
         {
             return this.Execute(GetOptions("Open View Picker"), driver =>
@@ -60,6 +69,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entityName"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SwitchEntity(string entityName, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -78,6 +93,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewName"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -95,6 +116,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="searchCriteria"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Search(string searchCriteria, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -108,6 +135,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<List<XrmGridItem>> GetGridItems()
         {
             return this.Execute(GetOptions("Get Grid Items"), driver =>
@@ -159,6 +190,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SelectItem(int index, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -177,6 +214,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SelectItem(string value, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -209,6 +252,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Add(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -221,6 +269,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Select(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -233,6 +286,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Remove(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -245,6 +303,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> New(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -257,6 +320,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);

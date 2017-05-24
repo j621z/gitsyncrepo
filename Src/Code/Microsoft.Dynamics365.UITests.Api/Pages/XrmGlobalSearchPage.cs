@@ -45,6 +45,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
         /// <summary>
         /// Searches for the specified criteria in Global Search.
         /// </summary>

@@ -24,6 +24,11 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
               
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="moreCommands"></param>
+        /// <returns></returns>
         private BrowserCommandResult<ReadOnlyCollection<IWebElement>> GetCommands(bool moreCommands = false)
         {
             return this.Execute("Get Command Bar Buttons", driver =>
@@ -42,6 +47,14 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="subName"></param>
+        /// <param name="moreCommands"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> ClickCommand(string name, string subName = "", bool moreCommands = false, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);

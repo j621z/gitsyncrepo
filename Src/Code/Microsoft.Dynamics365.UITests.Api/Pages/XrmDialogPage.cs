@@ -138,6 +138,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> RunWorkflow(string name, int thinkTime = Constants.DefaultThinkTime)
         {
             this.Browser.ThinkTime(thinkTime);

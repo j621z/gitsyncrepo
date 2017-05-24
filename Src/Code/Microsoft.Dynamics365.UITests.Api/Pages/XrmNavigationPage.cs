@@ -97,6 +97,12 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="searchText"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> GlobalSearch(string searchText, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);

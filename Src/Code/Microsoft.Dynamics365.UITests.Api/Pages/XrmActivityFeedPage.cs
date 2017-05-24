@@ -55,6 +55,13 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
                 return true;
             });
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="noteText"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> AddNote(string noteText, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -79,6 +86,13 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
                 return true;
             });
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="postText"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> AddPost(string postText, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -99,6 +113,13 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
                 return true;
             });
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="status"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> FilterActivitiesByStatus(Status status, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -128,6 +149,12 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
                 return true;
             });
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> OpenActivitiesAssociatedView(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -143,6 +170,14 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="description"></param>
+        /// <param name="leftVoiceMail"></param>
+        /// <param name="outgoing"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> AddPhoneCall(string description, bool leftVoiceMail, bool outgoing = true, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -169,6 +204,16 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
                 return true;
             });
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <param name="description"></param>
+        /// <param name="dueDate"></param>
+        /// <param name="priority"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> AddTask(string subject, string description, DateTime dueDate, OptionSet priority, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -191,6 +236,11 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> AddEmail(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -206,6 +256,12 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
                 return true;
             });
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> AddAppointment(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);

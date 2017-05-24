@@ -16,6 +16,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             SwitchToQuickCreateFrame();
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -29,6 +34,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Save(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -42,6 +52,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, [Range(0, 9)]int index)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
@@ -74,6 +90,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, string value)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
@@ -107,6 +129,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="openLookupPage"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, bool openLookupPage = true)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
@@ -167,6 +195,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             return dictionary;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="check"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(string field, bool check)
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
@@ -185,6 +219,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(string field, DateTime date)
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
@@ -211,6 +251,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(string field, string value)
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
@@ -239,6 +285,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="field"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(Field field)
         {
             return this.Execute(GetOptions(""), driver =>
@@ -267,6 +318,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="option"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(OptionSet option)
         {
             return this.Execute(GetOptions($"Set Value: {option.Name}"), driver =>
@@ -292,6 +348,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="control"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(CompositeControl control)
         {
             return this.Execute(GetOptions($"Set Conposite Control Value: {control.Id}"), driver =>

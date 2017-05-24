@@ -20,6 +20,13 @@ namespace Microsoft.Dynamics365.UITests.Api
         private readonly string _navigateDownCssSelector = "img.recnav-down.ms-crm-ImageStrip-Down_Enabled_proxy";
         private readonly string _navigateUpCssSelector = "img.recnav-up.ms-crm-ImageStrip-Up_Enabled_proxy";
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entityName"></param>
+        /// <param name="id"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> OpenEntity(string entityName, Guid id, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -32,6 +39,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> OpenEntity(Uri uri, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -55,6 +68,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> NavigateDown(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -76,6 +94,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> NavigateUp(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -97,6 +120,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SelectForm(string name, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -136,6 +165,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
         /// <summary>
         /// Collapses the Tab on a CRM Entity form.
         /// </summary>
@@ -159,6 +189,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
         /// <summary>
         /// Expands the Tab on a CRM Entity form.
         /// </summary>
@@ -183,6 +214,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, [Range(0, 9)]int index)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver => 
@@ -215,6 +252,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, string value)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver=> 
@@ -248,6 +291,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="field"></param>
+        /// <param name="openLookupPage"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, bool openLookupPage = true)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver=> 
@@ -278,6 +327,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
   
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dialog"></param>
+        /// <returns></returns>
         private BrowserCommandResult<Dictionary<string, IWebElement>> OpenDialog(IWebElement dialog)
         {
             var dictionary = new Dictionary<string, IWebElement>();
@@ -301,6 +355,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             return dictionary;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> Popout(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -314,6 +373,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="subgridName"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> ClickSubgridAddButton(string subgridName, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -326,6 +391,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="subgridName"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> ClickSubgridGridViewButton(string subgridName, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -338,6 +409,13 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="subgridName"></param>
+        /// <param name="value"></param>
+        /// <param name="thinkTime"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName, string value, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -368,6 +446,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="subgridName"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName, [Range(0, 9)]int index)
         {
             return this.Execute(GetOptions($"Set Lookup Value for Subgrid {subgridName}"), driver =>
@@ -395,6 +479,12 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="subgridName"></param>
+        /// <param name="openLookupPage"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName, bool openLookupPage = true)
         {
             return this.Execute(GetOptions($"Set Lookup Value for Subgrid {subgridName}"), driver =>
@@ -448,6 +538,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
         /// <summary>
         /// Saves the specified entity record.
         /// </summary>
@@ -467,6 +558,12 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stay"></param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> DismissAlertIfPresent(bool stay = false)
         {
 

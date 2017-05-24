@@ -29,6 +29,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<bool> CloseGuidedHelp()
         {
             return this.Execute(GetOptions("Close Guided Help"), driver =>
@@ -103,6 +107,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<bool> CloseWelcomeTour()
         {
             return this.Execute(GetOptions("Close Welcome Tour"), driver =>
