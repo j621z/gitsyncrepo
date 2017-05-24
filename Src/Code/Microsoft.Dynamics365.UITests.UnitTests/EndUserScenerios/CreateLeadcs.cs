@@ -38,8 +38,16 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.Entity.SetValue(new CompositeControl() { Id = "fullname", Fields = fields });
                 xrmBrowser.Entity.SetValue("mobilephone", "555-555-5555");
                 xrmBrowser.Entity.SetValue("description", "Test lead creation with API commands");
+                
 
                 xrmBrowser.CommandBar.ClickCommand("Save");
+
+                xrmBrowser.Document.getElementById("elementid");
+
+                xrmBrowser.CommandBar.ClickCommand("Run Workflow");
+                
+                xrmBrowser.Dialogs.RunWorkflow("My Workflow");
+
             }
         }
     }
