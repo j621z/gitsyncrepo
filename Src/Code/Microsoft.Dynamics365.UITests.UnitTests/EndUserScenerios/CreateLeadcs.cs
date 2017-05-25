@@ -41,13 +41,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 
 
                 xrmBrowser.CommandBar.ClickCommand("Save");
-
-                xrmBrowser.Document.getElementById("elementid");
-
-                xrmBrowser.CommandBar.ClickCommand("Run Workflow");
-                
-                xrmBrowser.Dialogs.RunWorkflow("My Workflow");
-
             }
         }
     }

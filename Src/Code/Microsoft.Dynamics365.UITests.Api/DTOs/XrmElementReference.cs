@@ -227,7 +227,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "DashBoard_ViewContainerClass"       , "ms-crm-VS-Menu"},
 
             //CommandBar
-            { "CommandBar_FlyoutAnchorArrow"       , "flyoutAnchorArrow"},
+            { "CommandBar_FlyoutAnchorArrowClass"       , "flyoutAnchorArrow"},
 
             //Grid
             { "Grid_ViewContainerClass"     , "ms-crm-VS-Menu"},
@@ -475,7 +475,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string RibbonManager = "CommandBar_RibbonManager";
             public static string List = "CommandBar_List";
             public static string MoreCommands = "CommandBar_MoreCommands";
-            public static string FlyoutAnchorArrow = "CommandBar_FlyoutAnchorArrow";
+            public static string FlyoutAnchorArrow = "CommandBar_FlyoutAnchorArrowClass";
 
         }
         public static class GuidedHelp

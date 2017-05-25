@@ -63,7 +63,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                     perf.ToggleVisibility();
                     Dictionary<string,XrmPerformanceMarker>  perfResults = perf.GetMarkers();
 
-                    xrmBrowser.Driver.TakeScreenshot();
                     //Iterate through markers
                 }
             }

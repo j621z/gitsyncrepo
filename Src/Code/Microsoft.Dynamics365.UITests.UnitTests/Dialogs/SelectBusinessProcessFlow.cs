@@ -34,7 +34,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.CommandBar.ClickCommand("Process","Switch Process");
 
-                xrmBrowser.BusinessProcessFlow.SelectBusinessProcessFlow("Opportunity Sales Process Alt");
+                xrmBrowser.BusinessProcessFlow.SelectBusinessProcessFlow("Opportunity Sales Process");
 
                 xrmBrowser.ThinkTime(1000);
             }
