@@ -95,6 +95,8 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
 
                 xrmBrowser.Navigation.OpenAbout();
 
+                xrmBrowser.Driver.LastWindow().Close();
+
                 xrmBrowser.ThinkTime(1000);
 
             }
