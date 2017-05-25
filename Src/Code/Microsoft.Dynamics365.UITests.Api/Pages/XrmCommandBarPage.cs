@@ -22,12 +22,12 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             SwitchToDefaultContent();
         }
-              
-        
+
+
         /// <summary>
-        /// 
+        /// Gets the Commands
         /// </summary>
-        /// <param name="moreCommands"></param>
+        /// <param name="moreCommands">The moreCommands</param>
         /// <returns></returns>
         private BrowserCommandResult<ReadOnlyCollection<IWebElement>> GetCommands(bool moreCommands = false)
         {
@@ -48,12 +48,12 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Clicks the  Command
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="subName"></param>
-        /// <param name="moreCommands"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="name">The name</param>
+        /// <param name="subName">The subName</param>
+        /// <param name="moreCommands">The moreCommands</param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> ClickCommand(string name, string subName = "", bool moreCommands = false, int thinkTime = Constants.DefaultThinkTime)
         {

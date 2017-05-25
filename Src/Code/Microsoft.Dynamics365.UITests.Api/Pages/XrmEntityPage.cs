@@ -69,7 +69,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Navigate Down the record
         /// </summary>
         /// <param name="thinkTime"></param>
         /// <returns></returns>
@@ -95,7 +95,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Navigate Up the record
         /// </summary>
         /// <param name="thinkTime"></param>
         /// <returns></returns>
@@ -121,7 +121,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Selects the Form
         /// </summary>
         /// <param name="name"></param>
         /// <param name="thinkTime"></param>
@@ -356,7 +356,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Popout the form
         /// </summary>
         /// <param name="thinkTime"></param>
         /// <returns></returns>
@@ -560,7 +560,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Dismiss the Alert If Present
         /// </summary>
         /// <param name="stay"></param>
         /// <returns></returns>

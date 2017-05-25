@@ -15,7 +15,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Closes the Notifications
         /// </summary>
         /// <param name="thinkTime"></param>
         /// <returns></returns>

@@ -552,7 +552,7 @@ namespace Microsoft.Dynamics365.UITests.Api
 
 
         /// <summary>
-        /// OpenDialog
+        /// Open Dialog
         /// </summary>
         /// <param name="dialog"></param>
         /// <returns></returns>

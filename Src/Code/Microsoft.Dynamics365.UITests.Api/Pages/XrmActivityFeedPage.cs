@@ -57,10 +57,10 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         }
 
         /// <summary>
-        /// 
+        /// Adds Notes to the activity feed
         /// </summary>
-        /// <param name="noteText"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="noteText">The NoteText</param>
+        /// <param name="thinkTime">The ThinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> AddNote(string noteText, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -88,10 +88,10 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         }
 
         /// <summary>
-        /// 
+        /// Adds Post to the activity feed
         /// </summary>
-        /// <param name="postText"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="postText">The postText</param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> AddPost(string postText, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -117,8 +117,8 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="status"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="status">The status</param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> FilterActivitiesByStatus(Status status, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -153,7 +153,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenActivitiesAssociatedView(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -171,12 +171,12 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         }
 
         /// <summary>
-        /// 
+        /// Adds PhoneCall to the activity feed
         /// </summary>
-        /// <param name="description"></param>
-        /// <param name="leftVoiceMail"></param>
-        /// <param name="outgoing"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="description">The description</param>
+        /// <param name="leftVoiceMail">The leftVoiceMail</param>
+        /// <param name="outgoing">The outgoing</param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> AddPhoneCall(string description, bool leftVoiceMail, bool outgoing = true, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -206,7 +206,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         }
 
         /// <summary>
-        /// 
+        /// Adds task to the activity feed
         /// </summary>
         /// <param name="subject"></param>
         /// <param name="description"></param>
@@ -237,7 +237,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         }
 
         /// <summary>
-        /// 
+        /// Adds Email to the activity feed
         /// </summary>
         /// <param name="thinkTime"></param>
         /// <returns></returns>
@@ -258,9 +258,9 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         }
 
         /// <summary>
-        /// 
+        /// Adds Appointment to the activity feed
         /// </summary>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> AddAppointment(int thinkTime = Constants.DefaultThinkTime)
         {
