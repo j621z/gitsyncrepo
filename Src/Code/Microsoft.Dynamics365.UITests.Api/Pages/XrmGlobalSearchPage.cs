@@ -58,13 +58,13 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions($"Global Search"), driver =>
             {
-                if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.GlobalSearch.SearchText])))
+                if (!driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.GlobalSearch.SearchText]),new TimeSpan(0,0,10)))
                     throw new InvalidOperationException("Search Text Box is not available");
 
                 var searchText = driver.FindElement(By.XPath(Elements.Xpath[Reference.GlobalSearch.SearchText]));
 
                 searchText.Click();
-                searchText.SendKeys(criteria);
+                searchText.SendKeys(criteria, true);
 
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.GlobalSearch.SearchButton])).Click();
 

@@ -11,11 +11,11 @@ namespace Microsoft.Dynamics365.UITests.Api
         public static Dictionary<string, string> Xpath = new Dictionary<string, string>()
         {
             //Business Process Flow
-            { "BPF_NextStage"       , "id(\"stageAdvanceActionContainer\")/div[1]"},
-            { "BPF_PreviousStage"   , "id(\"stageBackActionContainer\")/div[1]/img[1]"},
-            { "BPF_Hide"            , "id(\"processControlCollapseButton\")/img[1]" },
-            { "BPF_SetActive"       , "id(\"stageSetActiveActionContainer\")/div[1]" },
-            { "BPF_SelectStage"     , "id(\"stage_[STAGENUM]\")/div[2]/div[1]/div[1]/div[1]/span[1]" },
+            { "BPF_NextStage"       , "id(\"stageAdvanceActionContainer\")/div"},
+            { "BPF_PreviousStage"   , "id(\"stageBackActionContainer\")/div"},
+            { "BPF_Hide"            , "id(\"processControlCollapseButton\")" },
+            { "BPF_SetActive"       , "id(\"stageSetActiveActionContainer\")" },
+            { "BPF_SelectStage"     , "id(\"stage_[STAGENUM]\")/div[2]/div/div/div/span" },
             { "BPF_Ok"     , "id(\"SwitchProcess-Select\")" },
 
             //Dialogs
@@ -43,7 +43,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Frame_QuickCreateFrame"       , "id(\"globalquickcreate_container_NavBarGloablQuickCreate\")"},
 
             //Navigation
-            { "Nav_HomeTab"       , "id(\"HomeTabLink\")"},
+            { "Nav_HomeTab"       , "id(\"TabSFA\")"},
             { "Nav_ActionGroup"       , "id(\"actionGroupControl\")"},
             { "Nav_SubActionGroup"       , "id(\"actionGroupControl\")"},
             { "Nav_SubActionGroupContainer"       , "id(\"detailActionGroupControl\")"},
@@ -66,7 +66,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "Nav_Shuffle"       , "id(\"nav-shuffle\")"},
             { "Nav_TabNode"       , "id(\"TabNode_tab0Tab\")"},
             { "Nav_TabSearch"       , "id(\"TabSearch\")"},
+            { "Nav_SearchButton"       , "id(\"SearchNode\")/a"},
+            { "Nav_SearchLabel"       , "id(\"findHintText\")"},
             { "Nav_Search"       , "id(\"search\")"},
+            { "Nav_StartSearch"       , "id(\"findCriteriaButton\")"},
                   
             //Grid
             { "Grid_JumpBar"       , "id(\"crmGrid_JumpBar\")"},
@@ -224,7 +227,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             { "DashBoard_ViewContainerClass"       , "ms-crm-VS-Menu"},
 
             //CommandBar
-            { "CommandBar_FlyoutAnchorArrow"       , "flyoutAnchorArrow"},
+            { "CommandBar_FlyoutAnchorArrowClass"       , "flyoutAnchorArrow"},
 
             //Grid
             { "Grid_ViewContainerClass"     , "ms-crm-VS-Menu"},
@@ -364,12 +367,13 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string FindCriteria = "Nav_FindCriteria";
             public static string Shuffle = "Nav_Shuffle";
             public static string TabNode = "Nav_TabNode";
-            public static string TabSearch = "Nav_TabSearch";
+            public static string SearchLabel = "Nav_SearchLabel";
+            public static string SearchButton = "Nav_SearchButton";
             public static string Search = "Nav_Search";
+            public static string StartSearch = "Nav_StartSearch";
             public static string TabButtonLink = "Nav_TabButtonLinkClass";
             public static string ActionGroupContainer = "Nav_ActionGroupContainerClass";
-            public static string RowLabel = "Nav_RowLabelClass";
-                      
+            public static string RowLabel = "Nav_RowLabelClass";                           
         }
         public static class Grid
         {
@@ -471,7 +475,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             public static string RibbonManager = "CommandBar_RibbonManager";
             public static string List = "CommandBar_List";
             public static string MoreCommands = "CommandBar_MoreCommands";
-            public static string FlyoutAnchorArrow = "CommandBar_FlyoutAnchorArrow";
+            public static string FlyoutAnchorArrow = "CommandBar_FlyoutAnchorArrowClass";
 
         }
         public static class GuidedHelp

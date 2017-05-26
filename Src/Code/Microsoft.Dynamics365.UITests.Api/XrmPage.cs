@@ -70,7 +70,6 @@ namespace Microsoft.Dynamics365.UITests.Api
                     if (input.GetAttribute("value").Length > 0)
                     {
                         input.Clear();
-                        input.SendKeys(Keys.Enter);
                         fieldElement.Click();
                         input.SendKeys(date.ToShortDateString());
                         input.SendKeys(Keys.Enter);
@@ -139,6 +138,8 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Value: {field.Name}"), driver =>
             {
+                driver.WaitUntilVisible(By.Id(field.Id));
+
                 if (driver.HasElement(By.Id(field.Id)))
                 {
                     var fieldElement = driver.FindElement(By.Id(field.Id));
@@ -179,6 +180,8 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Value: {option.Name}"), driver =>
             {
+                driver.WaitUntilVisible(By.Id(option.Name));
+
                 if (driver.HasElement(By.Id(option.Name)))
                 {
                     var input = driver.FindElement(By.Id(option.Name));
@@ -209,6 +212,8 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute(GetOptions($"Set Conposite Control Value: {control.Id}"), driver =>
             {
+                driver.WaitUntilVisible(By.Id(control.Id));
+
                 if (!driver.HasElement(By.Id(control.Id)))
                     return false;
 
@@ -250,6 +255,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 if (driver.HasElement(By.Id(control.Name)))
                 {
+                    driver.WaitUntilVisible(By.Id(control.Name));
+
                     var input = driver.FindElement(By.Id(control.Name));
                     input.Click();
 
@@ -297,6 +304,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             //return this.Execute($"Set Value: {field}", SetValue, field, value);
             return this.Execute($"Set Value: {field}", driver =>
             {
+                driver.WaitUntilVisible(By.Id(field));
+
                 string text = string.Empty;
                 if (driver.HasElement(By.Id(field)))
                 {
@@ -331,6 +340,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute($"Set Value: {field.Name}", driver =>
             {
                 var text = string.Empty;
+
+                driver.WaitUntilVisible(By.Id(field.Id));
 
                 if (driver.HasElement(By.Id(field.Id)))
                 {
@@ -372,6 +383,8 @@ namespace Microsoft.Dynamics365.UITests.Api
             {
                 string text = string.Empty;
 
+                driver.WaitUntilVisible(By.Id(control.Id));
+
                 driver.FindElement(By.Id(control.Id)).Click();
 
                 if (driver.HasElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.FlyOut])))
@@ -407,6 +420,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute($"Set Value: {option.Name}", driver =>
             {
+                driver.WaitUntilVisible(By.Id(option.Name));
                 string text = string.Empty;
                 if (driver.HasElement(By.Id(option.Name)))
                 {
@@ -429,6 +443,8 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             return this.Execute($"Get Lookup Value: {control.Name}", driver =>
             {
+                driver.WaitUntilVisible(By.Id(control.Name));
+
                 string lookupValue = string.Empty;
                 if (driver.HasElement(By.Id(control.Name)))
                 {

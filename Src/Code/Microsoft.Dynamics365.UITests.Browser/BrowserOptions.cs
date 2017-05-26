@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
 using System;
 using System.IO;
 
@@ -13,7 +14,8 @@ namespace Microsoft.Dynamics365.UITests.Browser
         {
             this.DriversPath = Path.Combine(Directory.GetCurrentDirectory()); //, @"Drivers\");
             this.BrowserType = BrowserType.IE;
-            this.PageLoadTimeout = new TimeSpan(0, 1, 0);
+            this.PageLoadTimeout = new TimeSpan(0, 3, 0);
+            this.CommandTimeout = new TimeSpan(0, 10, 0);
             this.StartMaximized = true;
             this.FireEvents = false;
             this.TraceSource = Constants.DefaultTraceSource;
@@ -29,6 +31,7 @@ namespace Microsoft.Dynamics365.UITests.Browser
         public bool PrivateMode { get; set; }
         public bool CleanSession { get; set; }
         public TimeSpan PageLoadTimeout { get; set; }
+        public TimeSpan CommandTimeout { get; set; }
         public bool StartMaximized { get; set; }
         public bool FireEvents { get; set; }
         public bool EnableRecording { get; set; }
@@ -82,6 +85,17 @@ namespace Microsoft.Dynamics365.UITests.Browser
             
             return options;
         }
+
+        public FirefoxOptions ToFireFox()
+        {
+            var options = new FirefoxOptions()
+            {
+                UseLegacyImplementation = false
+            };
+
+            return options;
+        }
+
         public EdgeOptions ToEdge()
         {
             var options = new EdgeOptions()

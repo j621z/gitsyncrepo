@@ -10,8 +10,6 @@ namespace Microsoft.Dynamics365.UITests.Api
     public class XrmNavigationPage
         : XrmPage
     {
-        private static string relatedId;
-
         public XrmNavigationPage(InteractiveBrowser browser)
             : base(browser)
         {
@@ -131,14 +129,22 @@ namespace Microsoft.Dynamics365.UITests.Api
 
             return this.Execute(GetOptions($"Global Search: {searchText}"), driver =>
             {
-                //Narrow down the scope to the Search Tab when looking for the search input
-                var navBar = driver.FindElement(By.Id("TabSearch"));
-                var input = navBar.FindElement(By.Id("search"));
+                driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Navigation.SearchButton]),
+                                            new TimeSpan(0,0,5),
+                                            d=> { driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SearchButton])).Click(); },
+                                            d=> { throw new InvalidOperationException("The Global Search button is not available."); });
 
-                input.SendKeys(searchText);
 
-                navBar.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.FindCriteria])).Click();
-
+                driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Navigation.Search]),
+                                            new TimeSpan(0, 0, 5),
+                                            d => {
+                                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SearchLabel])).Click();
+                                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Search])).SendKeys(searchText,true);
+                                                    Thread.Sleep(500);
+                                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.StartSearch])).Click();
+                                                },
+                                            d => { throw new InvalidOperationException("The Global Search text field is not available."); });
+                
                 return true;
             });
         }
