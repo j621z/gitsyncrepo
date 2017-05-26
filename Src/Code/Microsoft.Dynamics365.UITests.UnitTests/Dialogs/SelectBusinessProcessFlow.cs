@@ -22,7 +22,6 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
-                xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Opportunities");
@@ -33,9 +32,9 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                 xrmBrowser.ThinkTime(1000);
                 xrmBrowser.Grid.OpenRecord(0);
 
-                xrmBrowser.CommandBar.ClickCommand("Switch Process");
+                xrmBrowser.CommandBar.ClickCommand("Process","Switch Process");
 
-                xrmBrowser.BusinessProcessFlow.SelectBusinessProcessFlow("Opportunity Sales Process Alt");
+                xrmBrowser.BusinessProcessFlow.SelectBusinessProcessFlow("Opportunity Sales Process");
 
                 xrmBrowser.ThinkTime(1000);
             }

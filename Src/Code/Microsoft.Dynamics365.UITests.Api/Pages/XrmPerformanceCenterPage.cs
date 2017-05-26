@@ -21,6 +21,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         internal const string GetAllMarkersJavascriptCommand = "return Mscrm.Performance.PerformanceMarkerManager.get_instance().get_allMarkersJson();";
+        internal const string GetRequestIdCommand = "return REQ_ID;";
 
         public bool IsEnabled
         {
@@ -88,6 +89,14 @@ namespace Microsoft.Dynamics365.UITests.Api
                     marker.Value.MinTime = minTime;
 
                 return perfMarkers;
+            });
+        }
+        public BrowserCommandResult<string> GetRequestId()
+        {
+            return this.Execute("Get RequestId", driver =>
+            {
+                var requestId = driver.ExecuteScript(GetRequestIdCommand).ToString();
+                return requestId;
             });
         }
 

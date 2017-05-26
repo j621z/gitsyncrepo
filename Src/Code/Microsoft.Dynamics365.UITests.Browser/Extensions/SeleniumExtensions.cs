@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Linq;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -256,6 +257,11 @@ namespace Microsoft.Dynamics365.UITests.Browser
 
             return returnvalue;
 
+        }
+
+        public static IWebDriver LastWindow(this IWebDriver driver)
+        {
+            return driver.SwitchTo().Window(driver.WindowHandles.Last());
         }
 
         #endregion Elements

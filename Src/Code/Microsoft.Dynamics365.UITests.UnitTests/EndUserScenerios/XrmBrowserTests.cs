@@ -36,7 +36,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
-                xrmBrowser.GuidedHelp.CloseGuidedHelp();
+                //xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
                 var perf = xrmBrowser.PerformanceCenter;
 
@@ -62,8 +62,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
                     xrmBrowser.ThinkTime(1500);
                     perf.ToggleVisibility();
                     Dictionary<string,XrmPerformanceMarker>  perfResults = perf.GetMarkers();
-                    
-                    
+
                     //Iterate through markers
                 }
             }
