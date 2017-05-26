@@ -100,7 +100,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                     driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.Password])).Submit();
 
                     driver.WaitUntilVisible(By.XPath(Elements.Xpath[Reference.Login.CrmMainPage])
-                        , new TimeSpan(0, 0, 30),
+                        , new TimeSpan(0, 0, 60),
                         e => { e.WaitForPageToLoad(); },
                         f => { throw new Exception("Login page failed."); });
                 }
