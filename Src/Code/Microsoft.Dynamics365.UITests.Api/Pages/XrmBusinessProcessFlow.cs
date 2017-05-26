@@ -16,6 +16,7 @@ namespace Microsoft.Dynamics365.UITests.Api
             SwitchToContentFrame();
         }
 
+        private readonly string _previousStageCssSelector = ".layer0.selectedStage";
         /// <summary>
         /// Moves to the Next stage in the Business Process Flow.
         /// </summary>
@@ -28,6 +29,9 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute("Next Stage", driver =>
             {
                 if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.NextStage])))
+                    throw new Exception("Business Process Flow Next Stage Element does not exist");
+
+                if(driver.FindElement(By.Id("stageAdvanceActionContainer")).GetAttribute("tabindex") == "-1")
                     throw new Exception("Business Process Flow Next Stage Element does not exist");
 
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.NextStage]))
@@ -49,8 +53,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             return this.Execute("Previous Stage", driver =>
             {
                 if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.PreviousStage])))
-                    throw new Exception("Business Process Flow Next Stage Element does not exist");
-                
+                    throw new Exception("Business Process Flow Previous Stage Element does not exist");
+                if (driver.HasElement(By.CssSelector(_previousStageCssSelector)))
+                    throw new Exception("Business Process Flow Previous Stage Element does not exist");
+
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.PreviousStage]))
                       .Click();
 
@@ -93,7 +99,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 var xpath = Elements.Xpath[Reference.BusinessProcessFlow.SelectStage].Replace("[STAGENUM]", stagenumber.ToString());
 
                 if (!driver.HasElement(By.XPath(xpath)))
-                    throw new Exception("Business Process Flow Next Stage Element does not exist");
+                    throw new Exception("Business Process Flow Select Stage Element does not exist");
 
                 driver.FindElement(By.XPath(xpath))
                       .Click();

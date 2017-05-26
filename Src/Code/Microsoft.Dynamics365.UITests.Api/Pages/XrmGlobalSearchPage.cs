@@ -38,7 +38,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 IWebElement select = options.FirstOrDefault(x => x.Text == entity);
 
                 if (select == null)
-                    throw new InvalidOperationException($"Entity {entity} does not exist in the Filter options.");
+                    throw new InvalidOperationException($"Entity '{entity}' does not exist in the Filter options.");
 
                 select.Click();
 
@@ -101,6 +101,11 @@ namespace Microsoft.Dynamics365.UITests.Api
                     throw new InvalidOperationException($"No records found for entity {entity}");
 
                 records[index].Click();
+                driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Entity.Form]),
+                                            new TimeSpan(0, 0, 30),
+                                            null,
+                                            d => { throw new Exception("CRM Record is Unavailable or not finished loading. Timeout Exceeded"); }
+                                        );
 
                 return true;
             });

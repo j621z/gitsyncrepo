@@ -55,7 +55,17 @@ namespace Microsoft.Dynamics365.UITests.Api
                 var button = buttons.Where(x => x.Text.ToLower() == name.ToLower()).FirstOrDefault();
 
                 if (string.IsNullOrEmpty(subName))
-                    button.Click();
+                {
+                    if (button != null)
+                    {
+                        button.Click();
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException($"No command with the name '{name}' exists inside of Commandbar.");
+                    }
+                }
+                    
                 else
                 {
 
