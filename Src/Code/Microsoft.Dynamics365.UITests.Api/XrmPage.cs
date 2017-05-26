@@ -554,7 +554,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Open Dialog
         /// </summary>
-        /// <param name="dialog"></param>
+        /// <param name="dialog">The dialog</param>
         /// <returns></returns>
         private BrowserCommandResult<Dictionary<string, IWebElement>> OpenDialog(IWebElement dialog)
         {

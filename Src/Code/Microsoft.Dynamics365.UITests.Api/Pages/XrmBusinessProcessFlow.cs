@@ -133,7 +133,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Selects the Business Process Flow from the Dialog.
         /// </summary>
         /// <param name="name">The name of the business process flow you want to select.</param>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectBusinessProcessFlow(string name, int thinkTime = Constants.DefaultThinkTime)
         {

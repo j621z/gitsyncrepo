@@ -30,7 +30,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Closes the Guided Help
         /// </summary>
         /// <returns></returns>
         public BrowserCommandResult<bool> CloseGuidedHelp()
@@ -108,7 +108,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Closes the Welcome Tour
         /// </summary>
         /// <returns></returns>
         public BrowserCommandResult<bool> CloseWelcomeTour()

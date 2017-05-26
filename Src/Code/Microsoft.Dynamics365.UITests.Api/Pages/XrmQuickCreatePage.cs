@@ -15,11 +15,11 @@ namespace Microsoft.Dynamics365.UITests.Api
         {
             SwitchToQuickCreateFrame();
         }
-        
+
         /// <summary>
-        /// 
+        /// Cancel the Quick Create Page
         /// </summary>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -35,9 +35,9 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Save the Quick create page
         /// </summary>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Save(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -53,10 +53,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Set Lookup Value for the field
         /// </summary>
-        /// <param name="field"></param>
-        /// <param name="index"></param>
+        /// <param name="field">The Field Value</param>
+        /// <param name="index">The Index</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, [Range(0, 9)]int index)
         {
@@ -91,9 +91,9 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Set Lookup Value for the field
         /// </summary>
-        /// <param name="field"></param>
+        /// <param name="field">The Field</param>
         /// <param name="value"></param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, string value)
@@ -130,9 +130,9 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Set Lookup Value
         /// </summary>
-        /// <param name="field"></param>
+        /// <param name="field">The Field</param>
         /// <param name="openLookupPage"></param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, bool openLookupPage = true)
@@ -196,10 +196,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Sets the value of a Checkbox field.
         /// </summary>
-        /// <param name="field"></param>
-        /// <param name="check"></param>
+        /// <param name="field">Field name or ID.</param>
+        /// <param name="check">If set to <c>true</c> [check].</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(string field, bool check)
         {
@@ -220,10 +220,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Sets the value of a Date Field.
         /// </summary>
-        /// <param name="field"></param>
-        /// <param name="date"></param>
+        /// <param name="field">The field id or name.</param>
+        /// <param name="date">DateTime value.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(string field, DateTime date)
         {
@@ -252,10 +252,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Sets the value of a Text/Description field.
         /// </summary>
-        /// <param name="field"></param>
-        /// <param name="value"></param>
+        /// <param name="field">The field id.</param>
+        /// <param name="value">The value.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(string field, string value)
         {
@@ -286,9 +286,9 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Sets the value of a Field.
         /// </summary>
-        /// <param name="field"></param>
+        /// <param name="field">The field .</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(Field field)
         {
@@ -319,9 +319,9 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Sets the value of a picklist.
         /// </summary>
-        /// <param name="option"></param>
+        /// <param name="option">The option you want to set.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(OptionSet option)
         {
@@ -348,10 +348,11 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+
         /// <summary>
-        /// 
+        /// Sets the value of a Composite control.
         /// </summary>
-        /// <param name="control"></param>
+        /// <param name="control">The Composite control values you want to set.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(CompositeControl control)
         {

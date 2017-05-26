@@ -17,7 +17,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Closes the Notifications
         /// </summary>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> CloseNotifications(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -46,20 +46,16 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return returnValue;
             });
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="notification"></param>
-        /// <returns></returns>
+
         public BrowserCommandResult<bool> Close(XrmAppNotification notification)
         {
             return Close(notification.Index);
         }
 
         /// <summary>
-        /// 
+        /// Dismiss App Notification
         /// </summary>
-        /// <param name="index"></param>
+        /// <param name="index">The index</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Close(Int32 index)
         {
@@ -89,7 +85,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Get App Messages
         /// </summary>
         public BrowserCommandResult<List<XrmAppNotification>> Notifications
         {

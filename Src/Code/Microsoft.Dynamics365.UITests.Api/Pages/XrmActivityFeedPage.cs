@@ -115,7 +115,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         }
 
         /// <summary>
-        /// 
+        /// Filters Activities by Status
         /// </summary>
         /// <param name="status">The status</param>
         /// <param name="thinkTime">The thinkTime</param>
@@ -151,7 +151,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         }
 
         /// <summary>
-        /// 
+        /// Opens Activities Associated View
         /// </summary>
         /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
@@ -208,11 +208,11 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         /// <summary>
         /// Adds task to the activity feed
         /// </summary>
-        /// <param name="subject"></param>
-        /// <param name="description"></param>
-        /// <param name="dueDate"></param>
-        /// <param name="priority"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="subject">The subject</param>
+        /// <param name="description">The description</param>
+        /// <param name="dueDate">The dueDate</param>
+        /// <param name="priority">The priority</param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> AddTask(string subject, string description, DateTime dueDate, OptionSet priority, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -239,7 +239,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         /// <summary>
         /// Adds Email to the activity feed
         /// </summary>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> AddEmail(int thinkTime = Constants.DefaultThinkTime)
         {

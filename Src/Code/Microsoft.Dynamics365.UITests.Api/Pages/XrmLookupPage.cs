@@ -16,7 +16,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Opens the Entity Picker
         /// </summary>
         /// <returns></returns>
         private BrowserCommandResult<Dictionary<string, IWebElement>> OpenEntityPicker()
@@ -43,7 +43,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Opens the View Picker
         /// </summary>
         /// <returns></returns>
         private BrowserCommandResult<Dictionary<string, IWebElement>> OpenViewPicker()
@@ -70,10 +70,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Switch Entity
         /// </summary>
-        /// <param name="entityName"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="entityName">The Entity Name</param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SwitchEntity(string entityName, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -94,10 +94,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Switches the view
         /// </summary>
-        /// <param name="viewName"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="viewName">The ViewName</param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -117,10 +117,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Searches based on searchCriteria in Lookup
         /// </summary>
         /// <param name="searchCriteria"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Search(string searchCriteria, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -136,7 +136,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Gets the Grid Items
         /// </summary>
         /// <returns></returns>
         public BrowserCommandResult<List<XrmGridItem>> GetGridItems()
@@ -191,10 +191,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Selects the Item
         /// </summary>
-        /// <param name="index"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="index">The Index</param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectItem(int index, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -215,10 +215,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Selects Item based on the value given
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="value">The value</param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectItem(string value, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -253,9 +253,9 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Add Lookup
         /// </summary>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Add(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -270,9 +270,9 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Select from subgrid
         /// </summary>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Select(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -286,11 +286,6 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="thinkTime"></param>
-        /// <returns></returns>
         public BrowserCommandResult<bool> Remove(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -303,11 +298,6 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="thinkTime"></param>
-        /// <returns></returns>
         public BrowserCommandResult<bool> New(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -320,11 +310,6 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="thinkTime"></param>
-        /// <returns></returns>
         public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);

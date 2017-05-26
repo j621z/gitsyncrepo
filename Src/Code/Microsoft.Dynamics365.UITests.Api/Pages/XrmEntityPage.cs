@@ -25,7 +25,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// </summary>
         /// <param name="entityName"></param>
         /// <param name="id"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenEntity(string entityName, Guid id, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -40,10 +40,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Opens the Entity
         /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="uri">The uri</param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenEntity(Uri uri, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -71,7 +71,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Navigate Down the record
         /// </summary>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> NavigateDown(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -97,7 +97,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Navigate Up the record
         /// </summary>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> NavigateUp(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -124,7 +124,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Selects the Form
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectForm(string name, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -215,10 +215,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Set Lookup Value for the field
         /// </summary>
-        /// <param name="field"></param>
-        /// <param name="index"></param>
+        /// <param name="field">The Field</param>
+        /// <param name="index">The Index</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, [Range(0, 9)]int index)
         {
@@ -253,9 +253,9 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Set Lookup Value for the field
         /// </summary>
-        /// <param name="field"></param>
+        /// <param name="field">The Field</param>
         /// <param name="value"></param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, string value)
@@ -292,9 +292,9 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Set Lookup Value for the field
         /// </summary>
-        /// <param name="field"></param>
+        /// <param name="field">The Field</param>
         /// <param name="openLookupPage"></param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, bool openLookupPage = true)
@@ -328,7 +328,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
   
         /// <summary>
-        /// 
+        /// Opens the dialog
         /// </summary>
         /// <param name="dialog"></param>
         /// <returns></returns>
@@ -358,7 +358,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Popout the form
         /// </summary>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Popout(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -374,10 +374,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Click add button of subgridName
         /// </summary>
-        /// <param name="subgridName"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="subgridName">The SubgridName</param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> ClickSubgridAddButton(string subgridName, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -392,10 +392,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Click GridView button of subgridName
         /// </summary>
-        /// <param name="subgridName"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="subgridName">The subgridName</param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> ClickSubgridGridViewButton(string subgridName, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -410,11 +410,11 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Set Lookup Value for Subgrid subgridName
         /// </summary>
-        /// <param name="subgridName"></param>
+        /// <param name="subgridName">The SubgridName</param>
         /// <param name="value"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName, string value, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -447,10 +447,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Set Lookup Value for Subgrid
         /// </summary>
-        /// <param name="subgridName"></param>
-        /// <param name="index"></param>
+        /// <param name="subgridName">The subgridName</param>
+        /// <param name="index">The Index</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName, [Range(0, 9)]int index)
         {
@@ -480,9 +480,9 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// 
+        /// Set Lookup Value for Subgrid
         /// </summary>
-        /// <param name="subgridName"></param>
+        /// <param name="subgridName">The SubgridName</param>
         /// <param name="openLookupPage"></param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectSubgridLookup(string subgridName, bool openLookupPage = true)

@@ -21,7 +21,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Switches between the DashBoard.
         /// </summary>
         /// <param name="dashBoardName"></param>
-        /// <param name="thinkTime"></param>
+        /// <param name="thinkTime">The thinkTime</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectDashBoard(string dashBoardName, int thinkTime = Constants.DefaultThinkTime)
         {
