@@ -7,9 +7,17 @@ using System.Threading;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
+
+    /// <summary>
+    ///  The Xrm Navigation page.
+    ///  </summary>
     public class XrmNavigationPage
         : XrmPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmNavigationPage"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmNavigationPage(InteractiveBrowser browser)
             : base(browser)
         {
@@ -28,7 +36,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Opens the Menu
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<Dictionary<string, IWebElement>> OpenMenu(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -59,7 +67,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// </summary>
         /// <param name="area">The area you want to open</param>
         /// <param name="subArea">The subarea you want to open</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenSubArea(string area, string subArea, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -97,7 +105,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Opens the Related Menu
         /// </summary>
         /// <param name="relatedArea">The Related area</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenRelated(string relatedArea, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -121,7 +129,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Global Search
         /// </summary>
         /// <param name="searchText">The SearchText</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> GlobalSearch(string searchText, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -151,7 +159,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Open the Advanced Find
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenAdvancedFind(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -171,7 +179,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Open Quick Create
         /// </summary>
         /// <param name="entity">The entity name</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> QuickCreate(string entity, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -197,7 +205,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// SignOut
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SignOut(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -245,7 +253,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Opens the Guided Help
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenGuidedHelp(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -262,7 +270,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Opens the Admin Portal
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenAdminPortal(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -279,7 +287,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Opens the Options
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenOptions(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -296,7 +304,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenPrintPreview(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -313,7 +321,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Open Apps for Dynamics
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenAppsForDynamicsCRM(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -330,7 +338,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Opens Welcome Screen from navigation bar
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenWelcomeScreen(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -347,7 +355,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Opens About from navigation bar
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenAbout(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -364,7 +372,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Opens OptOut Learning Path
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenOptOutLearningPath(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -381,7 +389,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Opens the Privacy Statement
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenPrivacyStatement(int thinkTime = Constants.DefaultThinkTime)
         {

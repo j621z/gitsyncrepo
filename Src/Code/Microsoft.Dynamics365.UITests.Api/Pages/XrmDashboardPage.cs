@@ -8,9 +8,17 @@ using System.Threading;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
+
+    /// <summary>
+    ///  The Dashboard page.
+    ///  </summary>
     public class XrmDashboardPage
         : XrmPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmDashboardPage"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmDashboardPage(InteractiveBrowser browser)
             : base(browser)
         {
@@ -20,8 +28,8 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Switches between the DashBoard.
         /// </summary>
-        /// <param name="dashBoardName"></param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="dashBoardName">The name of the DashBoard you want to select</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectDashBoard(string dashBoardName, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -55,6 +63,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Opens the view picker.
         /// </summary>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker(int thinkTime = Constants.DefaultThinkTime)
         {

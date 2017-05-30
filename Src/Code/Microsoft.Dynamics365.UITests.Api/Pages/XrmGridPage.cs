@@ -8,7 +8,7 @@ using Microsoft.Dynamics365.UITests.Browser;
 namespace Microsoft.Dynamics365.UITests.Api
 {
     /// <summary>
-    /// 
+    /// Xrm Grid Page
     /// </summary>
     /// <seealso cref="Microsoft.Dynamics365.UITests.Api.XrmPage" />
     public class XrmGridPage

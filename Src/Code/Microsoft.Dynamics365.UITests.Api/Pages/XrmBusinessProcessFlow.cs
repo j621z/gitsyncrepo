@@ -7,9 +7,17 @@ using Microsoft.Dynamics365.UITests.Browser;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
+
+    /// <summary>
+    /// Business process flow.
+    /// </summary>
     public class XrmBusinessProcessFlow
         : XrmPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmBusinessProcessFlow"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmBusinessProcessFlow(InteractiveBrowser browser)
             : base(browser)
         {
@@ -20,7 +28,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Moves to the Next stage in the Business Process Flow.
         /// </summary>
-        /// <param name="ThinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> NextStage(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -44,7 +52,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Moves to the Previous stage in the Business Process Flow.
         /// </summary>
-        /// <param name="ThinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> PreviousStage(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -133,7 +141,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Selects the Business Process Flow from the Dialog.
         /// </summary>
         /// <param name="name">The name of the business process flow you want to select.</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectBusinessProcessFlow(string name, int thinkTime = Constants.DefaultThinkTime)
         {

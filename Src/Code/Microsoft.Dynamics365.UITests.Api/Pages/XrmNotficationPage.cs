@@ -6,9 +6,17 @@ using System.Collections.Generic;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
+
+    /// <summary>
+    /// Xrm Notfication Page
+    /// </summary>
     public class XrmNotficationPage
         : XrmPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmNotficationPage"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmNotficationPage(InteractiveBrowser browser)
             : base(browser)
         {
@@ -17,7 +25,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Closes the Notifications
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> CloseNotifications(int thinkTime = Constants.DefaultThinkTime)
         {

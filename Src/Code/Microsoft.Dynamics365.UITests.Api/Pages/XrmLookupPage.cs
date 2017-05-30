@@ -6,9 +6,17 @@ using Microsoft.Dynamics365.UITests.Browser;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
+
+    /// <summary>
+    /// Xrm Lookup Page
+    /// </summary>
     public class XrmLookupPage
         : XrmPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmLookupPage"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmLookupPage(InteractiveBrowser browser)
             : base(browser)
         {
@@ -73,7 +81,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Switch Entity
         /// </summary>
         /// <param name="entityName">The Entity Name</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SwitchEntity(string entityName, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -97,7 +105,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Switches the view
         /// </summary>
         /// <param name="viewName">The ViewName</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -120,7 +128,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Searches based on searchCriteria in Lookup
         /// </summary>
         /// <param name="searchCriteria"></param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Search(string searchCriteria, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -194,7 +202,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Selects the Item
         /// </summary>
         /// <param name="index">The Index</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectItem(int index, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -218,7 +226,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// Selects Item based on the value given
         /// </summary>
         /// <param name="value">The value</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectItem(string value, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -255,7 +263,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Add Lookup
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Add(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -272,7 +280,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Select from subgrid
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Select(int thinkTime = Constants.DefaultThinkTime)
         {

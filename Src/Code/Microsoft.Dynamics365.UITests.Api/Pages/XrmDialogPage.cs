@@ -5,9 +5,17 @@ using Microsoft.Dynamics365.UITests.Browser;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
+
+    /// <summary>
+    ///  Dialog page.
+    ///  </summary>
     public class XrmDialogPage
        : XrmPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmDialogPage"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmDialogPage(InteractiveBrowser browser)
             : base(browser)
         {
@@ -28,7 +36,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <param name="revenue">The revenue you want to assign to the opportunity.</param>
         /// <param name="closeDate">The close date for the opportunity.</param>
         /// <param name="description">The description of the closing.</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> CloseOpportunity(double revenue, DateTime closeDate, string description, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -55,7 +63,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// </summary>
         /// <param name="to">The User or Team you want to assign the record to</param>
         /// <param name="value">The value of the User or Team you want to find and select</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Assign(AssignTo to, string value, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -90,7 +98,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Deletes the selected record.
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Delete(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -139,10 +147,10 @@ namespace Microsoft.Dynamics365.UITests.Api
         }
 
         /// <summary>
-        /// RunWorkflow
+        /// Run Work flow
         /// </summary>
         /// <param name="name">The name</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> RunWorkflow(string name, int thinkTime = Constants.DefaultThinkTime)
         {

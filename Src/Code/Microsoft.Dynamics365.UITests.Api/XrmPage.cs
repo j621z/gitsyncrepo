@@ -9,11 +9,19 @@ using Microsoft.Dynamics365.UITests.Browser;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
+
+    /// <summary>
+    /// Xrm Page
+    /// </summary>
     public class XrmPage : BrowserPage
     {
 
         private static string relatedId;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmPage"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmPage(InteractiveBrowser browser) : base(browser)
         {
         }

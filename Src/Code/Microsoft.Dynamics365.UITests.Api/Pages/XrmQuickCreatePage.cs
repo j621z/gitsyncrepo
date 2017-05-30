@@ -7,9 +7,17 @@ using Microsoft.Dynamics365.UITests.Browser;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
+
+    /// <summary>
+    /// Xrm Quick Create Page
+    /// </summary>
     public class XrmQuickCreatePage
         : XrmPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmQuickCreatePage"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmQuickCreatePage(InteractiveBrowser browser)
             : base(browser)
         {
@@ -19,7 +27,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Cancel the Quick Create Page
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -37,7 +45,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <summary>
         /// Save the Quick create page
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> Save(int thinkTime = Constants.DefaultThinkTime)
         {

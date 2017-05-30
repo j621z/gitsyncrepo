@@ -6,8 +6,16 @@ using Microsoft.Dynamics365.UITests.Browser;
 
 namespace Microsoft.Dynamics365.UITests.Api.Pages
 {
+
+    /// <summary>
+    /// Activity feed page.
+    /// </summary>
     public class XrmActivityFeedPage: XrmPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmActivityFeedPage"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmActivityFeedPage(InteractiveBrowser browser)
             : base(browser)
         {
@@ -26,12 +34,13 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
             InProgress,
             Overdue
         }
-        
+
 
         /// <summary>
         /// Selects the tab.
         /// </summary>
-        /// <param name="tabname">The tabname.</param>
+        /// <param name="tabname">The Tabname.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> SelectTab(Tab tabname, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -60,7 +69,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         /// Adds Notes to the activity feed
         /// </summary>
         /// <param name="noteText">The NoteText</param>
-        /// <param name="thinkTime">The ThinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> AddNote(string noteText, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -91,7 +100,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         /// Adds Post to the activity feed
         /// </summary>
         /// <param name="postText">The postText</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> AddPost(string postText, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -117,8 +126,8 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         /// <summary>
         /// Filters Activities by Status
         /// </summary>
-        /// <param name="status">The status</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="status">The Status</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> FilterActivitiesByStatus(Status status, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -153,7 +162,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         /// <summary>
         /// Opens Activities Associated View
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> OpenActivitiesAssociatedView(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -176,7 +185,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         /// <param name="description">The description</param>
         /// <param name="leftVoiceMail">The leftVoiceMail</param>
         /// <param name="outgoing">The outgoing</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> AddPhoneCall(string description, bool leftVoiceMail, bool outgoing = true, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -212,7 +221,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         /// <param name="description">The description</param>
         /// <param name="dueDate">The dueDate</param>
         /// <param name="priority">The priority</param>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> AddTask(string subject, string description, DateTime dueDate, OptionSet priority, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -239,7 +248,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         /// <summary>
         /// Adds Email to the activity feed
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> AddEmail(int thinkTime = Constants.DefaultThinkTime)
         {
@@ -260,7 +269,7 @@ namespace Microsoft.Dynamics365.UITests.Api.Pages
         /// <summary>
         /// Adds Appointment to the activity feed
         /// </summary>
-        /// <param name="thinkTime">The thinkTime</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <returns></returns>
         public BrowserCommandResult<bool> AddAppointment(int thinkTime = Constants.DefaultThinkTime)
         {
