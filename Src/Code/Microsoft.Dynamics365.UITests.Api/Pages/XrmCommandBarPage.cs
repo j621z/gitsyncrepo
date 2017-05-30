@@ -15,15 +15,27 @@ namespace Microsoft.Dynamics365.UITests.Api
         public string Title { get; set; }
     }
 
+    /// <summary>
+    /// Command bar page.
+    /// </summary>
     public class XrmCommandBarPage : XrmPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmCommandBarPage"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmCommandBarPage(InteractiveBrowser browser)
             : base(browser)
         {
             SwitchToDefaultContent();
         }
-              
-        
+
+
+        /// <summary>
+        /// Gets the Commands
+        /// </summary>
+        /// <param name="moreCommands">The MoreCommands</param>
+        /// <returns></returns>
         private BrowserCommandResult<ReadOnlyCollection<IWebElement>> GetCommands(bool moreCommands = false)
         {
             return this.Execute("Get Command Bar Buttons", driver =>
@@ -42,6 +54,14 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Clicks the  Command
+        /// </summary>
+        /// <param name="name">The Name of the command</param>
+        /// <param name="subName">The SubName</param>
+        /// <param name="moreCommands">The MoreCommands</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
+        /// <returns></returns>
         public BrowserCommandResult<bool> ClickCommand(string name, string subName = "", bool moreCommands = false, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);

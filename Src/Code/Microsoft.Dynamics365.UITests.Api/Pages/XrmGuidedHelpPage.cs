@@ -7,9 +7,16 @@ using Microsoft.Dynamics365.UITests.Browser;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
+    /// <summary>
+    /// Xrm Guided Help Page
+    /// </summary>
     public class XrmGuidedHelpPage
         : XrmPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmGuidedHelpPage"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmGuidedHelpPage(InteractiveBrowser browser)
             : base(browser)
         {
@@ -29,6 +36,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             }
         }
 
+        /// <summary>
+        /// Closes the Guided Help
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<bool> CloseGuidedHelp()
         {
             return this.Execute(GetOptions("Close Guided Help"), driver =>
@@ -103,6 +114,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// Closes the Welcome Tour
+        /// </summary>
+        /// <returns></returns>
         public BrowserCommandResult<bool> CloseWelcomeTour()
         {
             return this.Execute(GetOptions("Close Welcome Tour"), driver =>

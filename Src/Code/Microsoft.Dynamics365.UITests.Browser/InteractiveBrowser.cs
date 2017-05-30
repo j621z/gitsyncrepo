@@ -138,6 +138,11 @@ namespace Microsoft.Dynamics365.UITests.Browser
 
             Thread.Sleep(milliseconds);
         }
+        public void TakeWindowScreenShot(string path, ScreenshotImageFormat fileFormat)
+        {
+
+            this.Driver.TakeScreenshot().SaveAsFile(path, fileFormat);
+        }
 
         public T GetPage<T>()
             where T : BrowserPage

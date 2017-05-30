@@ -9,11 +9,19 @@ using Microsoft.Dynamics365.UITests.Browser;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
+
+    /// <summary>
+    /// Xrm Page
+    /// </summary>
     public class XrmPage : BrowserPage
     {
 
         private static string relatedId;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmPage"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmPage(InteractiveBrowser browser) : base(browser)
         {
         }
@@ -540,6 +548,10 @@ namespace Microsoft.Dynamics365.UITests.Api
             });
         }
 
+        /// <summary>
+        /// SwitchToDefaultContent
+        /// </summary>
+        /// <returns></returns>
         public bool SwitchToDefaultContent()
         {
             return this.Execute("Switch to Default Content", driver =>
@@ -561,6 +573,13 @@ namespace Microsoft.Dynamics365.UITests.Api
                 typeof(NoSuchElementException), typeof(StaleElementReferenceException));
         }
 
+
+
+        /// <summary>
+        /// Open Dialog
+        /// </summary>
+        /// <param name="dialog">The dialog</param>
+        /// <returns></returns>
         private BrowserCommandResult<Dictionary<string, IWebElement>> OpenDialog(IWebElement dialog)
         {
             var dictionary = new Dictionary<string, IWebElement>();
