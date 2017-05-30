@@ -176,6 +176,7 @@
     <Compile Include="NegativeScenarios\Navigation\InvalidQuickCreate.cs" />
     <Compile Include="Notification\Notifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TakeScreenshot\ScreenShot.cs" />
     <Compile Include="TestSettings.cs" />
     <Compile Include="Translations\TranslationTest.cs" />
     <Compile Include="Views\Views.cs" />
