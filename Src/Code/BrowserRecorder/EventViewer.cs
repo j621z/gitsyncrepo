@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Microsoft.Dynamics365.UITests.Browser;
+using Microsoft.Dynamics365.UIAutomation.Browser;
 
 namespace BrowserRecorder
 {

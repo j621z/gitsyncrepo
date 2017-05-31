@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Microsoft.Dynamics365.UITests.Api;
-using Microsoft.Dynamics365.UITests.Browser;
+using Microsoft.Dynamics365.UIAutomation.Api;
+using Microsoft.Dynamics365.UIAutomation.Browser;
 using System.Drawing;
 
 namespace BrowserRecorder
