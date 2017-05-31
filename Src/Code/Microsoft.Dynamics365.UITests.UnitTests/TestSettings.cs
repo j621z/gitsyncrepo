@@ -5,7 +5,7 @@ namespace Microsoft.Dynamics365.UITests.UnitTests
     public static class TestSettings
     {
         public static string AccountLogicalName = "account";
-        public static string AccountId = "BD8AC246-2416-E711-8104-FC15B4282DF4";
+        public static string AccountId = "2EA7F14A-9935-E711-8102-FC15B4286D18";
         public static string InvalidAccountLogicalName = "accounts";
 
         public static string LookupField = "primarycontactid";
