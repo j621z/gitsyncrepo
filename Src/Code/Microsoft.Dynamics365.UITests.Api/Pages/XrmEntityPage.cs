@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Threading;
 using Microsoft.Dynamics365.UITests.Browser;
 
 
@@ -505,18 +506,20 @@ namespace Microsoft.Dynamics365.UITests.Api
                     input.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.LookupRender])).Click();
 
                     var dialogName = $"Dialog_lookup_{subgridName}_i_IMenu";
+
+                    driver.WaitUntilVisible(By.Id(dialogName), new TimeSpan(0, 0, 2));
+
                     var dialog = driver.FindElement(By.Id(dialogName));
 
                     var dialogItems = OpenDialog(dialog).Value;
 
                     var dialogItem = dialogItems.Values.Last();
-
+                    
                     if (this.Browser.Options.BrowserType == BrowserType.Firefox)
                     {
                         var id = dialog.FindElements(By.TagName("li")).Last().GetAttribute("id");
-
+                       
                         driver.ExecuteScript($"document.getElementById('{id}').childNodes[1].click();");
-                        dialogItem?.Click();
                     }
                     else
                         dialogItem?.Click();

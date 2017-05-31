@@ -32,6 +32,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <param name="field">Field name or ID.</param>
         /// <param name="check">If set to <c>true</c> [check].</param>
         /// <returns></returns>
+        /// <example>xrmBrowser.Entity.SetValue("creditonhold",true);</example>
         public BrowserCommandResult<bool> SetValue(string field, bool check)
         {
             //return this.Execute($"Set Value: {field}", SetValue, field, check);
@@ -57,6 +58,7 @@ namespace Microsoft.Dynamics365.UITests.Api
         /// <param name="field">The field id or name.</param>
         /// <param name="date">DateTime value.</param>
         /// <returns></returns>
+        /// <example> xrmBrowser.Entity.SetValue("birthdate", DateTime.Parse("11/1/1980"));</example>
         public BrowserCommandResult<bool> SetValue(string field, DateTime date)
         {
             //return this.Execute($"Set Value: {field}", SetValue, field, date);
