@@ -6,9 +6,17 @@ using Microsoft.Dynamics365.UITests.Browser;
 
 namespace Microsoft.Dynamics365.UITests.Api
 {
+
+    /// <summary>
+    ///  Xrm global search page.
+    ///  </summary>
     public class XrmGlobalSearchPage
         : XrmPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XrmGlobalSearchPage"/> class.
+        /// </summary>
+        /// <param name="browser">The browser.</param>
         public XrmGlobalSearchPage(InteractiveBrowser browser)
             : base(browser)
         {
@@ -45,6 +53,7 @@ namespace Microsoft.Dynamics365.UITests.Api
                 return true;
             });
         }
+
         /// <summary>
         /// Searches for the specified criteria in Global Search.
         /// </summary>
