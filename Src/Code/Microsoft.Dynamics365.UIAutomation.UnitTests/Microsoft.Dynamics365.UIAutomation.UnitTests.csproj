@@ -57,9 +57,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>EasyReproTemp.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>  
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\lib\net40\Ionic.Zip.dll</HintPath>
@@ -102,12 +103,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="WebDriver, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selenium.WebDriver.3.4.0\lib\net40\WebDriver.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Shared\WebDriver.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver.Support, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selenium.Support.3.4.0\lib\net40\WebDriver.Support.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Shared\WebDriver.Support.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>
@@ -204,7 +205,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="EasyReproTemp.snk" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Dynamics365.UIAutomation.Api\Microsoft.Dynamics365.UIAutomation.Api.csproj">
@@ -245,11 +245,9 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Selenium.WebDriver.FirefoxDriver.0.11.1\build\Selenium.WebDriver.FirefoxDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.FirefoxDriver.0.11.1\build\Selenium.WebDriver.FirefoxDriver.targets'))" />
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.PhantomJS.1.0.0.0\build\Selenium.WebDriver.PhantomJS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.PhantomJS.1.0.0.0\build\Selenium.WebDriver.PhantomJS.targets'))" />
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.GeckoDriver.Win64.0.16.1\build\Selenium.WebDriver.GeckoDriver.Win64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.GeckoDriver.Win64.0.16.1\build\Selenium.WebDriver.GeckoDriver.Win64.targets'))" />
   </Target>
-  <Import Project="..\packages\Selenium.WebDriver.FirefoxDriver.0.11.1\build\Selenium.WebDriver.FirefoxDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.FirefoxDriver.0.11.1\build\Selenium.WebDriver.FirefoxDriver.targets')" />
   <Import Project="..\packages\Selenium.WebDriver.PhantomJS.1.0.0.0\build\Selenium.WebDriver.PhantomJS.targets" Condition="Exists('..\packages\Selenium.WebDriver.PhantomJS.1.0.0.0\build\Selenium.WebDriver.PhantomJS.targets')" />
   <Import Project="..\packages\Selenium.WebDriver.GeckoDriver.Win64.0.16.1\build\Selenium.WebDriver.GeckoDriver.Win64.targets" Condition="Exists('..\packages\Selenium.WebDriver.GeckoDriver.Win64.0.16.1\build\Selenium.WebDriver.GeckoDriver.Win64.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
