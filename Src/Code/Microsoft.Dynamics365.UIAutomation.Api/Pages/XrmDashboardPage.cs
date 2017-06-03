@@ -30,7 +30,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="dashBoardName">The name of the DashBoard you want to select</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Dashboard.SelectDashBoard("Sales Performance Dashboard");</example>
         public BrowserCommandResult<bool> SelectDashBoard(string dashBoardName, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -64,7 +64,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Opens the view picker.
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        /// <returns></returns>
+        /// <example></example>
         public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);

@@ -39,7 +39,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Closes the Guided Help
         /// </summary>
-        /// <returns></returns>
+        /// <example>xrmBrowser.GuidedHelp.CloseGuidedHelp();</example>
         public BrowserCommandResult<bool> CloseGuidedHelp()
         {
             return this.Execute(GetOptions("Close Guided Help"), driver =>
@@ -117,7 +117,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Closes the Welcome Tour
         /// </summary>
-        /// <returns></returns>
         public BrowserCommandResult<bool> CloseWelcomeTour()
         {
             return this.Execute(GetOptions("Close Welcome Tour"), driver =>

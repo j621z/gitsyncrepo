@@ -35,7 +35,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Gets the Commands
         /// </summary>
         /// <param name="moreCommands">The MoreCommands</param>
-        /// <returns></returns>
+        /// <example></example>
         private BrowserCommandResult<ReadOnlyCollection<IWebElement>> GetCommands(bool moreCommands = false)
         {
             return this.Execute("Get Command Bar Buttons", driver =>
@@ -61,7 +61,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <param name="subName">The SubName</param>
         /// <param name="moreCommands">The MoreCommands</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.CommandBar.ClickCommand("New");</example>
         public BrowserCommandResult<bool> ClickCommand(string name, string subName = "", bool moreCommands = false, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);

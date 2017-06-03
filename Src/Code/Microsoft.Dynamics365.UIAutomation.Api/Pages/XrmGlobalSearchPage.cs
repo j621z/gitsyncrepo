@@ -28,7 +28,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="entity">The entity you want to filter with.</param>
         /// <param name="thinkTime">The think time.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.GlobalSearch.FilterWith("Account");</example>
         public BrowserCommandResult<bool> FilterWith(string entity, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -59,7 +59,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="criteria">Search criteria.</param>
         /// <param name="thinkTime">The think time.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.GlobalSearch.Search("Contoso");</example>
         public BrowserCommandResult<bool> Search(string criteria, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -86,7 +86,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <param name="entity">The entity you want to open a record.</param>
         /// <param name="index">The index of the record you want to open.</param>
         /// <param name="thinkTime">The think time.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.GlobalSearch.OpenRecord("Accounts",0);</example>
         public BrowserCommandResult<bool> OpenRecord(string entity, int index, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
