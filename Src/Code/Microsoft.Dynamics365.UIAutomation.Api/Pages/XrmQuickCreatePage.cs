@@ -28,7 +28,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Cancel the Quick Create Page
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        /// <returns></returns>
+        /// <example></example>
         public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -46,7 +46,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Save the Quick create page
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.QuickCreate.Save();</example>
         public BrowserCommandResult<bool> Save(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -65,7 +65,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="field">The Field Value</param>
         /// <param name="index">The Index</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.QuickCreate.SelectLookup("primarycontactid", 0);</example>
         public BrowserCommandResult<bool> SelectLookup(string field, [Range(0, 9)]int index)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
@@ -103,7 +103,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="field">The Field</param>
         /// <param name="value"></param>
-        /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, string value)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
@@ -142,7 +141,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="field">The Field</param>
         /// <param name="openLookupPage"></param>
-        /// <returns></returns>
         public BrowserCommandResult<bool> SelectLookup(string field, bool openLookupPage = true)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
@@ -208,7 +206,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="field">Field name or ID.</param>
         /// <param name="check">If set to <c>true</c> [check].</param>
-        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(string field, bool check)
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
@@ -232,7 +229,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="field">The field id or name.</param>
         /// <param name="date">DateTime value.</param>
-        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(string field, DateTime date)
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
@@ -264,7 +260,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="field">The field id.</param>
         /// <param name="value">The value.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.QuickCreate.SetValue("lastname", "Contact");</example>
         public BrowserCommandResult<bool> SetValue(string field, string value)
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
@@ -297,7 +293,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sets the value of a Field.
         /// </summary>
         /// <param name="field">The field .</param>
-        /// <returns></returns>
+        /// <example></example>
         public BrowserCommandResult<bool> SetValue(Field field)
         {
             return this.Execute(GetOptions(""), driver =>
@@ -330,7 +326,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sets the value of a picklist.
         /// </summary>
         /// <param name="option">The option you want to set.</param>
-        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(OptionSet option)
         {
             return this.Execute(GetOptions($"Set Value: {option.Name}"), driver =>
@@ -361,7 +356,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sets the value of a Composite control.
         /// </summary>
         /// <param name="control">The Composite control values you want to set.</param>
-        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(CompositeControl control)
         {
             return this.Execute(GetOptions($"Set Conposite Control Value: {control.Id}"), driver =>

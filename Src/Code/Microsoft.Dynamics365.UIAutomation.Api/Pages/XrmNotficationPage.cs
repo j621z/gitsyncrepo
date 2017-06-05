@@ -26,7 +26,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Closes the Notifications
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Notifications.CloseNotifications();</example>
         public BrowserCommandResult<bool> CloseNotifications(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -64,7 +64,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Dismiss App Notification
         /// </summary>
         /// <param name="index">The index</param>
-        /// <returns></returns>
         public BrowserCommandResult<bool> Close(Int32 index)
         {
             return this.Execute("Dismiss App Notification", driver =>

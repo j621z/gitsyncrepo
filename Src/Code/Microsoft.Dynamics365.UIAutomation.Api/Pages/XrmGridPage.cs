@@ -27,7 +27,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Opens the view picker.
         /// </summary>
-        /// <returns></returns>
+        /// <example></example>
         public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -86,7 +86,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="viewName">Name of the view.</param>
         /// <param name="thinkTime">The think time.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.SwitchView("Active Accounts");</example>
         public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -121,7 +121,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Refreshes this instance.
         /// </summary>
-        /// <returns></returns>
+        /// <example></example>
         public BrowserCommandResult<bool> Refresh(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -137,7 +137,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Firsts the page.
         /// </summary>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.FirstPage();</example>
         public BrowserCommandResult<bool> FirstPage(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -157,7 +157,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Nexts the page.
         /// </summary>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.NextPage();</example>
         public BrowserCommandResult<bool> NextPage(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -177,7 +177,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Toggles the select all.
         /// </summary>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.SelectAllRecords();</example>
         public BrowserCommandResult<bool> SelectAllRecords(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -199,7 +199,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Previouses the page.
         /// </summary>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.PreviousPage();</example>
         public BrowserCommandResult<bool> PreviousPage(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -219,7 +219,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Opens the chart.
         /// </summary>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.OpenChart();</example>
         public BrowserCommandResult<bool> OpenChart(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -235,7 +235,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Closes the chart.
         /// </summary>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.CloseChart();</example>
         public BrowserCommandResult<bool> CloseChart(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -251,7 +251,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Pins this instance.
         /// </summary>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.Pin();</example>
         public BrowserCommandResult<bool> Pin(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -268,7 +268,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Searches the specified search criteria.
         /// </summary>
         /// <param name="searchCriteria">The search criteria.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.Search("Test API");</example>
         public BrowserCommandResult<bool> Search(string searchCriteria, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -286,7 +286,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sorts the specified column name.
         /// </summary>
         /// <param name="columnName">Name of the column.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.Sort("Account Name");</example>
         public BrowserCommandResult<bool> Sort(string columnName,int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -306,7 +306,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Gets the grid items.
         /// </summary>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.GetGridItems();</example>
         public BrowserCommandResult<List<XrmGridItem>> GetGridItems()
         {
             return this.Execute(GetOptions("Get Grid Items"), driver =>
@@ -362,7 +362,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Opens the grid record.
         /// </summary>
         /// <param name="index">The index.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.OpenRecord(0);</example>
         public BrowserCommandResult<bool> OpenRecord(int index,int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -421,7 +421,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Selects the grid record.
         /// </summary>
         /// <param name="index">The index of the row you want to select. Index starts with 0.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.SelectRecord(1);</example>
         public BrowserCommandResult<bool> SelectRecord(int index, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -444,7 +444,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Filters the by letter.
         /// </summary>
         /// <param name="filter">The filter.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.FilterByLetter('A');</example>
         /// <exception cref="System.InvalidOperationException">Filter criteria is not valid.</exception>
         public BrowserCommandResult<bool> FilterByLetter(char filter, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -471,7 +471,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Filters the by all.
         /// </summary>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.FilterByAll();</example>
         public BrowserCommandResult<bool> FilterByAll(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -489,7 +489,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Opens the filter.
         /// </summary>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.EnableFilter();</example>
         public BrowserCommandResult<bool> EnableFilter(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -509,7 +509,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Switches the chart on the Grid.
         /// </summary>
         /// <param name="chartName">Name of the chart.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Grid.SwitchChart("Accounts by Owner");</example>
         public BrowserCommandResult<bool> SwitchChart(string chartName, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);

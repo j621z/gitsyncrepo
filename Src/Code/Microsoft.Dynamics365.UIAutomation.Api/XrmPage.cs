@@ -31,7 +31,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="field">Field name or ID.</param>
         /// <param name="check">If set to <c>true</c> [check].</param>
-        /// <returns></returns>
         /// <example>xrmBrowser.Entity.SetValue("creditonhold",true);</example>
         public BrowserCommandResult<bool> SetValue(string field, bool check)
         {
@@ -57,7 +56,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="field">The field id or name.</param>
         /// <param name="date">DateTime value.</param>
-        /// <returns></returns>
         /// <example> xrmBrowser.Entity.SetValue("birthdate", DateTime.Parse("11/1/1980"));</example>
         public BrowserCommandResult<bool> SetValue(string field, DateTime date)
         {
@@ -102,7 +100,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="field">The field id.</param>
         /// <param name="value">The value.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Entity.SetValue("name", "Test API Account");</example>
         public BrowserCommandResult<bool> SetValue(string field, string value)
         {
             //return this.Execute($"Set Value: {field}", SetValue, field, value);
@@ -143,7 +141,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sets the value of a Field.
         /// </summary>
         /// <param name="field">The field .</param>
-        /// <returns></returns>
         public BrowserCommandResult<bool> SetValue(Field field)
         {
             return this.Execute(GetOptions($"Set Value: {field.Name}"), driver =>
@@ -185,7 +182,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sets the value of a picklist.
         /// </summary>
         /// <param name="option">The option you want to set.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Entity.SetValue(new OptionSet { Name = "preferredcontactmethodcode", Value = "Email" });</example>
         public BrowserCommandResult<bool> SetValue(OptionSet option)
         {
             return this.Execute(GetOptions($"Set Value: {option.Name}"), driver =>
@@ -217,7 +214,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sets the value of a Composite control.
         /// </summary>
         /// <param name="control">The Composite control values you want to set.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Entity.SetValue(new CompositeControl() {Id = "fullname", Fields = fields});</example>
         public BrowserCommandResult<bool> SetValue(CompositeControl control)
         {
             return this.Execute(GetOptions($"Set Conposite Control Value: {control.Id}"), driver =>
@@ -258,7 +255,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sets the value of a Lookup.
         /// </summary>
         /// <param name="control">The lookup field name, value or index of the lookup.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Entity.SetValue(new Lookup { Name = "prrimarycontactid", Value = "Rene Valdes (sample)" });</example>
         public BrowserCommandResult<bool> SetValue(Lookup control)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {control.Name}"), driver =>
@@ -309,10 +306,10 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="field">The field id.</param>
         /// <returns>The value</returns>
+        /// <example>xrmBrowser.Entity.GetValue("mobilephone");</example>
         public BrowserCommandResult<string> GetValue(string field)
         {
-            //return this.Execute($"Set Value: {field}", SetValue, field, value);
-            return this.Execute($"Set Value: {field}", driver =>
+            return this.Execute($"Get Value: {field}", driver =>
             {
                 driver.WaitUntilVisible(By.Id(field));
 
@@ -347,7 +344,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <returns>The value</returns>
         public BrowserCommandResult<bool> GetValue(Field field)
         {
-            return this.Execute($"Set Value: {field.Name}", driver =>
+            return this.Execute($"Get Value: {field.Name}", driver =>
             {
                 var text = string.Empty;
 
@@ -386,10 +383,10 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Gets the value of a Composite control.
         /// </summary>
         /// <param name="control">The Composite control values you want to set.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Entity.GetValue(new CompositeControl() { Id = "fullname", Fields = fields });</example>
         public BrowserCommandResult<string> GetValue(CompositeControl control)
         {
-            return this.Execute($"Set Conposite Control Value: {control.Id}", driver =>
+            return this.Execute($"Get Conposite Control Value: {control.Id}", driver =>
             {
                 string text = string.Empty;
 
@@ -425,10 +422,10 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Gets the value of a picklist.
         /// </summary>
         /// <param name="option">The option you want to set.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Entity.GetValue(new OptionSet { Name = "preferredcontactmethodcode"}); </example>
         public BrowserCommandResult<string> GetValue(OptionSet option)
         {
-            return this.Execute($"Set Value: {option.Name}", driver =>
+            return this.Execute($"Get Value: {option.Name}", driver =>
             {
                 driver.WaitUntilVisible(By.Id(option.Name));
                 string text = string.Empty;
@@ -448,7 +445,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Gets the value of a Lookup.
         /// </summary>
         /// <param name="control">The lookup field name, value or index of the lookup.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.Entity.GetValue(new Lookup { Name = "primarycontactid" });</example>
         public BrowserCommandResult<string> GetValue(Lookup control)
         {
             return this.Execute($"Get Lookup Value: {control.Name}", driver =>
@@ -471,7 +468,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Switches to content frame in the CRM application.
         /// </summary>
-        /// <returns></returns>
         public bool SwitchToContentFrame()
         {
             return this.Execute("Switch to content frame", driver =>
@@ -493,7 +489,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Switches to dialog frame in the CRM application.
         /// </summary>
-        /// <returns></returns>
+
         public bool SwitchToDialogFrame(int frameIndex = 0)
         {
             return this.Execute("Switch to dialog frame", driver =>
@@ -515,7 +511,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Switches to Quick Find frame in the CRM application.
         /// </summary>
-        /// <returns></returns>
+
         public bool SwitchToQuickCreateFrame()
         {
             return this.Execute("Switch to Quick Create Frame", driver =>
@@ -533,7 +529,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Switches to related frame in the CRM application.
         /// </summary>
-        /// <returns></returns>
         public bool SwitchToRelatedFrame()
         {
 
@@ -553,7 +548,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// SwitchToDefaultContent
         /// </summary>
-        /// <returns></returns>
         public bool SwitchToDefaultContent()
         {
             return this.Execute("Switch to Default Content", driver =>
@@ -581,7 +575,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Open Dialog
         /// </summary>
         /// <param name="dialog">The dialog</param>
-        /// <returns></returns>
+        /// <example></example>
         private BrowserCommandResult<Dictionary<string, IWebElement>> OpenDialog(IWebElement dialog)
         {
             var dictionary = new Dictionary<string, IWebElement>();

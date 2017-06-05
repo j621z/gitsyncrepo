@@ -29,7 +29,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Moves to the Next stage in the Business Process Flow.
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.BusinessProcessFlow.NextStage();</example>
         public BrowserCommandResult<bool> NextStage(int thinkTime = Constants.DefaultThinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
@@ -53,7 +53,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Moves to the Previous stage in the Business Process Flow.
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.BusinessProcessFlow.PreviousStage();</example>
         public BrowserCommandResult<bool> PreviousStage(int thinkTime = Constants.DefaultThinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
@@ -76,7 +76,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Hides the Business Process flow UI.
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        /// <returns></returns>
+
         public BrowserCommandResult<bool> Hide(int thinkTime = Constants.DefaultThinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
@@ -97,7 +97,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="stagenumber">The stage number that you would like to select. The stages start with 0.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.BusinessProcessFlow.SelectStage(0);</example>
         public BrowserCommandResult<bool> SelectStage(int stagenumber, int thinkTime = Constants.DefaultThinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
@@ -120,7 +120,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sets the current selected Stage as Active.
         /// </summary>
         /// <param name="thinkTime">The think time.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.BusinessProcessFlow.SetActive();</example>
         public BrowserCommandResult<bool> SetActive(int thinkTime = Constants.DefaultThinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
@@ -142,7 +142,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="name">The name of the business process flow you want to select.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        /// <returns></returns>
+        /// <example>xrmBrowser.BusinessProcessFlow.SelectBusinessProcessFlow("Opportunity Sales Process");</example>
         public BrowserCommandResult<bool> SelectBusinessProcessFlow(string name, int thinkTime = Constants.DefaultThinkTime)
         {
             this.Browser.ThinkTime(thinkTime);
