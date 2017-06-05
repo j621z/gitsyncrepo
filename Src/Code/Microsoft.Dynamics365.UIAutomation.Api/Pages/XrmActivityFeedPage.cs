@@ -271,7 +271,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         {
             Browser.ThinkTime(thinkTime);
 
-            return this.Execute(GetOptions($"Add Email from Activity Feed"), driver =>
+            return this.Execute(GetOptions($"Add Appointment from Activity Feed"), driver =>
             {
                 if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityWall])))
                     throw new InvalidOperationException("The Activity Feed is not available. Please check that the Activities tab is selected.");

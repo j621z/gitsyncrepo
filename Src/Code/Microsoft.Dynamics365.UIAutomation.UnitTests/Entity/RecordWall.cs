@@ -84,5 +84,21 @@ namespace Microsoft.Dynamics365.UIAutomation.UnitTests
                 xrmBrowser.ThinkTime(5000);
             }
         }
+        [TestMethod]
+        public void TestAddAppointment()
+        {
+            using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
+            {
+                xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
+                xrmBrowser.GuidedHelp.CloseGuidedHelp();
+
+                xrmBrowser.ThinkTime(500);
+
+                xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));
+                xrmBrowser.ActivityFeed.SelectTab(Api.Pages.XrmActivityFeedPage.Tab.Notes);
+                xrmBrowser.ActivityFeed.AddAppointment();
+                xrmBrowser.ThinkTime(5000);
+            }
+        }
     }
 }
