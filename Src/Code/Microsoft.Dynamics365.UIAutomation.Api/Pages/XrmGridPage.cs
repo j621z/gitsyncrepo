@@ -37,12 +37,12 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 var dictionary = new Dictionary<string, Guid>();
 
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Grid.ViewSelector]),
-                                         new TimeSpan(0,0,10),
+                                         new TimeSpan(0,0,20),
                                          d=> { d.FindElement(By.XPath(Elements.Xpath[Reference.Grid.ViewSelector])).Click(); },
                                          d=> { throw new Exception("Unable to click the View Picker"); });                
 
                 driver.WaitUntilVisible(By.ClassName(Elements.CssClass[Reference.Grid.ViewContainer]),
-                                        new TimeSpan(0, 0, 10),
+                                        new TimeSpan(0, 0, 20),
                                         null,
                                         d => 
                                         {
