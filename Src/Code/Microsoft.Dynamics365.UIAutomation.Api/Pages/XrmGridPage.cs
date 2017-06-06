@@ -27,7 +27,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Opens the view picker.
         /// </summary>
-        /// <example></example>
         public BrowserCommandResult<Dictionary<string, Guid>> OpenViewPicker(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -85,7 +84,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Switches the view.
         /// </summary>
         /// <param name="viewName">Name of the view.</param>
-        /// <param name="thinkTime">The think time.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Grid.SwitchView("Active Accounts");</example>
         public BrowserCommandResult<bool> SwitchView(string viewName, int thinkTime = Constants.DefaultThinkTime)
         {

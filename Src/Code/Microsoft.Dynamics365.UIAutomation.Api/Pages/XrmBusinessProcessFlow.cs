@@ -119,7 +119,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Sets the current selected Stage as Active.
         /// </summary>
-        /// <param name="thinkTime">The think time.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.BusinessProcessFlow.SetActive();</example>
         public BrowserCommandResult<bool> SetActive(int thinkTime = Constants.DefaultThinkTime)
         {

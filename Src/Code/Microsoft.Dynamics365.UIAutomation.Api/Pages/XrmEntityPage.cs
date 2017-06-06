@@ -32,8 +32,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Opens the Entity
         /// </summary>
-        /// <param name="entityName"></param>
-        /// <param name="id"></param>
+        /// <param name="entityName">The Entity Name you want to open</param>
+        /// <param name="id">The Guid</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.OpenEntity(TestSettings.AccountLogicalName, Guid.Parse(TestSettings.AccountId));</example>
         public BrowserCommandResult<bool> OpenEntity(string entityName, Guid id, int thinkTime = Constants.DefaultThinkTime)
@@ -131,7 +131,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Selects the Form
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="name">The name of the form</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.SelectForm("Details");</example>
         public BrowserCommandResult<bool> SelectForm(string name, int thinkTime = Constants.DefaultThinkTime)
@@ -155,6 +155,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Selects the tab and clicks. If the tab is expanded it will collapse it. If the tab is collapsed it will expand it. 
         /// </summary>
         /// <param name="name">The name of the tab.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.SelectTab("Details");</example>
         public BrowserCommandResult<bool> SelectTab(string name, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -178,6 +179,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Collapses the Tab on a CRM Entity form.
         /// </summary>
         /// <param name="name">The name of the Tab.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.CollapseTab("Summary");</example>
         public BrowserCommandResult<bool> CollapseTab(string name, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -202,6 +204,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Expands the Tab on a CRM Entity form.
         /// </summary>
         /// <param name="name">The name of the Tab.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.ExpandTab("Summary");</example>
         public BrowserCommandResult<bool> ExpandTab(string name, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -264,7 +267,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Set Lookup Value for the field
         /// </summary>
         /// <param name="field">The Field</param>
-        /// <param name="value"></param>
+        /// <param name="value">The Lookup value</param>
         public BrowserCommandResult<bool> SelectLookup(string field, string value)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver=> 
@@ -302,7 +305,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Set Lookup Value for the field
         /// </summary>
         /// <param name="field">The Field</param>
-        /// <param name="openLookupPage"></param>
+        /// <param name="openLookupPage">The Open Lookup Page</param>
         public BrowserCommandResult<bool> SelectLookup(string field, bool openLookupPage = true)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver=> 
@@ -364,6 +367,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Popout the form
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
+        /// <example>xrmBrowser.Entity.Popout();</example>
         public BrowserCommandResult<bool> Popout(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -382,6 +386,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="subgridName">The SubgridName</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
+        /// <example>xrmBrowser.Entity.ClickSubgridAddButton("Stakeholders");</example>
         public BrowserCommandResult<bool> ClickSubgridAddButton(string subgridName, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -546,7 +551,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <summary>
         /// Saves the specified entity record.
         /// </summary>
-        /// <param name="thinkTime">The think time.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Entity.Save();</example>
         public BrowserCommandResult<bool> Save(int thinkTime = Constants.DefaultThinkTime)
         {

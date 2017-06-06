@@ -39,7 +39,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// <summary>
         /// Selects the tab.
         /// </summary>
-        /// <param name="tabname">The Tabname.</param>
+        /// <param name="tabname">The TabName you want to select.</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.ActivityFeed.SelectTab(Api.Pages.XrmActivityFeedPage.Tab.Activities);</example>
         public BrowserCommandResult<bool> SelectTab(Tab tabname, int thinkTime = Constants.DefaultThinkTime)
@@ -68,7 +68,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// <summary>
         /// Adds Notes to the activity feed
         /// </summary>
-        /// <param name="noteText">The NoteText</param>
+        /// <param name="noteText">The NoteText you want to add</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.ActivityFeed.AddNote("Test Add Note");</example>
         public BrowserCommandResult<bool> AddNote(string noteText, int thinkTime = Constants.DefaultThinkTime)
@@ -99,7 +99,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// <summary>
         /// Adds Post to the activity feed
         /// </summary>
-        /// <param name="postText">The postText</param>
+        /// <param name="postText">The Text you want to post</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.ActivityFeed.AddPost("Test Add Post");</example>
         public BrowserCommandResult<bool> AddPost(string postText, int thinkTime = Constants.DefaultThinkTime)
@@ -266,7 +266,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// Adds Appointment to the activity feed
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        /// <example></example>
+       /// <example>xrmBrowser.ActivityFeed.AddAppointment();</example>
         public BrowserCommandResult<bool> AddAppointment(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);

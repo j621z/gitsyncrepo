@@ -121,7 +121,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Checks for Duplicate Detection Dialog. If duplicate detection is enable then you can confirm the save or cancel.
         /// </summary>
         /// <param name="save">If set to <c>true</c> Save the record otherwise it will cancel.</param>
-        /// <param name="thinkTime">The think time.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Dialogs.DuplicateDetection(true);</example>
         public BrowserCommandResult<bool> DuplicateDetection(bool save, int thinkTime = Constants.DefaultThinkTime)
         {
