@@ -142,11 +142,12 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                                             d=> { driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SearchButton])).Click(); },
                                             d=> { throw new InvalidOperationException("The Global Search button is not available."); });
 
-
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Navigation.Search]),
-                                            new TimeSpan(0, 0, 5),
+                                            new TimeSpan(0, 0, 10),
                                             d => {
-                                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SearchLabel])).Click();
+                                                    if(driver.IsVisible(By.XPath(Elements.Xpath[Reference.Navigation.SearchLabel])))
+                                                        driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SearchLabel])).Click();
+
                                                     driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Search])).SendKeys(searchText,true);
                                                     Thread.Sleep(500);
                                                     driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.StartSearch])).Click();
