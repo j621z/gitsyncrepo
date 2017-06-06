@@ -28,7 +28,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Cancel the Quick Create Page
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-        /// <example></example>
+        /// <example>xrmBrowser.QuickCreate.Cancel();</example>
         public BrowserCommandResult<bool> Cancel(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -102,7 +102,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Set Lookup Value for the field
         /// </summary>
         /// <param name="field">The Field</param>
-        /// <param name="value"></param>
+        /// <param name="value">The Value</param>
         public BrowserCommandResult<bool> SelectLookup(string field, string value)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
@@ -140,7 +140,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Set Lookup Value
         /// </summary>
         /// <param name="field">The Field</param>
-        /// <param name="openLookupPage"></param>
+        /// <param name="openLookupPage">The Open Lookup Page</param>
         public BrowserCommandResult<bool> SelectLookup(string field, bool openLookupPage = true)
         {
             return this.Execute(GetOptions($"Set Lookup Value: {field}"), driver =>
@@ -293,7 +293,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sets the value of a Field.
         /// </summary>
         /// <param name="field">The field .</param>
-        /// <example></example>
         public BrowserCommandResult<bool> SetValue(Field field)
         {
             return this.Execute(GetOptions(""), driver =>
