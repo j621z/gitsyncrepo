@@ -50,7 +50,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
 
             driver.Manage().Timeouts().PageLoad = options.PageLoadTimeout;
 
-            if(options.StartMaximized)
+            if(options.StartMaximized && options.BrowserType != BrowserType.Chrome) //Handle Chrome in the Browser Options
                 driver.Manage().Window.Maximize();
 
             if (options.FireEvents || options.EnableRecording)
