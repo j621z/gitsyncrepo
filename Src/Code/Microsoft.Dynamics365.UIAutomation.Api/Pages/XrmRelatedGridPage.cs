@@ -207,6 +207,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Searches the specified search criteria.
         /// </summary>
         /// <param name="searchCriteria">The search criteria.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Related.Search("F");</example>
         public BrowserCommandResult<bool> Search(string searchCriteria, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -228,6 +229,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sorts the specified column name.
         /// </summary>
         /// <param name="columnName">Name of the column.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         /// <example>xrmBrowser.Related.Sort("createdon"); </example>
         public BrowserCommandResult<bool> Sort(string columnName, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -307,6 +309,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Opens the grid record.
         /// </summary>
         /// <param name="index">The index.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
         public BrowserCommandResult<bool> OpenGridRow(int index, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
