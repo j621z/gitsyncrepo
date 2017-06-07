@@ -72,7 +72,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                     driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.MoreCommands])).Click();
 
                 var buttons = GetCommands(moreCommands).Value;
-                var button = buttons.Where(x => x.Text.ToLower() == name.ToLower()).FirstOrDefault();
+                var button = buttons.FirstOrDefault(x => x.Text.ToLowerString() == name.ToLowerString());
 
                 if (string.IsNullOrEmpty(subName))
                 {
@@ -92,7 +92,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                     button.FindElement(By.ClassName(Elements.CssClass[Reference.CommandBar.FlyoutAnchorArrow])).Click();
 
                     var subButtons = driver.FindElements(By.ClassName("ms-crm-Menu-Label"));
-                    var item = subButtons.Where(x => x.Text.ToLower() == subName.ToLower()).FirstOrDefault();
+                    var item = subButtons.FirstOrDefault(x => x.Text.ToLowerString() == subName.ToLowerString());
                     if(item == null) { throw new InvalidOperationException($"The sub menu item '{subName}' is not found."); }
 
                     item.Click();
