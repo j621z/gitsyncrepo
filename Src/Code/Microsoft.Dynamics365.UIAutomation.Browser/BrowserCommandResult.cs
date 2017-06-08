@@ -69,16 +69,16 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
         /// <value>
         /// The execution time.
         /// </value>
-        public int ExecutionTime
+        public double ExecutionTime
         {
             get
             {
                 if (this.StartTime.HasValue && this.StopTime.HasValue)
                 {
-                    return (this.StopTime.Value - this.StartTime.Value).Milliseconds;
+                    return (this.StopTime.Value - this.StartTime.Value).TotalMilliseconds;
                 }
 
-                return TimeSpan.Zero.Milliseconds;
+                return TimeSpan.Zero.TotalMilliseconds;
             }
         }
 
@@ -88,7 +88,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
         /// <value>
         /// The transition time.
         /// </value>
-        public int TransitionTime { get; set; }
+        public double TransitionTime { get; set; }
 
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
         /// <value>
         /// The think time.
         /// </value>
-        public int ThinkTime { get; set; }
+        public double ThinkTime { get; set; }
 
         /// <summary>
         /// Gets or sets the depth.
