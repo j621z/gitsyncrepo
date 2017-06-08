@@ -16,11 +16,11 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
         
         DateTime? StopTime { get; }
         
-        int ExecutionTime { get; }
-        
-        int TransitionTime { get; set; }
-        
-        int ThinkTime { get; set; }
+        double ExecutionTime { get; }
+
+        double TransitionTime { get; set; }
+
+        double ThinkTime { get; set; }
 
         int Depth { get; set; }
     }
