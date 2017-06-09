@@ -65,6 +65,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 DismissAlertIfPresent();
 
                 // driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
+                SwitchToContentFrame();
                 driver.WaitForPageToLoad();
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Entity.Form]),
                                             new TimeSpan(0, 0, 30),
