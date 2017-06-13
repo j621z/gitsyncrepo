@@ -20,7 +20,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             //Dialogs
             { "Dialog_Header"       , "id(\"dialogHeaderTitle\")"},
-            { "Dialog_DeleteHeader"       , "id(\"tdDialogHeader\")"},            
+            { "Dialog_DeleteHeader"       , "id(\"tdDialogHeader\")"},
             { "Dialog_WorkflowHeader", "id(\"DlgHdContainer\")" },
             { "Dialog_ProcessFlowHeader", "id(\"processSwitcherFlyout\")" },
             { "Dialog_CloseOpportunityOk"       , "id(\"ok_id\")"},
@@ -135,7 +135,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "Notes_ActivityAddTask", "id(\"activityLabelinlineactivitybar4212\")"},
             { "Notes_Done"                 , "id(\"doneSpacer\")"},
             { "Notes_VoiceMail"                 , "id(\"PhoneCallQuickformleftvoiceCheckBoxContol\")"},
-                       
+                      
             //Login           
             { "Login_UserId", "id(\"cred_userid_inputtext\")"},
             { "Login_Password", "id(\"cred_password_inputtext\")"},
@@ -162,7 +162,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "LookUp_Add", "id(\"btnAdd\")"},
             { "LookUp_Begin", "id(\"butBegin\")"},
 
-    };
+        };
 
         public static Dictionary<string, string> ElementId = new Dictionary<string, string>()
         {
@@ -200,11 +200,11 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "Notes_ActivityPhoneCallDescId"       , "quickCreateActivity4210controlId_description"},
             { "Notes_ActivityPhoneCallVoiceMailId"       , "PhoneCallQuickformleftvoiceCheckBoxContol"},
             { "Notes_ActivityPhoneCallDirectionId"       , "quickCreateActivity4210controlId_directioncode_i"},
-            { "Notes_ActivityTaskSubjectId"      , "quickCreateActivity4212controlId_subject_i"},
-            { "Notes_ActivityTaskDescriptionId"      , "quickCreateActivity4212controlId_description_i"},
+            { "Notes_ActivityTaskSubjectId"      , "quickCreateActivity4212controlId_subject"},
+            { "Notes_ActivityTaskDescriptionId"      , "quickCreateActivity4212controlId_description"},
             { "Notes_ActivityTaskScheduledEndId"      , "quickCreateActivity4212controlId_scheduledend_iDateInput"},
             { "Notes_ActivityTaskPriorityId"      , "quickCreateActivity4212controlId_prioritycode_i"},
-    };
+        };
 
         public static Dictionary<string, string> CssClass = new Dictionary<string, string>()
         {
@@ -296,7 +296,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 public static string Save = "Dialog_DuplicateOk";
                 public static string Cancel = "Dialog_DuplicateCancel";
-            
+
             }
 
             public static class RunWorkflow
@@ -373,7 +373,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static string StartSearch = "Nav_StartSearch";
             public static string TabButtonLink = "Nav_TabButtonLinkClass";
             public static string ActionGroupContainer = "Nav_ActionGroupContainerClass";
-            public static string RowLabel = "Nav_RowLabelClass";                           
+            public static string RowLabel = "Nav_RowLabelClass";
         }
         public static class Grid
         {
@@ -400,11 +400,11 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static string PrimaryField = "Grid_PrimaryField";
             public static string DataColumn = "Grid_DataColumnClass";
             public static string ViewSelectorContainer = "Grid_ViewSelectorContainer";
-            
+
         }
 
         public static class Entity
-        {            
+        {
             public static string Form = "Entity_Form";
             public static string Close = "Entity_Close";
             public static string Tab = "Entity_TabId";
@@ -435,7 +435,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static string NotesDone = "Notes_Done";
             public static string PostWall = "Notes_PostWall";
             public static string PostText = "Notes_PostText";
-            public static string PostButton = "Notes_PostButton";           
+            public static string PostButton = "Notes_PostButton";
             public static string ActivityWall = "Notes_ActivityWall";
             public static string ActivityStatusFilter = "Notes_ActivityStatusFilter";
             public static string ActivityStatusFilterDialog = "Notes_ActivityStatusFilterDialog";
@@ -467,7 +467,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static string NotesWall = "Notes_NotesWall";
             public static string Selector = "DashBoard_Selector";
             public static string ViewContainerClass = "DashBoard_ViewContainerClass";
-            
+
         }
 
         public static class CommandBar

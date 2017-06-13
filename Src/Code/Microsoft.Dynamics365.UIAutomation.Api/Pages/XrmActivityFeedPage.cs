@@ -35,6 +35,12 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
             Overdue
         }
 
+        public enum Activities
+        {
+            Appointment,
+            Email
+        }
+
 
         /// <summary>
         /// Selects the tab.
@@ -128,6 +134,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// </summary>
         /// <param name="status">The Status</param>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
+        /// <example>xrmBrowser.ActivityFeed.FilterActivitiesByStatus(Api.Pages.XrmActivityFeedPage.Status.Overdue);</example>
         public BrowserCommandResult<bool> FilterActivitiesByStatus(Status status, int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -139,20 +146,13 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
 
                 var wall = driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityWall]));
                 wall.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityStatusFilter])).Click();
-                var dialog = driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityStatusFilterDialog]));
 
-                switch(status)
-                {
-                    case Status.All:
-                        dialog.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityStatusAll])).Click();
-                        break;
-                    case Status.InProgress:
-                        dialog.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityStatusOpen])).Click();
-                        break;
-                    case Status.Overdue:
-                        dialog.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivitySTatusOverdue])).Click();
-                        break;
-                }
+                var dialog = driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityStatusFilterDialog]));
+                var statusList = dialog.FindElements(By.TagName("li"));
+                statusList.Where(x => x.Text.ToLower() == status.ToString().ToLower()).FirstOrDefault()?.Click();
+
+
+
 
                 return true;
             });
@@ -172,7 +172,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
                     throw new InvalidOperationException("The Activity Wall is not available. Please check that the Activities tab is selected.");
 
                 driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityAssociatedView]));
-                
+
                 return true;
             });
         }
@@ -246,6 +246,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// Adds Email to the activity feed
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
+        /// <example>xrmBrowser.ActivityFeed.AddEmail();</example>
         public BrowserCommandResult<bool> AddEmail(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -256,7 +257,9 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
                     throw new InvalidOperationException("The Activity Feed is not available. Please check that the Activities tab is selected.");
 
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityMoreActivities])).Click();
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityAddTask])).Click();
+                var activitiesList = driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityStatusFilterDialog]));
+                var appointment = activitiesList.FindElements(By.TagName("li"));
+                appointment.Where(x => x.Text.ToLower() == Activities.Email.ToString().ToLower()).FirstOrDefault()?.Click();
 
                 return true;
             });
@@ -266,7 +269,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// Adds Appointment to the activity feed
         /// </summary>
         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
-       /// <example>xrmBrowser.ActivityFeed.AddAppointment();</example>
+        /// <example>xrmBrowser.ActivityFeed.AddAppointment();</example>
         public BrowserCommandResult<bool> AddAppointment(int thinkTime = Constants.DefaultThinkTime)
         {
             Browser.ThinkTime(thinkTime);
@@ -277,7 +280,10 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
                     throw new InvalidOperationException("The Activity Feed is not available. Please check that the Activities tab is selected.");
 
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityMoreActivities])).Click();
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityAddAppointment])).Click();
+                var activitiesList = driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityStatusFilterDialog]));
+                
+                var appointment = activitiesList.FindElements(By.TagName("li"));
+                appointment.Where(x => x.Text.ToLower() == Activities.Appointment.ToString().ToLower()).FirstOrDefault()?.Click();
 
                 return true;
             });
