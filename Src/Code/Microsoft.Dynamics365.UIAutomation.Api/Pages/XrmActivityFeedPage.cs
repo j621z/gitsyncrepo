@@ -10,7 +10,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
     /// <summary>
     /// Activity feed page.
     /// </summary>
-    public class XrmActivityFeedPage: XrmPage
+    public class XrmActivityFeedPage : XrmPage
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="XrmActivityFeedPage"/> class.
@@ -149,10 +149,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
 
                 var dialog = driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityStatusFilterDialog]));
                 var statusList = dialog.FindElements(By.TagName("li"));
-                statusList.Where(x => x.Text.ToLower() == status.ToString().ToLower()).FirstOrDefault()?.Click();
-
-
-
+                statusList.Where(x => x.Text.ToLower().Replace(" ", "") == status.ToString().ToLower()).FirstOrDefault()?.Click();
 
                 return true;
             });
@@ -233,10 +230,34 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
 
                 this.SetValue(Elements.ElementId[Reference.ActivityFeed.ActivityTaskSubjectId], subject);
                 this.SetValue(Elements.ElementId[Reference.ActivityFeed.ActivityTaskDescriptionId], description);
-                this.SetValue(Elements.ElementId[Reference.ActivityFeed.ActivityTaskScheduledEndId], dueDate);
-                this.SetValue(priority);
 
+                var fieldElement = driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityTaskScheduledEnd]));
+                this.SetCalenderValue(Elements.ElementId[Reference.ActivityFeed.ActivityAddTaskDueDateId], dueDate.ToShortDateString());
+                fieldElement.Click();
+                this.SetCalenderValue(Elements.ElementId[Reference.ActivityFeed.ActivityAddTaskDueTimeId], dueDate.ToShortTimeString());
+                this.SetValue(priority);
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityTaskOk])).Click();
+
+                return true;
+            });
+        }
+
+        internal BrowserCommandResult<bool> SetCalenderValue(string field, string value)
+        {
+            return this.Execute("Set calender value", driver =>
+            {
+                if (driver.HasElement(By.Id(field)))
+                {
+                    driver.WaitUntilVisible(By.Id(field));
+
+                    var fieldElement = driver.FindElement(By.Id(field));
+                    fieldElement.Click();
+
+                    fieldElement.FindElement(By.TagName("input")).Clear();
+                    fieldElement.FindElement(By.TagName("input")).SendKeys(value);
+                }
+                else
+                    throw new InvalidOperationException($"Field: {field} Does not exist");
 
                 return true;
             });
@@ -281,7 +302,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
 
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityMoreActivities])).Click();
                 var activitiesList = driver.FindElement(By.XPath(Elements.Xpath[Reference.ActivityFeed.ActivityStatusFilterDialog]));
-                
+
                 var appointment = activitiesList.FindElements(By.TagName("li"));
                 appointment.Where(x => x.Text.ToLower() == Activities.Appointment.ToString().ToLower()).FirstOrDefault()?.Click();
 

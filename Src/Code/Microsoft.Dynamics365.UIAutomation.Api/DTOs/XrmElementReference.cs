@@ -135,6 +135,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "Notes_ActivityAddTask", "id(\"activityLabelinlineactivitybar4212\")"},
             { "Notes_Done"                 , "id(\"doneSpacer\")"},
             { "Notes_VoiceMail"                 , "id(\"PhoneCallQuickformleftvoiceCheckBoxContol\")"},
+            { "Notes_ActivityTaskScheduledEnd" , "id(\"quickCreateActivity4212controlId_scheduledend\")"},
+            { "Notes_ActivityAddTaskDueTime"    ,"id(\"selectTable_Date\")"},
                       
             //Login           
             { "Login_UserId", "id(\"cred_userid_inputtext\")"},
@@ -202,8 +204,9 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "Notes_ActivityPhoneCallDirectionId"       , "quickCreateActivity4210controlId_directioncode_i"},
             { "Notes_ActivityTaskSubjectId"      , "quickCreateActivity4212controlId_subject"},
             { "Notes_ActivityTaskDescriptionId"      , "quickCreateActivity4212controlId_description"},
-            { "Notes_ActivityTaskScheduledEndId"      , "quickCreateActivity4212controlId_scheduledend_iDateInput"},
             { "Notes_ActivityTaskPriorityId"      , "quickCreateActivity4212controlId_prioritycode_i"},
+            { "Notes_ActivityAddTaskDueTimeId"    ,"selectTable_Date"},
+            { "Notes_ActivityAddTaskDueDateId"    ,"quickCreateActivity4212controlId_scheduledend"}
         };
 
         public static Dictionary<string, string> CssClass = new Dictionary<string, string>()
@@ -450,7 +453,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static string ActivityTaskOk = "Notes_ActivityTaskOk";
             public static string ActivityTaskSubjectId = "Notes_ActivityTaskSubjectId";
             public static string ActivityTaskDescriptionId = "Notes_ActivityTaskDescriptionId";
-            public static string ActivityTaskScheduledEndId = "Notes_ActivityTaskScheduledEndId";
             public static string ActivityTaskPriorityId = "Notes_ActivityTaskPriorityId";
             public static string ActivityMoreActivities = "Notes_ActivityMoreActivities";
             public static string ActivityAddEmail = "Notes_ActivityAddEmail";
@@ -458,6 +460,11 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static string ActivityAddPhoneCall = "Notes_ActivityAddPhoneCall";
             public static string ActivityAddTask = "Notes_ActivityAddTask";
             public static string VoiceMail = "Notes_VoiceMail";
+            public static string ActivityTaskScheduledEnd = "Notes_ActivityTaskScheduledEnd";
+            public static string ActivityAddTaskDueTime = "Notes_ActivityAddTaskDueTime";
+            public static string ActivityAddTaskDueTimeId = "Notes_ActivityAddTaskDueTimeId";
+            public static string ActivityAddTaskDueDateId = "Notes_ActivityAddTaskDueDateId";
+
 
         }
 
