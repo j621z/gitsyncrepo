@@ -118,6 +118,11 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 var subItems = element.FindElements(By.ClassName("nav-rowBody"));
 
                 var related = subItems.Where(x => x.Text == relatedArea).FirstOrDefault();
+                if (related == null)
+                {
+                    throw new InvalidOperationException($"No relatedarea with the name '{relatedArea}' exists.");
+                }
+
                 Browser.ActiveFrameId = related.GetAttribute("id").Replace("Node_nav", "area");
                 related?.Click();
 

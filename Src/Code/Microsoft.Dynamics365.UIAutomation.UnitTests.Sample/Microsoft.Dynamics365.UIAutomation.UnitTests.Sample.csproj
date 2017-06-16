@@ -168,6 +168,11 @@
     <Compile Include="NegativeScenarios\InvalidSubArea.cs" />
     <Compile Include="NegativeScenarios\InvalidSwitchView.cs" />
     <Compile Include="NegativeScenarios\Navigation\InvalidQuickCreate.cs" />
+    <Compile Include="NegativeScenarios\RelatedGrid\InvalidRelatedArea.cs" />
+    <Compile Include="NegativeScenarios\RelatedGrid\InvalidRelatedClickCommand.cs" />
+    <Compile Include="NegativeScenarios\RelatedGrid\InvalidRelatedOpenGrid.cs" />
+    <Compile Include="NegativeScenarios\RelatedGrid\InvalidRelatedSort.cs" />
+    <Compile Include="NegativeScenarios\RelatedGrid\InvalidRelatedSwitchView.cs" />
     <Compile Include="Notification\Notifications.cs" />
     <Compile Include="EndUserScenerios\OpenCase.cs" />
     <Compile Include="EndUserScenerios\UpdateAccount.cs" />
