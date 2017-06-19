@@ -20,7 +20,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmLookupPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToDialogFrame();
+            SwitchToDialog();
         }
 
         /// <summary>

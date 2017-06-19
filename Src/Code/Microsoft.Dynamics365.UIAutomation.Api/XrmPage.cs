@@ -470,60 +470,67 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         public bool SwitchToContentFrame()
         {
-            return this.Execute("Switch to content frame", driver =>
-            {
-                driver.SwitchTo().DefaultContent();
-                //wait for the content panel to render
-                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.ContentPanel]));
+            return this.Execute("Switch to content frame", driver => SwitchToContent());
+        }
 
-                //find the crmContentPanel and find out what the current content frame ID is - then navigate to the current content frame
-                var currentContentFrame = driver.FindElement(By.XPath(Elements.Xpath[Reference.Frames.ContentPanel]))
-                                                .GetAttribute(Elements.ElementId[Reference.Frames.ContentFrameId]);
+        internal bool SwitchToContent()
+        {
+            Browser.Driver.SwitchTo().DefaultContent();
+            //wait for the content panel to render
+            Browser.Driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.ContentPanel]));
 
-                driver.SwitchTo().Frame(currentContentFrame);
+            //find the crmContentPanel and find out what the current content frame ID is - then navigate to the current content frame
+            var currentContentFrame = Browser.Driver.FindElement(By.XPath(Elements.Xpath[Reference.Frames.ContentPanel]))
+                .GetAttribute(Elements.ElementId[Reference.Frames.ContentFrameId]);
 
-                return true;
-            });
+            Browser.Driver.SwitchTo().Frame(currentContentFrame);
+
+            return true;
         }
 
         /// <summary>
         /// Switches to dialog frame in the CRM application.
         /// </summary>
 
-        public bool SwitchToDialogFrame(int frameIndex = 0)
+        public bool SwitchToDialogFrame()
         {
-            return this.Execute("Switch to dialog frame", driver =>
-            {
-                var index = "";
-                if (frameIndex > 0)
-                    index = frameIndex.ToString();
-
-                driver.SwitchTo().DefaultContent();
-                //wait for the content panel to render
-                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.DialogFrame]+index));
-
-                driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.DialogFrameId].Replace("[INDEX]",index));
-
-                return true;
-            });
+            return this.Execute("Switch to dialog frame", driver => SwitchToDialog(0));
         }
 
+        internal bool SwitchToDialog(int frameIndex = 0)
+        {
+            var index = "";
+            if (frameIndex > 0)
+                index = frameIndex.ToString();
+
+            Browser.Driver.SwitchTo().DefaultContent();
+            //wait for the content panel to render
+            Browser.Driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.DialogFrame] + index));
+
+            Browser.Driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.DialogFrameId].Replace("[INDEX]", index));
+
+            return true;
+
+        }
         /// <summary>
         /// Switches to Quick Find frame in the CRM application.
         /// </summary>
 
         public bool SwitchToQuickCreateFrame()
         {
-            return this.Execute("Switch to Quick Create Frame", driver =>
-            {
-                driver.SwitchTo().DefaultContent();
-                //wait for the content panel to render
-                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.QuickCreateFrame]));
+            return this.Execute("Switch to Quick Create Frame", driver => SwitchToQuickCreate());
+        }
 
-                driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.QuickCreateFrameId]);
+        internal bool SwitchToQuickCreate()
+        {
+            Browser.Driver.SwitchTo().DefaultContent();
+            //wait for the content panel to render
+            Browser.Driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.QuickCreateFrame]));
 
-                return true;
-            });
+            Browser.Driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.QuickCreateFrameId]);
+
+            return true;
+
         }
 
         /// <summary>
@@ -532,30 +539,35 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public bool SwitchToRelatedFrame()
         {
 
-            SwitchToContentFrame();
+            return this.Execute("Switch to Related Frame", driver => SwitchToRelated());
 
-            return this.Execute("Switch to Related Frame", driver =>
-            {
-                //wait for the content panel to render
-                driver.WaitUntilAvailable(By.Id(Browser.ActiveFrameId));
-
-                driver.SwitchTo().Frame(Browser.ActiveFrameId + "Frame");
-
-                return true;
-            });
         }
+
+        internal bool SwitchToRelated()
+        {
+            SwitchToContent();
+
+            Browser.Driver.WaitUntilAvailable(By.Id(Browser.ActiveFrameId));
+
+            Browser.Driver.SwitchTo().Frame(Browser.ActiveFrameId + "Frame");
+
+            return true;
+        }
+
 
         /// <summary>
         /// SwitchToDefaultContent
         /// </summary>
         public bool SwitchToDefaultContent()
         {
-            return this.Execute("Switch to Default Content", driver =>
-            {
-                driver.SwitchTo().DefaultContent();
+            return this.Execute("Switch to Default Content", driver => SwitchToDefault());
+        }
 
-                return true;
-            });
+        internal bool SwitchToDefault()
+        {
+            Browser.Driver.SwitchTo().DefaultContent();
+
+            return true;
         }
 
         internal BrowserCommandOptions GetOptions(string commandName)
@@ -568,7 +580,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 true,
                 typeof(NoSuchElementException), typeof(StaleElementReferenceException));
         }
-
 
 
         /// <summary>

@@ -21,7 +21,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmBusinessProcessFlow(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToContentFrame();
+            SwitchToContent();
         }
 
         private readonly string _previousStageCssSelector = ".layer0.selectedStage";

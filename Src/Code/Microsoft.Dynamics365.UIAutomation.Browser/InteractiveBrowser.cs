@@ -123,19 +123,22 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
         public List<ICommandResult> CommandResults = new List<ICommandResult>();
         public int TotalThinkTime = 0;
         public string ActiveFrameId = "";
-        internal int CurrentCommandThinkTime = 0;
+        internal Dictionary<int, int> CommandThinkTimes = new Dictionary<int, int>();
         internal DateTime? LastCommandEndTime;
-        internal int Depth = 0;
-        
+        internal int Depth = 1;
+
         #endregion Properties
 
         #region Methods
 
         public void ThinkTime(int milliseconds)
         {
-            CurrentCommandThinkTime += milliseconds;
-            TotalThinkTime += milliseconds;
+            if(!CommandThinkTimes.ContainsKey((Depth)))
+                CommandThinkTimes.Add(Depth,milliseconds);
+            else
+                CommandThinkTimes[Depth] = milliseconds;
 
+            TotalThinkTime += milliseconds;
             Thread.Sleep(milliseconds);
         }
         public void TakeWindowScreenShot(string path, ScreenshotImageFormat fileFormat)
@@ -147,7 +150,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
         public T GetPage<T>()
             where T : BrowserPage
         {
-            return (T) Activator.CreateInstance(typeof(T), new object[] {this});
+            return (T)Activator.CreateInstance(typeof(T), new object[] { this });
         }
 
         public void Navigate(Uri uri)
@@ -159,7 +162,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
         {
             this.Driver.Navigate().GoToUrl(uri);
         }
-        
+
         public void Navigate(NavigationOperation operation)
         {
             switch (operation)
@@ -337,7 +340,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
                     this.Driver.ExecuteScript(Properties.Resources.Recorder);
             }
         }
-        
+
 
         public void Record(IBrowserActionLogger logger)
         {
@@ -377,18 +380,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
             {
                 if (result.StartTime.HasValue && LastCommandEndTime.HasValue && Depth == 1)
                 {
-                    result.TransitionTime = (result.StartTime.Value - LastCommandEndTime.Value).Milliseconds - CurrentCommandThinkTime;
+                    result.TransitionTime = (((result.StartTime.Value - LastCommandEndTime.Value).Seconds * 1000) + (result.StartTime.Value - LastCommandEndTime.Value).Milliseconds) - CommandThinkTimes[Depth];
                 }
-
                 LastCommandEndTime = result.StopTime;
-                CurrentCommandThinkTime = 0;
             }
 
-            //Calculate ThinkTime for the Current Command. Reset the CurrentCommandThinkTime to 0 when finished
-            result.ThinkTime = CurrentCommandThinkTime;
-            result.Depth = Depth;
 
+            //Calculate ThinkTime for the Current Command. Reset the CurrentCommandThinkTime to 0 when finished
+            result.ThinkTime = CommandThinkTimes.ContainsKey(Depth) ? CommandThinkTimes[Depth] : 0;
+            result.Depth = Depth;
             CommandResults.Add(result);
+            CommandThinkTimes[Depth] = 0;
+
         }
 
         #endregion Methods

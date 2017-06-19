@@ -21,7 +21,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmQuickCreatePage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToQuickCreateFrame();
+            SwitchToQuickCreate();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Cancel"), driver =>
             {
-                SwitchToDefaultContent();
+                SwitchToDefault();
                 
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.QuickCreate.Cancel]))?.Click();
                 return true;
@@ -53,7 +53,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Save"), driver =>
             {
-                SwitchToDefaultContent();
+                SwitchToDefault();
 
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.QuickCreate.Save]))?.Click();
                 return true;

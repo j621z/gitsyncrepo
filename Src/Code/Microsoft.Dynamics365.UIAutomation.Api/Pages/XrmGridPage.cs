@@ -21,7 +21,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmGridPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToContentFrame();
+            SwitchToContent();
         }
 
         /// <summary>
@@ -409,7 +409,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 if (clicked)
                 {
-                    SwitchToContentFrame();
+                    SwitchToContent();
                     driver.WaitForPageToLoad();
                     driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Entity.Form]), 
                                                 new TimeSpan(0,0,30),

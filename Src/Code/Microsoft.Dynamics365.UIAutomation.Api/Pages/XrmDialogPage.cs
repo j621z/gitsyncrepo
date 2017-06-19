@@ -19,7 +19,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmDialogPage(InteractiveBrowser browser)
             : base(browser)
         {
-            this.SwitchToDialogFrame();
+            this.SwitchToDialog();
         }
         /// <summary>
         /// Enum for the Assign Dialog to determine which type of record you will be assigning to. 
@@ -168,7 +168,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 lookup.SelectItem(name);
                 lookup.Add();
 
-                SwitchToDialogFrame(1);
+                SwitchToDialog(1);
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Dialogs.RunWorkflow.Confirm])).Click();
                 return true;
             });

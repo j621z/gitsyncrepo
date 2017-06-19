@@ -22,7 +22,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmDashboardPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToContentFrame();
+            SwitchToContent();
         }
 
         /// <summary>
