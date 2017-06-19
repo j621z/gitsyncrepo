@@ -135,6 +135,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
         {
             if(!CommandThinkTimes.ContainsKey((Depth)))
                 CommandThinkTimes.Add(Depth,milliseconds);
+            else if(Depth==1)
+                CommandThinkTimes[Depth]+= milliseconds;
             else
                 CommandThinkTimes[Depth] = milliseconds;
 
