@@ -9,7 +9,9 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
         public BrowserPage(InteractiveBrowser browser)
         {
             Browser = browser;
-            Browser.Depth = 0;
+            Browser.Depth = 1;
+
+
         }
 
         public InteractiveBrowser Browser;
@@ -43,9 +45,9 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
             Browser.Depth++;
             var command =  new DelegateBrowserCommand<TResult>(new BrowserCommandOptions(Constants.DefaultTraceSource, commandName), @delegate)
                 .Execute(Browser.Driver);
-
-            Browser.CalculateResults(command);
             Browser.Depth--;
+            Browser.CalculateResults(command);
+
 
             return command;
         }
@@ -70,7 +72,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
             var command = new DelegateBrowserCommand<T1, T2, TResult>(new BrowserCommandOptions(Constants.DefaultTraceSource, commandName), @delegate)
                 .Execute(Browser.Driver, p1, p2);
 
-            
+
             Browser.CalculateResults(command);
             Browser.Depth--;
 
@@ -96,9 +98,9 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
             Browser.Depth++;
             var command =  new DelegateBrowserCommand<T1, T2, T3, T4, TResult>(new BrowserCommandOptions(Constants.DefaultTraceSource, commandName), @delegate)
                 .Execute(Browser.Driver, p1, p2, p3, p4);
-
-            Browser.CalculateResults(command);
             Browser.Depth--;
+            Browser.CalculateResults(command);
+
 
             return command;
         }
@@ -173,9 +175,9 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
         {
             Browser.Depth++;
             var command = new DelegateBrowserCommand<TResult>(options, @delegate).Execute(Browser.Driver);
-
-            Browser.CalculateResults(command);
             Browser.Depth--;
+            Browser.CalculateResults(command);
+
 
             return command;
         }

@@ -20,7 +20,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmGlobalSearchPage(InteractiveBrowser browser)
             : base(browser)
         {
-            this.SwitchToContentFrame();
+            this.SwitchToContent();
         }
 
         /// <summary>

@@ -22,7 +22,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmRelatedGridPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToRelatedFrame();
+            SwitchToRelated();
         }
 
         /// <summary>

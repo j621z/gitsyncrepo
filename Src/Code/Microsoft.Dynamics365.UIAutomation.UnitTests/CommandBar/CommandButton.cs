@@ -22,7 +22,7 @@ namespace Microsoft.Dynamics365.UIAutomation.UnitTests
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
-                xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
+                xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts",1500);
 
                 xrmBrowser.CommandBar.ClickCommand("New");
                 xrmBrowser.ThinkTime(2000);

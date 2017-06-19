@@ -20,7 +20,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmGuidedHelpPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToDefaultContent();
+            SwitchToDefault();
         }
 
         public bool IsEnabled

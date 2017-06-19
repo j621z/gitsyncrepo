@@ -19,7 +19,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         public XrmActivityFeedPage(InteractiveBrowser browser)
             : base(browser)
         {
-            this.SwitchToContentFrame();
+            this.SwitchToContent();
         }
 
         public enum Tab

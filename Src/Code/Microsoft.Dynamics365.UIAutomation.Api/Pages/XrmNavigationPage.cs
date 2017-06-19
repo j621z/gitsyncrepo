@@ -21,7 +21,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmNavigationPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToDefaultContent();
+            SwitchToDefault();
         }
 
         public BrowserCommandResult<bool> OpenHomePage(int thinkTime = Constants.DefaultThinkTime)
@@ -93,7 +93,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 subAreas[subArea].Click();
 
-                SwitchToContentFrame();
+                SwitchToContent();
                 driver.WaitForPageToLoad();
 
                 return true;

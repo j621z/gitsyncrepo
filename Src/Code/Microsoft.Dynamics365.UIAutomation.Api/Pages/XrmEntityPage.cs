@@ -23,7 +23,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmEntityPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToContentFrame();
+            SwitchToContent();
         }
 
         private readonly string _navigateDownCssSelector = "img.recnav-down.ms-crm-ImageStrip-Down_Enabled_proxy";
@@ -65,7 +65,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 DismissAlertIfPresent();
 
                 // driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
-                SwitchToContentFrame();
+                SwitchToContent();
                 driver.WaitForPageToLoad();
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Entity.Form]),
                                             new TimeSpan(0, 0, 30),
@@ -88,7 +88,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Navigate Down"), driver =>
             {
-                SwitchToDefaultContent();
+                SwitchToDefault();
                 if (!driver.HasElement(By.CssSelector(_navigateDownCssSelector)))
                     return false;
 
@@ -114,7 +114,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Navigate Up"), driver =>
             {
-                SwitchToDefaultContent();
+                SwitchToDefault();
                 if (!driver.HasElement(By.CssSelector(_navigateUpCssSelector)))
                     return false;
 
@@ -375,7 +375,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions($"Popout"), driver =>
             {
-                SwitchToDefaultContent();
+                SwitchToDefault();
                 driver.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.Popout]))?.Click();
 
                 return true;
@@ -538,7 +538,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Close Entity"), driver =>
             {
-                SwitchToDefaultContent();
+                SwitchToDefault();
 
                 var filter = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Entity.Close]),
                     "Close Buttton is not available");
