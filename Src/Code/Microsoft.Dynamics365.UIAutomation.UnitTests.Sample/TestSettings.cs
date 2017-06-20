@@ -1,4 +1,5 @@
 ﻿using Microsoft.Dynamics365.UIAutomation.Browser;
+using System;
 
 namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample
 {
@@ -10,12 +11,13 @@ namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample
 
         public static string LookupField = "primarycontactid";
         public static string LookupName = "Rene Valdes (sample)";
+        private readonly static string browserType = System.Configuration.ConfigurationManager.AppSettings["BrowserType"].ToString();
 
         public static BrowserOptions Options = new BrowserOptions
-                                                {
-                                                    BrowserType = BrowserType.Chrome,
-                                                    PrivateMode = true,
-                                                    FireEvents = true
-                                                };
+        {
+            BrowserType = (BrowserType)Enum.Parse(typeof(BrowserType), browserType),
+            PrivateMode = true,
+            FireEvents = true
+        };
     }
 }
