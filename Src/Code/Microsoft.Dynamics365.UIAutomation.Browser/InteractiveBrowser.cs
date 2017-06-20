@@ -125,7 +125,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
         public string ActiveFrameId = "";
         internal Dictionary<int, int> CommandThinkTimes = new Dictionary<int, int>();
         internal DateTime? LastCommandEndTime;
-        internal int Depth = 1;
+        public int Depth = 1;
 
         #endregion Properties
 

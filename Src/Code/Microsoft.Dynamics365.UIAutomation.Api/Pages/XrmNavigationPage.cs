@@ -143,17 +143,17 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Navigation.SearchButton]),
                                             new TimeSpan(0,0,5),
-                                            d=> { driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SearchButton])).Click(); },
+                                            d=> { driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.SearchButton])); },
                                             d=> { throw new InvalidOperationException("The Global Search button is not available."); });
 
 
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Navigation.Search]),
                                             new TimeSpan(0, 0, 5),
                                             d => {
-                                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SearchLabel])).Click();
+                                                    driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.SearchLabel]));
                                                     driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Search])).SendKeys(searchText,true);
                                                     Thread.Sleep(500);
-                                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.StartSearch])).Click();
+                                                    driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.StartSearch]));
                                                 },
                                             d => { throw new InvalidOperationException("The Global Search text field is not available."); });
                 
@@ -230,8 +230,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 var list = new List<XrmLink>();
 
-                var mruSpan = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.TabGlobalMruNode]));
-                mruSpan.Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.TabGlobalMruNode]));
+               
 
                 var navContainer = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Navigation.Shuffle]));
                 var links = navContainer.FindElements(By.TagName("a"));
@@ -447,7 +447,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             //End bug fix
 
             driver.WaitUntilVisible(By.XPath(settingPath));
-            driver.FindElement(By.XPath(settingPath)).Click();
+            driver.ClickWhenAvailable(By.XPath(settingPath));
         }
     }
 }

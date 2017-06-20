@@ -39,7 +39,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             //Frames
             { "Frame_ContentPanel"       , "id(\"crmContentPanel\")"},
             { "Frame_ContentFrame"       , "id(\"currentcontentid\")"},
-            { "Frame_DialogFrame"       , "id(\"InlineDialog\")"},
+            { "Frame_DialogFrame"       , "id(\"InlineDialog[INDEX]\")"},
             { "Frame_QuickCreateFrame"       , "id(\"globalquickcreate_container_NavBarGloablQuickCreate\")"},
 
             //Navigation
