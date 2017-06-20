@@ -37,7 +37,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Grid.ViewSelector]),
                                          new TimeSpan(0,0,20),
-                                         d=> { d.FindElement(By.XPath(Elements.Xpath[Reference.Grid.ViewSelector])).Click(); },
+                                         d=> { d.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Grid.ViewSelector])); },
                                          d=> { throw new Exception("Unable to click the View Picker"); });                
 
                 driver.WaitUntilVisible(By.ClassName(Elements.CssClass[Reference.Grid.ViewContainer]),
@@ -46,7 +46,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                                         d => 
                                         {
                                             //Fix for Firefox not clicking the element in the event above. Issue with the driver. 
-                                            d.FindElement(By.XPath(Elements.Xpath[Reference.Grid.ViewSelector])).Click();
+                                            d.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Grid.ViewSelector]));
                                             driver.WaitUntilVisible(By.ClassName(Elements.CssClass[Reference.Grid.ViewContainer]), new TimeSpan(0, 0, 3), null, e => { throw new Exception("View Picker menu is not avilable"); });
 
                                         });
@@ -127,7 +127,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Refresh"), driver =>
             {
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.Refresh])).Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Grid.Refresh]));
 
                 return true;
             });
@@ -230,7 +230,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("OpenChart"), driver =>
             {
-                driver.FindElement(By.ClassName(Elements.CssClass[Reference.Grid.OpenChart])).Click();
+                driver.ClickWhenAvailable(By.ClassName(Elements.CssClass[Reference.Grid.OpenChart]));
 
                 return true;
             });
@@ -247,7 +247,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("CloseChart"), driver =>
             {
-                driver.FindElement(By.ClassName(Elements.CssClass[Reference.Grid.CloseChart])).Click();
+                driver.ClickWhenAvailable(By.ClassName(Elements.CssClass[Reference.Grid.CloseChart]));
 
                 return true;
             });
@@ -264,7 +264,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Pin"), driver =>
             {
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.DefaultViewIcon])).Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Grid.DefaultViewIcon]));
 
                 return true;
             });
@@ -283,7 +283,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             return this.Execute(GetOptions("Search"), driver =>
             {
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.FindCriteria])).SendKeys(searchCriteria);
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.FindCriteriaImg])).Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Grid.FindCriteriaImg]));
 
                 return true;
             });

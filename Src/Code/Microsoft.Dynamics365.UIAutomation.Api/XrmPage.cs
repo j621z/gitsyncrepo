@@ -64,8 +64,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var fieldElement = driver.FindElement(By.Id(field));
-                    fieldElement.Click();
+                    var fieldElement = driver.ClickWhenAvailable(By.Id(field));
 
                     //Check to see if focus is on field already
                     if (fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
@@ -110,8 +109,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 {
                     driver.WaitUntilVisible(By.Id(field));
 
-                    var fieldElement = driver.FindElement(By.Id(field));
-                    fieldElement.Click();
+                    var fieldElement = driver.ClickWhenAvailable(By.Id(field));
 
                     //Check to see if focus is on field already
                     if (fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
@@ -149,8 +147,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 if (driver.HasElement(By.Id(field.Id)))
                 {
-                    var fieldElement = driver.FindElement(By.Id(field.Id));
-                    fieldElement.Click();
+                    var fieldElement = driver.ClickWhenAvailable(By.Id(field.Id));
 
                     //Check to see if focus is on field already
                     if (fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
@@ -191,8 +188,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 if (driver.HasElement(By.Id(option.Name)))
                 {
-                    var input = driver.FindElement(By.Id(option.Name));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(option.Name));
 
                     var select = input.FindElement(By.TagName("select"));
                     var options = select.FindElements(By.TagName("option"));
@@ -224,7 +220,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if (!driver.HasElement(By.Id(control.Id)))
                     return false;
 
-                driver.FindElement(By.Id(control.Id)).Click();
+                driver.ClickWhenAvailable(By.Id(control.Id));
 
                 if (driver.HasElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.FlyOut])))
                 {
@@ -264,8 +260,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 {
                     driver.WaitUntilVisible(By.Id(control.Name));
 
-                    var input = driver.FindElement(By.Id(control.Name));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(control.Name));
 
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {control.Name} is not lookup");
@@ -317,8 +312,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if (driver.HasElement(By.Id(field)))
                 {
                     driver.WaitUntilVisible(By.Id(field));
-                    var fieldElement = driver.FindElement(By.Id(field));
-                    fieldElement.Click();
+                    var fieldElement = driver.ClickWhenAvailable(By.Id(field));
 
                     if (fieldElement.FindElements(By.TagName("textarea")).Count > 0)
                     {
@@ -352,8 +346,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 if (driver.HasElement(By.Id(field.Id)))
                 {
-                    var fieldElement = driver.FindElement(By.Id(field.Id));
-                    fieldElement.Click();
+                    var fieldElement = driver.ClickWhenAvailable(By.Id(field.Id));
 
                     //Check to see if focus is on field already
                     if (fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
@@ -392,7 +385,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 driver.WaitUntilVisible(By.Id(control.Id));
 
-                driver.FindElement(By.Id(control.Id)).Click();
+                driver.ClickWhenAvailable(By.Id(control.Id));
 
                 if (driver.HasElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.FlyOut])))
                 {
@@ -505,7 +498,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             Browser.Driver.SwitchTo().DefaultContent();
             //wait for the content panel to render
-            Browser.Driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.DialogFrame] + index));
+            Browser.Driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.DialogFrame].Replace("[INDEX]", index)));
 
             Browser.Driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.DialogFrameId].Replace("[INDEX]", index));
 

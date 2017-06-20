@@ -238,8 +238,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(field));
 
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
@@ -275,8 +274,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(field));
 
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
@@ -313,8 +311,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(field));
 
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
@@ -432,8 +429,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
-                    var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
                     
                     var lookupIcon = input.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.LookupRender]));
                     lookupIcon.Click();
@@ -466,8 +462,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
-                    var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
 
                     input.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.LookupRender])).Click();
 
@@ -499,8 +494,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
-                    var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
                     
                     input.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.LookupRender])).Click();
 

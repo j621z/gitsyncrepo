@@ -42,8 +42,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if(driver.FindElement(By.Id("stageAdvanceActionContainer")).GetAttribute("tabindex") == "-1")
                     throw new Exception("Business Process Flow Next Stage Element does not exist");
 
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.NextStage]))
-                      .Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.NextStage]));
 
                 return true;
             });
@@ -65,8 +64,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if (driver.HasElement(By.CssSelector(_previousStageCssSelector)))
                     throw new Exception("Business Process Flow Previous Stage Element does not exist");
 
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.PreviousStage]))
-                      .Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.PreviousStage]));
 
                 return true;
             });
@@ -86,8 +84,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.Hide])))
                     throw new Exception("Business Process Flow Next Stage Element does not exist");
 
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.Hide]))
-                      .Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.Hide]));
 
                 return true;
             });
@@ -109,8 +106,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if (!driver.HasElement(By.XPath(xpath)))
                     throw new Exception("Business Process Flow Select Stage Element does not exist");
 
-                driver.FindElement(By.XPath(xpath))
-                      .Click();
+                driver.ClickWhenAvailable(By.XPath(xpath));
 
                 return true;
             });
@@ -130,8 +126,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if (!driver.HasElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.SetActive])))
                     throw new Exception("Business Process Flow Set Active Element does not exist");
 
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.SetActive]))
-                    .Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.SetActive]));
 
                 return true;
             });

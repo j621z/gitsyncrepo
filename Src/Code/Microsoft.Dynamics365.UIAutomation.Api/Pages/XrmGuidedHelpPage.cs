@@ -103,7 +103,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                     if (webElement.Text == "OK")
                     {
-                        driver.FindElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButBegin])).Click();
+                        driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButBegin]));
                     }
                 }
 
@@ -130,7 +130,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                     // look for nav tour
                     if (driver.HasElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButBegin])))
                     {
-                        driver.FindElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButBegin])).Click();
+                        driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButBegin]));
 
                         Thread.Sleep(1000);
 
@@ -141,7 +141,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                     if (driver.HasElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButtonClose])))
                     {
-                        driver.FindElement(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButtonClose])).Click();
+                        driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.GuidedHelp.ButtonClose]));
 
                         Thread.Sleep(1000);
 

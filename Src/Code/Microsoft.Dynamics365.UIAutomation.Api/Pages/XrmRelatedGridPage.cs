@@ -116,7 +116,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Refresh"), driver =>
             {
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.Refresh])).Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Grid.Refresh]));
 
                 return true;
             });
