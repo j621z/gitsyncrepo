@@ -142,21 +142,21 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             return this.Execute(GetOptions($"Global Search: {searchText}"), driver =>
             {
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Navigation.SearchButton]),
-                                            new TimeSpan(0,0,5),
-                                            d=> { driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.SearchButton])); },
-                                            d=> { throw new InvalidOperationException("The Global Search button is not available."); });
+                    new TimeSpan(0,0,5),
+                    d=> { driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.SearchButton])); },
+                    d=> { throw new InvalidOperationException("The Global Search button is not available."); });
 
 
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Navigation.Search]),
-                                            new TimeSpan(0, 0, 5),
-                                            d => {
-                                                    driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.SearchLabel]));
-                                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Search])).SendKeys(searchText,true);
-                                                    Thread.Sleep(500);
-                                                    driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.StartSearch]));
-                                                },
-                                            d => { throw new InvalidOperationException("The Global Search text field is not available."); });
-                
+                    new TimeSpan(0, 0, 5),
+                    d => {
+                        driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.SearchLabel]));
+                        driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Search])).SendKeys(searchText,true);
+                        Thread.Sleep(500);
+                        driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.StartSearch]));
+                    },
+                    d => { throw new InvalidOperationException("The Global Search text field is not available."); });
+
                 return true;
             });
         }
@@ -199,10 +199,10 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if(item == null)
                 {
                     throw new InvalidOperationException($"No Entity with the name '{entity}' exists inside QuickCreate.");
-                }   
-                            
+                }
+
                 item.Click();
-                
+
                 return true;
             });
         }
@@ -231,7 +231,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 var list = new List<XrmLink>();
 
                 driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.TabGlobalMruNode]));
-               
+
 
                 var navContainer = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Navigation.Shuffle]));
                 var links = navContainer.FindElements(By.TagName("a"));
@@ -415,7 +415,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 driver.WaitUntilVisible(By.Id(area.GetAttribute("Id")));
 
-                driver.FindElement(By.Id("SFA")).Click();
+                driver.ClickWhenAvailable(By.Id("SFA"));
 
                 area.Click();
 

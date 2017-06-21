@@ -36,7 +36,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             return this.Execute(GetOptions("Cancel"), driver =>
             {
                 SwitchToDefault();
-                
+
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.QuickCreate.Cancel]))?.Click();
                 return true;
             });
@@ -355,8 +355,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if (!driver.HasElement(By.Id(control.Id)))
                     return false;
 
-                driver.FindElement(By.Id(control.Id)).Click();
-                
+                driver.ClickWhenAvailable(By.Id(control.Id));
+
                 if (driver.HasElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.FlyOut])))
                 {
                     var compcntrl =
@@ -381,6 +381,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 return true;
             });
         }
-        
+
     }
 }
