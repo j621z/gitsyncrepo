@@ -373,7 +373,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             return this.Execute(GetOptions($"Popout"), driver =>
             {
                 SwitchToDefault();
-                driver.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.Popout]))?.Click();
+                driver.ClickWhenAvailable(By.ClassName(Elements.CssClass[Reference.Entity.Popout]));
 
                 return true;
             });

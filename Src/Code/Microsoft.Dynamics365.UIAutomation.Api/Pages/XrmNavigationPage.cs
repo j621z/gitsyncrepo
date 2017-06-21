@@ -191,7 +191,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions($"Open Quick Create"), driver =>
             {
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.GlobalCreate]))?.Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.GlobalCreate]));
                 var area = driver.FindElement(By.ClassName("navActionGroupContainer"));
                 var items = area.FindElements(By.ClassName("nav-rowLabel"));
                 var item = items.FirstOrDefault(x => x.Text == entity);
@@ -265,7 +265,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions($"Open Guided Help"), driver =>
             {
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.GuidedHelp]))?.Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.GuidedHelp]));
 
                 return true;
             });
@@ -438,7 +438,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
         private static void OpenSettingsOption(IWebDriver driver, string settingPath)
         {
-            driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Settings]))?.Click();
+            driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.Settings]));
             Thread.Sleep(1000);
 
             //Bug: 563823 
