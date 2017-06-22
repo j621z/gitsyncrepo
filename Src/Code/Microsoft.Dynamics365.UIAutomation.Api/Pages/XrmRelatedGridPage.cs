@@ -22,7 +22,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmRelatedGridPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToRelatedFrame();
+            SwitchToRelated();
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Refresh"), driver =>
             {
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.Refresh])).Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Grid.Refresh]));
 
                 return true;
             });
@@ -389,7 +389,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             return this.Execute(GetOptions("ClickCommand"), driver =>
             {
                 if (moreCommands)
-                    driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.MoreCommands])).Click();
+                    driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.CommandBar.MoreCommands]));
 
                 var buttons = GetCommands(moreCommands).Value;
                 var button = buttons.FirstOrDefault(x => x.Text.ToLowerString() == name.ToLowerString());

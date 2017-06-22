@@ -23,7 +23,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmEntityPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToContentFrame();
+            SwitchToContent();
         }
 
         private readonly string _navigateDownCssSelector = "img.recnav-down.ms-crm-ImageStrip-Down_Enabled_proxy";
@@ -65,7 +65,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 DismissAlertIfPresent();
 
                 // driver.WaitFor(d => d.ExecuteScript(XrmPerformanceCenterPage.GetAllMarkersJavascriptCommand).ToString().Contains("AllSubgridsLoaded"));
-                SwitchToContentFrame();
+                SwitchToContent();
                 driver.WaitForPageToLoad();
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Entity.Form]),
                                             new TimeSpan(0, 0, 30),
@@ -88,7 +88,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Navigate Down"), driver =>
             {
-                SwitchToDefaultContent();
+                SwitchToDefault();
                 if (!driver.HasElement(By.CssSelector(_navigateDownCssSelector)))
                     return false;
 
@@ -114,7 +114,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Navigate Up"), driver =>
             {
-                SwitchToDefaultContent();
+                SwitchToDefault();
                 if (!driver.HasElement(By.CssSelector(_navigateUpCssSelector)))
                     return false;
 
@@ -238,8 +238,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(field));
 
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
@@ -275,8 +274,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(field));
 
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
@@ -313,8 +311,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(field));
 
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
@@ -375,8 +372,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions($"Popout"), driver =>
             {
-                SwitchToDefaultContent();
-                driver.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.Popout]))?.Click();
+                SwitchToDefault();
+                driver.ClickWhenAvailable(By.ClassName(Elements.CssClass[Reference.Entity.Popout]));
 
                 return true;
             });
@@ -432,8 +429,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
-                    var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
                     
                     var lookupIcon = input.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.LookupRender]));
                     lookupIcon.Click();
@@ -466,8 +462,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
-                    var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
 
                     input.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.LookupRender])).Click();
 
@@ -499,8 +494,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}")))
                 {
-                    var input = driver.FindElement(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id($"inlineLookupControlForSubgrid_{subgridName}"));
                     
                     input.FindElement(By.ClassName(Elements.CssClass[Reference.Entity.LookupRender])).Click();
 
@@ -538,7 +532,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Close Entity"), driver =>
             {
-                SwitchToDefaultContent();
+                SwitchToDefault();
 
                 var filter = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Entity.Close]),
                     "Close Buttton is not available");

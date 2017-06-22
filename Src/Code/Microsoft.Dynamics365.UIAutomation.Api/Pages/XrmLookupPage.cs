@@ -20,7 +20,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmLookupPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToDialogFrame();
+            SwitchToDialog();
         }
 
         /// <summary>
@@ -32,8 +32,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 var dictionary = new Dictionary<string, IWebElement>();
 
-                var entitySelectorContainer = driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.SelObjects]));
-                entitySelectorContainer.Click();
+                var entitySelectorContainer = driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.LookUp.SelObjects]));
 
                 Thread.Sleep(500);
 
@@ -132,7 +131,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             return this.Execute(GetOptions("Search"), driver =>
             {
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.FindCriteria])).SendKeys(searchCriteria);
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.FindCriteriaImg])).Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Grid.FindCriteriaImg]));
 
                 return true;
             });
@@ -264,7 +263,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Add"), driver =>
             {               
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.Begin])).Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.LookUp.Begin]));
 
                 return true;
             });
@@ -281,7 +280,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Select"), driver =>
             {
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.Add])).Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.LookUp.Add]));
                 
                 return true;
             });
@@ -293,7 +292,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Remove"), driver =>
             {
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.Remove])).Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.LookUp.Remove]));
                 
                 return true;
             });
@@ -305,7 +304,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("New"), driver =>
             {
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.New])).Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.LookUp.New]));
 
                 return true;
             });
@@ -317,7 +316,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Cancel"), driver =>
             {
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.LookUp.DialogCancel])).Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.LookUp.DialogCancel]));
 
                 return true;
             });
