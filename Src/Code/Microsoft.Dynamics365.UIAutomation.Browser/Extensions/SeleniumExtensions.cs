@@ -210,6 +210,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
             }
         }
 
+        public static bool IsVisible(this IWebElement driver, By by)
+        {
+            try
+            {
+                return driver.FindElement(by).Displayed;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
         public static void SetVisible(this IWebDriver driver, By by, bool visible)
         {
             IWebElement element = driver.FindElement(by);
