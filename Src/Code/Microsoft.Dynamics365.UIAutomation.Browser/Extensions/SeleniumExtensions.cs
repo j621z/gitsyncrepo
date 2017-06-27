@@ -210,11 +210,11 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
             }
         }
 
-        public static bool IsVisible(this IWebElement driver, By by)
+        public static bool IsVisible(this IWebElement element, By by)
         {
             try
             {
-                return driver.FindElement(by).Displayed;
+                return element.FindElement(by).Displayed;
             }
             catch (NoSuchElementException)
             {
