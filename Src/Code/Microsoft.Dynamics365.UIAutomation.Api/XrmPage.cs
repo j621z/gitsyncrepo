@@ -241,6 +241,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                             .ToList()
                             .FirstOrDefault(i => i.GetAttribute("id").Contains(field.Id));
 
+                        result?.Clear();
                         result?.SendKeys(field.Value);
                     }
 
