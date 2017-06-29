@@ -17,7 +17,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmPerformanceCenterPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToContentFrame();
+            SwitchToContent();
         }
 
         internal const string GetAllMarkersJavascriptCommand = "return Mscrm.Performance.PerformanceMarkerManager.get_instance().get_allMarkersJson();";
@@ -63,7 +63,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                     }
                     else
                     {
-                        SwitchToContentFrame();
+                        SwitchToContent();
 
                         _performanceMarkersVisible = false;
                     }

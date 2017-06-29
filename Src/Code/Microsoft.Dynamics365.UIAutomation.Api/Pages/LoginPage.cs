@@ -86,13 +86,13 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         {
             var redirect = false;
             bool online = !(this.OnlineDomains != null && !this.OnlineDomains.Any(d => uri.Host.EndsWith(d)));
-            
+
             driver.Navigate().GoToUrl(uri);
 
             if (online)
             {
                 if (driver.IsVisible(By.Id("use_another_account_link")))
-                    driver.FindElement(By.Id("use_another_account_link")).Click();
+                    driver.ClickWhenAvailable(By.Id("use_another_account_link"));
 
                 driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Login.UserId]),
                     $"The Office 365 sign in page did not return the expected result and the user '{username}' could not be signed in.");

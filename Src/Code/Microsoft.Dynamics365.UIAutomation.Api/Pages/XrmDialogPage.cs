@@ -19,7 +19,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmDialogPage(InteractiveBrowser browser)
             : base(browser)
         {
-            this.SwitchToDialogFrame();
+            this.SwitchToDialog();
         }
         /// <summary>
         /// Enum for the Assign Dialog to determine which type of record you will be assigning to. 
@@ -51,8 +51,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 SetValue(Elements.ElementId[Reference.Dialogs.CloseOpportunity.CloseDateId], closeDate);
                 SetValue(Elements.ElementId[Reference.Dialogs.CloseOpportunity.DescriptionId], description);
 
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Dialogs.CloseOpportunity.Ok]))
-                      .Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.CloseOpportunity.Ok]));
 
                 return true;
             });
@@ -78,8 +77,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 switch (to)
                 {
                     case AssignTo.Me:
-                        driver.FindElement(By.XPath(Elements.Xpath[Reference.Dialogs.Assign.Ok]))
-                          .Click();
+                        driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.Assign.Ok]));
+                       
                         break;
 
                     case AssignTo.User:
@@ -110,8 +109,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                                           new TimeSpan(0, 0, 10),
                                           "The Delete dialog is not available.");
 
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Dialogs.Delete.Ok]))
-                      .Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.Delete.Ok]));
 
                 return true;
             });
@@ -135,11 +133,9 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                  {
 
                      if (save)
-                         driver.FindElement(By.XPath(Elements.Xpath[Reference.Dialogs.DuplicateDetection.Save]))
-                                 .Click();
+                         driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.DuplicateDetection.Save]));
                      else
-                         driver.FindElement(By.XPath(Elements.Xpath[Reference.Dialogs.DuplicateDetection.Cancel]))
-                                 .Click();
+                         driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.DuplicateDetection.Cancel]));
                  });
 
                 return true;
@@ -163,13 +159,13 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                                           "The RunWorkflow dialog is not available.");
 
                 var lookup = this.Browser.GetPage<XrmLookupPage>();
-
+                Browser.Depth++;
                 lookup.Search(name);
                 lookup.SelectItem(name);
                 lookup.Add();
 
-                SwitchToDialogFrame(1);
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Dialogs.RunWorkflow.Confirm])).Click();
+                SwitchToDialog(1);
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.RunWorkflow.Confirm]));
                 return true;
             });
         }

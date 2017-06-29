@@ -21,7 +21,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmNavigationPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToDefaultContent();
+            SwitchToDefault();
         }
 
         public BrowserCommandResult<bool> OpenHomePage(int thinkTime = Constants.DefaultThinkTime)
@@ -93,7 +93,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 subAreas[subArea].Click();
 
-                SwitchToContentFrame();
+                SwitchToContent();
                 driver.WaitForPageToLoad();
 
                 return true;
@@ -118,6 +118,11 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 var subItems = element.FindElements(By.ClassName("nav-rowBody"));
 
                 var related = subItems.Where(x => x.Text == relatedArea).FirstOrDefault();
+                if (related == null)
+                {
+                    throw new InvalidOperationException($"No relatedarea with the name '{relatedArea}' exists.");
+                }
+
                 Browser.ActiveFrameId = related.GetAttribute("id").Replace("Node_nav", "area");
                 related?.Click();
 
@@ -137,21 +142,21 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             return this.Execute(GetOptions($"Global Search: {searchText}"), driver =>
             {
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Navigation.SearchButton]),
-                                            new TimeSpan(0,0,5),
-                                            d=> { driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SearchButton])).Click(); },
-                                            d=> { throw new InvalidOperationException("The Global Search button is not available."); });
+                    new TimeSpan(0,0,5),
+                    d=> { driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.SearchButton])); },
+                    d=> { throw new InvalidOperationException("The Global Search button is not available."); });
 
 
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Navigation.Search]),
-                                            new TimeSpan(0, 0, 5),
-                                            d => {
-                                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.SearchLabel])).Click();
-                                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Search])).SendKeys(searchText,true);
-                                                    Thread.Sleep(500);
-                                                    driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.StartSearch])).Click();
-                                                },
-                                            d => { throw new InvalidOperationException("The Global Search text field is not available."); });
-                
+                    new TimeSpan(0, 0, 5),
+                    d => {
+                        driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.SearchLabel]));
+                        driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Search])).SendKeys(searchText,true);
+                        Thread.Sleep(500);
+                        driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.StartSearch]));
+                    },
+                    d => { throw new InvalidOperationException("The Global Search text field is not available."); });
+
                 return true;
             });
         }
@@ -186,7 +191,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions($"Open Quick Create"), driver =>
             {
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.GlobalCreate]))?.Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.GlobalCreate]));
                 var area = driver.FindElement(By.ClassName("navActionGroupContainer"));
                 var items = area.FindElements(By.ClassName("nav-rowLabel"));
                 var item = items.FirstOrDefault(x => x.Text == entity);
@@ -194,10 +199,10 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if(item == null)
                 {
                     throw new InvalidOperationException($"No Entity with the name '{entity}' exists inside QuickCreate.");
-                }   
-                            
+                }
+
                 item.Click();
-                
+
                 return true;
             });
         }
@@ -225,8 +230,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 var list = new List<XrmLink>();
 
-                var mruSpan = driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.TabGlobalMruNode]));
-                mruSpan.Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.TabGlobalMruNode]));
+
 
                 var navContainer = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Navigation.Shuffle]));
                 var links = navContainer.FindElements(By.TagName("a"));
@@ -260,7 +265,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions($"Open Guided Help"), driver =>
             {
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.GuidedHelp]))?.Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.GuidedHelp]));
 
                 return true;
             });
@@ -410,7 +415,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 driver.WaitUntilVisible(By.Id(area.GetAttribute("Id")));
 
-                driver.FindElement(By.Id("SFA")).Click();
+                driver.ClickWhenAvailable(By.Id("SFA"));
 
                 area.Click();
 
@@ -433,7 +438,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
         private static void OpenSettingsOption(IWebDriver driver, string settingPath)
         {
-            driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Settings]))?.Click();
+            driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.Settings]));
             Thread.Sleep(1000);
 
             //Bug: 563823 
@@ -442,7 +447,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             //End bug fix
 
             driver.WaitUntilVisible(By.XPath(settingPath));
-            driver.FindElement(By.XPath(settingPath)).Click();
+            driver.ClickWhenAvailable(By.XPath(settingPath));
         }
     }
 }

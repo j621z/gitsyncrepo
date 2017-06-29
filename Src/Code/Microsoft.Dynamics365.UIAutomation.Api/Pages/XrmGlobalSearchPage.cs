@@ -20,7 +20,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmGlobalSearchPage(InteractiveBrowser browser)
             : base(browser)
         {
-            this.SwitchToContentFrame();
+            this.SwitchToContent();
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 var picklist = driver.FindElement(By.XPath(Elements.Xpath[Reference.GlobalSearch.Filter]));
                 var options = driver.FindElements(By.TagName("option"));
-                
+
                 picklist.Click();
 
                 IWebElement select = options.FirstOrDefault(x => x.Text == entity);
@@ -58,7 +58,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Searches for the specified criteria in Global Search.
         /// </summary>
         /// <param name="criteria">Search criteria.</param>
-         /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param> time.</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param> time.</param>
         /// <example>xrmBrowser.GlobalSearch.Search("Contoso");</example>
         public BrowserCommandResult<bool> Search(string criteria, int thinkTime = Constants.DefaultThinkTime)
         {
@@ -66,15 +66,14 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions($"Global Search"), driver =>
             {
-                if (!driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.GlobalSearch.SearchText]),new TimeSpan(0,0,10)))
+                if (!driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.GlobalSearch.SearchText]), new TimeSpan(0, 0, 10)))
                     throw new InvalidOperationException("Search Text Box is not available");
 
-                var searchText = driver.FindElement(By.XPath(Elements.Xpath[Reference.GlobalSearch.SearchText]));
+                var searchText = driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.GlobalSearch.SearchText]));
 
-                searchText.Click();
                 searchText.SendKeys(criteria, true);
 
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.GlobalSearch.SearchButton])).Click();
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.GlobalSearch.SearchButton]));
 
                 return true;
             });
@@ -101,20 +100,20 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 var entityContainers = resultsContainer.FindElements(By.Id(Elements.ElementId[Reference.GlobalSearch.EntityContainersId]));
                 var entityContainer = entityContainers.FirstOrDefault(x => x.FindElement(By.Id(Elements.ElementId[Reference.GlobalSearch.EntityNameId])).Text.Trim() == entity);
 
-                if(entityContainer==null)
+                if (entityContainer == null)
                     throw new InvalidOperationException($"Entity {entity} was not found in the results");
 
-                var records =  entityContainer?.FindElements(By.Id(Elements.ElementId[Reference.GlobalSearch.RecordNameId]));
+                var records = entityContainer?.FindElements(By.Id(Elements.ElementId[Reference.GlobalSearch.RecordNameId]));
 
                 if (records == null)
                     throw new InvalidOperationException($"No records found for entity {entity}");
 
                 records[index].Click();
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Entity.Form]),
-                                            new TimeSpan(0, 0, 30),
-                                            null,
-                                            d => { throw new Exception("CRM Record is Unavailable or not finished loading. Timeout Exceeded"); }
-                                        );
+                    new TimeSpan(0, 0, 30),
+                    null,
+                    d => { throw new Exception("CRM Record is Unavailable or not finished loading. Timeout Exceeded"); }
+                );
 
                 return true;
             });

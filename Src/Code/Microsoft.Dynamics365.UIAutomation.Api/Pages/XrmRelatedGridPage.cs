@@ -22,7 +22,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmRelatedGridPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToRelatedFrame();
+            SwitchToRelated();
         }
 
         /// <summary>
@@ -85,8 +85,9 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 var views = OpenViewPicker().Value;
 
                 if (!views.ContainsKey(viewName))
-                    return false;
-
+                {
+                    throw new InvalidOperationException($"No view with the name '{viewName}' exists.");
+                }
                 var viewId = views[viewName];
 
                 // Get the LI element with the ID {guid} for the ViewId.
@@ -114,8 +115,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             Browser.ThinkTime(thinkTime);
 
             return this.Execute(GetOptions("Refresh"), driver =>
-            {                
-                driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.Refresh])).Click();
+            {
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Grid.Refresh]));
 
                 return true;
             });
@@ -175,7 +176,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 // driver.FindElements(By.ClassName("ms-crm-List-SelectedRow")).Count == 0
                 // but this function doesn't check it.
                 var selectAll = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.ToggleSelectAll]),
-                          "The Toggle SelectAll is not available.");
+                    "The Toggle SelectAll is not available.");
 
                 selectAll.Click();
 
@@ -236,10 +237,10 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             Browser.ThinkTime(thinkTime);
 
             return this.Execute(GetOptions($"Sort by {columnName}"), driver =>
-            {                
+            {
                 var sortCols = driver.FindElements(By.ClassName(Elements.CssClass[Reference.Grid.SortColumn]));
                 var sortCol = sortCols.Where(x => x.GetAttribute("fieldname") == columnName).FirstOrDefault();
-                
+
                 if (sortCol == null)
                     throw new InvalidOperationException($"Column: {columnName} Does not exist");
                 else
@@ -346,8 +347,10 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                     return true;
                 }
-
-                return false;
+                else
+                {
+                    throw new InvalidOperationException($"No record with the index '{index}' exists.");
+                }
             });
         }
 
@@ -386,10 +389,10 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             return this.Execute(GetOptions("ClickCommand"), driver =>
             {
                 if (moreCommands)
-                    driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.MoreCommands])).Click();
+                    driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.CommandBar.MoreCommands]));
 
                 var buttons = GetCommands(moreCommands).Value;
-                var button = buttons.Where(x => x.Text.Contains(name)).FirstOrDefault();
+                var button = buttons.FirstOrDefault(x => x.Text.ToLowerString() == name.ToLowerString());
 
                 if (button == null) { throw new Exception($"Command Button with name: {name} does not exist."); }
 

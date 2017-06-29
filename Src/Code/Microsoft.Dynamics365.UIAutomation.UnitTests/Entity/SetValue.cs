@@ -37,6 +37,7 @@ namespace Microsoft.Dynamics365.UIAutomation.UnitTests
                 };
                 xrmBrowser.Entity.SetValue("subject", "Test API Lead");
                 xrmBrowser.Entity.SetValue(new CompositeControl() { Id = "fullname", Fields = fields });
+                xrmBrowser.Entity.SetValue("emailaddress1", "test@contosoo.com");               
                 xrmBrowser.Entity.SetValue("mobilephone", "555-555-5555");
                 xrmBrowser.Entity.SetValue("description", "Test lead creation with API commands");
 

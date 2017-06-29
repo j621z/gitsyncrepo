@@ -64,8 +64,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var fieldElement = driver.FindElement(By.Id(field));
-                    fieldElement.Click();
+                    var fieldElement = driver.ClickWhenAvailable(By.Id(field));
 
                     //Check to see if focus is on field already
                     if (fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
@@ -111,8 +110,13 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                     driver.WaitUntilVisible(By.Id(field));
 
                     var fieldElement = driver.FindElement(By.Id(field));
+                    if (fieldElement.IsVisible(By.TagName("a")))
+                    {
+                        IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+                        var element = fieldElement.FindElement(By.TagName("a"));
+                        js.ExecuteScript("arguments[0].setAttribute('style', 'pointer-events: none; cursor: default')", element);
+                    }
                     fieldElement.Click();
-
                     //Check to see if focus is on field already
                     if (fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
                         fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])).Click();
@@ -149,8 +153,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 if (driver.HasElement(By.Id(field.Id)))
                 {
-                    var fieldElement = driver.FindElement(By.Id(field.Id));
-                    fieldElement.Click();
+                    var fieldElement = driver.ClickWhenAvailable(By.Id(field.Id));
 
                     //Check to see if focus is on field already
                     if (fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
@@ -191,8 +194,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 if (driver.HasElement(By.Id(option.Name)))
                 {
-                    var input = driver.FindElement(By.Id(option.Name));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(option.Name));
 
                     var select = input.FindElement(By.TagName("select"));
                     var options = select.FindElements(By.TagName("option"));
@@ -224,7 +226,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if (!driver.HasElement(By.Id(control.Id)))
                     return false;
 
-                driver.FindElement(By.Id(control.Id)).Click();
+                driver.ClickWhenAvailable(By.Id(control.Id));
 
                 if (driver.HasElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.FlyOut])))
                 {
@@ -264,8 +266,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 {
                     driver.WaitUntilVisible(By.Id(control.Name));
 
-                    var input = driver.FindElement(By.Id(control.Name));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(control.Name));
 
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {control.Name} is not lookup");
@@ -286,7 +287,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                         dialogItem.Click();
                     }
                     else
-                    { 
+                    {
                         if (dialogItems.Count < control.Index)
                             throw new InvalidOperationException($"List does not have {control.Index + 1} items.");
 
@@ -318,11 +319,10 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 {
                     driver.WaitUntilVisible(By.Id(field));
                     var fieldElement = driver.FindElement(By.Id(field));
-                    fieldElement.Click();
 
                     if (fieldElement.FindElements(By.TagName("textarea")).Count > 0)
                     {
-                        text = fieldElement.FindElement(By.TagName("textarea")).GetAttribute("value") ;
+                        text = fieldElement.FindElement(By.TagName("textarea")).GetAttribute("value");
                     }
                     else
                     {
@@ -352,8 +352,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 if (driver.HasElement(By.Id(field.Id)))
                 {
-                    var fieldElement = driver.FindElement(By.Id(field.Id));
-                    fieldElement.Click();
+                    var fieldElement = driver.ClickWhenAvailable(By.Id(field.Id));
 
                     //Check to see if focus is on field already
                     if (fieldElement.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
@@ -392,7 +391,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 driver.WaitUntilVisible(By.Id(control.Id));
 
-                driver.FindElement(By.Id(control.Id)).Click();
+                driver.ClickWhenAvailable(By.Id(control.Id));
 
                 if (driver.HasElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.FlyOut])))
                 {
@@ -432,7 +431,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if (driver.HasElement(By.Id(option.Name)))
                 {
                     var input = driver.FindElement(By.Id(option.Name));
-                    text = input.Text;                
+                    text = input.Text;
                 }
                 else
                     throw new InvalidOperationException($"Field: {option.Name} Does not exist");
@@ -456,7 +455,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if (driver.HasElement(By.Id(control.Name)))
                 {
                     var input = driver.FindElement(By.Id(control.Name));
-                    lookupValue = input.Text;                  
+                    lookupValue = input.Text;
                 }
                 else
                     throw new InvalidOperationException($"Field: {control.Name} Does not exist");
@@ -470,60 +469,67 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         public bool SwitchToContentFrame()
         {
-            return this.Execute("Switch to content frame", driver =>
-            {
-                driver.SwitchTo().DefaultContent();
-                //wait for the content panel to render
-                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.ContentPanel]));
+            return this.Execute("Switch to content frame", driver => SwitchToContent());
+        }
 
-                //find the crmContentPanel and find out what the current content frame ID is - then navigate to the current content frame
-                var currentContentFrame = driver.FindElement(By.XPath(Elements.Xpath[Reference.Frames.ContentPanel]))
-                                                .GetAttribute(Elements.ElementId[Reference.Frames.ContentFrameId]);
+        internal bool SwitchToContent()
+        {
+            Browser.Driver.SwitchTo().DefaultContent();
+            //wait for the content panel to render
+            Browser.Driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.ContentPanel]));
 
-                driver.SwitchTo().Frame(currentContentFrame);
+            //find the crmContentPanel and find out what the current content frame ID is - then navigate to the current content frame
+            var currentContentFrame = Browser.Driver.FindElement(By.XPath(Elements.Xpath[Reference.Frames.ContentPanel]))
+                .GetAttribute(Elements.ElementId[Reference.Frames.ContentFrameId]);
 
-                return true;
-            });
+            Browser.Driver.SwitchTo().Frame(currentContentFrame);
+
+            return true;
         }
 
         /// <summary>
         /// Switches to dialog frame in the CRM application.
         /// </summary>
 
-        public bool SwitchToDialogFrame(int frameIndex = 0)
+        public bool SwitchToDialogFrame()
         {
-            return this.Execute("Switch to dialog frame", driver =>
-            {
-                var index = "";
-                if (frameIndex > 0)
-                    index = frameIndex.ToString();
-
-                driver.SwitchTo().DefaultContent();
-                //wait for the content panel to render
-                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.DialogFrame]+index));
-
-                driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.DialogFrameId].Replace("[INDEX]",index));
-
-                return true;
-            });
+            return this.Execute("Switch to dialog frame", driver => SwitchToDialog(0));
         }
 
+        internal bool SwitchToDialog(int frameIndex = 0)
+        {
+            var index = "";
+            if (frameIndex > 0)
+                index = frameIndex.ToString();
+
+            Browser.Driver.SwitchTo().DefaultContent();
+            //wait for the content panel to render
+            Browser.Driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.DialogFrame].Replace("[INDEX]", index)));
+
+            Browser.Driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.DialogFrameId].Replace("[INDEX]", index));
+
+            return true;
+
+        }
         /// <summary>
         /// Switches to Quick Find frame in the CRM application.
         /// </summary>
 
         public bool SwitchToQuickCreateFrame()
         {
-            return this.Execute("Switch to Quick Create Frame", driver =>
-            {
-                driver.SwitchTo().DefaultContent();
-                //wait for the content panel to render
-                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.QuickCreateFrame]));
+            return this.Execute("Switch to Quick Create Frame", driver => SwitchToQuickCreate());
+        }
 
-                driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.QuickCreateFrameId]);
+        internal bool SwitchToQuickCreate()
+        {
+            Browser.Driver.SwitchTo().DefaultContent();
+            //wait for the content panel to render
+            Browser.Driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.QuickCreateFrame]));
 
-                return true;
-            });
+            Browser.Driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.QuickCreateFrameId]);
+
+            return true;
+
         }
 
         /// <summary>
@@ -532,30 +538,35 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public bool SwitchToRelatedFrame()
         {
 
-            SwitchToContentFrame();
+            return this.Execute("Switch to Related Frame", driver => SwitchToRelated());
 
-            return this.Execute("Switch to Related Frame", driver =>
-            {
-                //wait for the content panel to render
-                driver.WaitUntilAvailable(By.Id(Browser.ActiveFrameId));
-
-                driver.SwitchTo().Frame(Browser.ActiveFrameId + "Frame");
-
-                return true;
-            });
         }
+
+        internal bool SwitchToRelated()
+        {
+            SwitchToContent();
+
+            Browser.Driver.WaitUntilAvailable(By.Id(Browser.ActiveFrameId));
+
+            Browser.Driver.SwitchTo().Frame(Browser.ActiveFrameId + "Frame");
+
+            return true;
+        }
+
 
         /// <summary>
         /// SwitchToDefaultContent
         /// </summary>
         public bool SwitchToDefaultContent()
         {
-            return this.Execute("Switch to Default Content", driver =>
-            {
-                driver.SwitchTo().DefaultContent();
+            return this.Execute("Switch to Default Content", driver => SwitchToDefault());
+        }
 
-                return true;
-            });
+        internal bool SwitchToDefault()
+        {
+            Browser.Driver.SwitchTo().DefaultContent();
+
+            return true;
         }
 
         internal BrowserCommandOptions GetOptions(string commandName)
@@ -568,7 +579,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 true,
                 typeof(NoSuchElementException), typeof(StaleElementReferenceException));
         }
-
 
 
         /// <summary>
@@ -598,6 +608,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             return dictionary;
         }
 
-       
+
     }
 }

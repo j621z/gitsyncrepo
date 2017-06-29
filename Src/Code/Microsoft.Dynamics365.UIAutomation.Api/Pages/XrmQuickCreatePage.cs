@@ -21,7 +21,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmQuickCreatePage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToQuickCreateFrame();
+            SwitchToQuickCreate();
         }
 
         /// <summary>
@@ -35,8 +35,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Cancel"), driver =>
             {
-                SwitchToDefaultContent();
-                
+                SwitchToDefault();
+
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.QuickCreate.Cancel]))?.Click();
                 return true;
             });
@@ -53,7 +53,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Save"), driver =>
             {
-                SwitchToDefaultContent();
+                SwitchToDefault();
 
                 driver.FindElement(By.XPath(Elements.Xpath[Reference.QuickCreate.Save]))?.Click();
                 return true;
@@ -72,8 +72,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(field));
 
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
@@ -109,8 +108,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(field));
 
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
@@ -147,8 +145,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(field));
 
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.LookupRenderClass])) == null)
                         throw new InvalidOperationException($"Field: {field} is not lookup");
@@ -235,8 +232,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(field));
 
                     //Check to see if focus is on field already
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
@@ -267,8 +263,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field)))
                 {
-                    var input = driver.FindElement(By.Id(field));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(field));
 
                     //Check to see if focus is on field already
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
@@ -299,8 +294,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(field.Id)))
                 {
-                    var input = driver.FindElement(By.Id(field.Id));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(field.Id));
 
                     //Check to see if focus is on field already
                     if (input.FindElement(By.ClassName(Elements.CssClass[Reference.SetValue.EditClass])) != null)
@@ -331,8 +325,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             {
                 if (driver.HasElement(By.Id(option.Name)))
                 {
-                    var input = driver.FindElement(By.Id(option.Name));
-                    input.Click();
+                    var input = driver.ClickWhenAvailable(By.Id(option.Name));
 
                     var select = input.FindElement(By.TagName("select"));
                     var options = select.FindElements(By.TagName("option"));
@@ -362,8 +355,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 if (!driver.HasElement(By.Id(control.Id)))
                     return false;
 
-                driver.FindElement(By.Id(control.Id)).Click();
-                
+                driver.ClickWhenAvailable(By.Id(control.Id));
+
                 if (driver.HasElement(By.Id(control.Id + Elements.ElementId[Reference.SetValue.FlyOut])))
                 {
                     var compcntrl =
@@ -388,6 +381,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 return true;
             });
         }
-        
+
     }
 }

@@ -27,7 +27,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         public XrmCommandBarPage(InteractiveBrowser browser)
             : base(browser)
         {
-            SwitchToDefaultContent();
+            SwitchToDefault();
         }
 
 
@@ -69,7 +69,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             return this.Execute(GetOptions("Click Command"), driver => 
             {
                 if (moreCommands)
-                    driver.FindElement(By.XPath(Elements.Xpath[Reference.CommandBar.MoreCommands])).Click();
+                    driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.CommandBar.MoreCommands]));
 
                 var buttons = GetCommands(moreCommands).Value;
                 var button = buttons.FirstOrDefault(x => x.Text.ToLowerString() == name.ToLowerString());
