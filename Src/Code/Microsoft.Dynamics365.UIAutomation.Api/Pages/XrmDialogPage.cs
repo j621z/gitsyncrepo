@@ -30,6 +30,13 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             User,
             Team
         }
+
+        public enum ReportRecords
+        {
+            AllRecords,
+            SelectedRecords,
+            AllRecordsOnPage
+        }
         /// <summary>
         /// Closes the opportunity you are currently working on.
         /// </summary>
@@ -166,6 +173,43 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 SwitchToDialog(1);
                 driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.RunWorkflow.Confirm]));
+                return true;
+            });
+        }
+
+
+        /// <summary>
+        /// Run Work flow
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="thinkTime">Used to simulate a wait time between human interactions. The Default is 2 seconds.</param>
+        /// <example>xrmBrowser.Dialogs.RunWorkflow("Account Set Phone Number");</example>
+        public BrowserCommandResult<bool> RunReport(ReportRecords records, int thinkTime = Constants.DefaultThinkTime)
+        {
+            this.Browser.ThinkTime(thinkTime);
+
+            return this.Execute(GetOptions("Run Report"), driver =>
+            {
+                driver.WaitUntilAvailable(By.Name(Elements.Name[Reference.Dialogs.RunReport.Header]),
+                                          new TimeSpan(0, 0, 10),
+                                          "The Run Report dialog is not available.");
+                switch (records)
+                {
+                    case ReportRecords.AllRecords:
+                        driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.RunReport.Default]));
+
+                        break;
+
+                    case ReportRecords.SelectedRecords:
+                        driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.RunReport.Selected]));
+                        break;
+
+                    case ReportRecords.AllRecordsOnPage:
+                        driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.RunReport.View]));
+                        break;
+                }
+                
+                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.RunReport.Confirm]));
                 return true;
             });
         }

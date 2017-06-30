@@ -180,6 +180,7 @@
     <Compile Include="EndUserScenerios\UpdateContact.cs" />
     <Compile Include="EndUserScenerios\UpdateLead.cs" />
     <Compile Include="EndUserScenerios\UpdateOpportunity.cs" />
+    <Compile Include="Reports\Reports.cs" />
     <Compile Include="TestSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Views.cs" />

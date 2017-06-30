@@ -378,6 +378,8 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             return this.Execute(GetOptions("Open Grid Record"), driver =>
             {
+                var rowType = driver.FindElement(By.XPath(Elements.Xpath[Reference.Grid.FirstRow])).GetAttribute("otypename");
+
                 var itemsTable = driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Grid.GridBodyTable]));
                 var links = itemsTable.FindElements(By.TagName("a"));
 
@@ -409,14 +411,16 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
                 if (clicked)
                 {
-                    SwitchToContent();
-                    driver.WaitForPageToLoad();
-                    driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Entity.Form]), 
-                                                new TimeSpan(0,0,30),
-                                                null, 
-                                                d=> { throw new Exception("CRM Record is Unavailable or not finished loading. Timeout Exceeded"); }
-                                            );
-                    
+                    if (rowType != "report")
+                    {
+                        SwitchToContent();
+                        driver.WaitForPageToLoad();
+                        driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Entity.Form]),
+                                                    new TimeSpan(0, 0, 30),
+                                                    null,
+                                                    d => { throw new Exception("CRM Record is Unavailable or not finished loading. Timeout Exceeded"); }
+                                                );
+                    }
                     return true;
                 }
                else

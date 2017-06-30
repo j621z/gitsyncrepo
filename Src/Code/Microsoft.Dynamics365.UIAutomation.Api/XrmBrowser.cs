@@ -240,6 +240,18 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
         #endregion Document
 
+        #region Report
+
+        public XrmReportPage Report
+        {
+            get
+            {
+                return this.GetPage<XrmReportPage>();
+            }
+        }
+
+        #endregion Report
+
     }
 
 
