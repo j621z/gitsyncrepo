@@ -62,7 +62,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "Nav_TabGlobalMruNode"       , "id(\"TabGlobalMruNode\")"},
             { "Nav_GlobalCreate"       , "id(\"navTabGlobalCreateImage\")"},
             { "Nav_AdvFindSearch"       , "id(\"AdvFindSearch\")"},
-            { "Nav_FindCriteria"       , "id(\"findCriteriaButton\")"},
             { "Nav_Shuffle"       , "id(\"nav-shuffle\")"},
             { "Nav_TabNode"       , "id(\"TabNode_tab0Tab\")"},
             { "Nav_TabSearch"       , "id(\"TabSearch\")"},
@@ -367,7 +366,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static string TabGlobalMruNode = "Nav_TabGlobalMruNode";
             public static string GlobalCreate = "Nav_GlobalCreate";
             public static string AdvFindSearch = "Nav_AdvFindSearch";
-            public static string FindCriteria = "Nav_FindCriteria";
             public static string Shuffle = "Nav_Shuffle";
             public static string TabNode = "Nav_TabNode";
             public static string SearchLabel = "Nav_SearchLabel";
