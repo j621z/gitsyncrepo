@@ -505,9 +505,10 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             Browser.Driver.SwitchTo().DefaultContent();
             //wait for the content panel to render
-            Browser.Driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.DialogFrame].Replace("[INDEX]", index)));
 
-            Browser.Driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.DialogFrameId].Replace("[INDEX]", index));
+            Browser.Driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Frames.DialogFrame].Replace("[INDEX]", index)),
+                                              new TimeSpan(0, 0, 2),
+                                              d => { Browser.Driver.SwitchTo().Frame(Elements.ElementId[Reference.Frames.DialogFrameId].Replace("[INDEX]", index)); });
 
             return true;
 
