@@ -150,7 +150,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 driver.WaitUntilClickable(By.XPath(Elements.Xpath[Reference.Navigation.Search]),
                     new TimeSpan(0, 0, 5),
                     d => {
-                        driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.SearchLabel]));
+                        driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.Search]));
                         driver.FindElement(By.XPath(Elements.Xpath[Reference.Navigation.Search])).SendKeys(searchText,true);
                         Thread.Sleep(500);
                         driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.Navigation.StartSearch]));
