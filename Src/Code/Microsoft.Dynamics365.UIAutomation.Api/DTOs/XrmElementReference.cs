@@ -29,6 +29,10 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "Dialog_DuplicateOk"       , "id(\"butBegin\")"},
             { "Dialog_DuplicateCancel"       , "id(\"cmdDialogCancel\")"},
             { "Dialog_ConfirmWorkflow"       , "id(\"butBegin\")"},
+            { "Dialog_ConfirmReport"       , "id(\"butBegin\")"},
+            { "Dialog_AllRecords"       , "id(\"reportDefault\")"},
+            { "Dialog_SelectedRecords"       , "id(\"reportSelected\")"},
+            { "Dialog_ViewRecords"       , "id(\"reportView\")"},
 
             //GuidedHelp
             { "GuidedHelp_MarsOverlay"       , "id(\"marsOverlay\")"},
@@ -88,7 +92,9 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "Grid_ViewSelector"   , "id(\"crmGrid_SavedNewQuerySelector\")" },
             { "Grid_Refresh"   , "id(\"grid_refresh\")" },
             { "Grid_ViewSelectorContainer"   , "id(\"viewSelectorContainer\")" },
-                   
+            { "Grid_FirstRow", "id(\"gridBodyTable\")/tbody/tr[1]"},
+
+                               
             //Entity
             { "Entity_Form"       , "id(\"tab0\")"},
             { "Entity_Close"       , "id(\"closeButton\")"},
@@ -163,6 +169,10 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "LookUp_Add", "id(\"btnAdd\")"},
             { "LookUp_Begin", "id(\"butBegin\")"},
 
+            
+            //Reports
+            { "Report_Close", "id(\"btnCancel\")"},
+            { "Report_RunReport", "id(\"btnRun\")"},
         };
 
         public static Dictionary<string, string> ElementId = new Dictionary<string, string>()
@@ -253,6 +263,11 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "Office365Navigation_AppItemClass"       , "o365cs-nav-appItem"},
 
         };
+
+        public static Dictionary<string, string> Name = new Dictionary<string, string>()
+        {
+                    { "Dialog_ReportHeader", "crmDialog" }
+        };
     }
 
     public static class Reference
@@ -304,6 +319,14 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static class RunWorkflow
             {
                 public static string Confirm = "Dialog_ConfirmWorkflow";
+            }
+            public static class RunReport
+            {
+                public static string Header = "Dialog_ReportHeader";
+                public static string Confirm = "Dialog_ConfirmReport";
+                public static string Default = "Dialog_AllRecords";
+                public static string Selected = "Dialog_SelectedRecords";
+                public static string View = "Dialog_ViewRecords";
             }
 
         }
@@ -401,6 +424,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static string PrimaryField = "Grid_PrimaryField";
             public static string DataColumn = "Grid_DataColumnClass";
             public static string ViewSelectorContainer = "Grid_ViewSelectorContainer";
+            public static string FirstRow = "Grid_FirstRow";
 
         }
 
@@ -520,6 +544,11 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static string SignIn = "Login_SignIn";
             public static string CrmMainPage = "Login_CrmMainPage";
 
+        }
+        public static class Report
+        {
+            public static string Close = "Report_Close";
+            public static string RunReport = "Report_RunReport";
         }
     }
 }
