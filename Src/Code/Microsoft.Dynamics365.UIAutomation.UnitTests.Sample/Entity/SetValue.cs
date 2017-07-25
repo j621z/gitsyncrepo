@@ -37,6 +37,7 @@ namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample.Entity
                 };
                 xrmBrowser.Entity.SetValue("subject", "Test API Lead");
                 xrmBrowser.Entity.SetValue(new CompositeControl() { Id = "fullname", Fields = fields });
+                xrmBrowser.Entity.SetValue("emailaddress1", "test@contoso.com");
                 xrmBrowser.Entity.SetValue("mobilephone", "555-555-5555");
                 xrmBrowser.Entity.SetValue("description", "Test lead creation with API commands");
 
@@ -82,7 +83,7 @@ namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample.Entity
                 xrmBrowser.ThinkTime(5000);
                 xrmBrowser.Grid.OpenRecord(0);
 
-                xrmBrowser.Entity.SetValue(new Lookup { Name = "primarycontactid",Value = "Rene Valdes (sample)" });
+                xrmBrowser.Entity.SetValue(new Lookup { Name = "primarycontactid", Value = "Rene Valdes (sample)" });
                 xrmBrowser.ThinkTime(1000);
 
             }

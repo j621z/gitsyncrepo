@@ -2,13 +2,13 @@
 using Microsoft.Dynamics365.UIAutomation.Api;
 using Microsoft.Dynamics365.UIAutomation.Browser;
 using System;
-using System.Collections.Generic;
 using System.Security;
+using OpenQA.Selenium;
 
-namespace Microsoft.Dynamics365.UIAutomation.UnitTests.NegativeScenarios.Dialogs
+namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample.TakeScreenshot
 {
     [TestClass]
-    public class InvalidRunWorkFlow
+    public class ScreenShot
     {
 
         private readonly SecureString _username = System.Configuration.ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();
@@ -16,24 +16,33 @@ namespace Microsoft.Dynamics365.UIAutomation.UnitTests.NegativeScenarios.Dialogs
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void TestInvalidRunWorkFlow()
+        public void TestTakeScreenshot()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
                 xrmBrowser.LoginPage.Login(_xrmUri, _username, _password);
                 xrmBrowser.GuidedHelp.CloseGuidedHelp();
 
+                ScreenshotImageFormat fileFormat = ScreenshotImageFormat.Tiff;  // Image Format -> Png, Jpeg, Gif, Bmp and Tiff.
+
+                xrmBrowser.TakeWindowScreenShot("D:\\Screenshot" +  "." + fileFormat, fileFormat);
+
+                xrmBrowser.ThinkTime(500);
                 xrmBrowser.Navigation.OpenSubArea("Sales", "Accounts");
 
+                xrmBrowser.ThinkTime(2000);
                 xrmBrowser.Grid.SwitchView("Active Accounts");
 
-                xrmBrowser.Grid.OpenRecord(0);
+                xrmBrowser.ThinkTime(1000);
+                xrmBrowser.CommandBar.ClickCommand("New");
 
-                xrmBrowser.CommandBar.ClickCommand("Run Workflow", "", true);
+                xrmBrowser.ThinkTime(4000);
+                xrmBrowser.Entity.SetValue("name", "Test API Account");
+                xrmBrowser.Entity.SetValue("telephone1", "555-555-5555");
+                xrmBrowser.Entity.SetValue("websiteurl", "https://easyrepro.crm.dynamics.com");
 
-                xrmBrowser.Dialogs.RunWorkflow("Account Number");
-
-                xrmBrowser.ThinkTime(10000);
+                xrmBrowser.CommandBar.ClickCommand("Save & Close");
+                xrmBrowser.ThinkTime(2000);
             }
         }
     }
