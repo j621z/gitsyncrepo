@@ -4,9 +4,8 @@ using Microsoft.Dynamics365.UIAutomation.Browser;
 using System;
 using System.Collections.Generic;
 using System.Security;
-using OpenQA.Selenium.Support.Events;
 
-namespace Microsoft.Dynamics365.UIAutomation.UnitTests
+namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample.EndUserScenerios
 {
     [TestClass]
     public class XrmBrowserTests

@@ -4,7 +4,7 @@ using Microsoft.Dynamics365.UIAutomation.Browser;
 using System;
 using System.Security;
 
-namespace Microsoft.Dynamics365.UIAutomation.UnitTests
+namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample
 {
     [TestClass]
     public class Office365Tests

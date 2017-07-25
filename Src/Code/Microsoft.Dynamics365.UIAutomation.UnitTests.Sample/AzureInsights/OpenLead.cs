@@ -7,7 +7,7 @@ using System.Security;
 using System.Threading;
 using OpenQA.Selenium.Support.Events;
 
-namespace Microsoft.Dynamics365.UIAutomation.UnitTests
+namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample
 {
     [TestClass]
     public class OpenLeadforAzure
