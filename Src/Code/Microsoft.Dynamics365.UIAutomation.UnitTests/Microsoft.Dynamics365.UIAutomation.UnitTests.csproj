@@ -129,8 +129,6 @@
     </Compile>
     <Compile Include="AzureInsights\OpenLead.cs" />
     <Compile Include="Browser\CommandTests.cs" />
-    <Compile Include="CustomerScenarios\AA_CreateLead.cs" />
-    <Compile Include="EndUserScenerios\XrmBrowserTests.cs" />
     <Compile Include="Browser\Office365Tests.cs" />
     <Compile Include="Browser\OpenBrowserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

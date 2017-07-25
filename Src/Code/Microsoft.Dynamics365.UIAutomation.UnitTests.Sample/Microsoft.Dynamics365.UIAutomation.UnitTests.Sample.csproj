@@ -111,6 +111,7 @@
     <Compile Include="..\..\Shared\AssemblyVersionInfo.cs">
       <Link>Properties\AssemblyVersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Browser\Office365Tests.cs" />
     <Compile Include="BusinessProcessFlow\BusinessProcessFlow.cs" />
     <Compile Include="CommandBar\CommandButton.cs" />
     <Compile Include="EndUserScenerios\CloseOpportunity.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="EndUserScenerios\OpenOpportunity.cs" />
     <Compile Include="EndUserScenerios\QuickCreateAccount.cs" />
     <Compile Include="EndUserScenerios\RelatedTest.cs" />
+    <Compile Include="EndUserScenerios\XrmBrowserTests.cs" />
     <Compile Include="Entity\Entity.cs" />
     <Compile Include="Entity\GetValue.cs" />
     <Compile Include="Entity\RecordWall.cs" />
