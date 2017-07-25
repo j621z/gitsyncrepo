@@ -111,6 +111,7 @@
     <Compile Include="..\..\Shared\AssemblyVersionInfo.cs">
       <Link>Properties\AssemblyVersionInfo.cs</Link>
     </Compile>
+    <Compile Include="AzureInsights\OpenLead.cs" />
     <Compile Include="Browser\Office365Tests.cs" />
     <Compile Include="BusinessProcessFlow\BusinessProcessFlow.cs" />
     <Compile Include="CommandBar\CommandButton.cs" />
