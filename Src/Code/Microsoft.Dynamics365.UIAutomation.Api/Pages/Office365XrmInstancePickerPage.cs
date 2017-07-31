@@ -1,8 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.Dynamics365.UIAutomation.Browser;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Dynamics365.UIAutomation.Browser;
 
 namespace Microsoft.Dynamics365.UIAutomation.Api
 {
@@ -52,7 +52,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 return list;
             });
         }
-
         public XrmBrowser OpenXrmInstance(XrmInstanceInfo instance)
         {
             var browser = new XrmBrowser(Browser.Driver);

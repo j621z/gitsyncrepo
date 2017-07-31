@@ -3,11 +3,10 @@ using Microsoft.Dynamics365.UIAutomation.Browser;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Security;
-using Microsoft.Dynamics365.UIAutomation.UnitTests;
 
 namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample.NegativeScenarios.RelatedGrid
 {
-[TestClass]
+    [TestClass]
 public class InvalidRelatedClickCommand
 {
     private readonly SecureString _username = System.Configuration.ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();

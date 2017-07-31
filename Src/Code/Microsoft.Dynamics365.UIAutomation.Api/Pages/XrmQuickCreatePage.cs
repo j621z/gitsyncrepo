@@ -1,9 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.Dynamics365.UIAutomation.Browser;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Microsoft.Dynamics365.UIAutomation.Browser;
 
 namespace Microsoft.Dynamics365.UIAutomation.Api
 {
@@ -163,7 +163,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                     {
                         dialogItem.Click();
                     }
-                    catch (OpenQA.Selenium.StaleElementReferenceException ex)
+                    catch (OpenQA.Selenium.StaleElementReferenceException)
                     {
                         // Expected error
                     }
@@ -203,7 +203,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="field">Field name or ID.</param>
         /// <param name="check">If set to <c>true</c> [check].</param>
-        public BrowserCommandResult<bool> SetValue(string field, bool check)
+        public new BrowserCommandResult<bool> SetValue(string field, bool check)
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
@@ -226,7 +226,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// </summary>
         /// <param name="field">The field id or name.</param>
         /// <param name="date">DateTime value.</param>
-        public BrowserCommandResult<bool> SetValue(string field, DateTime date)
+        public new BrowserCommandResult<bool> SetValue(string field, DateTime date)
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
@@ -257,7 +257,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// <param name="field">The field id.</param>
         /// <param name="value">The value.</param>
         /// <example>xrmBrowser.QuickCreate.SetValue("lastname", "Contact");</example>
-        public BrowserCommandResult<bool> SetValue(string field, string value)
+        public new BrowserCommandResult<bool> SetValue(string field, string value)
         {
             return this.Execute(GetOptions($"Set Value: {field}"), driver =>
             {
@@ -288,7 +288,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sets the value of a Field.
         /// </summary>
         /// <param name="field">The field .</param>
-        public BrowserCommandResult<bool> SetValue(Field field)
+        public new BrowserCommandResult<bool> SetValue(Field field)
         {
             return this.Execute(GetOptions(""), driver =>
             {
@@ -319,7 +319,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sets the value of a picklist.
         /// </summary>
         /// <param name="option">The option you want to set.</param>
-        public BrowserCommandResult<bool> SetValue(OptionSet option)
+        public new BrowserCommandResult<bool> SetValue(OptionSet option)
         {
             return this.Execute(GetOptions($"Set Value: {option.Name}"), driver =>
             {
@@ -348,7 +348,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         /// Sets the value of a Composite control.
         /// </summary>
         /// <param name="control">The Composite control values you want to set.</param>
-        public BrowserCommandResult<bool> SetValue(CompositeControl control)
+        public new BrowserCommandResult<bool> SetValue(CompositeControl control)
         {
             return this.Execute(GetOptions($"Set Conposite Control Value: {control.Id}"), driver =>
             {

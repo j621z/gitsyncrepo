@@ -1,10 +1,8 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
+﻿using Microsoft.Dynamics365.UIAutomation.Browser;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Microsoft.Dynamics365.UIAutomation.Browser;
 
 
 namespace Microsoft.Dynamics365.UIAutomation.Api
@@ -15,8 +13,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
     /// </summary>
     public class XrmPage : BrowserPage
     {
-
-        private static string relatedId;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="XrmPage"/> class.
