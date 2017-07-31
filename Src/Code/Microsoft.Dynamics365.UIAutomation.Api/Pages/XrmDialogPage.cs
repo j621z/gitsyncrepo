@@ -1,6 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.Dynamics365.UIAutomation.Browser;
+using OpenQA.Selenium;
 using System;
-using Microsoft.Dynamics365.UIAutomation.Browser;
 
 
 namespace Microsoft.Dynamics365.UIAutomation.Api

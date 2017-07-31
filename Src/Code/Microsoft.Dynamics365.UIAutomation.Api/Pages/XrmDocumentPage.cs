@@ -1,11 +1,8 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Dynamics365.UIAutomation.Browser;
+﻿using Microsoft.Dynamics365.UIAutomation.Browser;
+using OpenQA.Selenium;
 
 
-namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
+namespace Microsoft.Dynamics365.UIAutomation.Api
 {
     /// <summary>
     /// The XRM Document Page that provides methods to interact with the browswer DOM. 
@@ -28,27 +25,27 @@ namespace Microsoft.Dynamics365.UIAutomation.Api.Pages
         /// Returns the document element that has the ID attribute with the specified value.
         /// </summary>
         /// <param name="id">The identifier.</param>        
-        public BrowserCommandResult<IWebElement> getElementById(string id)
+        public IWebElement getElementById(string id)
         {
-            return this.Execute(GetOptions($"Element Search by ID: {id}"), driver => driver.FindElement(By.Id(id)));
+            return this.Execute(GetOptions($"Element Search by ID: {id}"), driver => driver.FindElement(By.Id(id))).Value;
         }
 
         /// <summary>
         /// Returns the document element that has the CSS attribute with the specified value.
         /// </summary>
         /// <param name="css">The CSS.</param>       
-        public BrowserCommandResult<IWebElement> getElementByCss(string css)
+        public IWebElement getElementByCss(string css)
         {
-            return this.Execute(GetOptions($"Element Search by ID: {css}"), driver => driver.FindElement(By.CssSelector(css)));
+            return this.Execute(GetOptions($"Element Search by ID: {css}"), driver => driver.FindElement(By.CssSelector(css))).Value;
         }
 
         /// <summary>
         /// Returns the document element that has the specified XPath value.
         /// </summary>
         /// <param name="xpath">The xpath that is used to references nodes in the document.</param>       
-        public BrowserCommandResult<IWebElement> getElementByXPath(string xpath)
+        public IWebElement getElementByXPath(string xpath)
         {
-            return this.Execute(GetOptions($"Element Search by ID: {xpath}"), driver => driver.FindElement(By.XPath(xpath)));
+            return this.Execute(GetOptions($"Element Search by ID: {xpath}"), driver => driver.FindElement(By.XPath(xpath))).Value;
         }
 
 

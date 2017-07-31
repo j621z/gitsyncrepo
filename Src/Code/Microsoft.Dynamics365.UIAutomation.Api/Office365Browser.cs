@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using Microsoft.Dynamics365.UIAutomation.Browser;
+
 namespace Microsoft.Dynamics365.UIAutomation.Api
 {
     public class Office365Browser

@@ -2,7 +2,6 @@
 using Microsoft.Dynamics365.UIAutomation.Api;
 using Microsoft.Dynamics365.UIAutomation.Browser;
 using System;
-using System.Collections.Generic;
 using System.Security;
 
 namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample.NegativeScenarios.Dialogs

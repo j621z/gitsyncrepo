@@ -1,10 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.Dynamics365.UIAutomation.Browser;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using Microsoft.Dynamics365.UIAutomation.Browser;
-using System.Threading;
 
 namespace Microsoft.Dynamics365.UIAutomation.Api
 {

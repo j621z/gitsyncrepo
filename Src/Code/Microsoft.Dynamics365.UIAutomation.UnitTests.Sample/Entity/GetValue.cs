@@ -4,8 +4,6 @@ using Microsoft.Dynamics365.UIAutomation.Browser;
 using System;
 using System.Collections.Generic;
 using System.Security;
-using System.Threading;
-using OpenQA.Selenium.Support.Events;
 
 namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample.Entity
 {

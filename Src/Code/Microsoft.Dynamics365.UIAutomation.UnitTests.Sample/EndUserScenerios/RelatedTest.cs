@@ -3,9 +3,6 @@ using Microsoft.Dynamics365.UIAutomation.Api;
 using Microsoft.Dynamics365.UIAutomation.Browser;
 using System;
 using System.Security;
-using System.Threading;
-using OpenQA.Selenium.Support.Events;
-using System.Drawing.Imaging;
 
 namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample.EndUserScenerios
 {
