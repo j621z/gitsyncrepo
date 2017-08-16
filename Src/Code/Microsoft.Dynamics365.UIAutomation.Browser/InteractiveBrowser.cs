@@ -1,4 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Events;
 using System;
 using System.Collections.Generic;
