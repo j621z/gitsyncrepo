@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+
+using Newtonsoft.Json.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium.Support.UI;

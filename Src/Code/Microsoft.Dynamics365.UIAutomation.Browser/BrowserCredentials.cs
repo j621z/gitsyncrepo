@@ -1,4 +1,7 @@
-﻿using System.Net;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+
+using System.Net;
 using System.Security;
 
 namespace Microsoft.Dynamics365.UIAutomation.Browser

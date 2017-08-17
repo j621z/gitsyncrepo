@@ -1,4 +1,7 @@
-﻿using Microsoft.Win32;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT license.
+
+using Microsoft.Win32;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
