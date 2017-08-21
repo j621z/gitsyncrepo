@@ -40,7 +40,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'UnitTest'">
     <AssemblyOriginatorKeyFile>EasyReproTemp.snk</AssemblyOriginatorKeyFile>
@@ -48,6 +48,9 @@
   <PropertyGroup Condition="'$(Configuration)' != 'UnitTest'">
     <AssemblyOriginatorKeyFile>272MSSharedLibSN2048.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -105,8 +108,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="EasyReproTemp.snk" />
-    <None Include="272MSSharedLibSN2048.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

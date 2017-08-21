@@ -211,7 +211,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-    <None Include="EasyReproTemp.snk" />
   </ItemGroup>
   <ItemGroup />
   <Choose>
