@@ -17,7 +17,7 @@ namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample.NegativeScenarios.
         private readonly Uri _xrmUri = new Uri(System.Configuration.ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
 
         [TestMethod]
-        public void TestFilterGridByLetter()
+        public void TestInvalidFilterGridByLetter()
         {
             using (var xrmBrowser = new XrmBrowser(TestSettings.Options))
             {
