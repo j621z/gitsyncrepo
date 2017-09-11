@@ -8,7 +8,7 @@ namespace Microsoft.Dynamics365.UIAutomation.UnitTests.Sample
     public static class TestSettings
     {
         public static string AccountLogicalName = "account";
-        public static string AccountId = "2EA7F14A-9935-E711-8102-FC15B4286D18";
+        public static string AccountId = "A8A19CDD-88DF-E311-B8E5-6C3BE5A8B200";
         public static string InvalidAccountLogicalName = "accounts";
 
         public static string LookupField = "primarycontactid";

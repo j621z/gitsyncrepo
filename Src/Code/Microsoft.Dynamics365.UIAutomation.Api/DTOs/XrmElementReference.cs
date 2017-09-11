@@ -232,6 +232,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                       
             //Dialogs
             { "Dialog_SwitchProcessTitleClass"       , "ms-crm-ProcessSwitcher-ProcessTitle"},
+            { "Dialog_SelectedRadioButton"       , "ms-crm-ProcessSwitcher-Process-Selected"},
 
             //SetValue
             { "SetValue_LookupRenderClass"       , "Lookup_RenderButton_td"},
@@ -246,7 +247,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             //Grid
             { "Grid_ViewContainerClass"     , "ms-crm-VS-Menu"},
-            { "Grid_OpenChartClass"       , "ms-crm-ImageStrip-navLeft"},
+            { "Grid_OpenChartClass"       , "ms-crm-ImageStrip-navLeft_VisualRefresh"},
             { "Grid_CloseChartClass"       , "ms-crm-PaneChevron"},
             { "Grid_SortColumnClass"       , "ms-crm-List-Sortable"},
             { "Grid_DataColumnClass"       , "ms-crm-List-DataColumn"},
@@ -311,6 +312,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static class SwitchProcess
             {
                 public static string Process = "Dialog_SwitchProcessTitleClass";
+                public static string SelectedRadioButton = "Dialog_SelectedRadioButton";
             }
             public static class DuplicateDetection
             {
