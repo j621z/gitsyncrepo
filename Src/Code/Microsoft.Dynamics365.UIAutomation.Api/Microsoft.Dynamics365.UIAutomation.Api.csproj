@@ -90,6 +90,7 @@
     <Compile Include="DTOs\XrmPerformanceMarker.cs" />
     <Compile Include="LoginRedirectEventArgs.cs" />
     <Compile Include="Office365Browser.cs" />
+    <Compile Include="Pages\XrmProcessesPage.cs" />
     <Compile Include="Pages\XrmDashboardPage.cs" />
     <Compile Include="Pages\XrmGlobalSearchPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Pages\XrmGridPage.cs" />
     <Compile Include="Pages\XrmGuidedHelpPage.cs" />
     <Compile Include="Pages\XrmLookupPage.cs" />
+    <Compile Include="Pages\XrmMobilePage.cs" />
     <Compile Include="Pages\XrmNavigationPage.cs" />
     <Compile Include="Pages\XrmBusinessProcessFlow.cs" />
     <Compile Include="Pages\XrmNotficationPage.cs" />
