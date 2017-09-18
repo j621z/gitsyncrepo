@@ -145,25 +145,34 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             return this.Execute(GetOptions("Delete"), driver =>
             {
                 driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Dialogs.ProcessFlowHeader]),
-                                          new TimeSpan(0, 0, 10),
-                                          "The Select Business Process Flow dialog is not available.");
+                    new TimeSpan(0, 0, 10),
+                    "The Select Business Process Flow dialog is not available.");
 
-                var processes = driver.FindElements(By.ClassName(Elements.CssClass[Reference.Dialogs.SwitchProcess.Process]));
-                IWebElement element = null;
-
-                foreach (var process in processes)
+                if (driver.FindElement(By.ClassName(Elements.CssClass[Reference.Dialogs.SwitchProcess.SelectedRadioButton])).Text.Split('\r')[0] != name)
                 {
-                    if (process.Text == name)
-                        element = process;
+                    var processes = driver.FindElements(By.ClassName(Elements.CssClass[Reference.Dialogs.SwitchProcess.Process]));
+                    IWebElement element = null;
+
+                    foreach (var process in processes)
+                    {
+                        if (process.Text == name)
+                        {
+                            element = process;
+                            break;
+                        }
+                    }
+
+                    if (element != null)
+                        element.Click();
+                    else
+                        throw new InvalidOperationException($"The Business Process with name: '{name}' does not exist");
+
+                    driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.Ok]));
                 }
-
-                if (element != null)
-                    element.Click();
                 else
-                    throw new InvalidOperationException($"The Business Process with name: '{name}' does not exist");
-
-                driver.ClickWhenAvailable(By.XPath(Elements.Xpath[Reference.BusinessProcessFlow.Ok]));
-
+                {
+                    throw new InvalidOperationException($"The Business Process with name: '{name}' is already selected");
+                }
                 return true;
             });
         }
