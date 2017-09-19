@@ -115,6 +115,7 @@
     <Compile Include="Browser\Office365Tests.cs" />
     <Compile Include="BusinessProcessFlow\BusinessProcessFlow.cs" />
     <Compile Include="CommandBar\CommandButton.cs" />
+    <Compile Include="DOC Validation Tests\CreateUser.cs" />
     <Compile Include="DOC Validation Tests\OpenMobile.cs" />
     <Compile Include="DOC Validation Tests\CreateWorkflow.cs" />
     <Compile Include="DOC Validation Tests\ValidationVersion.cs" />
