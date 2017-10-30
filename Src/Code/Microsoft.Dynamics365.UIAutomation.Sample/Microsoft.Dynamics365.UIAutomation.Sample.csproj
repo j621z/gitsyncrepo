@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A075B87E-DCA5-4A2A-909B-932E2F5F98B4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Dynamics365.UIAutomation.Sample</RootNamespace>
+    <AssemblyName>Microsoft.Dynamics365.UIAutomation.Sample</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UnitTest|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\bin\UnitTest\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.4.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="WebDriver, Version=3.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.5.1\lib\net40\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.3.5.1\lib\net40\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="..\..\Shared\AssemblyVersionInfo.cs">
+      <Link>Properties\AssemblyVersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="AzureInsights\OpenLead.cs" />
+    <Compile Include="Browser\Office365Tests.cs" />
+    <Compile Include="BusinessProcessFlow\BusinessProcessFlow.cs" />
+    <Compile Include="CommandBar\CommandButton.cs" />
+    <Compile Include="DOC Validation Tests\CreateUser.cs" />
+    <Compile Include="DOC Validation Tests\OpenMobile.cs" />
+    <Compile Include="DOC Validation Tests\CreateWorkflow.cs" />
+    <Compile Include="DOC Validation Tests\ValidationVersion.cs" />
+    <Compile Include="EndUserScenerios\CloseOpportunity.cs" />
+    <Compile Include="EndUserScenerios\CreateCase.cs" />
+    <Compile Include="DashBoard\Dashboard.cs" />
+    <Compile Include="Dialogs\Assign.cs" />
+    <Compile Include="Dialogs\CloseOpportunity.cs" />
+    <Compile Include="Dialogs\Delete.cs" />
+    <Compile Include="Dialogs\DuplicateDetection.cs" />
+    <Compile Include="Dialogs\RunWorkFlow.cs" />
+    <Compile Include="Dialogs\SelectBusinessProcessFlow.cs" />
+    <Compile Include="EndUserScenerios\CreateAccount.cs" />
+    <Compile Include="EndUserScenerios\CreateContact.cs" />
+    <Compile Include="EndUserScenerios\CreateLead.cs" />
+    <Compile Include="EndUserScenerios\CreateOpportunity.cs" />
+    <Compile Include="EndUserScenerios\EndUserScenerio.cs" />
+    <Compile Include="EndUserScenerios\LeadSubgrid.cs" />
+    <Compile Include="EndUserScenerios\OpenAccount.cs" />
+    <Compile Include="EndUserScenerios\OpenContact.cs" />
+    <Compile Include="EndUserScenerios\OpenLead.cs" />
+    <Compile Include="EndUserScenerios\OpenOpportunity.cs" />
+    <Compile Include="EndUserScenerios\QuickCreateAccount.cs" />
+    <Compile Include="EndUserScenerios\RelatedTest.cs" />
+    <Compile Include="EndUserScenerios\XrmBrowserTests.cs" />
+    <Compile Include="Entity\Entity.cs" />
+    <Compile Include="Entity\GetValue.cs" />
+    <Compile Include="Entity\RecordWall.cs" />
+    <Compile Include="Entity\SetValue.cs" />
+    <Compile Include="GlobalSearch\GlobalSearchXrm.cs" />
+    <Compile Include="Navigation\AdvancedFind.cs" />
+    <Compile Include="Navigation\GlobalSearch.cs" />
+    <Compile Include="Navigation\GuidedHelp.cs" />
+    <Compile Include="Navigation\Options.cs" />
+    <Compile Include="Navigation\Portal.cs" />
+    <Compile Include="Navigation\QuickCreate.cs" />
+    <Compile Include="Navigation\SignOut.cs" />
+    <Compile Include="NegativeScenarios\BusinessProcessFlow\InvalidBusinessProcessFlow.cs" />
+    <Compile Include="NegativeScenarios\BusinessProcessFlow\InvalidNextStage.cs" />
+    <Compile Include="NegativeScenarios\BusinessProcessFlow\InvalidPreviousStage.cs" />
+    <Compile Include="NegativeScenarios\BusinessProcessFlow\InvalidSelectBusinessProcessFlow.cs" />
+    <Compile Include="NegativeScenarios\CommandBar\InvalidClickCommand.cs" />
+    <Compile Include="NegativeScenarios\DashBoard\InvalidSwitchDashBoard.cs" />
+    <Compile Include="NegativeScenarios\Dialogs\InvalidRunWorkFlow.cs" />
+    <Compile Include="NegativeScenarios\Entity\InvalidCollapseTab.cs" />
+    <Compile Include="NegativeScenarios\Entity\InvalidExpandTab.cs" />
+    <Compile Include="NegativeScenarios\Entity\InvalidOpenEntity.cs" />
+    <Compile Include="NegativeScenarios\Entity\InvalidSelectTab.cs" />
+    <Compile Include="NegativeScenarios\GlobalSearch\InvalidFilterWith.cs" />
+    <Compile Include="NegativeScenarios\GlobalSearch\InvalidOpenRecord.cs" />
+    <Compile Include="NegativeScenarios\Grid\InvalidFilterByLetter.cs" />
+    <Compile Include="NegativeScenarios\Grid\InvalidSort.cs" />
+    <Compile Include="NegativeScenarios\Grid\InvalidSwitchChart.cs" />
+    <Compile Include="NegativeScenarios\InvalidOpenArea.cs" />
+    <Compile Include="NegativeScenarios\InvalidOpenRecord.cs" />
+    <Compile Include="NegativeScenarios\InvalidSetValue.cs" />
+    <Compile Include="NegativeScenarios\InvalidSubArea.cs" />
+    <Compile Include="NegativeScenarios\InvalidSwitchView.cs" />
+    <Compile Include="NegativeScenarios\Navigation\InvalidQuickCreate.cs" />
+    <Compile Include="NegativeScenarios\RelatedGrid\InvalidRelatedArea.cs" />
+    <Compile Include="NegativeScenarios\RelatedGrid\InvalidRelatedClickCommand.cs" />
+    <Compile Include="NegativeScenarios\RelatedGrid\InvalidRelatedOpenGrid.cs" />
+    <Compile Include="NegativeScenarios\RelatedGrid\InvalidRelatedSort.cs" />
+    <Compile Include="NegativeScenarios\RelatedGrid\InvalidRelatedSwitchView.cs" />
+    <Compile Include="Notification\Notifications.cs" />
+    <Compile Include="EndUserScenerios\OpenCase.cs" />
+    <Compile Include="EndUserScenerios\UpdateAccount.cs" />
+    <Compile Include="EndUserScenerios\UpdateCase.cs" />
+    <Compile Include="EndUserScenerios\UpdateContact.cs" />
+    <Compile Include="EndUserScenerios\UpdateLead.cs" />
+    <Compile Include="EndUserScenerios\UpdateOpportunity.cs" />
+    <Compile Include="Reports\Reports.cs" />
+    <Compile Include="TakeScreenshot\ScreenShot.cs" />
+    <Compile Include="AzureInsights\Telemetry.cs" />
+    <Compile Include="TestSettings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AzureInsights\UploadTelemetry.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="packages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Dynamics365.UIAutomation.Api\Microsoft.Dynamics365.UIAutomation.Api.csproj">
+      <Project>{dfe2c141-f1aa-4d4b-8df8-0fb93023cf45}</Project>
+      <Name>Microsoft.Dynamics365.UIAutomation.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Dynamics365.UIAutomation.Browser\Microsoft.Dynamics365.UIAutomation.Browser.csproj">
+      <Project>{c9748803-f3cb-4531-b313-bc24d4d0bf0c}</Project>
+      <Name>Microsoft.Dynamics365.UIAutomation.Browser</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Selenium.Chrome.WebDriver.2.31\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.31\build\Selenium.Chrome.WebDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.2.31\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.2.31\build\Selenium.Chrome.WebDriver.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

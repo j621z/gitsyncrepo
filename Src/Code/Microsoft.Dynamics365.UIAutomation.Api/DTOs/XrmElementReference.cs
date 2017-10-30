@@ -180,7 +180,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             //Reports
             { "Report_Close", "id(\"btnCancel\")"},
             { "Report_RunReport", "id(\"btnRun\")"},
-
+   
             //Mobile
             { "Mobile_Page", "id(\"Content\")"},
 
@@ -202,7 +202,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "O365_UserName", "id(\"username\")"},
             { "O365_License", "id(\"productsinfo\")/div[4]/div[1]/div/div[1]/div[2]/label"},
             { "O365_Add", "id(\"AddUserSubmit\")"},
-            
 
     };
 
@@ -214,12 +213,11 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "Frame_QuickCreateFrameId"       , "NavBarGloablQuickCreate"},
             { "Frame_WizardFrameId"       , "wizardpageframe"},
             { "Frame_ViewFrameId"       , "ViewArea"},
-            
 
             //SetValue
             { "SetValue_ConfirmId"       , "_compositionLinkControl_flyoutLoadingArea-confirm"},
             { "SetValue_FlyOutId"       , "_compositionLinkControl_flyoutLoadingArea_flyOut"},
-            { "SetValue_CompositionLinkControlId"       , "fullname_compositionLinkControl_"},
+            { "SetValue_CompositionLinkControlId"       , "_compositionLinkControl_"},
                                 
             //Dialogs
             { "Dialog_ActualRevenue"       , "actualrevenue_id"},
@@ -254,6 +252,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             //Process
             { "Process_Category", "WorkflowCategory"},
             { "Process_Entity", "PrimaryEntity"},
+
     };
 
         public static Dictionary<string, string> CssClass = new Dictionary<string, string>()
@@ -415,6 +414,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static string WizardFrame = "Frame_WizardFrame";
             public static string WizardFrameId = "Frame_WizardFrameId";
             public static string ViewFrameId = "Frame_ViewFrameId";
+
         }
 
         public static class Navigation
@@ -608,7 +608,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         {
             public static string Page = "Mobile_Page";
         }
-
         public static class Office365
         {
             public static string AddUser = "O365_AddUser";
