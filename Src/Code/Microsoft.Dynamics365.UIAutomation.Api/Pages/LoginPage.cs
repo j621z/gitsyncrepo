@@ -93,6 +93,15 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             if (online)
             {
+                if (this.Browser.Options.BrowserType == BrowserType.PhantomJs)
+                {
+                    driver.Manage().Window.Maximize();
+                    driver.SwitchTo().ActiveElement();
+                    var cookieJar = driver.Manage().Cookies;
+                    var domain = new Uri(driver.Url).Host; // "login.microsoftonline.com"
+                    cookieJar.AddCookie(new Cookie("FullClient", "12345", domain, " / ", null));
+                }
+
                 if (driver.IsVisible(By.Id("use_another_account_link")))
                     driver.ClickWhenAvailable(By.Id("use_another_account_link"));
 

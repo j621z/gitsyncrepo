@@ -37,8 +37,11 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
                     driver.Manage().Timeouts().ImplicitWait = new TimeSpan(0, 0, 5);
                     break;
                 case BrowserType.PhantomJs:
-                    driver = new PhantomJSDriver(options.DriversPath);
-
+                    var pOptions = new PhantomJSOptions();
+                    pOptions.AddAdditionalCapability("phantomjs.page.settings.userAgent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.94 Safari/537.36");
+                    var pService = PhantomJSDriverService.CreateDefaultService(options.DriversPath);
+                    driver = new PhantomJSDriver(pService, pOptions);
+                    driver.Manage().Window.Size = new System.Drawing.Size(1280, 1024);
                     break;
                 case BrowserType.Edge:
                     var edgeService = EdgeDriverService.CreateDefaultService();
