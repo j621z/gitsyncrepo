@@ -155,6 +155,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             { "Login_OldPassword", "id(\"cred_password_inputtext\")"},
             { "Login_SignIn", "id(\"cred_sign_in_button\")"},
             { "Login_CrmMainPage", "id(\"crmTopBar\")"},
+            { "Login_StaySignedIn", "id(\"idSIButton9\")"},
 
             //Notification           
             { "Notification_AppMessageBar", "id(\"crmAppMessageBar\")"},
@@ -597,6 +598,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
             public static string OldSignInPassword = "Login_OldPassword";
             public static string SignIn = "Login_SignIn";
             public static string CrmMainPage = "Login_CrmMainPage";
+            public static string StaySignedIn = "Login_StaySignedIn";
 
         }
         public static class Report

@@ -93,15 +93,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
 
             if (online)
             {
-                if (this.Browser.Options.BrowserType == BrowserType.PhantomJs)
-                {
-                    driver.Manage().Window.Maximize();
-                    driver.SwitchTo().ActiveElement();
-                    var cookieJar = driver.Manage().Cookies;
-                    var domain = new Uri(driver.Url).Host; // "login.microsoftonline.com"
-                    cookieJar.AddCookie(new Cookie("FullClient", "12345", domain, " / ", null));
-                }
-
                 if (driver.IsVisible(By.Id("use_another_account_link")))
                     driver.ClickWhenAvailable(By.Id("use_another_account_link"));
 
@@ -115,7 +106,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                     driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.UserId])).SendKeys(Keys.Enter);
                     redirectToNewPassword = true;
                     Thread.Sleep(2000);
-
                 }
                 else
                 {
@@ -138,11 +128,26 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 }
                 else
                 {
+                    // set cookie if do not show is set in cooke
+
                     if (redirectToNewPassword)
                     {
                         driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.Password])).SendKeys(password.ToUnsecureString());
                         driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.Password])).SendKeys(Keys.Tab);
                         driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.Password])).Submit();
+
+                        // wait for button for stay signed in
+                        if (driver.IsVisible(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn])))
+                        {
+                            
+                            driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn]),
+                                new TimeSpan(0, 0, 60),
+                                $"The Office 365 sign in page did not return the expected result and the user '{username}' could not be signed in.");
+
+                            driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn])).Submit();
+
+                            Thread.Sleep(2000);
+                        }
                     }
                     else
                     {
@@ -162,3 +167,4 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
         }
     }
 }
+ 
