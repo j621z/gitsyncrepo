@@ -128,8 +128,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                 }
                 else
                 {
-                    // set cookie if do not show is set in cooke
-
                     if (redirectToNewPassword)
                     {
                         driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.Password])).SendKeys(password.ToUnsecureString());
@@ -139,7 +137,6 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                         // wait for button for stay signed in
                         if (driver.IsVisible(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn])))
                         {
-                            
                             driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn]),
                                 new TimeSpan(0, 0, 60),
                                 $"The Office 365 sign in page did not return the expected result and the user '{username}' could not be signed in.");
