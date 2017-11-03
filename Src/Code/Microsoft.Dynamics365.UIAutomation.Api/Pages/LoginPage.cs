@@ -134,16 +134,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Api
                         driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.Password])).SendKeys(Keys.Tab);
                         driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.Password])).Submit();
 
-                        // wait for button for stay signed in
                         if (driver.IsVisible(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn])))
                         {
-                            driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn]),
-                                new TimeSpan(0, 0, 60),
-                                $"The Office 365 sign in page did not return the expected result and the user '{username}' could not be signed in.");
+                            try
+                            {
+                                driver.WaitUntilAvailable(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn]),
+                                    new TimeSpan(0, 0, 60),
+                                    $"The Office 365 sign in page did not return the expected result and the user '{username}' could not be signed in.");
 
-                            driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn])).Submit();
-
-                            Thread.Sleep(2000);
+                                driver.FindElement(By.XPath(Elements.Xpath[Reference.Login.StaySignedIn])).Submit();
+                                Thread.Sleep(2000);
+                            }
+                            catch (Exception e)
+                            { }
                         }
                     }
                     else

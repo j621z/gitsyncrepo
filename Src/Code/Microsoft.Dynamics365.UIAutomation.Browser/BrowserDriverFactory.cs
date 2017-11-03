@@ -42,13 +42,13 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
                     pOptions.AddAdditionalCapability(
                         "phantomjs.page.settings.userAgent",
                         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36");
+                    pOptions.AddAdditionalCapability("phantomjs.page.settings.resourceTimeout", "5000");
 
                     var pService = PhantomJSDriverService.CreateDefaultService(options.DriversPath);
-                    pService.HideCommandPromptWindow = options.HideDiagnosticWindow;
                     pService.AddArgument("--ignore-ssl-errors=true");
 
-                    driver = new PhantomJSDriver(pService, pOptions, TimeSpan.FromSeconds(120));
-                    driver.Manage().Timeouts().ImplicitWait = new TimeSpan(0, 0, 30);
+                    driver = new PhantomJSDriver(pService, pOptions, TimeSpan.FromSeconds(180));
+                    driver.Manage().Window.Size = new System.Drawing.Size(1280, 1024);
                     break;
                 case BrowserType.Edge:
                     var edgeService = EdgeDriverService.CreateDefaultService();
