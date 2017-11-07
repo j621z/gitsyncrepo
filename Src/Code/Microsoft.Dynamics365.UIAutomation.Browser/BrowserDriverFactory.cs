@@ -8,6 +8,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.PhantomJS;
 using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Remote;
 using System;
 
 namespace Microsoft.Dynamics365.UIAutomation.Browser
@@ -17,13 +18,19 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
         public static IWebDriver CreateWebDriver(BrowserOptions options)
         {
             IWebDriver driver;
-           
+
             switch (options.BrowserType)
             {
                 case BrowserType.Chrome:
                     var chromeService = ChromeDriverService.CreateDefaultService();
                     chromeService.HideCommandPromptWindow = options.HideDiagnosticWindow;
                     driver = new ChromeDriver(chromeService, options.ToChrome());
+                    /* 
+                    // chrome headless driver
+                    ChromeOptions cOption = new ChromeOptions();
+                    cOption.AddArgument("--headless");
+                    driver = new ChromeDriver(cOption);
+                    */
                     break;
                 case BrowserType.IE:
                     var ieService = InternetExplorerDriverService.CreateDefaultService();
@@ -38,7 +45,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
                     break;
                 case BrowserType.PhantomJs:
                     var pOptions = new PhantomJSOptions();
-                    
+
                     pOptions.AddAdditionalCapability(
                         "phantomjs.page.settings.userAgent",
                         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36");
@@ -53,9 +60,12 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
                 case BrowserType.Edge:
                     var edgeService = EdgeDriverService.CreateDefaultService();
                     edgeService.HideCommandPromptWindow = options.HideDiagnosticWindow;
-                    driver = new EdgeDriver(edgeService,options.ToEdge(), TimeSpan.FromMinutes(20));
-                    
-
+                    driver = new EdgeDriver(edgeService, options.ToEdge(), TimeSpan.FromMinutes(20));
+                    break;
+                case BrowserType.Remote:
+                    // make sure selenium standalone server is running
+                    DesiredCapabilities capabilities = DesiredCapabilities.HtmlUnit();
+                    driver = new RemoteWebDriver(capabilities);
                     break;
                 default:
                     throw new InvalidOperationException(

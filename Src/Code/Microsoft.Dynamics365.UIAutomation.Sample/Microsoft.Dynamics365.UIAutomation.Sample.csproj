@@ -215,8 +215,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.2.31\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.2.31\build\Selenium.Chrome.WebDriver.targets'))" />
     <Error Condition="!Exists('..\packages\Selenium.PhantomJS.WebDriver.2.1.1\build\Selenium.PhantomJS.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.PhantomJS.WebDriver.2.1.1\build\Selenium.PhantomJS.WebDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\selenium-server-standalone.3.4.0\build\selenium-server-standalone.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\selenium-server-standalone.3.4.0\build\selenium-server-standalone.targets'))" />
   </Target>
   <Import Project="..\packages\Selenium.PhantomJS.WebDriver.2.1.1\build\Selenium.PhantomJS.WebDriver.targets" Condition="Exists('..\packages\Selenium.PhantomJS.WebDriver.2.1.1\build\Selenium.PhantomJS.WebDriver.targets')" />
+  <Import Project="..\packages\selenium-server-standalone.3.4.0\build\selenium-server-standalone.targets" Condition="Exists('..\packages\selenium-server-standalone.3.4.0\build\selenium-server-standalone.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
