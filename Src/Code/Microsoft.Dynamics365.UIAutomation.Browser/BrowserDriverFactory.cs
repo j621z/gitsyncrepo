@@ -47,7 +47,7 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
                     var pService = PhantomJSDriverService.CreateDefaultService(options.DriversPath);
                     pService.AddArgument("--ignore-ssl-errors=true");
 
-                    driver = new PhantomJSDriver(pService, pOptions, TimeSpan.FromSeconds(180));
+                    driver = new PhantomJSDriver(pService, pOptions, TimeSpan.FromMinutes(5));
                     driver.Manage().Window.Size = new System.Drawing.Size(1280, 1024);
                     break;
                 case BrowserType.Edge:
@@ -62,9 +62,9 @@ namespace Microsoft.Dynamics365.UIAutomation.Browser
                         $"The browser type '{options.BrowserType}' is not recognized.");
             }
 
-            driver.Manage().Timeouts().PageLoad = options.PageLoadTimeout;
+            driver.Manage().Timeouts().PageLoad = new TimeSpan(0, 5, 0); //options.PageLoadTimeout;
 
-            if(options.StartMaximized && options.BrowserType != BrowserType.Chrome) //Handle Chrome in the Browser Options
+            if (options.StartMaximized && options.BrowserType != BrowserType.Chrome) //Handle Chrome in the Browser Options
                 driver.Manage().Window.Maximize();
 
             if (options.FireEvents || options.EnableRecording)
